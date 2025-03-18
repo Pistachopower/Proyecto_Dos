@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Todos los datos clientes</h2>
+    {% for cliente in clientes_mostrar %}
+    <div>
+        <ul>
+            <li>Nombre: {{ cliente.nombre }} </li>
+            <li>Apellidos {{ cliente.apellidos }}.</li>
+                
+        </ul>
+        
+    </div>
+    {% endfor %}
+</body>
+</html>
