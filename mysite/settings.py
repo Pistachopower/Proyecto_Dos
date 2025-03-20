@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-m*yr$6rqbf!(4wq1$$rhf&id^#+#&3#t@gc8h=)+rx^aw2pt&+
 DEBUG = True
 
 ALLOWED_HOSTS = ['0.0.0.0']
-
+INTERNAL_IPS = ["127.0.0.1"]
 
 # Application definition
 
@@ -38,6 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'tienda',
+    'debug_toolbar',
+    'django_bootstrap5',
+    'django_bootstrap_icons',
 ]
 
 MIDDLEWARE = [
@@ -48,6 +51,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
+    
 ]
 
 ROOT_URLCONF = 'mysite.urls'

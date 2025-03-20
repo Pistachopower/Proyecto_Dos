@@ -1,0 +1,21 @@
+
+{%extends "estructura/principal.html"%}
+
+{%block contenido %}
+<h2>Todos los datos clientes</h2>
+{% for cliente in clientes_mostrar %}
+
+<!--agrega include-->
+{% include 'clientes/cliente.html'%}
+
+
+{% empty %}
+    <li>No hay clientes disponibles</li>
+{% endfor %}
+
+
+
+
+{%endblock %}
+
+
