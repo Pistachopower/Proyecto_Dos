@@ -6,16 +6,14 @@
 {% for cliente in clientes_mostrar %}
 
 <!--agrega include-->
+<div class="row">
 {% include 'clientes/cliente.html'%}
 
 
 {% empty %}
-    <li>No hay clientes disponibles</li>
+<h1>Lo sentimos pero no hay datos</h1>
 {% endfor %}
-
-
-
-
+</div>
 {%endblock %}
 
 

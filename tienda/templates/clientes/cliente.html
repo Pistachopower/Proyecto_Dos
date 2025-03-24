@@ -1,8 +1,20 @@
-<div>
-    <ul>
-        <li>id cliente: {{ cliente.id}} </li>
-        <li>Nombre: {{ cliente.nombre}} </li>
-        <li>Apellidos {{ cliente.apellidos }}.</li>
-    </ul>
-    
+<div class="col-sm-4 mb-2">
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+            <thead class="table-dark">
+                <tr>
+                    <th>ID Cliente</th>
+                    <th>Nombre</th>
+                    <th>Apellidos</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ cliente.id }}</td>
+                    <td>{{ cliente.nombre }}</td>
+                    <td>{{ cliente.apellidos }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
