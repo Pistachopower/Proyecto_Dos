@@ -28,9 +28,9 @@
                               <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault{{ forloop.counter }}" />
                             </div>
                           </th>
-                          <td>{{ cliente.id }}</td>
-                          <td>{{ cliente.nombre }}</td>
-                          <td>{{ cliente.apellidos }}</td>
+                          <td>{{ cliente.usuario.first_name }}</td>
+                          <td>{{ cliente.usuario.last_name }}</td>
+                          <td>{{ cliente.last_name }}</td>
                           <td>
                             <a href="" class="btn btn-primary btn-sm px-3">
                               <i class="fas fa-edit"></i> Editar
