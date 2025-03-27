@@ -28,6 +28,11 @@ DEBUG = True
 ALLOWED_HOSTS = ['0.0.0.0']
 INTERNAL_IPS = ["127.0.0.1"]
 
+
+#sesiones de login y logout
+LOGIN_REDIRECT_URL= 'index'
+LOGOUT_REDIRECT_URL= 'index'
+
 # Application definition
 
 INSTALLED_APPS = [

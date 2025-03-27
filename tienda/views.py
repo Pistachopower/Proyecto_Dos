@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from .models import *
 from datetime import datetime
 from .forms import *
@@ -16,7 +16,16 @@ def index(request):
     return render(request, 'index.html',{})
     
 def registrar_usuario(request):
-    formulario= RegistroForm()
+    if request.method == 'POST':
+        #recogemos los datos del formulario
+        formulario= RegistroForm(request.POST)
+        
+        if formulario.is_valid():
+            user= formulario.save()
+            return redirect('index')
+
+    else:    
+        formulario= RegistroForm()
     return render(request, 'registration/signup.html',{'formulario':formulario})
     
 
