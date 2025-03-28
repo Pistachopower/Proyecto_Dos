@@ -3,11 +3,17 @@ from .models import *
 from datetime import datetime
 from .forms import *
 from django.contrib.auth.models import Group
+from django.contrib.auth import login
 
 # Create your views here.
 def lista_clientes(request):
     clientes= Cliente.objects.all() 
     return render(request, 'clientes/lista_cliente.html',{'clientes_mostrar':clientes})
+
+
+def lista_vendedores(request):
+    vendedores= Vendedor.objects.all() 
+    return render(request, 'vendedores/lista_vendedores.html',{'vendedores_mostrar':vendedores})
 
 
 def index(request):
@@ -32,11 +38,26 @@ def registrar_usuario(request):
                 #se asocia el cliente con usuario
                 cliente= Cliente.objects.create(usuario=user)
                 cliente.save()
+                
+            elif (rol == Usuario.VENDEDOR):
+                grupo= Group.objects.get(name='Vendedores')
+                grupo.user_set.add(user)
+                
+                #se asocia el vendedor con usuario
+                vendedor= Vendedor.objects.create(usuario=user)
+                vendedor.save()
+                
+            login(request, user)
             return redirect('index')
 
     else:    
         formulario= RegistroForm()
     return render(request, 'registration/signup.html',{'formulario':formulario})
+
+
+
+
+
     
 
 

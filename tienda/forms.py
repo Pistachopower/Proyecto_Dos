@@ -15,4 +15,6 @@ class RegistroForm(UserCreationForm):
     
     class Meta:
         model = Usuario
-        fields = ('username', 'email', 'password1', 'password2','rol')
+        fields = ('first_name', 'last_name', 'username', 'email', 'password1', 'password2','rol')
+        
+        
