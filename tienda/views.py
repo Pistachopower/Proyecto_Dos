@@ -4,13 +4,14 @@ from datetime import datetime
 from .forms import *
 from django.contrib.auth.models import Group
 from django.contrib.auth import login
+from django.contrib.auth.decorators import permission_required
 
-# Create your views here.
+@permission_required('tienda.view_cliente')
 def lista_clientes(request):
     clientes= Cliente.objects.all() 
     return render(request, 'clientes/lista_cliente.html',{'clientes_mostrar':clientes})
 
-
+@permission_required('tienda.view_vendedor')
 def lista_vendedores(request):
     vendedores= Vendedor.objects.all() 
     return render(request, 'vendedores/lista_vendedores.html',{'vendedores_mostrar':vendedores})
