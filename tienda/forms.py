@@ -18,3 +18,5 @@ class RegistroForm(UserCreationForm):
         fields = ('first_name', 'last_name', 'username', 'email', 'password1', 'password2','rol')
         
         
+        
+        
