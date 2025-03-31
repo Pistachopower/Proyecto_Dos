@@ -6,6 +6,8 @@ from django.contrib.auth.models import Group
 from django.contrib.auth import login
 from django.contrib.auth.decorators import permission_required
 
+#skjnceod@56
+
 @permission_required('tienda.view_cliente')
 def lista_clientes(request):
     clientes= Cliente.objects.all() 
