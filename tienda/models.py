@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 
 class Usuario(AbstractUser):
-    ADMINISTRADOR = 10
+    ADMINISTRADOR = 1
     CLIENTE = 2
     VENDEDOR = 3
     ROLES = (
@@ -32,3 +32,14 @@ class Vendedor(models.Model):
     
     def __str__(self):
         return self.usuario.username
+    
+    
+    
+class Pieza(models.Model):
+    nombre= models.CharField(max_length=100)
+    marca= models.CharField(max_length=100)
+    precio= models.FloatField(default=0.0) 
+    
+    def __str__(self):
+        return self.nombre
+    

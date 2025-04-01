@@ -27,6 +27,22 @@
                 </li>
                 {% endif %}
 
+                <p>
+                    {% if request.user.is_authenticated %}
+                    <p>
+                      Rol: {{request.user.rol}}
+                      <br />
+                      {% if request.user.rol == 1 %}
+                        Administrador
+                      {% elif request.user.rol == 2 %}
+                        Cliente
+                      {% elif request.user.rol == 3 %}
+                        Vendedor
+                      {% endif %}
+                    </p>
+                  {% endif %}
+                </p>
+
             </ul>
 
             <!-- Contenedor derecho -->
@@ -43,6 +59,8 @@
                         <li class="dropdown-item text-muted text-wrap">
                             <small>Sesión: {{ request.session.fecha_inicio }}</small>
                         </li>
+
+
                         <li><hr class="dropdown-divider"></li>
                         <li>
                             <form action="{% url 'logout' %}" method="POST" class="d-grid">
@@ -61,6 +79,9 @@
                     <a class="btn btn-outline-warning" href="{% url 'registrar_usuario' %}">Registrarse</a>
                 {% endif %}
             </div>
+
+
+
 
         </div>
     </div>

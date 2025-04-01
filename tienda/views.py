@@ -35,7 +35,7 @@ def registrar_usuario(request):
             rol= int(formulario.cleaned_data.get('rol'))
             
             if (rol == Usuario.CLIENTE):
-                grupo= Group.objects.get(name='Clientes')
+                grupo= Group.objects.get(name='clientes')
                 grupo.user_set.add(user)
                 
                 #se asocia el cliente con usuario
@@ -43,7 +43,7 @@ def registrar_usuario(request):
                 cliente.save()
                 
             elif (rol == Usuario.VENDEDOR):
-                grupo= Group.objects.get(name='Vendedores')
+                grupo= Group.objects.get(name='vendedores')
                 grupo.user_set.add(user)
                 
                 #se asocia el vendedor con usuario
