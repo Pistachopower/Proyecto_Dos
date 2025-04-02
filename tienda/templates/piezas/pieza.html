@@ -1,0 +1,13 @@
+<div class="card h-100 shadow-sm">
+    <img src="https://cdn.autobild.es/sites/navi.axelspringer.es/public/media/image/2024/11/motor-2ad-toyota-4263068.jpg?tf=3840x" class="card-img-top" alt="{{ pieza.nombre }}">
+    <div class="card-body">
+      <h5 class="card-title">{{ pieza.nombre }}</h5>
+      <p class="card-text">{{ pieza.marca }}</p>
+      <p class="card-text">{{ pieza.descripcion|truncatewords:15 }}</p>
+    </div>
+    <div class="card-footer d-flex justify-content-between">
+      <span class="text-muted">{{ pieza.precio }} €</span>
+      <a href="" class="btn btn-primary btn-sm">Ver detalles</a>
+    </div>
+  </div>
+  

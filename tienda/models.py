@@ -37,6 +37,7 @@ class Vendedor(models.Model):
     
 class Pieza(models.Model):
     nombre= models.CharField(max_length=100)
+    descripcion= models.TextField()
     marca= models.CharField(max_length=100)
     precio= models.FloatField(default=0.0) 
     

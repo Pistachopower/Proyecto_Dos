@@ -24,6 +24,12 @@
                     <a class="nav-link" href="{% url 'lista_vendedores' %}">Ver vendedores</a>
                 </li>
                 {% endif %}
+
+                {% if perms.tienda.view_pieza %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'lista_pieza' %}">Ver piezas</a>
+                </li>
+                {% endif %}
             </ul>
 
             <!-- Contenedor derecho -->
