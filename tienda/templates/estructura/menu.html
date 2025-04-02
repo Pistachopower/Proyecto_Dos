@@ -13,36 +13,17 @@
                     <a class="nav-link active" href="{% url 'index' %}">Inicio</a>
                 </li>
 
-                {%if perms.tienda.view_cliente%}
+                {% if perms.tienda.view_cliente %}
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'lista_clientes' %}">Ver clientes</a>
                 </li>
-
                 {% endif %}
 
-
-                {%if perms.tienda.view_vendedor%}
+                {% if perms.tienda.view_vendedor %}
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'lista_vendedores' %}">Ver vendedores</a>
                 </li>
                 {% endif %}
-
-                <p>
-                    {% if request.user.is_authenticated %}
-                    <p>
-                      Rol: {{request.user.rol}}
-                      <br />
-                      {% if request.user.rol == 1 %}
-                        Administrador
-                      {% elif request.user.rol == 2 %}
-                        Cliente
-                      {% elif request.user.rol == 3 %}
-                        Vendedor
-                      {% endif %}
-                    </p>
-                  {% endif %}
-                </p>
-
             </ul>
 
             <!-- Contenedor derecho -->
@@ -55,11 +36,27 @@
                         <i class="bi bi-person-circle fs-4 me-2"></i>
                         <span class="fw-semibold">{{ request.user }}</span>
                     </button>
-                    <ul class="dropdown-menu dropdown-menu-end shadow-sm w-100" aria-labelledby="userDropdown">
+                    <ul class="dropdown-menu dropdown-menu-end shadow-sm" aria-labelledby="userDropdown">
                         <li class="dropdown-item text-muted text-wrap">
                             <small>Sesión: {{ request.session.fecha_inicio }}</small>
                         </li>
 
+                        <li class="dropdown-item">
+                            <small>
+                                Rol: 
+                                {% if request.user.is_authenticated %}
+                                  {% if request.user.rol == 1 %}
+                                    <strong>Administrador</strong>
+                                  {% elif request.user.rol == 2 %}
+                                    <strong>Cliente</strong>
+                                  {% elif request.user.rol == 3 %}
+                                    <strong>Vendedor</strong>
+                                  {% else %}
+                                    <strong>No asignado</strong>
+                                  {% endif %}
+                                {% endif %}
+                            </small>
+                        </li>
 
                         <li><hr class="dropdown-divider"></li>
                         <li>
@@ -79,10 +76,6 @@
                     <a class="btn btn-outline-warning" href="{% url 'registrar_usuario' %}">Registrarse</a>
                 {% endif %}
             </div>
-
-
-
-
         </div>
     </div>
 </nav>
