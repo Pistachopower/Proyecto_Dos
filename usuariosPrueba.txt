@@ -5,3 +5,10 @@ maria
 Vendedor
 Pedro 
 333sddeS@
+
+
+Formulario 
+crear url y boton en menu
+crear vista creacion producto
+crear la template
+controlar que usuarios pueden crear

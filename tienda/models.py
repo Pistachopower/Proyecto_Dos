@@ -34,7 +34,6 @@ class Vendedor(models.Model):
         return self.usuario.username
     
     
-    
 class Pieza(models.Model):
     nombre= models.CharField(max_length=100)
     descripcion= models.TextField()

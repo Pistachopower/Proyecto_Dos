@@ -64,7 +64,18 @@ def lista_pieza(request):
     return render(request, 'piezas/lista_pieza.html',{'piezas_mostrar':pieza})
 
 
-    
+@permission_required('tienda.view_pieza')
+def pieza_create(request):
+    if request.method == "POST":
+        formulario= PiezaModelForm(request.POST)
+        
+        if formulario.is_valid():
+            print("Es valido")
+            formulario.save()
+            return redirect("lista_pieza")
+    else:
+        formulario= PiezaModelForm()
+    return render(request, 'piezas/pieza_form.html',{'formulario':formulario})
 
 
 
