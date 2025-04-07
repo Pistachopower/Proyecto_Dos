@@ -25,15 +25,41 @@
                 </li>
                 {% endif %}
 
-                {% if perms.tienda.view_pieza %}
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'lista_pieza' %}">Ver piezas</a>
+                <!-- Dropdown de Piezas -->
+                {% if perms.tienda.view_pieza or perms.tienda.add_pieza %}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="piezasDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Piezas
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="piezasDropdown">
+                        {% if perms.tienda.view_pieza %}
+                        <li><a class="dropdown-item" href="{% url 'lista_pieza' %}">Ver piezas</a></li>
+                        {% endif %}
+        
+                        {% if perms.tienda.add_pieza %}
+                        <li><a class="dropdown-item" href="{% url 'pieza_create' %}">Crear pieza</a></li>
+                        {% endif %}
+                    </ul>
                 </li>
                 {% endif %}
 
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'pieza_create' %}">Crear pieza</a>
+                <!-- Dropdown de Tienda -->
+                {% if perms.tienda.view_tienda or perms.tienda.add_tienda %}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="tiendaDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Tienda
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="tiendaDropdown">
+                        {% if perms.tienda.view_tienda %}
+                        <li><a class="dropdown-item" href="{% url 'lista_tienda' %}">Ver tienda</a></li>
+                        {% endif %}
+        
+                        {% if perms.tienda.add_tienda %}
+                        <li><a class="dropdown-item" href="{% url 'tienda_create' %}">Crear tienda</a></li>
+                        {% endif %}
+                    </ul>
                 </li>
+                {% endif %}
             </ul>
 
             <!-- Contenedor derecho -->
@@ -54,16 +80,14 @@
                         <li class="dropdown-item">
                             <small>
                                 Rol: 
-                                {% if request.user.is_authenticated %}
-                                  {% if request.user.rol == 1 %}
+                                {% if request.user.rol == 1 %}
                                     <strong>Administrador</strong>
-                                  {% elif request.user.rol == 2 %}
+                                {% elif request.user.rol == 2 %}
                                     <strong>Cliente</strong>
-                                  {% elif request.user.rol == 3 %}
+                                {% elif request.user.rol == 3 %}
                                     <strong>Vendedor</strong>
-                                  {% else %}
+                                {% else %}
                                     <strong>No asignado</strong>
-                                  {% endif %}
                                 {% endif %}
                             </small>
                         </li>

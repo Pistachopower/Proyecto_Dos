@@ -36,10 +36,26 @@ class Vendedor(models.Model):
     
 class Pieza(models.Model):
     nombre= models.CharField(max_length=100)
+    version= models.CharField(max_length=100)
+    referencia= models.CharField(max_length=100)
+    ESTADO = [("N", "Nueva"), ("R", "Recuperada"), ("REC", "Reconstruida")]
+    estado = models.CharField(max_length=3, choices=ESTADO)
     descripcion= models.TextField()
     marca= models.CharField(max_length=100)
-    precio= models.FloatField(default=0.0) 
+    precio= models.FloatField(default=1.0) 
+    anio= models.IntegerField()
     
     def __str__(self):
         return self.nombre
+    
+    
+    
+class Tienda(models.Model):
+    direccion = models.CharField(max_length=100)
+    telefono = models.CharField(max_length=15)
+    email= models.EmailField()
+    
+    
+    def __str__(self):
+        return self.direccion
     

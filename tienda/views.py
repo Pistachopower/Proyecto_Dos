@@ -64,7 +64,7 @@ def lista_pieza(request):
     return render(request, 'piezas/lista_pieza.html',{'piezas_mostrar':pieza})
 
 
-@permission_required('tienda.view_pieza')
+@permission_required('tienda.add_pieza')
 def pieza_create(request):
     if request.method == "POST":
         formulario= PiezaModelForm(request.POST)
@@ -78,4 +78,22 @@ def pieza_create(request):
     return render(request, 'piezas/pieza_form.html',{'formulario':formulario})
 
 
+@permission_required('tienda.view_tienda')
+def lista_tienda(request):
+    tienda= Tienda.objects.all() 
+    return render(request, 'tienda/lista_tienda.html',{'tienda_mostrar':tienda})
 
+
+
+@permission_required('tienda.add_tienda')
+def tienda_create(request):
+    if request.method == "POST":
+        formulario= TiendaModelForm(request.POST)
+        
+        if formulario.is_valid():
+            print("Es valido")
+            formulario.save()
+            return redirect("lista_tienda")
+    else:
+        formulario= TiendaModelForm()
+    return render(request, 'tienda/tienda_form.html',{'formulario':formulario})
