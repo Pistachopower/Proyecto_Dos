@@ -10,7 +10,13 @@
           <div class="col-md-4 mb-4">
             <!-- Card for each product (pieza) -->
             {% include 'piezas/pieza.html' %}
+            <div class="card-footer d-flex justify-content-between">
+              <span class="text-muted">{{ pieza.precio }} €</span>
+              <a href="{% url 'dame_producto' pieza.id%}" class="btn btn-primary btn-sm">Ver detalles</a>
+            </div>
           </div>
+
+          
           {% empty %}
           <div class="col-12">
             <div class="alert alert-info" role="alert">

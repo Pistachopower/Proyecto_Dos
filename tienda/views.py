@@ -5,6 +5,7 @@ from .forms import *
 from django.contrib.auth.models import Group
 from django.contrib.auth import login
 from django.contrib.auth.decorators import permission_required
+from django.contrib import messages
 
 #skjnceod@56
 
@@ -72,6 +73,9 @@ def pieza_create(request):
         if formulario.is_valid():
             print("Es valido")
             formulario.save()
+            
+            messages.success(request, "Se ha editado la pieza")
+              
             return redirect("lista_pieza")
     else:
         formulario= PiezaModelForm()
@@ -97,3 +101,33 @@ def tienda_create(request):
     else:
         formulario= TiendaModelForm()
     return render(request, 'tienda/tienda_form.html',{'formulario':formulario})
+
+
+def dame_producto(request, pepito):
+    pieza= Pieza.objects.get(id=pepito)
+    
+    return render(request, 'piezas/pieza_id.html',{'pieza':pieza})
+
+
+def pieza_editar(request, pepito):
+    pieza= Pieza.objects.get(id=pepito)
+    
+    if request.method == "POST":
+        formulario= PiezaModelForm(request.POST, instance=pieza)
+        
+        if formulario.is_valid():
+            print("Es valido")
+            formulario.save()
+            
+            messages.success(request, "Se ha editado la pieza")
+            
+            #PEDIR EL CODIGO CORRECTO
+            return redirect("dame_producto", pieza.id )
+        
+
+    else:
+        #instance
+        formulario= PiezaModelForm(instance=pieza)
+        
+    return render(request, 'piezas/pieza_editar.html',{'formulario':formulario, 'pieza': pieza })
+    

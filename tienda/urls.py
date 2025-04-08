@@ -10,6 +10,10 @@ urlpatterns = [
     path('crear-pieza',views.pieza_create,name='pieza_create'),
     path('tienda',views.lista_tienda,name='lista_tienda'),
     path('crear-tienda',views.tienda_create,name='tienda_create'),
+    path('pieza/<int:pepito>',views.dame_producto,name='dame_producto'),
+    path('pieza-editar/<int:pepito>',views.pieza_editar,name='pieza_editar'),
+    
+    
     
     
 
