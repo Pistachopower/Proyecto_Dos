@@ -7,7 +7,13 @@ from django.contrib.auth import login
 from django.contrib.auth.decorators import permission_required
 from django.contrib import messages
 
-#skjnceod@56
+
+def index(request):
+    if(not "fecha_inicio" in request.session):
+        request.session["fecha_inicio"] = datetime.now().strftime('%d/%m/%Y %H:%M')
+        
+    return render(request, 'index.html',{})
+
 
 @permission_required('tienda.view_cliente')
 def lista_clientes(request):
@@ -20,12 +26,6 @@ def lista_vendedores(request):
     return render(request, 'vendedores/lista_vendedores.html',{'vendedores_mostrar':vendedores})
 
 
-def index(request):
-    if(not "fecha_inicio" in request.session):
-        request.session["fecha_inicio"] = datetime.now().strftime('%d/%m/%Y %H:%M')
-        
-    return render(request, 'index.html',{})
-    
 def registrar_usuario(request):
     if request.method == 'POST':
         #recogemos los datos del formulario
@@ -82,25 +82,6 @@ def pieza_create(request):
     return render(request, 'piezas/pieza_form.html',{'formulario':formulario})
 
 
-@permission_required('tienda.view_tienda')
-def lista_tienda(request):
-    tienda= Tienda.objects.all() 
-    return render(request, 'tienda/lista_tienda.html',{'tienda_mostrar':tienda})
-
-
-
-@permission_required('tienda.add_tienda')
-def tienda_create(request):
-    if request.method == "POST":
-        formulario= TiendaModelForm(request.POST)
-        
-        if formulario.is_valid():
-            print("Es valido")
-            formulario.save()
-            return redirect("lista_tienda")
-    else:
-        formulario= TiendaModelForm()
-    return render(request, 'tienda/tienda_form.html',{'formulario':formulario})
 
 
 def dame_producto(request, id_pieza):
@@ -108,7 +89,7 @@ def dame_producto(request, id_pieza):
     
     return render(request, 'piezas/pieza_id.html',{'pieza':pieza})
 
-@permission_required('tienda.add_pieza')
+@permission_required('tienda.change_pieza')
 def pieza_editar(request, id_pieza):
     pieza= Pieza.objects.get(id=id_pieza)
     
@@ -131,4 +112,56 @@ def pieza_editar(request, id_pieza):
         formulario= PiezaModelForm(instance=pieza)
         
     return render(request, 'piezas/pieza_editar.html',{'formulario':formulario, 'pieza': pieza })
+
+
+#Modelo tienda
+@permission_required('tienda.view_tienda')
+def lista_tienda(request):
+    tienda= Tienda.objects.all() 
+    return render(request, 'tienda/lista_tienda.html',{'tienda_mostrar':tienda})
+
+
+
+@permission_required('tienda.add_tienda')
+def tienda_create(request):
+    if request.method == "POST":
+        formulario= TiendaModelForm(request.POST)
+        
+        if formulario.is_valid():
+            print("Es valido")
+            formulario.save()
+            return redirect("lista_tienda")
+    else:
+        formulario= TiendaModelForm()
+    return render(request, 'tienda/tienda_form.html',{'formulario':formulario})
+
+
+
+def dame_tienda(request, id_tienda):
+    tienda= Tienda.objects.get(id=id_tienda)
+    
+    return render(request, 'tienda/tienda_detalle.html',{'tienda':tienda})
+
+@permission_required('tienda.change_tienda')
+def tienda_editar(request, id_tienda):
+    tienda= Tienda.objects.get(id=id_tienda)
+    
+    if request.method == "POST":
+        formulario= TiendaModelForm(request.POST, instance=tienda)
+        
+        if formulario.is_valid():
+            print("Es valido")
+            formulario.save()
+            
+            messages.success(request, "Se ha editado la tienda")
+            
+
+            return redirect("lista_tienda" )
+
+        
+
+    else:
+        formulario= TiendaModelForm(instance=tienda)
+        
+    return render(request, 'tienda/tienda_editar.html',{'formulario':formulario, 'tienda': tienda })
     
