@@ -103,14 +103,14 @@ def tienda_create(request):
     return render(request, 'tienda/tienda_form.html',{'formulario':formulario})
 
 
-def dame_producto(request, pepito):
-    pieza= Pieza.objects.get(id=pepito)
+def dame_producto(request, id_pieza):
+    pieza= Pieza.objects.get(id=id_pieza)
     
     return render(request, 'piezas/pieza_id.html',{'pieza':pieza})
 
-
-def pieza_editar(request, pepito):
-    pieza= Pieza.objects.get(id=pepito)
+@permission_required('tienda.add_pieza')
+def pieza_editar(request, id_pieza):
+    pieza= Pieza.objects.get(id=id_pieza)
     
     if request.method == "POST":
         formulario= PiezaModelForm(request.POST, instance=pieza)
@@ -122,7 +122,8 @@ def pieza_editar(request, pepito):
             messages.success(request, "Se ha editado la pieza")
             
             #PEDIR EL CODIGO CORRECTO
-            return redirect("dame_producto", pieza.id )
+            return redirect("dame_producto", id= pieza.id )
+            #return redirect("lista_pieza")
         
 
     else:

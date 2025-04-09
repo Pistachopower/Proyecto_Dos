@@ -54,8 +54,8 @@ class PiezaModelForm(ModelForm):
         precio = self.cleaned_data.get('precio')
         anio= self.cleaned_data.get('anio')
         
-        if len(nombre) < 10:
-            self.add_error('nombre','Al menos debes indicar 10 caracteres')
+        if len(nombre) < 3:
+            self.add_error('nombre','Al menos debes indicar 3 caracteres')
             
         if len(version) < 3:
             self.add_error('version','Al menos debes indicar 3 caracteres')
@@ -66,8 +66,8 @@ class PiezaModelForm(ModelForm):
         if len(descripcion) < 10:
             self.add_error('descripcion','Al menos debes indicar 10 caracteres')
             
-        if len(marca) < 5: 
-            self.add_error('marca','Al menos debes indicar 5 caracteres')
+        if len(marca) < 2: 
+            self.add_error('marca','Al menos debes indicar 2 caracteres')
                       
         if precio < 0:
             self.add_error('precio','El precio no puede ser negativo o cero')

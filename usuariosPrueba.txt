@@ -6,6 +6,13 @@ Vendedor
 Pedro 
 333sddeS@
 
+Permisos 
+Cliente: el usuario puede ver las piezas y el detalle de la piezas
+
+Vendedor: puede ver las piezas, el detalle de las piezas, puede agregar piezas, editar piezas,  ver clientes,ver tiendas
+
+Sin login: solo ve la pagina de inicio
+
 
 Formulario 
 crear url y boton en menu
