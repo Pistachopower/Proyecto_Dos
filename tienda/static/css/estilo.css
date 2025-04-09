@@ -1,0 +1,16 @@
+        /* Asegura que el body y html ocupen toda la altura */
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+
+        /* Estructura de la página con Flexbox */
+        .wrapper {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Ocupa toda la altura de la ventana */
+        }
+
+        .contenido {
+            flex: 1; /* Empuja el footer hacia abajo */
+        }

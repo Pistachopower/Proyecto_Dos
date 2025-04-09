@@ -94,21 +94,22 @@ def pieza_editar(request, id_pieza):
     pieza= Pieza.objects.get(id=id_pieza)
     
     if request.method == "POST":
+        #request.POST: recogemos los datos del formulario escritos del usuario
+        #instance: recogemos el objeto que queremos editar
         formulario= PiezaModelForm(request.POST, instance=pieza)
         
+        #si no hay errores de las validaciones del formulario
         if formulario.is_valid():
             print("Es valido")
             formulario.save()
             
             messages.success(request, "Se ha editado la pieza")
             
-            #PEDIR EL CODIGO CORRECTO
             return redirect("dame_producto", id= pieza.id )
             #return redirect("lista_pieza")
         
 
     else:
-        #instance
         formulario= PiezaModelForm(instance=pieza)
         
     return render(request, 'piezas/pieza_editar.html',{'formulario':formulario, 'pieza': pieza })
@@ -147,6 +148,7 @@ def tienda_editar(request, id_tienda):
     tienda= Tienda.objects.get(id=id_tienda)
     
     if request.method == "POST":
+        
         formulario= TiendaModelForm(request.POST, instance=tienda)
         
         if formulario.is_valid():
@@ -163,5 +165,5 @@ def tienda_editar(request, id_tienda):
     else:
         formulario= TiendaModelForm(instance=tienda)
         
-    return render(request, 'tienda/tienda_editar.html',{'formulario':formulario, 'tienda': tienda })
+    return render(request, 'tienda/tienda_editar.html',{'formulario':formulario, 'tienda': tienda }) #'tienda': tienda: es cuando el formulario vacio
     
