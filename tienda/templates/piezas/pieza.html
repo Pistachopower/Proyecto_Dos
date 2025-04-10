@@ -11,9 +11,18 @@
   </div>
 
   {% if perms.tienda.change_pieza %}
+  {% load bootstrap_icons %}
   <div class="card-footer d-flex justify-content-between">
       <a href="{% url 'pieza_editar' pieza.id %}" class="btn btn-primary btn-sm">Editar</a>
   </div>
+
+  <form action="{% url 'pieza_eliminar' pieza.id %}" method="post">
+    {% csrf_token %}
+    <button  class="btn-btn-danger" type="submit" onclick="return eliminar();">
+        <span>{% bs_icon 'trash'%}</span>
+    </button>
+
+  </form>
 
 
   {% endif %}

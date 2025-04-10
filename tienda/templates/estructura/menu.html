@@ -67,6 +67,14 @@
                 {% endif %}
             </ul>
 
+
+            {% if request.user.rol == 2 %}
+            <button class="btn btn-danger w-100" type="submit">
+                {% comment %} <a class="dropdown-item" href="{% url 'tienda_create' %}">VER PERFIL</a> {% endcomment %}
+                <a class="dropdown-item" href="{% url 'perfil_cliente' cliente.id %}">VER PERFIL</a>
+            </button>
+            {% endif %}
+
             <!-- Contenedor derecho -->
             <div class="d-flex align-items-center">
                 {% if request.user.is_authenticated %}

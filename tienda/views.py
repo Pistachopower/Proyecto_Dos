@@ -114,8 +114,20 @@ def pieza_editar(request, id_pieza):
         
     return render(request, 'piezas/pieza_editar.html',{'formulario':formulario, 'pieza': pieza })
 
+#TODO: agregar los permisos 
+def pieza_eliminar(request, id_pieza):
+    pieza= Pieza.objects.get(id= id_pieza)
+    
+    try:
+        pieza.delete()
+        messages.success(request, "Se ha elimnado la pieza "+ pieza.nombre+" correctamente")
+
+    except Exception as error:
+        print(error)
+    return redirect('lista_pieza')
 
 #Modelo tienda
+#TODO: hacer try catch en consultas de la bd
 @permission_required('tienda.view_tienda')
 def lista_tienda(request):
     tienda= Tienda.objects.all() 
@@ -167,3 +179,11 @@ def tienda_editar(request, id_tienda):
         
     return render(request, 'tienda/tienda_editar.html',{'formulario':formulario, 'tienda': tienda }) #'tienda': tienda: es cuando el formulario vacio
     
+    
+    
+#modelo cuenta bancaria
+def perfil_cliente(request, id_cliente):
+    #cliente_id: hace referencia a la clave foranea de cliente de cuentaBancaria
+    cuentaCliente= CuentaBancaria.objects.filter(cliente_id= id_cliente).first()
+    return render(request, 'perfil/perfil_cliente.html',{'cuentaCliente':cuentaCliente})
+

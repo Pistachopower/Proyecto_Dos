@@ -58,4 +58,17 @@ class Tienda(models.Model):
     
     def __str__(self):
         return self.direccion
+
+
+class CuentaBancaria(models.Model):
+    ibam = models.CharField(max_length=25)
+    banco = models.CharField(max_length=25)
+    MONEDA= [("EUR", "Euro"), ("DOL", "Dolar"), ("LIB", "Libra")]
+    moneda = models.CharField(max_length=3, choices=MONEDA, default="E")
+    cliente= models.OneToOneField(Cliente, on_delete=models.CASCADE)
+    
+    
+    def __str__(self):
+        return self.banco
+
     

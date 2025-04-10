@@ -14,12 +14,17 @@ urlpatterns = [
     path('crear-pieza',views.pieza_create,name='pieza_create'),
     path('pieza/<int:id_pieza>',views.dame_producto,name='dame_producto'),
     path('pieza-editar/<int:id_pieza>',views.pieza_editar,name='pieza_editar'),
+    path('pieza-eliminar/<int:id_pieza>',views.pieza_eliminar,name='pieza_eliminar'),
     
     #modelo tienda
     path('tienda',views.lista_tienda,name='lista_tienda'),
     path('crear-tienda',views.tienda_create,name='tienda_create'),
     path('tienda/<int:id_tienda>',views.dame_tienda,name='dame_tienda'),
     path('tienda-editar/<int:id_tienda>',views.tienda_editar,name='tienda_editar'),
+    
+    
+    #modelo cuentaBancaria
+    path('perfil/<int:id_cliente>',views.perfil_cliente,name='perfil_cliente'),
     
     
     
