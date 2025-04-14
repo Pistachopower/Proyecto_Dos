@@ -144,6 +144,7 @@ def tienda_create(request):
         if formulario.is_valid():
             print("Es valido")
             formulario.save()
+            messages.success(request, "Se ha creado la tienda")
             return redirect("lista_tienda")
     else:
         formulario= TiendaModelForm()
@@ -184,10 +185,7 @@ def tienda_editar(request, id_tienda):
     
 #modelo cuenta bancaria
 def perfil_cliente(request, id_cliente):
-    cliente= Cliente.objects.get(id=id_cliente)
-    
-    if not cliente:
-        return redirect('index')
+    cliente= Cliente.objects.select_related('usuario').filter(usuario_id=id_cliente).first()
     
     # Verificar si el cliente tiene una cuenta bancaria
     cuentaCliente = CuentaBancaria.objects.filter(cliente=cliente).first()
@@ -196,3 +194,35 @@ def perfil_cliente(request, id_cliente):
         
     return render(request, 'perfil/perfil_cliente.html',{'cuentaCliente':cuentaCliente, 'cliente':cliente})
 
+
+# def cuenta_create(request, id_cliente):
+    
+#     #obtenemos el id del cliente
+#     cliente = Cliente.objects.get(id=id_cliente)
+    
+#     if request.method == "POST":
+#         formulario= CuentaBancariaModelForm(request.POST)
+        
+#         if formulario.is_valid():
+#             cuenta = formulario.save(commit=False)  # No guarda aún en la base de datos
+#             cuenta.cliente = cliente.id  # Asigna el cliente automáticamente
+#             cuenta.save()  # Ahora guarda en la base de datos
+#             messages.success(request, "Se ha creado la cuenta bancaria.")
+#             return redirect('perfil_cliente', id_cliente=id_cliente)
+#     else:
+#         formulario= CuentaBancariaModelForm()
+#     return render(request, 'perfil/crear_cuentaBancaria.html',{'formulario':formulario, 'cliente': cliente})
+
+
+def cuenta_create(request):
+    if request.method == "POST":
+        formulario= CuentaBancariaModelForm(request.POST)
+        
+        if formulario.is_valid():
+            print("Es valido")
+            formulario.save()
+            messages.success(request, "Se ha creado la cuenta bancaria")
+            #return redirect("lista_tienda" )
+    else:
+        formulario= CuentaBancariaModelForm()
+    return render(request, 'perfil/crear_cuentaBancaria.html', {'formulario': formulario})

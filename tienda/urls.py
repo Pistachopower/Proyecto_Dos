@@ -25,7 +25,7 @@ urlpatterns = [
     
     #modelo cuentaBancaria
     path('perfil/<int:id_cliente>',views.perfil_cliente,name='perfil_cliente'),
-    
+    path('crear-cuenta  ', views.cuenta_create, name='cuenta_create'),    
     
     
 
