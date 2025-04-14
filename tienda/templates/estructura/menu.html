@@ -83,14 +83,19 @@
                     <ul class="dropdown-menu dropdown-menu-end shadow-sm" aria-labelledby="userDropdown">
                         
                         <!--Perfil-->
+                        {% if request.user.rol == 2 %}
                         <li>
                             <a href="{% url 'perfil_cliente' request.user.id  %}" class="dropdown-item">
                                 <i class="bi bi-person me-2"></i> Perfil
                             </a>
                         </li>
+                        {% endif %}
+
+                        
                         <li class="dropdown-item text-muted text-wrap">
                             <small>Sesión: {{ request.session.fecha_inicio }}</small>
                         </li>
+                      
 
                         <li class="dropdown-item">
                             <small>
