@@ -71,4 +71,7 @@ class CuentaBancaria(models.Model):
     def __str__(self):
         return self.banco
 
+class DatosPerfil(models.Model):
+    direccionFacturacion = models.CharField(max_length=100)
+    vendedor= models.OneToOneField(Vendedor, on_delete=models.CASCADE)
     

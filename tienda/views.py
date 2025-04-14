@@ -114,7 +114,8 @@ def pieza_editar(request, id_pieza):
         
     return render(request, 'piezas/pieza_editar.html',{'formulario':formulario, 'pieza': pieza })
 
-#TODO: agregar los permisos 
+
+@permission_required('tienda.delete_pieza')
 def pieza_eliminar(request, id_pieza):
     pieza= Pieza.objects.get(id= id_pieza)
     
@@ -183,7 +184,15 @@ def tienda_editar(request, id_tienda):
     
 #modelo cuenta bancaria
 def perfil_cliente(request, id_cliente):
-    #cliente_id: hace referencia a la clave foranea de cliente de cuentaBancaria
-    cuentaCliente= CuentaBancaria.objects.filter(cliente_id= id_cliente).first()
-    return render(request, 'perfil/perfil_cliente.html',{'cuentaCliente':cuentaCliente})
+    cliente= Cliente.objects.get(id=id_cliente)
+    
+    if not cliente:
+        return redirect('index')
+    
+    # Verificar si el cliente tiene una cuenta bancaria
+    cuentaCliente = CuentaBancaria.objects.filter(cliente=cliente).first()
+    
+    
+        
+    return render(request, 'perfil/perfil_cliente.html',{'cuentaCliente':cuentaCliente, 'cliente':cliente})
 

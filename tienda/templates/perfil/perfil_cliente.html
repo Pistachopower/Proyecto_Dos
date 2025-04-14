@@ -1,10 +1,32 @@
 {% extends "estructura/principal.html" %}
 
 {% block contenido %}
-
 <div class="container my-5">
-    <h1 class="mb-4">Ver perfil</h1>
+    <h1 class="mb-4">Perfil del Cliente</h1>
 
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <h5 class="card-title">Datos del Cliente</h5>
+            <p><strong>Nombre:</strong> {{ cliente.usuario.first_name }} {{ cliente.usuario.last_name }}</p>
+            <p><strong>Email:</strong> {{ cliente.usuario.email }}</p>
+        </div>
+    </div>
+
+    {% if cuenta_cliente %}
+    <div class="card mt-4 shadow-sm">
+        <div class="card-body">
+            <h5 class="card-title">Cuenta Bancaria</h5>
+            <p><strong>IBAN:</strong> {{ cuenta_cliente.ibam }}</p>
+            <p><strong>Banco:</strong> {{ cuenta_cliente.banco }}</p>
+            <p><strong>Moneda:</strong> {{ cuenta_cliente.get_moneda_display }}</p>
+        </div>
+    </div>
+    {% else %}
+    <div class="mt-4">
+        <a href="" class="btn btn-primary">
+            Agregar Cuenta Bancaria
+        </a>
+    </div>
+    {% endif %}
 </div>
-
 {% endblock %}

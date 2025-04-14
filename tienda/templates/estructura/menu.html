@@ -67,13 +67,8 @@
                 {% endif %}
             </ul>
 
+     
 
-            {% if request.user.rol == 2 %}
-            <button class="btn btn-danger w-100" type="submit">
-                {% comment %} <a class="dropdown-item" href="{% url 'tienda_create' %}">VER PERFIL</a> {% endcomment %}
-                <a class="dropdown-item" href="{% url 'perfil_cliente' cliente.id %}">VER PERFIL</a>
-            </button>
-            {% endif %}
 
             <!-- Contenedor derecho -->
             <div class="d-flex align-items-center">
@@ -113,6 +108,14 @@
                                     <i class="bi bi-box-arrow-right me-2"></i>Salir
                                 </button>
                             </form>
+
+            
+                            <li>
+                                <a href="{% url 'perfil_cliente' request.user.id %}" class="dropdown-item">
+                                    <i class="bi bi-person me-2"></i> Perfil
+                                </a>
+                            </li>
+                      
                         </li>
                     </ul>
                 </div>
