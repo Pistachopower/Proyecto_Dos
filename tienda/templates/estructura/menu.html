@@ -81,6 +81,13 @@
                         <span class="fw-semibold">{{ request.user }}</span>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-end shadow-sm" aria-labelledby="userDropdown">
+                        
+                        <!--Perfil-->
+                        <li>
+                            <a href="{% url 'perfil_cliente' request.user.id  %}" class="dropdown-item">
+                                <i class="bi bi-person me-2"></i> Perfil
+                            </a>
+                        </li>
                         <li class="dropdown-item text-muted text-wrap">
                             <small>Sesión: {{ request.session.fecha_inicio }}</small>
                         </li>
@@ -100,6 +107,8 @@
                             </small>
                         </li>
 
+
+
                         <li><hr class="dropdown-divider"></li>
                         <li>
                             <form action="{% url 'logout' %}" method="POST" class="d-grid">
@@ -109,13 +118,7 @@
                                 </button>
                             </form>
 
-            
-                            <li>
-                                <a href="{% url 'perfil_cliente' request.user.id  %}" class="dropdown-item">
-                                    <i class="bi bi-person me-2"></i> Perfil
-                                </a>
-                            </li>
-                      
+                              
                         </li>
                     </ul>
                 </div>
