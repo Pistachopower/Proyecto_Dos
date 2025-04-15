@@ -185,33 +185,14 @@ def tienda_editar(request, id_tienda):
     
 #modelo cuenta bancaria
 def perfil_cliente(request, id_cliente):
+    #se usa para relacionar el cliente con el usuario
     cliente= Cliente.objects.select_related('usuario').filter(usuario_id=id_cliente).first()
     
     # Verificar si el cliente tiene una cuenta bancaria
     cuentaCliente = CuentaBancaria.objects.filter(cliente=cliente).first()
     
-    
-        
     return render(request, 'perfil/perfil_cliente.html',{'cuentaCliente':cuentaCliente, 'cliente':cliente})
 
-
-# def cuenta_create(request, id_cliente):
-    
-#     #obtenemos el id del cliente
-#     cliente = Cliente.objects.get(id=id_cliente)
-    
-#     if request.method == "POST":
-#         formulario= CuentaBancariaModelForm(request.POST)
-        
-#         if formulario.is_valid():
-#             cuenta = formulario.save(commit=False)  # No guarda aún en la base de datos
-#             cuenta.cliente = cliente.id  # Asigna el cliente automáticamente
-#             cuenta.save()  # Ahora guarda en la base de datos
-#             messages.success(request, "Se ha creado la cuenta bancaria.")
-#             return redirect('perfil_cliente', id_cliente=id_cliente)
-#     else:
-#         formulario= CuentaBancariaModelForm()
-#     return render(request, 'perfil/crear_cuentaBancaria.html',{'formulario':formulario, 'cliente': cliente})
 
 
 def cuenta_create(request):
@@ -226,3 +207,15 @@ def cuenta_create(request):
     else:
         formulario= CuentaBancariaModelForm()
     return render(request, 'perfil/crear_cuentaBancaria.html', {'formulario': formulario})
+
+#Borrar cuenta bancaria
+def cuenta_eliminar(request, id_cuenta):
+    cuentaBancariaQuery= CuentaBancaria.objects.get(id= id_cuenta)
+    
+    try:
+        cuentaBancariaQuery.delete()
+        messages.success(request, "Se ha elimnado la cuenta "+ cuentaBancariaQuery.banco +" correctamente")
+
+    except Exception as error:
+        print(error)
+    return redirect('perfil_cliente', id= cuentaBancariaQuery.cliente_id)
