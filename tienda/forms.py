@@ -107,7 +107,7 @@ class TiendaModelForm(ModelForm):
 class CuentaBancariaModelForm(ModelForm):
     class Meta:   
         model = CuentaBancaria
-        fields = ['ibam', 'banco', 'moneda','cliente']   
+        fields = ['ibam', 'banco', 'moneda']   
         
         moneda = forms.ChoiceField(choices=CuentaBancaria.MONEDA,
                                initial="EUR")

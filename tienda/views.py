@@ -184,9 +184,9 @@ def tienda_editar(request, id_tienda):
     
     
 #modelo cuenta bancaria
-def perfil_cliente(request, id_cliente):
+def perfil_cliente(request, id_usuario):
     #se usa para relacionar el cliente con el usuario
-    cliente= Cliente.objects.select_related('usuario').filter(usuario_id=id_cliente).first()
+    cliente= Cliente.objects.select_related('usuario').filter(usuario_id=id_usuario).first()
     
     # Verificar si el cliente tiene una cuenta bancaria
     cuentaCliente = CuentaBancaria.objects.filter(cliente=cliente).first()
@@ -199,18 +199,23 @@ def cuenta_create(request):
     if request.method == "POST":
         formulario= CuentaBancariaModelForm(request.POST)
         
+        
         if formulario.is_valid():
-            print("Es valido")
+            
+            #usamos esto para evitar en el formulario que el usuario elija el cliente
+            cuenta = formulario.save(commit=False)  #Crea un objeto cuenta pero no lo guarda hasta agregar el id del cliente
+            cliente = Cliente.objects.get(usuario=request.user) #Buscamos el cliente que esta vinculado al usuario que acaba de enviar el formulario
+            cuenta.cliente = cliente  # Asigna el cliente automáticamente
             formulario.save()
             messages.success(request, "Se ha creado la cuenta bancaria")
-            #return redirect("lista_tienda" )
+            return redirect('perfil_cliente', id_usuario=request.user.id)
     else:
         formulario= CuentaBancariaModelForm()
     return render(request, 'perfil/crear_cuentaBancaria.html', {'formulario': formulario})
 
 #Borrar cuenta bancaria
-def cuenta_eliminar(request, id_cuenta):
-    cuentaBancariaQuery= CuentaBancaria.objects.get(id= id_cuenta)
+def cuenta_delete(request, id_usuario):
+    cuentaBancariaQuery= CuentaBancaria.objects.get(id= id_usuario)
     
     try:
         cuentaBancariaQuery.delete()
@@ -218,4 +223,4 @@ def cuenta_eliminar(request, id_cuenta):
 
     except Exception as error:
         print(error)
-    return redirect('perfil_cliente', id= cuentaBancariaQuery.cliente_id)
+    return redirect('perfil_cliente', id_usuario= cuentaBancariaQuery.cliente.usuario.id)

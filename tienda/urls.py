@@ -24,9 +24,9 @@ urlpatterns = [
     
     
     #modelo cuentaBancaria
-    path('perfil/<int:id_cliente>',views.perfil_cliente,name='perfil_cliente'),
-    path('crear-cuenta  ', views.cuenta_create, name='cuenta_create'),   
-    path('cuenta-bancaria-eliminar/<int:id_cuenta>',views.cuenta_eliminar,name='cuenta_eliminar'),
+    path('perfil/<int:id_usuario>',views.perfil_cliente,name='perfil_cliente'),
+    path('crear-cuenta', views.cuenta_create, name='cuenta_create'),   
+    path('cuenta-bancaria-eliminar/<int:id_usuario>',views.cuenta_delete,name='cuenta_delete'),
     
     
 

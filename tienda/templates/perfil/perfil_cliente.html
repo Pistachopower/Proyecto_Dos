@@ -24,7 +24,7 @@
             <!-- Botón de eliminar cuenta -->
 
             {% comment %} {% url 'cuenta_delete' cuentaCliente.id %} {% endcomment %}
-            <form method="post" action="" class="mt-3">
+            <form method="post" action="{% url 'cuenta_delete' cuentaCliente.id %} " class="mt-3">
                 {% csrf_token %}
                 <button type="submit" class="btn btn-danger">
                     Eliminar Cuenta Bancaria
@@ -34,7 +34,7 @@
     </div>
     {% else %}
     <div class="mt-4">
-        <a href="{% url 'cuenta_create' %}" class="btn btn-primary">
+        <a href="{% url 'cuenta_create'%}" class="btn btn-primary">
             Agregar Cuenta Bancaria
         </a>
     </div>
