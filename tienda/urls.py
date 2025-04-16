@@ -27,7 +27,7 @@ urlpatterns = [
     path('perfil/<int:id_usuario>',views.perfil_cliente,name='perfil_cliente'),
     path('crear-cuenta', views.cuenta_create, name='cuenta_create'),   
     path('cuenta-bancaria-eliminar/<int:id_usuario>',views.cuenta_delete,name='cuenta_delete'),
-    path('cuenta-bancaria-editar/<int:id_cuentaaBancaria>',views.cuentaBancaria_editar,name='cuentaBancaria_editar'),
+    path('cuenta-bancaria-editar/<int:id_cuentaaBancaria>',views.cuentaBancaria_editar,name=''),
 
     
     
