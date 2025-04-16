@@ -30,6 +30,14 @@
                     Eliminar Cuenta Bancaria
                 </button>
             </form>
+
+
+
+            <div class="card-footer d-flex justify-content-between">
+                <a href="{% url 'cuentaBancaria_editar' cuentaCliente.id %}" class="btn btn-primary btn-sm">Editar Cuenta Bancaria</a>
+            </div>
+
+
         </div>
     </div>
     {% else %}
