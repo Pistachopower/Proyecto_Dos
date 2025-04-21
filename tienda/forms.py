@@ -128,7 +128,28 @@ class CuentaBancariaModelForm(ModelForm):
         if len(banco) < 3:
             self.add_error('banco','Al menos debes indicar 3 caracteres')
             
-        return self.cleaned_data            
+        return self.cleaned_data    
+    
+    
+class DatosVendedorModelForm(ModelForm):
+    class Meta:   
+        model = DatosVendedor
+        fields = ['direccion', 'facturacion']   
+        
+        
+    def clean(self):
+        super().clean() 
+        
+        direccion = self.cleaned_data.get('direccion')
+        facturacion = self.cleaned_data.get('facturacion')
+                
+        if len(direccion) < 2:
+            self.add_error('direccion', 'La dirección debe tener al menor 2 caracteres')
+            
+        if len(facturacion) < 3:
+            self.add_error('facturacion','Al menos debes indicar 3 caracteres')
+            
+        return self.cleaned_data          
 
         
 

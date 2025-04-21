@@ -253,3 +253,36 @@ def cuentaBancaria_editar(request, id_cuentaaBancaria):
         formulario= CuentaBancariaModelForm(instance=cuentaBancariaQuery)
         
     return render(request, 'perfil/cuentaBancaria_editar.html',{'formulario':formulario, 'cuentaBancariaQuery': cuentaBancariaQuery })
+
+
+
+#modelo DatosVendedor
+@permission_required('tienda.view_datosvendedor')
+def perfil_vendedor(request, id_usuario):
+    #obtenemos el id del cliente para poder mostrar su cuenta bancaria
+    vendedorQuery= Vendedor.objects.select_related('usuario').filter(usuario_id=id_usuario).first()
+    
+    # Obtenemos el registro de la cuenta bancaria (si existe)
+    datoVendedorQuery = DatosVendedor.objects.filter(vendedor=vendedorQuery).first()
+    
+    return render(request, 'perfil/perfil_vendedor.html',{'vendedorQuery':vendedorQuery, 'datoVendedorQuery':datoVendedorQuery})
+
+
+#@permission_required('tienda.create_datosvendedor')
+def datosVendedor_create(request):
+    if request.method == "POST":
+        formulario= DatosVendedorModelForm(request.POST)
+        
+        
+        if formulario.is_valid():
+            
+            #usamos esto para evitar en el formulario que el usuario elija el vendedor
+            datos = formulario.save(commit=False)  #Crea un objeto cuenta pero no lo guarda hasta agregar el id del vendedor
+            vendedor = Vendedor.objects.get(usuario=request.user) #Buscamos el cliente que esta vinculado al usuario que acaba de enviar el formulario
+            datos.vendedor = vendedor  # Asigna el vendedor automáticamente
+            formulario.save()
+            messages.success(request, "Se ha creado la cuenta bancaria")
+            #return redirect('perfil_cliente', id_usuario=request.user.id)
+    else:
+        formulario= DatosVendedorModelForm()
+    return render(request, 'perfil/crear_datosVendedor.html', {'formulario': formulario})

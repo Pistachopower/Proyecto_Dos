@@ -82,11 +82,20 @@
                     </button>
                     <ul class="dropdown-menu dropdown-menu-end shadow-sm" aria-labelledby="userDropdown">
                         
-                        <!--Perfil-->
+                        <!--Perfil cliente-->
                         {% if request.user.rol == 2 %}
                         <li>
                             <a href="{% url 'perfil_cliente' request.user.id  %}" class="dropdown-item">
-                                <i class="bi bi-person me-2"></i> Perfil
+                                <i class="bi bi-person me-2"></i> Perfil cliente
+                            </a>
+                        </li>
+                        {% endif %}
+
+                        {% if request.user.rol == 3 %}
+                        <li>
+                            
+                            <a href="{% url 'perfil_vendedor' request.user.id  %}" class="dropdown-item">
+                                <i class="bi bi-person me-2"></i> Perfil vendedor
                             </a>
                         </li>
                         {% endif %}
