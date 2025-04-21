@@ -64,3 +64,10 @@ crear url y boton en menu
 crear vista creacion producto
 crear la template
 controlar que usuarios pueden crear
+
+
+
+
+
+Papeleria:
+{% url 'cuentaBancaria_editar' cuentaCliente.id %}

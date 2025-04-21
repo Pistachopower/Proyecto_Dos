@@ -21,9 +21,9 @@
             <p><strong>Banco:</strong> {{ cuentaCliente.banco }}</p>
             <p><strong>Moneda:</strong> {{ cuentaCliente.get_moneda_display }}</p>
 
-            <!-- Botón de eliminar cuenta -->
+           
 
-            {% comment %} {% url 'cuenta_delete' cuentaCliente.id %} {% endcomment %}
+           
             <form method="post" action="{% url 'cuenta_delete' cuentaCliente.id %} " class="mt-3">
                 {% csrf_token %}
                 <button type="submit" class="btn btn-danger">
@@ -36,7 +36,7 @@
             <div class="card-footer d-flex justify-content-between">
                 <a href="{% url 'cuentaBancaria_editar' cuentaCliente.id %}" class="btn btn-primary btn-sm">Editar Cuenta Bancaria</a>
             </div>
-
+            
 
         </div>
     </div>

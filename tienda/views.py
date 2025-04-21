@@ -184,7 +184,7 @@ def tienda_editar(request, id_tienda):
     
     
 #modelo cuenta bancaria
-@permission_required('tienda.view_cuentaBancaria')
+#@permission_required('tienda.view_cuentaBancaria')
 def perfil_cliente(request, id_usuario):
     #obtenemos el id del cliente para poder mostrar su cuenta bancaria
     cliente= Cliente.objects.select_related('usuario').filter(usuario_id=id_usuario).first()
@@ -195,7 +195,7 @@ def perfil_cliente(request, id_usuario):
     return render(request, 'perfil/perfil_cliente.html',{'cuentaCliente':cuentaCliente, 'cliente':cliente})
 
 
-@permission_required('tienda.create_cuentaBancaria')
+#@permission_required('tienda.create_cuentaBancaria')
 def cuenta_create(request):
     if request.method == "POST":
         formulario= CuentaBancariaModelForm(request.POST)
@@ -215,7 +215,7 @@ def cuenta_create(request):
     return render(request, 'perfil/crear_cuentaBancaria.html', {'formulario': formulario})
 
 #Borrar cuenta bancaria
-@permission_required('tienda.delete_cuentaBancaria')
+#@permission_required('tienda.delete_cuentaBancaria')
 def cuenta_delete(request, id_usuario):
     cuentaBancariaQuery= CuentaBancaria.objects.get(id= id_usuario)
     
@@ -229,7 +229,7 @@ def cuenta_delete(request, id_usuario):
 
 
 #cuentaBancaria_editar
-@permission_required('tienda.change_cuentaBancaria')
+#@permission_required('tienda.change_cuentaBancaria')
 def cuentaBancaria_editar(request, id_cuentaaBancaria):
     cuentaBancariaQuery= CuentaBancaria.objects.get(id=id_cuentaaBancaria)
     
