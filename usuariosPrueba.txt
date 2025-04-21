@@ -69,5 +69,3 @@ controlar que usuarios pueden crear
 
 
 
-Papeleria:
-{% url 'cuentaBancaria_editar' cuentaCliente.id %}
