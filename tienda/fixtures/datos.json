@@ -143,6 +143,19 @@
     }
 },
 {
+    "model": "admin.logentry",
+    "pk": 12,
+    "fields": {
+        "action_time": "2025-04-23T21:34:25.954",
+        "user": 1,
+        "content_type": 3,
+        "object_id": "2",
+        "object_repr": "vendedores",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Permissions\"]}}]"
+    }
+},
+{
     "model": "auth.permission",
     "pk": 1,
     "fields": {
@@ -599,7 +612,9 @@
             48,
             21,
             22,
-            24
+            24,
+            41,
+            44
         ]
     }
 },
@@ -810,6 +825,46 @@
         "marca": "Toyota",
         "precio": 550.0,
         "anio": 2005
+    }
+},
+{
+    "model": "tienda.tienda",
+    "pk": 1,
+    "fields": {
+        "direccion": "fuentes del sur",
+        "telefono": "04126020288",
+        "email": "senior@gmail.com",
+        "vendedor": null
+    }
+},
+{
+    "model": "tienda.tienda",
+    "pk": 2,
+    "fields": {
+        "direccion": "calle cancionera",
+        "telefono": "04126020291",
+        "email": "mitienda@gmail.com",
+        "vendedor": 1
+    }
+},
+{
+    "model": "tienda.tienda",
+    "pk": 3,
+    "fields": {
+        "direccion": "Must office put prep",
+        "telefono": "04126020291",
+        "email": "senior@gmail.com",
+        "vendedor": 1
+    }
+},
+{
+    "model": "tienda.tienda",
+    "pk": 4,
+    "fields": {
+        "direccion": "Mono del toro",
+        "telefono": "60258748",
+        "email": "feche@gmail.com",
+        "vendedor": 1
     }
 },
 {
