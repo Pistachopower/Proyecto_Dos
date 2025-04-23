@@ -32,11 +32,10 @@ urlpatterns = [
     
     #modelo vendedor datosVendedor
     path('perfil-vendedor/<int:id_usuario>',views.perfil_vendedor,name='perfil_vendedor'),
-    #ver_detalle_datosVendedor
     path('detalle-vendedor/<int:id_usuario>',views.ver_detalle_datosVendedor,name='ver_detalle_datosVendedor'),
-
     path('agregar-datosVendedor', views.datosVendedor_create, name='datosVendedor_create'),
-
+    path('datos-vendedor/<int:id_Datovendedor>',views.datosVendedor_delete,name='datosVendedor_delete'),
+    path('datos-vendedor-editar/<int:id_Datovendedor>',views.datosVendedor_editar,name='datosVendedor_editar'),
     
     
 

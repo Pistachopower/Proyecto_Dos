@@ -4,18 +4,15 @@
 <div class="container my-5">
     <h1 class="mb-4">Datos del vendedor</h1>
 
-    {% if cuentaBancariaCliente %}
+    {% if datosVendedorQuery %}
     <div class="card mt-4 shadow-sm">
         <div class="card-body">
             <h5 class="card-title">Datos vendedor detalle</h5>
             <p><strong>Nombre de usuario vendedor:</strong> {{ datosVendedorQuery.vendedor.usuario.username }}</p>
             <p><strong>Dirección:</strong> {{ datosVendedorQuery.direccion }}</p>
             <p><strong>Facturación:</strong> {{ datosVendedorQuery.facturacion }}</p>
-
            
-
-           
-            <form method="post" action="" class="mt-3">
+            <form method="post" action="{% url 'datosVendedor_delete' datosVendedorQuery.id %}" class="mt-3">
                 {% csrf_token %}
                 <button type="submit" class="btn btn-danger">
                     Eliminar datos
@@ -25,7 +22,7 @@
 
             
             <div class="card-footer d-flex justify-content-between">
-                <a href="" class="btn btn-primary btn-sm">Editar datos</a>
+                <a href="{% url 'datosVendedor_editar' datosVendedorQuery.id %}" class="btn btn-primary btn-sm">Editar datos</a>
             </div>
             
 
@@ -33,7 +30,7 @@
     </div>
     {% else %}
     <div class="mt-4">
-        <a href="" class="btn btn-primary">
+        <a href="{% url 'datosVendedor_create' %}" class="btn btn-primary">
             Agregar datos
         </a>
     </div>

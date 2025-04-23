@@ -149,7 +149,18 @@ class DatosVendedorModelForm(ModelForm):
         if len(facturacion) < 3:
             self.add_error('facturacion','Al menos debes indicar 3 caracteres')
             
-        return self.cleaned_data          
+        return self.cleaned_data         
+    
+    
+    
+class DatosVendedorModelForms(ModelForm):
+    class Meta:
+        model = DatosVendedor 
+        fields = ['direccion', 'facturacion']  
+        help_texts = {
+            'direccion' : ("Direccion del vendedor"),
+            'facturacion': ("Facturacion del vendedor"),
+        }      
 
         
 

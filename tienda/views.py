@@ -296,7 +296,6 @@ def ver_detalle_datosVendedor(request, id_usuario):
 
 
 
-
 #@permission_required('tienda.create_datosvendedor')
 def datosVendedor_create(request):
     if request.method == "POST":
@@ -304,18 +303,53 @@ def datosVendedor_create(request):
         
         
         if formulario.is_valid():
-            
-            #usamos esto para evitar en el formulario que el usuario elija el vendedor
-            datos = formulario.save(commit=False)  #Crea un objeto cuenta pero no lo guarda hasta agregar el id del vendedor
-            vendedor = Vendedor.objects.get(usuario=request.user) #Buscamos el cliente que esta vinculado al usuario que acaba de enviar el formulario
-            datos.vendedor = vendedor  # Asigna el vendedor automáticamente
-            formulario.save()
-            messages.success(request, "Se ha creado la cuenta bancaria")
-            #return redirect('perfil_cliente', id_usuario=request.user.id)
+            datosVendedor = DatosVendedor.objects.create(
+                direccion = formulario.cleaned_data.get("direccion"),
+                facturacion = formulario.cleaned_data.get("facturacion"),
+                vendedor = request.user.vendedor,  
+            )
+            datosVendedor.save()
+            messages.success(request, 'Agregada datos vendedor') 
+            return redirect ("ver_detalle_datosVendedor", id_usuario=request.user.id)
     else:
         formulario= DatosVendedorModelForm()
-    return render(request, 'perfil/crear_datosVendedor.html', {'formulario': formulario})
+    return render(request, 'vendedor/crear_datosVendedor.html', {'formulario': formulario})
 
+
+def datosVendedor_delete(request, id_Datovendedor):
+    datosVendedorQuery = DatosVendedor.objects.filter(id=id_Datovendedor).first()
+
+    try:
+        datosVendedorQuery.delete()  
+        messages.success(request, "Se ha eliminado los datos del vendedor correctamente.")
+        
+    except Exception as error:
+        print(error)
+
+    return redirect('ver_detalle_datosVendedor', id_usuario=datosVendedorQuery.vendedor.usuario.id)
+
+
+def datosVendedor_editar(request, id_Datovendedor):
+    datosVendedorQuery= DatosVendedor.objects.filter(id=id_Datovendedor).first()
+   
+    if request.method == "POST":
+         #request.POST: recogemos los datos del formulario escritos del usuario
+         #instance: recogemos el objeto que queremos editar
+        formulario= DatosVendedorModelForms(request.POST, instance=datosVendedorQuery)
+       
+         #si no hay errores de las validaciones del formulario
+        if formulario.is_valid():
+            formulario.save()
+        
+            messages.success(request, "Se ha editado los datos del vendedor")
+           
+            return redirect("ver_detalle_datosVendedor", id_usuario=datosVendedorQuery.vendedor.usuario.id)
+           
+       
+    else:
+        formulario= DatosVendedorModelForms(instance=datosVendedorQuery)
+       
+    return render(request, 'vendedor/datosVendedor_editar.html',{'formulario':formulario, 'datosVendedorQuery': datosVendedorQuery })
 
 
 
