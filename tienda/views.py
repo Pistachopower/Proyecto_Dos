@@ -254,29 +254,27 @@ def cuentaBancaria_delete(request, id_cuenta):
 
 #cuentaBancaria_editar
 #@permission_required('tienda.change_cuentabancaria')
-# def cuentaBancaria_editar(request, id_cuentaaBancaria):
-#     cuentaBancariaQuery= CuentaBancaria.objects.get(id=id_cuentaaBancaria)
-    
-#     if request.method == "POST":
-#         #request.POST: recogemos los datos del formulario escritos del usuario
-#         #instance: recogemos el objeto que queremos editar
-#         formulario= CuentaBancariaModelForm(request.POST, instance=cuentaBancariaQuery)
+def cuentaBancaria_editar(request, id_cuentaaBancaria):
+    cuentaBancariaQuery= CuentaBancaria.objects.get(id=id_cuentaaBancaria)
+   
+    if request.method == "POST":
+         #request.POST: recogemos los datos del formulario escritos del usuario
+         #instance: recogemos el objeto que queremos editar
+        formulario= CuentaBancariaModelForm(request.POST, instance=cuentaBancariaQuery)
+       
+         #si no hay errores de las validaciones del formulario
+        if formulario.is_valid():
+            formulario.save()
         
-#         #si no hay errores de las validaciones del formulario
-#         if formulario.is_valid():
-#             print("Es valido")
-#             formulario.save()
-            
-#             messages.success(request, "Se ha editado la cuenta bancaria")
-            
-#             return redirect("perfil_cliente", id_usuario=request.user.id )
-            
-        
-
-#     else:
-#         formulario= CuentaBancariaModelForm(instance=cuentaBancariaQuery)
-        
-#     return render(request, 'perfil/cuentaBancaria_editar.html',{'formulario':formulario, 'cuentaBancariaQuery': cuentaBancariaQuery })
+            messages.success(request, "Se ha editado la cuenta bancaria")
+           
+            return redirect("ver_detalle_cuentaBancaria_Cliente", id_usuario=request.user.id )
+           
+       
+    else:
+        formulario= CuentaBancariaModelForm(instance=cuentaBancariaQuery)
+       
+    return render(request, 'cliente/cuentaBancaria_editar.html',{'formulario':formulario, 'cuentaBancariaQuery': cuentaBancariaQuery })
 
 
 
