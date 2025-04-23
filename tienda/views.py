@@ -137,20 +137,56 @@ def lista_tienda(request):
 
 
 
-@permission_required('tienda.add_tienda')
-def tienda_create(request):
+# @permission_required('tienda.add_tienda')
+# def tienda_create(request):
     
+#     if request.method == "POST":
+#         formulario= TiendaModelForm(request.POST)
+        
+#         if formulario.is_valid():
+#             print("Es valido")
+#             formulario.save()
+#             messages.success(request, "Se ha creado la tienda")
+#             return redirect("lista_tienda")
+#     else:
+#         formulario= TiendaModelForm()
+#     return render(request, 'tienda/tienda_form.html',{'formulario':formulario})
+
+
+#     if request.method == "POST":
+#         formulario= TiendaModelForm(request.POST)
+        
+#         if formulario.is_valid():
+#             print("Es valido")
+#             formulario.save()
+#             messages.success(request, "Se ha creado la tienda")
+#             return redirect("lista_tienda")
+#     else:
+#         formulario= TiendaModelForm()
+#     return render(request, 'tienda/tienda_form.html',{'formulario':formulario})
+
+
+
+@permission_required('tienda.add_tienda')
+def tienda_create(request):    
     if request.method == "POST":
         formulario= TiendaModelForm(request.POST)
         
         if formulario.is_valid():
-            print("Es valido")
-            formulario.save()
-            messages.success(request, "Se ha creado la tienda")
-            return redirect("lista_tienda")
+            tienda = Tienda.objects.create(
+                direccion = formulario.cleaned_data.get("direccion"),
+                telefono = formulario.cleaned_data.get("telefono"),
+                email = formulario.cleaned_data.get("email"),
+                vendedor = request.user.vendedor,  
+        )
+        tienda.save()
+        messages.success(request, 'Agregada tienda') 
+        return redirect("lista_tienda" )
+        
     else:
         formulario= TiendaModelForm()
-    return render(request, 'tienda/tienda_form.html',{'formulario':formulario})
+        return render(request, 'tienda/crear_tienda.html', {'formulario': formulario})
+        
 
 
 @permission_required('tienda.view_tienda')
@@ -186,7 +222,6 @@ def tienda_editar(request, id_tienda):
     
     
 #modelo cliente
-#@permission_required('tienda.view_cliente')
 def perfil_cliente(request, id_usuario):
 #agregar    
 
@@ -197,9 +232,7 @@ def perfil_cliente(request, id_usuario):
        raise Http404()
    
    
-   
-
-
+@permission_required('tienda.view_cuentabancaria')
 def ver_detalle_cuentaBancaria_Cliente(request, id_usuario):
      # Obtenemos el cliente asociado al usuario
     cliente = Cliente.objects.filter(usuario_id=id_usuario).first()
@@ -211,8 +244,6 @@ def ver_detalle_cuentaBancaria_Cliente(request, id_usuario):
 
 
 
-
-#@permission_required('tienda.create_cuentabancaria')
 def cuentaBancaria_create(request):
     if request.method == "POST":
         formulario= CuentaBancariaModelForm(request.POST)
@@ -233,7 +264,7 @@ def cuentaBancaria_create(request):
 
 
 #Borrar cuenta bancaria
-#@permission_required('tienda.delete_cuentabancaria')
+@permission_required('tienda.delete_cuentabancaria')
 def cuentaBancaria_delete(request, id_cuenta):
     cuenta = CuentaBancaria.objects.get(id=id_cuenta)
 
@@ -248,9 +279,6 @@ def cuentaBancaria_delete(request, id_cuenta):
         
     
 
-
-#cuentaBancaria_editar
-#@permission_required('tienda.change_cuentabancaria')
 def cuentaBancaria_editar(request, id_cuentaaBancaria):
     cuentaBancariaQuery= CuentaBancaria.objects.get(id=id_cuentaaBancaria)
    
@@ -276,7 +304,6 @@ def cuentaBancaria_editar(request, id_cuentaaBancaria):
 
 
 #modelo DatosVendedor
-#@permission_required('tienda.view_datosvendedor')
 def perfil_vendedor(request, id_usuario):
     if request.user.vendedor.id == id_usuario:
        vendedor = Vendedor.objects.get(id = id_usuario)
@@ -315,7 +342,7 @@ def datosVendedor_create(request):
         formulario= DatosVendedorModelForm()
     return render(request, 'vendedor/crear_datosVendedor.html', {'formulario': formulario})
 
-
+@permission_required('tienda.delete_datosvendedor')
 def datosVendedor_delete(request, id_Datovendedor):
     datosVendedorQuery = DatosVendedor.objects.filter(id=id_Datovendedor).first()
 

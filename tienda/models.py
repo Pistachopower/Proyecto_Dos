@@ -76,3 +76,6 @@ class DatosVendedor(models.Model):
     facturacion = models.CharField(max_length=100)
     vendedor= models.OneToOneField(Vendedor, on_delete=models.CASCADE)
     
+    def __str__(self):
+        return self.direccion
+    
