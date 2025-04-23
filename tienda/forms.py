@@ -107,23 +107,23 @@ class TiendaModelForm(ModelForm):
 class CuentaBancariaModelForm(ModelForm):
     class Meta:   
         model = CuentaBancaria
-        fields = ['ibam', 'banco', 'moneda']   
+        fields = ['iban', 'banco', 'moneda']   
         
         moneda = forms.ChoiceField(choices=CuentaBancaria.MONEDA,
                                initial="EUR")
         
         help_texts = {
-            "ibam": ("Ejemplo de IBAN: ES1234567890123456789012"),
+            "iban": ("Ejemplo de IBAN: ES1234567890123456789012"),
         }
         
     def clean(self):
         super().clean() 
         
-        ibam = self.cleaned_data.get('ibam')
+        ibam = self.cleaned_data.get('iban')
         banco = self.cleaned_data.get('banco')
                 
         if len(ibam) < 22 or len(ibam) > 34:
-            self.add_error('ibam', 'El IBAN debe tener entre 15 y 34 caracteres')
+            self.add_error('iban', 'El IBAN debe tener entre 15 y 34 caracteres')
             
         if len(banco) < 3:
             self.add_error('banco','Al menos debes indicar 3 caracteres')

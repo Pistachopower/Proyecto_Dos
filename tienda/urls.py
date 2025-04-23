@@ -25,8 +25,9 @@ urlpatterns = [
     
     #modelo cuentaBancaria
     path('perfil-cliente/<int:id_usuario>',views.perfil_cliente,name='perfil_cliente'),
-    #path('crear-cuenta', views.cuenta_create, name='cuenta_create'),   
-    #path('cuenta-bancaria-eliminar/<int:id_usuario>',views.cuenta_delete,name='cuenta_delete'),
+    path('detalle-cuentaBancaria-cliente/<int:id_usuario>',views.ver_detalle_cuentaBancaria_Cliente,name='ver_detalle_cuentaBancaria_Cliente'),
+    path('crear-cuenta-bancaria', views.cuentaBancaria_create, name='cuentaBancaria_create'),   
+    path('cuenta-bancaria-eliminar/<int:id_cuenta>',views.cuentaBancaria_delete,name='cuentaBancaria_delete'),
     #path('cuenta-bancaria-editar/<int:id_cuentaaBancaria>',views.cuentaBancaria_editar,name='cuentaBancaria_editar'),
     
     #modelo vendedor

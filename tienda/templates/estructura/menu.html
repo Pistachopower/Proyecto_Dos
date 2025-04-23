@@ -85,7 +85,7 @@
                         <!--Perfil cliente-->
                         {% if request.user.rol == 2 %}
                         <li>
-                            <a href="{% url 'perfil_cliente' request.user.id  %}" class="dropdown-item">
+                            <a href="{% url 'perfil_cliente' request.user.cliente.id  %}" class="dropdown-item">
                                 <i class="bi bi-person me-2"></i> Perfil cliente
                             </a>
                         </li>
@@ -94,7 +94,7 @@
                         {% if request.user.rol == 3 %}
                         <li>
                             
-                            <a href="{% url 'perfil_vendedor' request.user.id  %}" class="dropdown-item">
+                            <a href="{% url 'perfil_vendedor' request.user.vendedor.id  %}" class="dropdown-item">
                                 <i class="bi bi-person me-2"></i> Perfil vendedor
                             </a>
                         </li>

@@ -19,7 +19,7 @@ def index(request):
 @permission_required('tienda.view_cliente')
 def lista_clientes(request):
     clientes= Cliente.objects.all() 
-    return render(request, 'clientes/lista_cliente.html',{'clientes_mostrar':clientes})
+    return render(request, 'cliente/lista_cliente.html',{'clientes_mostrar':clientes})
 
 @permission_required('tienda.view_vendedor')
 def lista_vendedores(request):
@@ -185,85 +185,69 @@ def tienda_editar(request, id_tienda):
     
     
     
-#modelo cuenta bancaria
-@permission_required('tienda.view_cliente')
+#modelo cliente
+#@permission_required('tienda.view_cliente')
 def perfil_cliente(request, id_usuario):
 #agregar    
-#    if request.user.cliente.id == id_cliente:
-#        cliente = Cliente.objects.get(id = id_cliente)
-#        return render (request, 'clientes/detalles_cliente.html', {'cliente': cliente} )
-#    else:
-#        raise Http404()
-    
-    
-    
-    #obtenemos el id del cliente para poder mostrar su cuenta bancaria
-    cliente= Cliente.objects.select_related('usuario').filter(usuario_id=id_usuario).first()
-    
-    # Obtenemos el registro de la cuenta bancaria (si existe)
-    cuentaCliente = CuentaBancaria.objects.filter(cliente=cliente).first()
-    
-    return render(request, 'perfil/perfil_cliente.html',{'cuentaCliente':cuentaCliente, 'cliente':cliente})
+
+   if request.user.cliente.id == id_usuario:
+
+       
+       cliente = Cliente.objects.get(id = id_usuario)
+       return render(request, 'cliente/perfil_cliente.html',{'cliente':cliente})
+   else:
+       raise Http404()
+   
+   
+   
 
 
-# @permission_required('tienda.create_cuentabancaria')
-# def cuenta_create(request):
-#     if request.method == "POST":
-#         formulario= CuentaBancariaModelForm(request.POST)
+def ver_detalle_cuentaBancaria_Cliente(request, id_usuario):
+     # Obtenemos el cliente asociado al usuario
+    #cliente = Cliente.objects.get(usuario_id=id_usuario)
+    cliente = Cliente.objects.filter(usuario_id=id_usuario).first()
         
-        
-#         if formulario.is_valid():
-            
-#             #usamos esto para evitar en el formulario que el usuario elija el cliente
-#             cuenta = formulario.save(commit=False)  #Crea un objeto cuenta pero no lo guarda hasta agregar el id del cliente
-#             cliente = Cliente.objects.get(usuario=request.user) #Buscamos el cliente que esta vinculado al usuario que acaba de enviar el formulario
-#             cuenta.cliente = cliente  # Asigna el cliente automáticamente
-#             formulario.save()
-#             messages.success(request, "Se ha creado la cuenta bancaria")
-#             return redirect('perfil_cliente', id_usuario=request.user.id)
-#     else:
-#         formulario= CuentaBancariaModelForm()
-#     return render(request, 'perfil/crear_cuentaBancaria.html', {'formulario': formulario})
+    # Obtenemos la cuenta bancaria asociada al cliente
+    cuentaBancariaCliente = CuentaBancaria.objects.filter(cliente=cliente).first()
+    
+    return render (request, 'cliente/detalleCuentaBancariaCliente.html', {'cuentaBancariaCliente' : cuentaBancariaCliente})
+
+
 
 
 #@permission_required('tienda.create_cuentabancaria')
-def cuenta_create(request):
+def cuentaBancaria_create(request):
     if request.method == "POST":
         formulario= CuentaBancariaModelForm(request.POST)
         
-        
         if formulario.is_valid():
-            
-            CuentaBancaria.objects.create(
-                #atributo de la tabla
+            cuenta = CuentaBancaria.objects.create(
+                iban = formulario.cleaned_data.get("iban"),
+                banco = formulario.cleaned_data.get("banco"),
+                moneda = formulario.cleaned_data.get("moneda"),
+                cliente = request.user.cliente,  
             )
+            cuenta.save()
+            messages.success(request, 'Agregada cuenta bancaria') 
+            return redirect ("ver_detalle_cuentaBancaria_Cliente", id_usuario=request.user.id)
     else:
         formulario= CuentaBancariaModelForm()
-    return render(request, 'perfil/crear_cuentaBancaria.html', {'formulario': formulario})
-
-
-
-
+    return render(request, 'cliente/crear_cuentaBancaria.html', {'formulario': formulario})
 
 
 #Borrar cuenta bancaria
 #@permission_required('tienda.delete_cuentabancaria')
-# def cuenta_delete(request, id_usuario):
-    
-#     if request.user.cliente.id == id_usuario:
-    
-#         cuentaBancariaQuery= CuentaBancaria.objects.get(id= id_usuario)
+def cuentaBancaria_delete(request, id_cuenta):
+    cuenta = CuentaBancaria.objects.get(id=id_cuenta)
 
-#         try:
-#             cuentaBancariaQuery.delete()
-#             messages.success(request, "Se ha elimnado la cuenta "+ cuentaBancariaQuery.banco +" correctamente")
+    try:
+        cuenta.delete()  
+        messages.success(request, "Se ha eliminado la cuenta bancaria correctamente.")
+        
+    except Exception as error:
+        print(error)
 
-#         except Exception as error:
-#             print(error)
-#         return redirect('perfil_cliente', id_usuario= cuentaBancariaQuery.cliente.usuario.id)
-    
-#     #En caso contrario saltar error
-#     else:
+    return redirect('ver_detalle_cuentaBancaria_Cliente', id_usuario=cuenta.cliente.id) 
         
     
 
