@@ -14,56 +14,39 @@ Vendedor: puede ver las piezas, el detalle de las piezas, puede agregar piezas, 
 Sin login: solo ve la pagina de inicio
 
 
-Otro diseño de footer:
-<!-- filepath: /home/nelson/Documentos/Proyecto_Dos/tienda/templates/estructura/pie.html -->
-<footer class="bg-light text-dark pt-4">
-    <div class="container">
-        <div class="row">
-            <!-- Columna 1: Información de la empresa -->
-            <div class="col-md-4 mb-3">
-                <h5 class="fw-bold">Tienda</h5>
-                <p>Tu tienda de confianza para piezas y accesorios.</p>
-                <p><i class="fas fa-map-marker-alt"></i> Calle Cancionera, España</p>
-                <p><i class="fas fa-phone"></i> +34 602 029 75</p>
-                <p><i class="fas fa-envelope"></i> contacto@tienda.com</p>
-            </div>
 
-            <!-- Columna 2: Enlaces rápidos -->
-            <div class="col-md-4 mb-3">
-                <h5 class="fw-bold">Enlaces rápidos</h5>
-                <ul class="list-unstyled">
-                    <li><a href="{% url 'index' %}" class="text-dark text-decoration-none">Inicio</a></li>
-                    <li><a href="{% url 'lista_pieza' %}" class="text-dark text-decoration-none">Piezas</a></li>
-                    <li><a href="{% url 'lista_tienda' %}" class="text-dark text-decoration-none">Tienda</a></li>
-                    <li><a href="{% url 'lista_clientes' %}" class="text-dark text-decoration-none">Clientes</a></li>
-                </ul>
-            </div>
-
-            <!-- Columna 3: Redes sociales -->
-            <div class="col-md-4 mb-3">
-                <h5 class="fw-bold">Síguenos</h5>
-                <div class="d-flex">
-                    <a href="#" class="btn btn-outline-dark btn-sm me-2"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="btn btn-outline-dark btn-sm me-2"><i class="fab fa-twitter"></i></a>
-                    <a href="#" class="btn btn-outline-dark btn-sm me-2"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="btn btn-outline-dark btn-sm me-2"><i class="fab fa-linkedin"></i></a>
-                    <a href="#" class="btn btn-outline-dark btn-sm"><i class="fab fa-github"></i></a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Copyright -->
-    <div class="text-center py-3" style="background-color: rgba(0, 0, 0, 0.1);">
-        © 2025 Copyright: <a href="#" class="text-dark text-decoration-none">tienda.com</a>
-    </div>
-</footer>
 
 Formulario 
 crear url y boton en menu
 crear vista creacion producto
 crear la template
 controlar que usuarios pueden crear
+
+
+
+Mostrar valor de del objeto request 
+    print("\n=== INFO BÁSICA DEL USUARIO ===")
+    user = request.user
+    print("ID:", user.id)
+    print("Username:", user.username)
+    print("Email:", user.email)
+    print("¿Está autenticado?", user.is_authenticated)
+
+    print("\n=== GRUPOS Y PERMISOS ===")
+    print("Grupos:", list(user.groups.values_list('name', flat=True)))
+    print("Permisos:", list(user.user_permissions.values_list('codename', flat=True)))
+
+    # 👇 Aquí revisamos los modelos relacionados al usuario
+    print("\n=== MODELOS RELACIONADOS ===")
+    relaciones = ['cliente', 'vendedor', 'perfil']  # cambia esto según tus modelos relacionados
+
+    for relacion in relaciones:
+        try:
+            related_obj = getattr(user, relacion)
+            print(f"✔️ Tiene relación '{relacion}':")
+            print.pprint(vars(related_obj))
+        except AttributeError:
+            print(f"❌ No tiene relación '{relacion}'")
 
 
 

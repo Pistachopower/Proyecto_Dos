@@ -23,15 +23,18 @@ urlpatterns = [
     path('tienda-editar/<int:id_tienda>',views.tienda_editar,name='tienda_editar'),
     
     
-    #modelo cuentaBancaria
+    #modelos cliente cuentaBancaria
     path('perfil-cliente/<int:id_usuario>',views.perfil_cliente,name='perfil_cliente'),
     path('detalle-cuentaBancaria-cliente/<int:id_usuario>',views.ver_detalle_cuentaBancaria_Cliente,name='ver_detalle_cuentaBancaria_Cliente'),
     path('crear-cuenta-bancaria', views.cuentaBancaria_create, name='cuentaBancaria_create'),   
     path('cuenta-bancaria-eliminar/<int:id_cuenta>',views.cuentaBancaria_delete,name='cuentaBancaria_delete'),
     path('cuenta-bancaria-editar/<int:id_cuentaaBancaria>',views.cuentaBancaria_editar,name='cuentaBancaria_editar'),
     
-    #modelo vendedor
+    #modelo vendedor datosVendedor
     path('perfil-vendedor/<int:id_usuario>',views.perfil_vendedor,name='perfil_vendedor'),
+    #ver_detalle_datosVendedor
+    path('detalle-vendedor/<int:id_usuario>',views.ver_detalle_datosVendedor,name='ver_detalle_datosVendedor'),
+
     path('agregar-datosVendedor', views.datosVendedor_create, name='datosVendedor_create'),
 
     

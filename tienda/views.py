@@ -191,8 +191,6 @@ def perfil_cliente(request, id_usuario):
 #agregar    
 
    if request.user.cliente.id == id_usuario:
-
-       
        cliente = Cliente.objects.get(id = id_usuario)
        return render(request, 'cliente/perfil_cliente.html',{'cliente':cliente})
    else:
@@ -204,7 +202,6 @@ def perfil_cliente(request, id_usuario):
 
 def ver_detalle_cuentaBancaria_Cliente(request, id_usuario):
      # Obtenemos el cliente asociado al usuario
-    #cliente = Cliente.objects.get(usuario_id=id_usuario)
     cliente = Cliente.objects.filter(usuario_id=id_usuario).first()
         
     # Obtenemos la cuenta bancaria asociada al cliente
@@ -281,13 +278,23 @@ def cuentaBancaria_editar(request, id_cuentaaBancaria):
 #modelo DatosVendedor
 #@permission_required('tienda.view_datosvendedor')
 def perfil_vendedor(request, id_usuario):
-    #obtenemos el id del cliente para poder mostrar su cuenta bancaria
-    vendedorQuery= Vendedor.objects.select_related('usuario').filter(usuario_id=id_usuario).first()
+    if request.user.vendedor.id == id_usuario:
+       vendedor = Vendedor.objects.get(id = id_usuario)
+       return render(request, 'vendedor/perfil_vendedor.html',{'vendedor':vendedor})
+    else:
+       raise Http404()
+   
+   
+def ver_detalle_datosVendedor(request, id_usuario):
+     # Obtenemos el cliente asociado al usuario
+    vendedor = Vendedor.objects.filter(usuario_id=id_usuario).first()
+        
+    # Obtenemos la cuenta bancaria asociada al cliente
+    datosVendedorQuery = DatosVendedor.objects.filter(vendedor_id=vendedor).first()
     
-    # Obtenemos el registro de la cuenta bancaria (si existe)
-    datoVendedorQuery = DatosVendedor.objects.filter(vendedor=vendedorQuery).first()
-    
-    return render(request, 'perfil/perfil_vendedor.html',{'vendedorQuery':vendedorQuery, 'datoVendedorQuery':datoVendedorQuery})
+    return render (request, 'vendedor/detalleDatosVendedor.html', {'datosVendedorQuery' : datosVendedorQuery})
+
+
 
 
 #@permission_required('tienda.create_datosvendedor')
