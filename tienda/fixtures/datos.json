@@ -1,161 +1,5 @@
 [
 {
-    "model": "admin.logentry",
-    "pk": 1,
-    "fields": {
-        "action_time": "2025-04-23T11:17:45.320",
-        "user": 1,
-        "content_type": 3,
-        "object_id": "1",
-        "object_repr": "clientes",
-        "action_flag": 1,
-        "change_message": "[{\"added\": {}}]"
-    }
-},
-{
-    "model": "admin.logentry",
-    "pk": 2,
-    "fields": {
-        "action_time": "2025-04-23T11:20:15.161",
-        "user": 1,
-        "content_type": 3,
-        "object_id": "2",
-        "object_repr": "vendedores",
-        "action_flag": 1,
-        "change_message": "[{\"added\": {}}]"
-    }
-},
-{
-    "model": "admin.logentry",
-    "pk": 3,
-    "fields": {
-        "action_time": "2025-04-23T11:21:54.986",
-        "user": 1,
-        "content_type": 3,
-        "object_id": "1",
-        "object_repr": "clientes",
-        "action_flag": 2,
-        "change_message": "[]"
-    }
-},
-{
-    "model": "admin.logentry",
-    "pk": 4,
-    "fields": {
-        "action_time": "2025-04-23T11:39:30.652",
-        "user": 1,
-        "content_type": 7,
-        "object_id": "1",
-        "object_repr": "nelson",
-        "action_flag": 2,
-        "change_message": "[{\"changed\": {\"fields\": [\"Rol\"]}}]"
-    }
-},
-{
-    "model": "admin.logentry",
-    "pk": 5,
-    "fields": {
-        "action_time": "2025-04-23T13:43:40.129",
-        "user": 1,
-        "content_type": 9,
-        "object_id": "1",
-        "object_repr": "Santander",
-        "action_flag": 3,
-        "change_message": ""
-    }
-},
-{
-    "model": "admin.logentry",
-    "pk": 6,
-    "fields": {
-        "action_time": "2025-04-23T14:23:34.026",
-        "user": 1,
-        "content_type": 9,
-        "object_id": "2",
-        "object_repr": "Santander",
-        "action_flag": 3,
-        "change_message": ""
-    }
-},
-{
-    "model": "admin.logentry",
-    "pk": 7,
-    "fields": {
-        "action_time": "2025-04-23T14:26:04.805",
-        "user": 1,
-        "content_type": 9,
-        "object_id": "3",
-        "object_repr": "Santander",
-        "action_flag": 3,
-        "change_message": ""
-    }
-},
-{
-    "model": "admin.logentry",
-    "pk": 8,
-    "fields": {
-        "action_time": "2025-04-23T14:28:10.745",
-        "user": 1,
-        "content_type": 9,
-        "object_id": "4",
-        "object_repr": "Santander",
-        "action_flag": 3,
-        "change_message": ""
-    }
-},
-{
-    "model": "admin.logentry",
-    "pk": 9,
-    "fields": {
-        "action_time": "2025-04-23T14:34:10.426",
-        "user": 1,
-        "content_type": 9,
-        "object_id": "5",
-        "object_repr": "Santander",
-        "action_flag": 3,
-        "change_message": ""
-    }
-},
-{
-    "model": "admin.logentry",
-    "pk": 10,
-    "fields": {
-        "action_time": "2025-04-23T14:36:18.624",
-        "user": 1,
-        "content_type": 9,
-        "object_id": "6",
-        "object_repr": "Santander",
-        "action_flag": 3,
-        "change_message": ""
-    }
-},
-{
-    "model": "admin.logentry",
-    "pk": 11,
-    "fields": {
-        "action_time": "2025-04-23T19:28:43.313",
-        "user": 1,
-        "content_type": 3,
-        "object_id": "2",
-        "object_repr": "vendedores",
-        "action_flag": 2,
-        "change_message": "[]"
-    }
-},
-{
-    "model": "admin.logentry",
-    "pk": 12,
-    "fields": {
-        "action_time": "2025-04-23T21:34:25.954",
-        "user": 1,
-        "content_type": 3,
-        "object_id": "2",
-        "object_repr": "vendedores",
-        "action_flag": 2,
-        "change_message": "[{\"changed\": {\"fields\": [\"Permissions\"]}}]"
-    }
-},
-{
     "model": "auth.permission",
     "pk": 1,
     "fields": {
@@ -588,34 +432,39 @@
     }
 },
 {
-    "model": "auth.group",
-    "pk": 1,
+    "model": "auth.permission",
+    "pk": 49,
     "fields": {
-        "name": "clientes",
-        "permissions": [
-            33,
-            34,
-            36,
-            24
-        ]
+        "name": "Can add inventario",
+        "content_type": 13,
+        "codename": "add_inventario"
     }
 },
 {
-    "model": "auth.group",
-    "pk": 2,
+    "model": "auth.permission",
+    "pk": 50,
     "fields": {
-        "name": "vendedores",
-        "permissions": [
-            32,
-            45,
-            46,
-            48,
-            21,
-            22,
-            24,
-            41,
-            44
-        ]
+        "name": "Can change inventario",
+        "content_type": 13,
+        "codename": "change_inventario"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 51,
+    "fields": {
+        "name": "Can delete inventario",
+        "content_type": 13,
+        "codename": "delete_inventario"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 52,
+    "fields": {
+        "name": "Can view inventario",
+        "content_type": 13,
+        "codename": "view_inventario"
     }
 },
 {
@@ -715,175 +564,11 @@
     }
 },
 {
-    "model": "sessions.session",
-    "pk": "eeseytmefp1csmgji347y0lnv97whe53",
+    "model": "contenttypes.contenttype",
+    "pk": 13,
     "fields": {
-        "session_data": ".eJxVjMsOwiAQRX_FsDaU4VFql-79BjIMIKiBpI-V8d9tky50e8-5580crkt26xwnVwIbGbDz7-aRnrHuIDyw3hunVpepeL4r_KAzv7UQX9fD_QtknPP2VpS0AiQvAVS4YKQQDFqDZFEIaaEX0l8GY3wMlIYkzaApRiANwnqrt2iKlNGVWqi0rShVJ3QnhTQn6Efo2ecLHJJBHw:1u7au8:9fJTPJ5BjFe4kHhuSZOxCQhsC1ZKRWmZIE0nl_GTjaY",
-        "expire_date": "2025-05-07T16:16:48.752"
-    }
-},
-{
-    "model": "sessions.session",
-    "pk": "r5pulox8nxzpy413ko9zvud3l1l59wbr",
-    "fields": {
-        "session_data": ".eJxVjEEOwiAQRe_C2hCGglCX7nsGMswMUjVtUtqV8e7apAvd_vfef6mE21rT1mRJI6uLAnX63TLSQ6Yd8B2n26xpntZlzHpX9EGbHmaW5_Vw_w4qtvqtOyquA6RsATruUYjZY_BIAY2xAc7G5j56n4WpxGJ9dCQC5MCEHJx6fwD6HjhI:1u7YVl:dApU4EIgQ6sUnvMYuUTQIlfI_AQEzVu7Vp2Lk4egHmI",
-        "expire_date": "2025-05-07T13:43:29.096"
-    }
-},
-{
-    "model": "sessions.session",
-    "pk": "rcu44eqeyd8ooag9he6md2efj7c1eagu",
-    "fields": {
-        "session_data": ".eJxVjDsOwyAQBa8SUUcYFoPBZfqcAS2wDiQRSP5UUe4eR3Lj9s3M-7CJYkZfaomlsZGB6kTfgQB9kW7UwK7M47Zmvy00-5J2RZ23gPFF9Q_SE-uj8djqOpfA_wo_6MLvLdH7dring4xL3msDyUpy_aASSmkNSAjOCRUCEDkbjdOoB6OVlZqQcKJgYZAOhDVknGTfH2fnP9U:1u7eGx:db0XbjhJQhv6n8EQZ6O2YhM4hdU5GZSz-Aqr9TRAi9E",
-        "expire_date": "2025-05-07T19:52:35.499"
-    }
-},
-{
-    "model": "tienda.usuario",
-    "pk": 1,
-    "fields": {
-        "password": "pbkdf2_sha256$870000$JjCoHJX8T1MWvmnGZd2MxH$j+BpuO2AG2wdM6yIfJa1wH9XQlNWEW4JSVYJhSlgU8o=",
-        "last_login": "2025-04-23T14:22:26.877",
-        "is_superuser": true,
-        "username": "nelson",
-        "first_name": "",
-        "last_name": "",
-        "email": "",
-        "is_staff": true,
-        "is_active": true,
-        "date_joined": "2025-04-23T11:15:27",
-        "rol": 1,
-        "groups": [],
-        "user_permissions": []
-    }
-},
-{
-    "model": "tienda.usuario",
-    "pk": 2,
-    "fields": {
-        "password": "pbkdf2_sha256$870000$ItretZb7lQVbi4cG8g7c60$EGhdAcnW2O7YYNITDtuEJM63YE3dDnRic+n/uq6yQIM=",
-        "last_login": "2025-04-23T19:40:18.758",
-        "is_superuser": false,
-        "username": "maria",
-        "first_name": "maria",
-        "last_name": "sanchez",
-        "email": "maria@gmail.com",
-        "is_staff": false,
-        "is_active": true,
-        "date_joined": "2025-04-23T11:24:23.426",
-        "rol": 2,
-        "groups": [
-            1
-        ],
-        "user_permissions": []
-    }
-},
-{
-    "model": "tienda.usuario",
-    "pk": 3,
-    "fields": {
-        "password": "pbkdf2_sha256$870000$nBiZWWyruLgnBllmyTq3uH$4Trf7luVQOqizPG+cARJF/HGEDIuSwcbMDtdzMeYY/E=",
-        "last_login": "2025-04-23T19:52:35.463",
-        "is_superuser": false,
-        "username": "pedro",
-        "first_name": "pedro",
-        "last_name": "perez",
-        "email": "pedro@gmail.com",
-        "is_staff": false,
-        "is_active": true,
-        "date_joined": "2025-04-23T11:25:24.340",
-        "rol": 3,
-        "groups": [
-            2
-        ],
-        "user_permissions": []
-    }
-},
-{
-    "model": "tienda.cliente",
-    "pk": 1,
-    "fields": {
-        "usuario": 2
-    }
-},
-{
-    "model": "tienda.vendedor",
-    "pk": 1,
-    "fields": {
-        "usuario": 3
-    }
-},
-{
-    "model": "tienda.pieza",
-    "pk": 1,
-    "fields": {
-        "nombre": "Caja de cambio",
-        "version": "1.5",
-        "referencia": "00055448w",
-        "estado": "R",
-        "descripcion": "Es una pieza que está en buenas condiciones.",
-        "marca": "Toyota",
-        "precio": 550.0,
-        "anio": 2005
-    }
-},
-{
-    "model": "tienda.tienda",
-    "pk": 1,
-    "fields": {
-        "direccion": "fuentes del sur",
-        "telefono": "04126020288",
-        "email": "senior@gmail.com",
-        "vendedor": null
-    }
-},
-{
-    "model": "tienda.tienda",
-    "pk": 2,
-    "fields": {
-        "direccion": "calle cancionera",
-        "telefono": "04126020291",
-        "email": "mitienda@gmail.com",
-        "vendedor": 1
-    }
-},
-{
-    "model": "tienda.tienda",
-    "pk": 3,
-    "fields": {
-        "direccion": "Must office put prep",
-        "telefono": "04126020291",
-        "email": "senior@gmail.com",
-        "vendedor": 1
-    }
-},
-{
-    "model": "tienda.tienda",
-    "pk": 4,
-    "fields": {
-        "direccion": "Mono del toro",
-        "telefono": "60258748",
-        "email": "feche@gmail.com",
-        "vendedor": 1
-    }
-},
-{
-    "model": "tienda.cuentabancaria",
-    "pk": 11,
-    "fields": {
-        "iban": "ES1234567890123456789012",
-        "banco": "Santander",
-        "moneda": "EUR",
-        "cliente": 1
-    }
-},
-{
-    "model": "tienda.datosvendedor",
-    "pk": 2,
-    "fields": {
-        "direccion": "Calle Canarias",
-        "facturacion": "2484",
-        "vendedor": 1
+        "app_label": "tienda",
+        "model": "inventario"
     }
 }
 ]
