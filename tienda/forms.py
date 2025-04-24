@@ -163,6 +163,33 @@ class DatosVendedorModelForms(ModelForm):
         }      
 
         
+        
+class DatosVendedorModelForms(ModelForm):
+    class Meta:
+        model = Inventario 
+        fields = ['tienda', 'pieza','cantidad']  
+        help_texts = {
+            'tienda' : ("Selecciona la tienda"),
+            'pieza' : ("Selecciona la pieza"),
+            'cantidad': ("Indica la cantidad"),
+        }  
+        
+    #se usa esto para obtener solo las tiendas que puede ver el usuario loggeado
+    def __init__(self, *args, **kwargs):
+        self.request= kwargs.pop("request")
+        super(DatosVendedorModelForms, self).__init__(*args, **kwargs)
+        tiendasDisponibles= Tienda.objects.filter(vendedor_id= self.request.user.vendedor).all()
+        self.fields["tienda"]= forms.ModelChoiceField(
+            queryset= tiendasDisponibles, 
+            widget=forms.Select,
+            required= True,
+            empty_label= "Ninguna"
+        )
+            
+        
+            
+        
+        
 
             
         

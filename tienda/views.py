@@ -378,6 +378,32 @@ def datosVendedor_editar(request, id_Datovendedor):
        
     return render(request, 'vendedor/datosVendedor_editar.html',{'formulario':formulario, 'datosVendedorQuery': datosVendedorQuery })
 
+#pruba agregar producto para probar
+@permission_required('tienda.add_inventario')
+def agregar_Inventario(request):
+    if request.method == "POST":
+        formulario= DatosVendedorModelForms(request.POST, request= request)
+        
+        
+        if formulario.is_valid():
+            #aqui vemos si existe en inventario hay un producto existente
+            inventario= Inventario.objects.filter(tienda= formulario.cleaned_data.get("tienda"),
+                                                  pieza= formulario.cleaned_data.get("pieza")).first()
+            
+            
+            if (inventario is None):
+                formulario.save()
+                
+            else:
+                inventario.cantidad+= formulario.cleaned_data.get("cantidad")
+                
+                inventario.save() 
+            
+        
+            
+    else:
+        formulario= DatosVendedorModelForms(None, request= request)
+    return render(request, 'inventario/crear_inventario.html', {'formulario': formulario})
 
 
 #Pagina de error 

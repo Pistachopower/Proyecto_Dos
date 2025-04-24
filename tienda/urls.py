@@ -37,6 +37,9 @@ urlpatterns = [
     path('datos-vendedor/<int:id_Datovendedor>',views.datosVendedor_delete,name='datosVendedor_delete'),
     path('datos-vendedor-editar/<int:id_Datovendedor>',views.datosVendedor_editar,name='datosVendedor_editar'),
     
+    #tabla inventario 
+    path('add/inventario', views.agregar_Inventario,name='agregar_Inventario'),
+    
     
 
     

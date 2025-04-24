@@ -55,6 +55,7 @@ class Tienda(models.Model):
     telefono = models.CharField(max_length=15)
     email= models.EmailField()
     vendedor= models.ForeignKey(Vendedor, on_delete= models.CASCADE, default=None, null=True)
+    piezas= models.ManyToManyField(Pieza, through='Inventario')
     
     def __str__(self):
         return self.direccion
@@ -78,4 +79,13 @@ class DatosVendedor(models.Model):
     
     def __str__(self):
         return self.direccion
+    
+    
+
+class Inventario(models.Model):
+    tienda= models.ForeignKey(Tienda, on_delete= models.CASCADE)
+    pieza= models.ForeignKey(Pieza, on_delete= models.CASCADE)
+    cantidad= models.IntegerField()
+    
+    
     
