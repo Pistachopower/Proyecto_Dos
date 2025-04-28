@@ -169,6 +169,84 @@
     }
 },
 {
+    "model": "admin.logentry",
+    "pk": 14,
+    "fields": {
+        "action_time": "2025-04-26T13:17:56.833",
+        "user": 1,
+        "content_type": 11,
+        "object_id": "4",
+        "object_repr": "Tienda Las Palmas de Gran Canarias",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Direccion\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 15,
+    "fields": {
+        "action_time": "2025-04-26T13:18:11.738",
+        "user": 1,
+        "content_type": 11,
+        "object_id": "3",
+        "object_repr": "Tienda Vecindario",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Direccion\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 16,
+    "fields": {
+        "action_time": "2025-04-26T13:18:25.617",
+        "user": 1,
+        "content_type": 11,
+        "object_id": "2",
+        "object_repr": "Tienda El Sur",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Direccion\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 17,
+    "fields": {
+        "action_time": "2025-04-26T13:18:51.938",
+        "user": 1,
+        "content_type": 11,
+        "object_id": "1",
+        "object_repr": "Tienda Arinaga",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Direccion\", \"Vendedor\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 18,
+    "fields": {
+        "action_time": "2025-04-26T13:19:09.147",
+        "user": 1,
+        "content_type": 13,
+        "object_id": "1",
+        "object_repr": "Inventario object (1)",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Cantidad\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 19,
+    "fields": {
+        "action_time": "2025-04-29T00:21:45.598",
+        "user": 1,
+        "content_type": 6,
+        "object_id": "2",
+        "object_repr": "Alternador",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
     "model": "auth.permission",
     "pk": 1,
     "fields": {
@@ -775,6 +853,14 @@
 },
 {
     "model": "sessions.session",
+    "pk": "337iuh2c17oe6uzdp35kv3k3rho21p5b",
+    "fields": {
+        "session_data": ".eJxVjEEOwiAQRe_C2hCGglCX7nsGMswMUjVtUtqV8e7apAvd_vfef6mE21rT1mRJI6uLAnX63TLSQ6Yd8B2n26xpntZlzHpX9EGbHmaW5_Vw_w4qtvqtOyquA6RsATruUYjZY_BIAY2xAc7G5j56n4WpxGJ9dCQC5MCEHJx6fwD6HjhI:1u9Wqw:h7gZ3eej6elpg2vFRLvIsWwmWgzXA54lnm8d6jrVqXQ",
+        "expire_date": "2025-05-13T00:21:30.125"
+    }
+},
+{
+    "model": "sessions.session",
     "pk": "5dfzclw41y5ywkhcxmbyhjk0rhufac0c",
     "fields": {
         "session_data": "eyJmZWNoYV9pbmljaW8iOiIyNC8wNC8yMDI1IDEyOjQxIn0:1u7u1m:TMtTNSw5IDUZYJNrGAXq1mpLftVyXxBt4AnVwLk3U10",
@@ -787,14 +873,6 @@
     "fields": {
         "session_data": ".eJxVjMsOwiAQRX_FsDaU4VFql-79BjIMIKiBpI-V8d9tky50e8-5580crkt26xwnVwIbGbDz7-aRnrHuIDyw3hunVpepeL4r_KAzv7UQX9fD_QtknPP2VpS0AiQvAVS4YKQQDFqDZFEIaaEX0l8GY3wMlIYkzaApRiANwnqrt2iKlNGVWqi0rShVJ3QnhTQn6Efo2ecLHJJBHw:1u7au8:9fJTPJ5BjFe4kHhuSZOxCQhsC1ZKRWmZIE0nl_GTjaY",
         "expire_date": "2025-05-07T16:16:48.752"
-    }
-},
-{
-    "model": "sessions.session",
-    "pk": "iwy35jvm2n5r3smy92mxxeh9vr6j4mj2",
-    "fields": {
-        "session_data": ".eJxVjDsOwyAQBa8SUUcYlo_BZfqcAS2wjkkikPypotw9juTG7ZuZ92EjpQlDqSWVxgYGuhO6AwHmImHQgl1ZwG2dwrbQHEreFXXeIqYX1T_IT6yPxlOr61wi_yv8oAu_t0zv2-GeDiZcpr22kJ0kr3uVUUpnQUL0XqgYgci7ZL1B01ujnDSEhCNFB730IJwl6yX7_gBhyj_M:1u7u0K:jDRvoje0QscFrZeZr5qcXfPrT3Zr893A2oP4Qky6XFM",
-        "expire_date": "2025-05-08T12:40:28.448"
     }
 },
 {
@@ -814,11 +892,19 @@
     }
 },
 {
+    "model": "sessions.session",
+    "pk": "yqrdo3oz8uipstti28uswpjugpyv4gr0",
+    "fields": {
+        "session_data": ".eJxVjDsOgzAQBa8SuY7Au8bGS5k-Z0Bre4mdRCDxqaLcPUSioX0z8z5qkJi5L2OJZVKdQlfrpkaN9gKmA1JX1fO25n5bZO5L2hVz3gLHl4x_kJ48PqYqTuM6l1D9leqgS3Wfkrxvh3s6yLzkvXaYPAg1rUkM4B0CBiJtQkAR8tGRZds6azxYYeFBgscWCLV34gjU9wdn-z_V:1u8dZS:I_yXtTsAfh93pNax5aNENXVvKKbeQsn4e9PX2zOWwO8",
+        "expire_date": "2025-05-10T13:19:46.411"
+    }
+},
+{
     "model": "tienda.usuario",
     "pk": 1,
     "fields": {
         "password": "pbkdf2_sha256$870000$JjCoHJX8T1MWvmnGZd2MxH$j+BpuO2AG2wdM6yIfJa1wH9XQlNWEW4JSVYJhSlgU8o=",
-        "last_login": "2025-04-24T12:41:19.976",
+        "last_login": "2025-04-29T00:21:30.068",
         "is_superuser": true,
         "username": "nelson",
         "first_name": "",
@@ -858,7 +944,7 @@
     "pk": 3,
     "fields": {
         "password": "pbkdf2_sha256$870000$nBiZWWyruLgnBllmyTq3uH$4Trf7luVQOqizPG+cARJF/HGEDIuSwcbMDtdzMeYY/E=",
-        "last_login": "2025-04-24T12:40:28.413",
+        "last_login": "2025-04-26T13:19:46.347",
         "is_superuser": false,
         "username": "pedro",
         "first_name": "pedro",
@@ -903,20 +989,34 @@
     }
 },
 {
+    "model": "tienda.pieza",
+    "pk": 3,
+    "fields": {
+        "nombre": "Alternador",
+        "version": "1.6",
+        "referencia": "8741565scw",
+        "estado": "R",
+        "descripcion": "Es un alternador bueno para vender.",
+        "marca": "Ford",
+        "precio": 550.0,
+        "anio": 2000
+    }
+},
+{
     "model": "tienda.tienda",
     "pk": 1,
     "fields": {
-        "direccion": "fuentes del sur",
+        "direccion": "Tienda Arinaga",
         "telefono": "04126020288",
         "email": "senior@gmail.com",
-        "vendedor": null
+        "vendedor": 1
     }
 },
 {
     "model": "tienda.tienda",
     "pk": 2,
     "fields": {
-        "direccion": "calle cancionera",
+        "direccion": "Tienda El Sur",
         "telefono": "04126020291",
         "email": "mitienda@gmail.com",
         "vendedor": 1
@@ -926,7 +1026,7 @@
     "model": "tienda.tienda",
     "pk": 3,
     "fields": {
-        "direccion": "Must office put prep",
+        "direccion": "Tienda Vecindario",
         "telefono": "04126020291",
         "email": "senior@gmail.com",
         "vendedor": 1
@@ -936,7 +1036,7 @@
     "model": "tienda.tienda",
     "pk": 4,
     "fields": {
-        "direccion": "Mono del toro",
+        "direccion": "Tienda Las Palmas de Gran Canarias",
         "telefono": "60258748",
         "email": "feche@gmail.com",
         "vendedor": 1
@@ -963,11 +1063,11 @@
 },
 {
     "model": "tienda.inventario",
-    "pk": 1,
+    "pk": 2,
     "fields": {
-        "tienda": 3,
+        "tienda": 1,
         "pieza": 1,
-        "cantidad": 5
+        "cantidad": 4
     }
 }
 ]

@@ -37,10 +37,15 @@ urlpatterns = [
     path('datos-vendedor/<int:id_Datovendedor>',views.datosVendedor_delete,name='datosVendedor_delete'),
     path('datos-vendedor-editar/<int:id_Datovendedor>',views.datosVendedor_editar,name='datosVendedor_editar'),
     
-    #tabla inventario 
-    path('add/inventario', views.agregar_Inventario,name='agregar_Inventario'),
+    #tabla inventario many to many
+    path('listas-productos-tienda', views.lista_ProductosTienda,name='lista_ProductosTienda'),
+    path('add-inventario', views.agregar_Inventario,name='agregar_Inventario'),
+    path('eliminar-inventario/<int:id_Inventario>',views.datosInventario_delete,name='datosInventario_delete'),
+    path('editar-inventario/<int:id_Inventario>', views.editar_Inventario,name='editar_Inventario'),
     
     
 
+    #búsqueda pieza
+    path('buscar-pieza', views.pieza_Buscar, name='pieza_Buscar'),
     
 ]

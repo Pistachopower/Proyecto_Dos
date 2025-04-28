@@ -1,0 +1,23 @@
+{% extends "estructura/principal.html" %}
+
+{% block contenido %}
+
+{% load django_bootstrap5 %}
+
+{% for pieza in piezaEncontrada %}
+<div class="card h-100 shadow-sm">
+<div class="card-body">
+<p class="card-text">{{ pieza.nombre }}</p>
+<p class="card-text">{{ pieza.version }}</p>
+<p class="card-text">{{ pieza.referencia }}</p>
+<span class="text-muted">{{ pieza.precio }} €</span>
+
+{% empty %}
+<p>No hay piezas disponibles.</p>
+{% endfor %}
+
+</div>
+</div>
+
+
+{% endblock %}

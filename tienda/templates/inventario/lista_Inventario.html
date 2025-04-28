@@ -1,26 +1,22 @@
 {% extends "estructura/principal.html" %}
 
 {% block contenido %}
-<li class="nav-item">
-<a class="nav-link" href="{% url 'pieza_Buscar' %}">Buscar pieza</a>
-</li>
-
 <section class="intro my-5">
   <div class="bg-image h-100">
     <div class="mask d-flex align-items-center h-100">
       <div class="container">
         <div class="row justify-content-center">
-          {% for pieza in piezas_mostrar %}
+          {% for registro in inventario %}
           <div class="col-md-4 mb-4">
             <!-- Card for each product (pieza) -->
-            {% include 'piezas/pieza.html' %}
+            {% include 'inventario/inventario.html' %}
           </div>
 
           
           {% empty %}
           <div class="col-12">
             <div class="alert alert-info" role="alert">
-              No hay piezas disponibles en este momento.
+              El inventario no está disponibles en este momento.
             </div>
           </div>
           {% endfor %}
@@ -29,7 +25,4 @@
     </div><!-- /.mask -->
   </div><!-- /.bg-image -->
 </section>
-
-
-
 {% endblock %}

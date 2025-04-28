@@ -185,7 +185,22 @@ class DatosVendedorModelForms(ModelForm):
             required= True,
             empty_label= "Ninguna"
         )
+        
+class DatosInventarioModelForms(ModelForm):
+    class Meta:
+        model = Inventario 
+        fields = ['tienda','pieza','cantidad']  
+        help_texts = {
+            'cantidad': ("Indica la cantidad"),
+        }  
             
+        
+        
+        
+#busqueda de piezas
+class BusquedaPiezaModelForm(forms.Form):  
+    nombre = forms.CharField(required=False, label="Nombre")
+        
         
             
         

@@ -394,16 +394,88 @@ def agregar_Inventario(request):
             if (inventario is None):
                 formulario.save()
                 
+                return redirect ("lista_ProductosTienda")
+                
+                
             else:
                 inventario.cantidad+= formulario.cleaned_data.get("cantidad")
                 
                 inventario.save() 
+                
+                return redirect ("lista_ProductosTienda")
             
         
             
     else:
         formulario= DatosVendedorModelForms(None, request= request)
     return render(request, 'inventario/crear_inventario.html', {'formulario': formulario})
+
+
+def lista_ProductosTienda(request):
+    inventario= Inventario.objects.prefetch_related("tienda", "pieza").all()
+    return render(request, 'inventario/lista_Inventario.html', {'inventario': inventario})
+
+
+def editar_Inventario(request, id_Inventario):
+    inventario= Inventario.objects.prefetch_related("tienda", "pieza").all()
+    inventarioQuery= inventario.filter(id=id_Inventario).first()
+    
+    if request.method == "POST":
+        formulario= DatosInventarioModelForms(request.POST, instance=inventarioQuery)
+        
+        if formulario.is_valid():
+            
+            
+            formulario.save()
+            messages.success(request, 'Editada la cantidad') 
+            
+            return redirect ("lista_ProductosTienda")
+
+    
+    else:
+        formulario= DatosInventarioModelForms(instance=inventarioQuery)
+
+    
+    return render(request, 'inventario/editar_Inventario.html', {'formulario': formulario, 'inventarioQuery': inventarioQuery})
+
+
+def datosInventario_delete(request, id_Inventario):
+    inventario= Inventario.objects.prefetch_related("tienda", "pieza").all()
+    inventarioQuery= inventario.filter(id=id_Inventario).first()
+    
+    try:
+        inventarioQuery.delete()  
+        messages.success(request, "Se ha eliminado los datos del inventario.")
+        
+        return redirect ("lista_ProductosTienda")
+        
+    except Exception as error:
+        print(error)
+
+
+def pieza_Buscar(request):
+    
+    
+    if request.GET:
+        formulario = BusquedaPiezaModelForm(request.GET)
+        
+        if formulario.is_valid():
+            pieza= Pieza.objects.all() 
+            
+            # Obtenemos el nombre del formulario
+            nombre = formulario.cleaned_data.get('nombre')
+            
+            # Filtramos las piezas por nombre
+            piezaEncontrada= pieza.filter(nombre__icontains= nombre)
+        
+            return render(request, 'piezas/resultado_Busqueda.html',{"piezaEncontrada":piezaEncontrada})
+
+    else:
+        formulario = BusquedaPiezaModelForm()
+        
+    return render(request, 'piezas/pieza_Busqueda.html', {'formulario': formulario})
+        
+        
 
 
 #Pagina de error 

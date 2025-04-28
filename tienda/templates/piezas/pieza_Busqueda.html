@@ -1,0 +1,18 @@
+{% extends "estructura/principal.html" %}
+
+{% block contenido %}
+{% load django_bootstrap5 %}
+
+    <form action="{% url 'pieza_Buscar' %}" method="GET" enctype="multipart/form-data">
+        
+        {% csrf_token %}
+
+        <div class="mb-4">
+            {% bootstrap_field formulario.nombre show_label=True %}
+        </div>
+
+        <button type="submit" class="btn btn-primary">Buscar pieza</button>
+        
+    </form>
+
+{% endblock %}
