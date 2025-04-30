@@ -1,9 +1,10 @@
-{% extends "estructura/principal.html" %}
+{% extends "estructura/principal.html" %} 
 
 {% block contenido %}
 <li class="nav-item">
-<a class="nav-link" href="{% url 'pieza_Buscar' %}">Buscar pieza</a>
+  <a class="nav-link" href="{% url 'pieza_Buscar' %}">Buscar pieza</a>
 </li>
+
 
 <section class="intro my-5">
   <div class="bg-image h-100">
@@ -16,7 +17,6 @@
             {% include 'piezas/pieza.html' %}
           </div>
 
-          
           {% empty %}
           <div class="col-12">
             <div class="alert alert-info" role="alert">
@@ -24,12 +24,14 @@
             </div>
           </div>
           {% endfor %}
-        </div><!-- /.row -->
-      </div><!-- /.container -->
-    </div><!-- /.mask -->
-  </div><!-- /.bg-image -->
+        </div>
+        <!-- /.row -->
+      </div>
+      <!-- /.container -->
+    </div>
+    <!-- /.mask -->
+  </div>
+  <!-- /.bg-image -->
 </section>
-
-
 
 {% endblock %}

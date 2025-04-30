@@ -153,7 +153,7 @@ class DatosVendedorModelForm(ModelForm):
     
     
     
-class DatosVendedorModelForms(ModelForm):
+class DatosVendedorModelForms_Editar(ModelForm):
     class Meta:
         model = DatosVendedor 
         fields = ['direccion', 'facturacion']  

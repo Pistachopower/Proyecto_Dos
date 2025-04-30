@@ -1,18 +1,31 @@
-{% extends "estructura/principal.html" %}
+{% extends "estructura/principal.html" %} 
 
 {% block contenido %}
 {% load django_bootstrap5 %}
 
-    <form action="{% url 'pieza_Buscar' %}" method="GET" enctype="multipart/form-data">
-        
-        {% csrf_token %}
+<form
+  action="{% url 'pieza_Buscar' %}"
+  method="GET"
+  enctype="multipart/form-data"
+>
+  {% csrf_token %}
 
-        <div class="mb-4">
-            {% bootstrap_field formulario.nombre show_label=True %}
-        </div>
+  <div class="mb-4">
+    {% bootstrap_field formulario.nombre show_label=True %}
+    {% comment %} <input
+      type="text"
+      name="nombre"
+      class="form-control"
+      id="nombre"
+      placeholder="Nombre de la pieza"
+      required
+    />
+    <label for="nombre" class="form-label">Nombre de la pieza</label> {% endcomment %}
+  </div>
 
-        <button type="submit" class="btn btn-primary">Buscar pieza</button>
-        
-    </form>
+  <button type="submit" class="btn btn-primary">Buscar pieza</button>
+</form>
 
 {% endblock %}
+
+
