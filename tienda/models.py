@@ -88,4 +88,25 @@ class Inventario(models.Model):
     cantidad= models.IntegerField()
     
     
+class Pedido(models.Model):
+    #Cada pedido pertenece a un solo cliente, pero un cliente puede tener muchos pedidos
+    cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
+    
+    #Un pedido tiene muchas piezas y una pieza puede estar en varios pedidos
+    piezas = models.ManyToManyField(Pieza)
+    fecha_pedido = models.DateTimeField(auto_now_add=True)
+    
+    ESTADO = [
+        ('PEN', 'Pendiente'),
+        ('ENV', 'Enviado'),
+        ('ENT', 'Entregado'),
+        ('CAN', 'Cancelado')
+    ]
+    estado = models.CharField(max_length=3, choices=ESTADO, default='PEN')
+
+    def __str__(self):
+        return f"Pedido #{self.id} - Cliente: {self.cliente.usuario.username}"
+
+    
+    
     

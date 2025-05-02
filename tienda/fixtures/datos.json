@@ -247,6 +247,45 @@
     }
 },
 {
+    "model": "admin.logentry",
+    "pk": 20,
+    "fields": {
+        "action_time": "2025-04-30T13:03:10.807",
+        "user": 1,
+        "content_type": 10,
+        "object_id": "3",
+        "object_repr": "nelson",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 21,
+    "fields": {
+        "action_time": "2025-04-30T13:04:48.455",
+        "user": 1,
+        "content_type": 10,
+        "object_id": "3",
+        "object_repr": "nelson",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 22,
+    "fields": {
+        "action_time": "2025-04-30T13:06:12.767",
+        "user": 1,
+        "content_type": 10,
+        "object_id": "4",
+        "object_repr": "nelson",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
     "model": "auth.permission",
     "pk": 1,
     "fields": {
@@ -715,6 +754,42 @@
     }
 },
 {
+    "model": "auth.permission",
+    "pk": 53,
+    "fields": {
+        "name": "Can add pedido",
+        "content_type": 14,
+        "codename": "add_pedido"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 54,
+    "fields": {
+        "name": "Can change pedido",
+        "content_type": 14,
+        "codename": "change_pedido"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 55,
+    "fields": {
+        "name": "Can delete pedido",
+        "content_type": 14,
+        "codename": "delete_pedido"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 56,
+    "fields": {
+        "name": "Can view pedido",
+        "content_type": 14,
+        "codename": "view_pedido"
+    }
+},
+{
     "model": "auth.group",
     "pk": 1,
     "fields": {
@@ -852,6 +927,14 @@
     }
 },
 {
+    "model": "contenttypes.contenttype",
+    "pk": 14,
+    "fields": {
+        "app_label": "tienda",
+        "model": "pedido"
+    }
+},
+{
     "model": "sessions.session",
     "pk": "337iuh2c17oe6uzdp35kv3k3rho21p5b",
     "fields": {
@@ -893,10 +976,10 @@
 },
 {
     "model": "sessions.session",
-    "pk": "yqrdo3oz8uipstti28uswpjugpyv4gr0",
+    "pk": "wd0sjbq3kbal3x7e421fv6y3n197tfc5",
     "fields": {
-        "session_data": ".eJxVjDsOgzAQBa8SuY7Au8bGS5k-Z0Bre4mdRCDxqaLcPUSioX0z8z5qkJi5L2OJZVKdQlfrpkaN9gKmA1JX1fO25n5bZO5L2hVz3gLHl4x_kJ48PqYqTuM6l1D9leqgS3Wfkrxvh3s6yLzkvXaYPAg1rUkM4B0CBiJtQkAR8tGRZds6azxYYeFBgscWCLV34gjU9wdn-z_V:1u8dZS:I_yXtTsAfh93pNax5aNENXVvKKbeQsn4e9PX2zOWwO8",
-        "expire_date": "2025-05-10T13:19:46.411"
+        "session_data": ".eJxVjDsOwyAQBa8SUUeYBYPBZfqcAS2wDiQRSP5UUe6eWHLj9s3M-7CJYkZfaomlsZEp0Ym-k0LqC-gRFLsyj9ua_bbQ7EvalfMWML6o7iA9sT4aj62ucwl8V_hBF35vid63wz0dZFzyvzYyWSDXDyohgDUSZHBOqBAkkbPROI16MFpZ0ISEEwUrB3BSWEPGAfv-AGGnP8w:1uA7Fn:RXU3u7AB94l98xqZIHsWcSC3980qLJoOdogIAMITVQk",
+        "expire_date": "2025-05-14T15:13:35.141"
     }
 },
 {
@@ -904,7 +987,7 @@
     "pk": 1,
     "fields": {
         "password": "pbkdf2_sha256$870000$JjCoHJX8T1MWvmnGZd2MxH$j+BpuO2AG2wdM6yIfJa1wH9XQlNWEW4JSVYJhSlgU8o=",
-        "last_login": "2025-04-29T00:21:30.068",
+        "last_login": "2025-04-30T13:03:25.440",
         "is_superuser": true,
         "username": "nelson",
         "first_name": "",
@@ -923,7 +1006,7 @@
     "pk": 2,
     "fields": {
         "password": "pbkdf2_sha256$870000$ItretZb7lQVbi4cG8g7c60$EGhdAcnW2O7YYNITDtuEJM63YE3dDnRic+n/uq6yQIM=",
-        "last_login": "2025-04-23T19:40:18.758",
+        "last_login": "2025-04-30T11:34:11.980",
         "is_superuser": false,
         "username": "maria",
         "first_name": "maria",
@@ -944,7 +1027,7 @@
     "pk": 3,
     "fields": {
         "password": "pbkdf2_sha256$870000$nBiZWWyruLgnBllmyTq3uH$4Trf7luVQOqizPG+cARJF/HGEDIuSwcbMDtdzMeYY/E=",
-        "last_login": "2025-04-26T13:19:46.347",
+        "last_login": "2025-04-30T15:13:35.103",
         "is_superuser": false,
         "username": "pedro",
         "first_name": "pedro",
@@ -953,6 +1036,27 @@
         "is_staff": false,
         "is_active": true,
         "date_joined": "2025-04-23T11:25:24.340",
+        "rol": 3,
+        "groups": [
+            2
+        ],
+        "user_permissions": []
+    }
+},
+{
+    "model": "tienda.usuario",
+    "pk": 4,
+    "fields": {
+        "password": "pbkdf2_sha256$870000$l0j1WWZxzVUq7JhncfJjzj$CzXgeDXvKQdO1vngmQPb9V+tn6EKxIh5mZk8yhNsUr4=",
+        "last_login": "2025-04-30T12:59:47.289",
+        "is_superuser": false,
+        "username": "hector",
+        "first_name": "hector",
+        "last_name": "martinez",
+        "email": "senior@gmail.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2025-04-30T12:59:47.023",
         "rol": 3,
         "groups": [
             2
@@ -972,6 +1076,20 @@
     "pk": 1,
     "fields": {
         "usuario": 3
+    }
+},
+{
+    "model": "tienda.vendedor",
+    "pk": 2,
+    "fields": {
+        "usuario": 4
+    }
+},
+{
+    "model": "tienda.vendedor",
+    "pk": 4,
+    "fields": {
+        "usuario": 1
     }
 },
 {
@@ -1043,6 +1161,16 @@
     }
 },
 {
+    "model": "tienda.tienda",
+    "pk": 5,
+    "fields": {
+        "direccion": "Calle Sanchez Pijúan",
+        "telefono": "60202975",
+        "email": "pj@gmail.com",
+        "vendedor": 1
+    }
+},
+{
     "model": "tienda.cuentabancaria",
     "pk": 11,
     "fields": {
@@ -1068,6 +1196,15 @@
         "tienda": 1,
         "pieza": 1,
         "cantidad": 4
+    }
+},
+{
+    "model": "tienda.inventario",
+    "pk": 3,
+    "fields": {
+        "tienda": 2,
+        "pieza": 3,
+        "cantidad": 5
     }
 }
 ]

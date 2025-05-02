@@ -11,3 +11,9 @@
 - bien echo los crud
 
 - búsqueda de productos por nombre
+
+
+
+
+Pendiente por hacer:
+Analizar bien la relacion nueva de pedido, pieza y usuario 
