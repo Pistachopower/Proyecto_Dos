@@ -226,8 +226,8 @@ def tienda_editar(request, id_tienda):
 
 
 # modelo cliente
+@permission_required("tienda.view_cliente")
 def perfil_cliente(request, id_usuario):
-    # agregar
 
     if request.user.cliente.id == id_usuario:
         cliente = Cliente.objects.get(id=id_usuario)
@@ -250,7 +250,7 @@ def ver_detalle_cuentaBancaria_Cliente(request, id_usuario):
         {"cuentaBancariaCliente": cuentaBancariaCliente},
     )
 
-
+@permission_required("tienda.add_cuentabancaria")
 def cuentaBancaria_create(request):
     if request.method == "POST":
         formulario = CuentaBancariaModelForm(request.POST)
@@ -288,7 +288,7 @@ def cuentaBancaria_delete(request, id_cuenta):
 
     return redirect("ver_detalle_cuentaBancaria_Cliente", id_usuario=cuenta.cliente.id)
 
-
+@permission_required("tienda.change_cuentabancaria")
 def cuentaBancaria_editar(request, id_cuentaaBancaria):
     cuentaBancariaQuery = CuentaBancaria.objects.get(id=id_cuentaaBancaria)
 
@@ -317,7 +317,7 @@ def cuentaBancaria_editar(request, id_cuentaaBancaria):
     )
 
 
-# modelo DatosVendedor
+@permission_required("tienda.view_vendedor")
 def perfil_vendedor(request, id_usuario):
     if request.user.vendedor.id == id_usuario:
         vendedor = Vendedor.objects.get(id=id_usuario)
@@ -325,7 +325,7 @@ def perfil_vendedor(request, id_usuario):
     else:
         raise Http404()
 
-
+@permission_required("tienda.view_vendedor")
 def ver_detalle_datosVendedor(request, id_usuario):
     # Obtenemos el cliente asociado al usuario
     vendedor = Vendedor.objects.filter(usuario_id=id_usuario).first()
@@ -340,7 +340,7 @@ def ver_detalle_datosVendedor(request, id_usuario):
     )
 
 
-# @permission_required('tienda.create_datosvendedor')
+@permission_required('tienda.create_datosvendedor')
 def datosVendedor_create(request):
     if request.method == "POST":
         formulario = DatosVendedorModelForm(request.POST)
@@ -379,6 +379,7 @@ def datosVendedor_delete(request, id_Datovendedor):
     )
 
 
+@permission_required("tienda.change_datosvendedor")
 def datosVendedor_editar(request, id_Datovendedor):
     datosVendedorQuery = DatosVendedor.objects.filter(id=id_Datovendedor).first()
 
@@ -439,14 +440,14 @@ def agregar_Inventario(request):
         request, "inventario/crear_inventario.html", {"formulario": formulario}
     )
 
-
+@permission_required("tienda.view_inventario")
 def lista_ProductosTienda(request):
     inventario = Inventario.objects.prefetch_related("tienda", "pieza").all()
     return render(
         request, "inventario/lista_Inventario.html", {"inventario": inventario}
     )
 
-
+@permission_required("tienda.view_inventario")
 def editar_Inventario(request, id_Inventario):
     inventario = Inventario.objects.prefetch_related("tienda", "pieza").all()
     inventarioQuery = inventario.filter(id=id_Inventario).first()
@@ -470,7 +471,7 @@ def editar_Inventario(request, id_Inventario):
         {"formulario": formulario, "inventarioQuery": inventarioQuery},
     )
 
-
+@permission_required("tienda.delete_inventario")
 def datosInventario_delete(request, id_Inventario):
     inventario = Inventario.objects.prefetch_related("tienda", "pieza").all()
     inventarioQuery = inventario.filter(id=id_Inventario).first()
