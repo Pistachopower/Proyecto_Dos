@@ -20,6 +20,7 @@ urlpatterns = [
     path('tienda',views.lista_tienda,name='lista_tienda'),
     path('crear-tienda',views.tienda_create,name='tienda_create'),
     path('tienda/<int:id_tienda>',views.dame_tienda,name='dame_tienda'),
+    path('tienda-eliminar/<int:id_tienda>',views.tienda_eliminar,name='tienda_eliminar'),
     path('tienda-editar/<int:id_tienda>',views.tienda_editar,name='tienda_editar'),
     
     

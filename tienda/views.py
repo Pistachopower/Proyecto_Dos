@@ -119,6 +119,25 @@ def pieza_editar(request, id_pieza):
     )
 
 
+@permission_required("tienda.delete_tienda")
+def tienda_eliminar(request, id_tienda):
+    tienda = Tienda.objects.get(id=id_tienda)
+
+    try:
+        tienda.delete()
+        messages.success(
+            request, "Se ha eliminado la pieza " + tienda.direccion + " correctamente"
+        )
+
+        return redirect("lista_tienda")
+    
+    
+    except Exception as error:
+        print(error)
+    return redirect("lista_pieza")
+
+
+
 @permission_required("tienda.delete_pieza")
 def pieza_eliminar(request, id_pieza):
     pieza = Pieza.objects.get(id=id_pieza)
@@ -141,34 +160,6 @@ def lista_tienda(request):
     tienda = Tienda.objects.all()
     return render(request, "tienda/lista_tienda.html", {"tienda_mostrar": tienda})
 
-
-# @permission_required('tienda.add_tienda')
-# def tienda_create(request):
-
-#     if request.method == "POST":
-#         formulario= TiendaModelForm(request.POST)
-
-#         if formulario.is_valid():
-#             print("Es valido")
-#             formulario.save()
-#             messages.success(request, "Se ha creado la tienda")
-#             return redirect("lista_tienda")
-#     else:
-#         formulario= TiendaModelForm()
-#     return render(request, 'tienda/tienda_form.html',{'formulario':formulario})
-
-
-#     if request.method == "POST":
-#         formulario= TiendaModelForm(request.POST)
-
-#         if formulario.is_valid():
-#             print("Es valido")
-#             formulario.save()
-#             messages.success(request, "Se ha creado la tienda")
-#             return redirect("lista_tienda")
-#     else:
-#         formulario= TiendaModelForm()
-#     return render(request, 'tienda/tienda_form.html',{'formulario':formulario})
 
 
 @permission_required("tienda.add_tienda")
