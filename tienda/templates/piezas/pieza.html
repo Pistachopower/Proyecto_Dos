@@ -5,9 +5,10 @@
       <h5 class="card-title">
           <a href="{% url 'dame_producto' pieza.id %}" class="text-decoration-none">{{ pieza.nombre }}</a>
       </h5>
-      <p class="card-text">{{ pieza.marca }}</p>
+      <p class="card-text">Marca: {{ pieza.marca }}</p>
+      <p class="card-text">Referencia: {{ pieza.referencia }}</p>
       <p class="card-text">{{ pieza.descripcion|truncatewords:500 }}</p>
-      <span class="text-muted">{{ pieza.precio }} €</span>
+      <span class="text-muted">Precio: {{ pieza.precio }} €</span>
   </div>
 
   {% if perms.tienda.change_pieza %}

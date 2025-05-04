@@ -36,6 +36,10 @@
                         {% if perms.tienda.view_pieza %}
                         <li><a class="dropdown-item" href="{% url 'lista_pieza' %}">Ver piezas</a></li>
                         {% endif %}
+
+                        {% if perms.tienda.view_pieza %}
+                        <li><a class="dropdown-item" href="{% url 'pieza_Buscar' %}">Buscar piezas</a></li>
+                        {% endif %}
         
                         {% if perms.tienda.add_pieza %}
                         <li><a class="dropdown-item" href="{% url 'pieza_create' %}">Crear pieza</a></li>

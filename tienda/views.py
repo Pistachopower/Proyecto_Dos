@@ -78,7 +78,7 @@ def pieza_create(request):
             print("Es valido")
             formulario.save()
 
-            messages.success(request, "Se ha editado la pieza")
+            messages.success(request, "Se ha añadido la pieza")
 
             return redirect("lista_pieza")
     else:
@@ -161,7 +161,6 @@ def lista_tienda(request):
     return render(request, "tienda/lista_tienda.html", {"tienda_mostrar": tienda})
 
 
-
 @permission_required("tienda.add_tienda")
 def tienda_create(request):
     if request.method == "POST":
@@ -172,11 +171,13 @@ def tienda_create(request):
                 direccion=formulario.cleaned_data.get("direccion"),
                 telefono=formulario.cleaned_data.get("telefono"),
                 email=formulario.cleaned_data.get("email"),
-                vendedor=request.user.vendedor,
-            )
-        tienda.save()
-        messages.success(request, "Agregada tienda")
-        return redirect("lista_tienda")
+                vendedor=request.user.vendedor,)
+            tienda.save()
+            messages.success(request, "Agregada tienda")
+            return redirect("lista_tienda")
+        else:
+            # Si el formulario no es válido, vuelve a renderizar la página con los errores
+            return render(request, "tienda/crear_tienda.html", {"formulario": formulario})
 
     else:
         formulario = TiendaModelForm()
@@ -258,6 +259,9 @@ def cuentaBancaria_create(request):
             return redirect(
                 "ver_detalle_cuentaBancaria_Cliente", id_usuario=request.user.id
             )
+            
+        else:
+            return render(request, "cliente/crear_cuentaBancaria.html", {"formulario": formulario})
     else:
         formulario = CuentaBancariaModelForm()
     return render(
@@ -444,7 +448,7 @@ def editar_Inventario(request, id_Inventario):
     inventarioQuery = inventario.filter(id=id_Inventario).first()
 
     if request.method == "POST":
-        formulario = DatosInventarioModelForms(request.POST, instance=inventarioQuery)
+        formulario = DatosInventarioEditarModelForms(request.POST, instance=inventarioQuery)
 
         if formulario.is_valid():
 
@@ -454,7 +458,7 @@ def editar_Inventario(request, id_Inventario):
             return redirect("lista_ProductosTienda")
 
     else:
-        formulario = DatosInventarioModelForms(instance=inventarioQuery)
+        formulario = DatosInventarioEditarModelForms(instance=inventarioQuery)
 
     return render(
         request,

@@ -3,29 +3,28 @@
 {% block contenido %}
 {% load django_bootstrap5 %}
 
-<form
-  action="{% url 'pieza_Buscar' %}"
-  method="GET"
-  enctype="multipart/form-data"
->
-  {% csrf_token %}
+<div class="container my-5">
+  <div class="card shadow-sm mx-auto" style="max-width: 600px;">
+    <div class="card-header bg-primary text-white">
+      Buscar pieza
+    </div>
+    <div class="card-body">
+      <form
+        action="{% url 'pieza_Buscar' %}"
+        method="GET"
+        enctype="multipart/form-data"
+      >
+        {% csrf_token %}
 
-  <div class="mb-4">
-    {% bootstrap_field formulario.nombre show_label=True %}
-    {% comment %} <input
-      type="text"
-      name="nombre"
-      class="form-control"
-      id="nombre"
-      placeholder="Nombre de la pieza"
-      required
-    />
-    <label for="nombre" class="form-label">Nombre de la pieza</label> {% endcomment %}
+        <div class="mb-3">
+          {% bootstrap_field formulario.nombre show_label=True %}
+        </div>
+
+        <button type="submit" class="btn btn-outline-primary">
+          <i class="bi bi-search"></i> Buscar
+        </button>
+      </form>
+    </div>
   </div>
-
-  <button type="submit" class="btn btn-primary">Buscar pieza</button>
-</form>
-
+</div>
 {% endblock %}
-
-

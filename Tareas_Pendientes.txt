@@ -16,4 +16,4 @@
 
 
 Pendiente por hacer:
-Analizar bien la relacion nueva de pedido, pieza y usuario 
+Controlar los errores en los formularios

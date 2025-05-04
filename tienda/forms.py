@@ -54,6 +54,15 @@ class PiezaModelForm(ModelForm):
         precio = self.cleaned_data.get('precio')
         anio= self.cleaned_data.get('anio')
         
+        
+        compruebaPieza= Pieza.objects.filter(referencia=referencia).first()
+        
+        if compruebaPieza is not None:
+            if self.instance is not None and compruebaPieza.id == self.instance.id:
+                pass
+            else:
+                self.add_error('referencia', 'Ya existe una pieza con esa referencia')
+        
         if len(nombre) < 3:
             self.add_error('nombre','Al menos debes indicar 3 caracteres')
             
@@ -78,7 +87,7 @@ class PiezaModelForm(ModelForm):
         #Siempre devolvemos el conjunto de datos.
         return self.cleaned_data            
         
-        
+       
 class TiendaModelForm(ModelForm):
     class Meta:   
         model = Tienda
@@ -91,6 +100,15 @@ class TiendaModelForm(ModelForm):
         telefono = self.cleaned_data.get('telefono')
         email = self.cleaned_data.get('email')
         
+        compruebaTienda = Tienda.objects.filter(telefono=telefono).first()
+        
+        if compruebaTienda is not None:
+            if self.instance is not None and compruebaTienda.id == self.instance.id:
+                pass
+            else:
+                self.add_error('telefono', 'Ya existe un número de teléfono con esa tienda')
+        
+  
         if len(direccion) < 5: 
             self.add_error('direccion','Al menos debes indicar 5 caracteres')
             
@@ -119,10 +137,18 @@ class CuentaBancariaModelForm(ModelForm):
     def clean(self):
         super().clean() 
         
-        ibam = self.cleaned_data.get('iban')
+        iban = self.cleaned_data.get('iban')
         banco = self.cleaned_data.get('banco')
+        
+        compruebaCuenta = CuentaBancaria.objects.filter(iban=iban).first()
+        
+        if compruebaCuenta is not None:
+            if self.instance is not None and compruebaCuenta.id == self.instance.id:
+                pass
+            else:
+                self.add_error('iban', 'Ya existe una cuenta bancaria con ese IBAN')
                 
-        if len(ibam) < 22 or len(ibam) > 34:
+        if len(iban) < 22 or len(iban) > 34:
             self.add_error('iban', 'El IBAN debe tener entre 15 y 34 caracteres')
             
         if len(banco) < 3:
@@ -178,6 +204,8 @@ class DatosVendedorModelForms(ModelForm):
     def __init__(self, *args, **kwargs):
         self.request= kwargs.pop("request")
         super(DatosVendedorModelForms, self).__init__(*args, **kwargs)
+        
+        #hacemos un filtro para que solo vea las tiendas que le pertenecen al vendedor
         tiendasDisponibles= Tienda.objects.filter(vendedor_id= self.request.user.vendedor).all()
         self.fields["tienda"]= forms.ModelChoiceField(
             queryset= tiendasDisponibles, 
@@ -186,7 +214,7 @@ class DatosVendedorModelForms(ModelForm):
             empty_label= "Ninguna"
         )
         
-class DatosInventarioModelForms(ModelForm):
+class DatosInventarioEditarModelForms(ModelForm):
     class Meta:
         model = Inventario 
         fields = ['tienda','pieza','cantidad']  
@@ -200,6 +228,8 @@ class DatosInventarioModelForms(ModelForm):
 #busqueda de piezas
 class BusquedaPiezaModelForm(forms.Form):  
     nombre = forms.CharField(required=False, label="Nombre")
+    
+    
         
         
             

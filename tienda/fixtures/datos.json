@@ -286,6 +286,110 @@
     }
 },
 {
+    "model": "admin.logentry",
+    "pk": 23,
+    "fields": {
+        "action_time": "2025-05-02T19:35:57.166",
+        "user": 1,
+        "content_type": 3,
+        "object_id": "2",
+        "object_repr": "vendedores",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Permissions\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 24,
+    "fields": {
+        "action_time": "2025-05-02T19:36:28.410",
+        "user": 1,
+        "content_type": 3,
+        "object_id": "2",
+        "object_repr": "vendedores",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Permissions\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 25,
+    "fields": {
+        "action_time": "2025-05-02T19:51:56.824",
+        "user": 1,
+        "content_type": 3,
+        "object_id": "1",
+        "object_repr": "clientes",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Permissions\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 26,
+    "fields": {
+        "action_time": "2025-05-02T19:57:01.858",
+        "user": 1,
+        "content_type": 3,
+        "object_id": "1",
+        "object_repr": "clientes",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Permissions\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 27,
+    "fields": {
+        "action_time": "2025-05-04T15:23:20.721",
+        "user": 1,
+        "content_type": 6,
+        "object_id": "4",
+        "object_repr": "Caja de cambio",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 28,
+    "fields": {
+        "action_time": "2025-05-04T15:56:22.838",
+        "user": 1,
+        "content_type": 11,
+        "object_id": "2",
+        "object_repr": "Tienda El Sur",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 29,
+    "fields": {
+        "action_time": "2025-05-04T16:51:26.979",
+        "user": 1,
+        "content_type": 3,
+        "object_id": "1",
+        "object_repr": "clientes",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Permissions\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 30,
+    "fields": {
+        "action_time": "2025-05-04T16:54:00.180",
+        "user": 1,
+        "content_type": 3,
+        "object_id": "2",
+        "object_repr": "vendedores",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Permissions\"]}}]"
+    }
+},
+{
     "model": "auth.permission",
     "pk": 1,
     "fields": {
@@ -795,6 +899,7 @@
     "fields": {
         "name": "clientes",
         "permissions": [
+            32,
             33,
             34,
             36,
@@ -818,7 +923,8 @@
             22,
             24,
             41,
-            44
+            44,
+            40
         ]
     }
 },
@@ -936,6 +1042,22 @@
 },
 {
     "model": "sessions.session",
+    "pk": "23co8hl0wmb5kwgs2t53bliq9t2isquv",
+    "fields": {
+        "session_data": ".eJxVjDsOwyAQBa8SUUcYFoPBZfqcAS2wDiQRSP5UUe4eR3Lj9s3M-7CJYkZfaomlsZGJvhO6AwH6Is2ogV2Zx23Nflto9iXtijpvAeOL6h-kJ9ZH47HVdS6B_xV-0IXfW6L37XBPBxmXvNcGkpXk-kEllNIakBCcEyoEIHI2GqdRD0YrKzUh4UTBwiAdCGvIOMm-P2XSP9I:1uBaiB:0Oo__Vb5XoSWeTdZynUz6Vn7o4ea9hNjfoxAZD6qWXs",
+        "expire_date": "2025-05-18T16:52:59.634"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "31nt6ftpgqtzy9ldx7wj2mezpege9cqr",
+    "fields": {
+        "session_data": ".eJxVjDkOwjAQRa-CXCPHS8ZLSnrOYE2cMTYgW8pSIe5OkNKk_e-9_2GJYsZQaomlsYEJ1QnolFBwkX4Aw64s4LbmsC00hzLtijpvI8YX1T-YnlgfjcdW17mM_K_wgy783iZ63w73dJBxyXtNhqRxSIC9tVIrZZ02AKSjMDbFCNanZKwD53stvSBnFKooUfuEYIh9f2ejP-I:1uAucn:hD1QU9LnAPZoPR76LrV5CnrtgPFED8JvQKqZ2QwLU3U",
+        "expire_date": "2025-05-16T19:56:37.390"
+    }
+},
+{
+    "model": "sessions.session",
     "pk": "337iuh2c17oe6uzdp35kv3k3rho21p5b",
     "fields": {
         "session_data": ".eJxVjEEOwiAQRe_C2hCGglCX7nsGMswMUjVtUtqV8e7apAvd_vfef6mE21rT1mRJI6uLAnX63TLSQ6Yd8B2n26xpntZlzHpX9EGbHmaW5_Vw_w4qtvqtOyquA6RsATruUYjZY_BIAY2xAc7G5j56n4WpxGJ9dCQC5MCEHJx6fwD6HjhI:1u9Wqw:h7gZ3eej6elpg2vFRLvIsWwmWgzXA54lnm8d6jrVqXQ",
@@ -956,6 +1078,30 @@
     "fields": {
         "session_data": ".eJxVjMsOwiAQRX_FsDaU4VFql-79BjIMIKiBpI-V8d9tky50e8-5580crkt26xwnVwIbGbDz7-aRnrHuIDyw3hunVpepeL4r_KAzv7UQX9fD_QtknPP2VpS0AiQvAVS4YKQQDFqDZFEIaaEX0l8GY3wMlIYkzaApRiANwnqrt2iKlNGVWqi0rShVJ3QnhTQn6Efo2ecLHJJBHw:1u7au8:9fJTPJ5BjFe4kHhuSZOxCQhsC1ZKRWmZIE0nl_GTjaY",
         "expire_date": "2025-05-07T16:16:48.752"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "ely9wuvph0ykvnpobl34sbtzv01q978p",
+    "fields": {
+        "session_data": ".eJxVjEEOwiAQRe_C2hCGglCX7nsGMswMUjVtUtqV8e7apAvd_vfef6mE21rT1mRJI6uLAnX63TLSQ6Yd8B2n26xpntZlzHpX9EGbHmaW5_Vw_w4qtvqtOyquA6RsATruUYjZY_BIAY2xAc7G5j56n4WpxGJ9dCQC5MCEHJx6fwD6HjhI:1uBZp8:1LK9Fa2cz3P2LesC36mskKXq-wBwqIF3yX5EQ0TDx9A",
+        "expire_date": "2025-05-18T15:56:06.100"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "le9ldy98zgrebbl5txmlf7w91rgr7cd3",
+    "fields": {
+        "session_data": "eyJmZWNoYV9pbmljaW8iOiIwMi8wNS8yMDI1IDE5OjMwIn0:1uAuDS:cUm3NaNWIWiLu_JRCitMOTtTC1GUkgJ1KFyPhZg9Gwo",
+        "expire_date": "2025-05-16T19:30:26.455"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "lxkyckxbgszkknia1v979lsk6nctntak",
+    "fields": {
+        "session_data": ".eJxVjEEOwiAQRe_C2hCGglCX7nsGMswMUjVtUtqV8e7apAvd_vfef6mE21rT1mRJI6uLAnX63TLSQ6Yd8B2n26xpntZlzHpX9EGbHmaW5_Vw_w4qtvqtOyquA6RsATruUYjZY_BIAY2xAc7G5j56n4WpxGJ9dCQC5MCEHJx6fwD6HjhI:1uBZJE:gsQ032rJ5CqzEgeO5wbbHHgeslnaEVyRvfDeVGBr0bE",
+        "expire_date": "2025-05-18T15:23:08.341"
     }
 },
 {
@@ -987,7 +1133,7 @@
     "pk": 1,
     "fields": {
         "password": "pbkdf2_sha256$870000$JjCoHJX8T1MWvmnGZd2MxH$j+BpuO2AG2wdM6yIfJa1wH9XQlNWEW4JSVYJhSlgU8o=",
-        "last_login": "2025-04-30T13:03:25.440",
+        "last_login": "2025-05-04T15:56:06.065",
         "is_superuser": true,
         "username": "nelson",
         "first_name": "",
@@ -1006,7 +1152,7 @@
     "pk": 2,
     "fields": {
         "password": "pbkdf2_sha256$870000$ItretZb7lQVbi4cG8g7c60$EGhdAcnW2O7YYNITDtuEJM63YE3dDnRic+n/uq6yQIM=",
-        "last_login": "2025-04-30T11:34:11.980",
+        "last_login": "2025-05-04T16:48:23.579",
         "is_superuser": false,
         "username": "maria",
         "first_name": "maria",
@@ -1027,7 +1173,7 @@
     "pk": 3,
     "fields": {
         "password": "pbkdf2_sha256$870000$nBiZWWyruLgnBllmyTq3uH$4Trf7luVQOqizPG+cARJF/HGEDIuSwcbMDtdzMeYY/E=",
-        "last_login": "2025-04-30T15:13:35.103",
+        "last_login": "2025-05-04T16:52:59.598",
         "is_superuser": false,
         "username": "pedro",
         "first_name": "pedro",
@@ -1121,23 +1267,17 @@
     }
 },
 {
-    "model": "tienda.tienda",
-    "pk": 1,
+    "model": "tienda.pieza",
+    "pk": 5,
     "fields": {
-        "direccion": "Tienda Arinaga",
-        "telefono": "04126020288",
-        "email": "senior@gmail.com",
-        "vendedor": 1
-    }
-},
-{
-    "model": "tienda.tienda",
-    "pk": 2,
-    "fields": {
-        "direccion": "Tienda El Sur",
-        "telefono": "04126020291",
-        "email": "mitienda@gmail.com",
-        "vendedor": 1
+        "nombre": "Caja de cambio",
+        "version": "1.5",
+        "referencia": "00055448l",
+        "estado": "R",
+        "descripcion": "Es una pieza que está en buenas condiciones.",
+        "marca": "Toyota",
+        "precio": 550.0,
+        "anio": 2000
     }
 },
 {
@@ -1171,6 +1311,16 @@
     }
 },
 {
+    "model": "tienda.tienda",
+    "pk": 6,
+    "fields": {
+        "direccion": "Tienda El Sur",
+        "telefono": "04126020291",
+        "email": "mitienda@gmail.com",
+        "vendedor": 1
+    }
+},
+{
     "model": "tienda.cuentabancaria",
     "pk": 11,
     "fields": {
@@ -1191,20 +1341,11 @@
 },
 {
     "model": "tienda.inventario",
-    "pk": 2,
+    "pk": 4,
     "fields": {
-        "tienda": 1,
+        "tienda": 5,
         "pieza": 1,
-        "cantidad": 4
-    }
-},
-{
-    "model": "tienda.inventario",
-    "pk": 3,
-    "fields": {
-        "tienda": 2,
-        "pieza": 3,
-        "cantidad": 5
+        "cantidad": 10
     }
 }
 ]
