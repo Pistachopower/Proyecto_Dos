@@ -8,7 +8,7 @@
 
 - controlar permisos
 
-- bien echo los crud
+- bien hecho los crud
 
 - búsqueda de productos por nombre
 
