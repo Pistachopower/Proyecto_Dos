@@ -12,12 +12,14 @@
             <p><strong>Dirección:</strong> {{ datosVendedorQuery.direccion }}</p>
             <p><strong>Facturación:</strong> {{ datosVendedorQuery.facturacion }}</p>
            
+            {% if perms.tienda.delete_tienda %}
             <form method="post" action="{% url 'datosVendedor_delete' datosVendedorQuery.id %}" class="mt-3">
                 {% csrf_token %}
                 <button type="submit" class="btn btn-danger">
                     Eliminar datos
                 </button>
             </form>
+            {% endif %}
 
 
             
