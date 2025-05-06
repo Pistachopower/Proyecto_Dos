@@ -17,3 +17,40 @@
 
 Pendiente por hacer:
 Controlar los errores en los formularios
+
+
+
+
+Peticiones hoy en clase
+Tienda -> Boton para ver sus productos (inventario)
+
+Vendedor -> Lista de sus productos sin importar la tienda
+
+Productos -> Tienen que mostrar la tienda a la que pertenece
+        -> Cuantos hay en stock
+
+Cliente -> Puede buscar producto en cualquier sitio
+
+
+Para el martes 
+Mejorar  tabla pedido con los siguientes atributos:
+Pedido:
+            pieza, fecha, estado, cliente
+
+Crear una vista que me muestre las tiendas y las piezas con la tabla inventario
+
+
+#TODO: Agregar lo que recibe inventarios a la template
+@permission_required("tienda.view_tienda")
+def dame_tienda(request, id_tienda):
+    tienda = Tienda.objects.get(id=id_tienda)
+    
+    
+    inventarios = Inventario.objects.get(tienda=tienda)
+    return render(request, "tienda/tienda_detalle.html", {"tienda": tienda,"inventarios":inventarios})
+
+
+Cliente -> crea un pedido
+
+Cliente -> Compre un producto y debe restar ese producto
+

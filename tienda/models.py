@@ -55,7 +55,7 @@ class Tienda(models.Model):
     telefono = models.CharField(max_length=15)
     email= models.EmailField()
     vendedor= models.ForeignKey(Vendedor, on_delete= models.CASCADE, default=None, null=True)
-    piezas= models.ManyToManyField(Pieza, through='Inventario')
+    piezas= models.ManyToManyField(Pieza, through='Inventario',related_name="tienda_Inventarios")
     
     def __str__(self):
         return self.direccion
@@ -88,24 +88,27 @@ class Inventario(models.Model):
     cantidad= models.IntegerField()
     
     
-class Pedido(models.Model):
-    #Cada pedido pertenece a un solo cliente, pero un cliente puede tener muchos pedidos
-    cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
+#class Pedido(models.Model):
+#    #Cada pedido pertenece a un solo cliente, pero un cliente puede tener muchos pedidos
+#    cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
+#    
+#    #Un pedido tiene muchas piezas y una pieza puede estar en varios pedidos
+#    piezas = models.ManyToManyField(Pieza)
+#    fecha_pedido = models.DateTimeField(auto_now_add=True)
+#    
+#    ESTADO = [
+#        ('PEN', 'Pendiente'),
+#        ('ENV', 'Enviado'),
+#        ('ENT', 'Entregado'),
+#        ('CAN', 'Cancelado')
+#    ]
+#    estado = models.CharField(max_length=3, choices=ESTADO, default='PEN')
+#
+#    def __str__(self):
+#        return f"Pedido #{self.id} - Cliente: {self.cliente.usuario.username}"
     
-    #Un pedido tiene muchas piezas y una pieza puede estar en varios pedidos
-    piezas = models.ManyToManyField(Pieza)
-    fecha_pedido = models.DateTimeField(auto_now_add=True)
     
-    ESTADO = [
-        ('PEN', 'Pendiente'),
-        ('ENV', 'Enviado'),
-        ('ENT', 'Entregado'),
-        ('CAN', 'Cancelado')
-    ]
-    estado = models.CharField(max_length=3, choices=ESTADO, default='PEN')
 
-    def __str__(self):
-        return f"Pedido #{self.id} - Cliente: {self.cliente.usuario.username}"
 
     
     

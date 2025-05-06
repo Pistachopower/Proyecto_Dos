@@ -43,6 +43,7 @@ urlpatterns = [
     path('add-inventario', views.agregar_Inventario,name='agregar_Inventario'),
     path('eliminar-inventario/<int:id_Inventario>',views.datosInventario_delete,name='datosInventario_delete'),
     path('editar-inventario/<int:id_Inventario>', views.editar_Inventario,name='editar_Inventario'),
+    path('ver-piezas-disponibles/<int:id_Inventario>', views.ver_Piezas_Tienda,name='ver_Piezas_Tienda'),
     
     
 

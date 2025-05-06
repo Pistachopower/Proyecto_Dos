@@ -184,11 +184,14 @@ def tienda_create(request):
         return render(request, "tienda/crear_tienda.html", {"formulario": formulario})
 
 
+#TODO: Agregar lo que recibe inventarios a la template
 @permission_required("tienda.view_tienda")
 def dame_tienda(request, id_tienda):
     tienda = Tienda.objects.get(id=id_tienda)
-
-    return render(request, "tienda/tienda_detalle.html", {"tienda": tienda})
+    
+    
+    inventarios = Inventario.objects.get(tienda=tienda)
+    return render(request, "tienda/tienda_detalle.html", {"tienda": tienda,"inventarios":inventarios})
 
 
 @permission_required("tienda.change_tienda")
@@ -505,6 +508,13 @@ def pieza_Buscar(request):
         formulario = BusquedaPiezaModelForm()
 
     return render(request, "piezas/pieza_Busqueda.html", {"formulario": formulario})
+
+
+
+
+#ver_Piezas_Tienda
+def ver_Piezas_Tienda(request):
+    pass
 
 
 # Pagina de error
