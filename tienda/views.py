@@ -189,8 +189,7 @@ def tienda_create(request):
 def dame_tienda(request, id_tienda):
     tienda = Tienda.objects.get(id=id_tienda)
     
-    
-    inventarios = Inventario.objects.get(tienda=tienda)
+    inventarios = Inventario.objects.filter(tienda_id=tienda).first()
     return render(request, "tienda/tienda_detalle.html", {"tienda": tienda,"inventarios":inventarios})
 
 
@@ -512,9 +511,30 @@ def pieza_Buscar(request):
 
 
 
-#ver_Piezas_Tienda
-def ver_Piezas_Tienda(request):
-    pass
+#
+def pedido_create(request):
+    if request.method == "POST":
+        formulario = PedidoModelForm(request.POST)
+        
+        if formulario.is_valid():
+            pedido= Pedido.objects.create(
+                estado=formulario.cleaned_data.get("estado"),
+                fecha=formulario.cleaned_data.get("fecha"),
+                direccion=formulario.cleaned_data.get("direccion"),
+                pieza=formulario.cleaned_data.get("pieza"),
+                cliente=request.user.cliente,
+            )
+            pedido.save()
+            messages.success(request, "Agregado pedido")
+            
+        else:
+            return render(request, "pedido/crear_pedido.html", {"formulario": formulario})
+
+
+    
+    else:
+        formulario = PedidoModelForm()
+    return render(request, "pedido/crear_pedido.html", {"formulario": formulario})
 
 
 # Pagina de error

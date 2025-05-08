@@ -15,22 +15,15 @@
             <p class="card-text"><strong>Teléfono:</strong> {{ tienda.telefono }}</p>
             <p class="card-text"><strong>Email:</strong> {{ tienda.email }}</p>
             <p class="card-text"><strong>Nombre vendedor:</strong> {{ tienda.vendedor.usuario.first_name }}</p>
+            
+            {% if inventarios %}
+            <p class="card-text"><strong>Nombre de la pieza:</strong>  {{ inventarios.pieza.nombre}}</p>
+            <p class="card-text"><strong>Cantidad de la pieza:</strong>  {{ inventarios.cantidad}}</p>
+            {% else %}
+            <p class="card-text">No hay inventario disponible para esta tienda.</p>
+            {% endif %}
+
         </div>
-
-        <div>
-            {% for pieza in ti%}
-                <p class="card-text"><strong>Nombre de la pieza:</strong>  {{ pieza.nombre}}</p>
-                <p class="card-text"><strong>Cantidad de la pieza:</strong>  {{ pieza.cantidad}}</p>
-            {% empty %}
-            <tr>
-              <td colspan="8" class="text-center">
-                Lo sentimos, pero no hay datos.
-              </td>
-            </tr>
-           {% endfor %}
-        </div>
-
-
     </div>
 </div>
 

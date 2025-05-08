@@ -230,6 +230,40 @@ class BusquedaPiezaModelForm(forms.Form):
     nombre = forms.CharField(required=False, label="Nombre")
     
     
+class PedidoModelForm(ModelForm):
+        class Meta:
+            model = Pedido 
+            fields = ['estado', 'fecha','direccion','pieza']
+            help_texts = {
+                'pieza': ("Selecciona la pieza"),
+
+            }
+            labels = {
+                "estado": ("Estado del pedido"),
+                "direccion": ("Direccion de entrega"),
+            }
+            
+            estado = forms.ChoiceField(choices=Pedido.ESTADO,
+                               initial="Pendiente")
+            
+            #Selector de fecha date picker 
+            widgets = {
+            'fecha': forms.DateInput(attrs={
+                'type': 'date',
+                'class': 'form-control',
+                'placeholder': 'Selecciona una fecha',
+            }),
+        }
+            
+            
+
+            
+            
+            
+            
+    
+    
+    
         
         
             
