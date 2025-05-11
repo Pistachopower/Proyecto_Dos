@@ -50,7 +50,7 @@ urlpatterns = [
     path('buscar-pieza', views.pieza_Buscar, name='pieza_Buscar'),
     
     #tabla pedidos
-    #path('pedidos',views.lista_pedidos,name='lista_pedidos'),
+    path('pedidos',views.lista_pedidos,name='lista_pedidos'),
     path('crear-pedido',views.pedido_create,name='pedido_create'),
     
 ]

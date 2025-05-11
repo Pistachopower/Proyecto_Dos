@@ -87,6 +87,8 @@ class Inventario(models.Model):
     pieza= models.ForeignKey(Pieza, on_delete= models.CASCADE)
     cantidad= models.IntegerField()
     
+
+    
     
 class Pedido(models.Model):
     ESTADO= [("P", "Pendiente"), ("C", "Completado"), ("A", "Anulado")]
@@ -96,6 +98,10 @@ class Pedido(models.Model):
     #many to one
     pieza= models.ForeignKey(Pieza, on_delete=models.CASCADE)
     cliente= models.ForeignKey(Cliente, on_delete=models.CASCADE)
+    
+    def __str__(self):
+        return self.direccion
+    
 
     
     

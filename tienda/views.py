@@ -508,32 +508,52 @@ def pieza_Buscar(request):
 
     return render(request, "piezas/pieza_Busqueda.html", {"formulario": formulario})
 
+@permission_required("tienda.view_pedido")
+def lista_pedidos(request):
+    #pedidos = Pedido.objects.all()
+    pedidos= Pedido.objects.select_related("pieza", "cliente__usuario").all()
+    return render(request, "pedido/lista_pedidos.html", {"pedidos_mostrar": pedidos})
+    
 
-
-
-#
+@permission_required("tienda.add_pedido")
 def pedido_create(request):
     if request.method == "POST":
         formulario = PedidoModelForm(request.POST)
-        
+
         if formulario.is_valid():
-            pedido= Pedido.objects.create(
-                estado=formulario.cleaned_data.get("estado"),
-                fecha=formulario.cleaned_data.get("fecha"),
-                direccion=formulario.cleaned_data.get("direccion"),
-                pieza=formulario.cleaned_data.get("pieza"),
-                cliente=request.user.cliente,
-            )
-            pedido.save()
-            messages.success(request, "Agregado pedido")
-            
-        else:
-            return render(request, "pedido/crear_pedido.html", {"formulario": formulario})
+            #obtenemos la pieza seleccionada del formulario
+            pieza_seleccionada = formulario.cleaned_data.get("pieza")
 
+            #Buscamos inventarios con esa pieza y stock mayor a 0
+            #gte: mayor o igual que
+            inventario = Inventario.objects.filter(
+                pieza_id=pieza_seleccionada,
+                cantidad__gte=1
+            ).select_related("tienda").first()
 
-    
+            if inventario:
+                #Restamos 1 unidad
+                inventario.cantidad -= 1
+                inventario.save()
+
+                #Creamos el pedido
+                pedido = Pedido.objects.create(
+                    estado=formulario.cleaned_data.get("estado"),
+                    fecha=formulario.cleaned_data.get("fecha"),
+                    direccion=formulario.cleaned_data.get("direccion"),
+                    pieza=pieza_seleccionada,
+                    cliente=request.user.cliente
+                )
+
+                messages.success(request, "Pedido realizado con éxito. Stock actualizado.")
+                return redirect("lista_pedidos") 
+
+            else:
+                return render(request, "pedido/crear_pedido.html", {"formulario": formulario})
+
     else:
         formulario = PedidoModelForm()
+
     return render(request, "pedido/crear_pedido.html", {"formulario": formulario})
 
 

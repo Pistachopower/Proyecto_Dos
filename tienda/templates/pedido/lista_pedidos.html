@@ -1,0 +1,27 @@
+{% extends "estructura/principal.html" %}
+
+{% block contenido %}
+<section class="intro my-5">
+  <div class="bg-image h-100">
+    <div class="mask d-flex align-items-center h-100">
+      <div class="container">
+        <div class="row justify-content-center">
+          {% for registro in pedidos_mostrar %}
+          <div class="col-md-4 mb-4">
+            {% include 'pedido/pedidos.html' %}
+          </div>
+
+          
+          {% empty %}
+          <div class="col-12">
+            <div class="alert alert-info" role="alert">
+              El inventario no está disponibles en este momento.
+            </div>
+          </div>
+          {% endfor %}
+        </div><!-- /.row -->
+      </div><!-- /.container -->
+    </div><!-- /.mask -->
+  </div><!-- /.bg-image -->
+</section>
+{% endblock %}

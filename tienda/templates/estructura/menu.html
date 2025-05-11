@@ -48,6 +48,25 @@
                 </li>
                 {% endif %}
 
+                <!-- Dropdown de Pedidos -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="piezasDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Pedidos
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="piezasDropdown">
+                        {% comment %} {% if perms.tienda.view_pieza %} {% endcomment %}
+                        <li><a class="dropdown-item" href="{% url 'lista_pedidos' %}">Ver pedidos</a></li>
+                        {% comment %} {% endif %} {% endcomment %}
+
+                        {% comment %} {% if perms.tienda.view_pieza %} {% endcomment %}
+                        <li><a class="dropdown-item" href="{% url 'pedido_create' %}">Crear un pedido</a></li>
+                        {% comment %} {% endif %} {% endcomment %}
+        
+       
+                    </ul>
+                </li>
+                
+
                 <!-- Dropdown de Tienda -->
                 {% if perms.tienda.view_tienda or perms.tienda.add_tienda %}
                 <li class="nav-item dropdown">

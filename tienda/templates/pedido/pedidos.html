@@ -1,0 +1,22 @@
+<div class="card h-100 shadow-sm">
+    <div class="card-body">
+        <p class="card-text">Nombre de cliente: {{ registro.cliente.usuario.username }}</p>
+        <p class="card-text">Nombre de la pieza: {{ registro.pieza.nombre }}</p>
+        <p class="card-text">Fecha del pedido: {{ registro.fecha }}</p>
+        <p class="card-text">Estado del pedido: {{ registro.estado }}</p>
+        
+    </div>
+    {% load bootstrap_icons %}
+    <div class="card-footer d-flex justify-content-between">
+        <a href="{% url 'editar_Inventario' registro.id %}" class="btn btn-primary btn-sm">Editar</a>
+    </div>
+
+    <form action="" method="post">
+        {% csrf_token %}
+        <button  class="btn-btn-danger" type="submit" onclick="return eliminar();">
+            <span>{% bs_icon 'trash'%}</span>
+        </button>
+    
+      </form>
+  </div>
+  
