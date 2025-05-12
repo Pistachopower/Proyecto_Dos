@@ -1,72 +1,88 @@
-{%extends "estructura/principal.html"%}
+{% extends "estructura/principal.html" %}
 
-{%block contenido %}
+{% block contenido %}
 {% load static %}
 
+<!--====== Hero ======-->
+<!-- Hero Section Optimizado - Solo Bootstrap -->
+<div class="vh-100 d-flex justify-content-center align-items-center position-relative overflow-hidden mb-5" style="background-image: url('https://scontent.fsvq4-1.fna.fbcdn.net/v/t39.30808-6/306660358_486579543479806_4320885311267801665_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=d3PlhhBeF_wQ7kNvwEXI3Kq&_nc_oc=Adm5jIirYEUgicGut8mplGlkewm_ehbruAvgyONGnfLjwW4B2udTx46Dx3We6eT2Cpk&_nc_zt=23&_nc_ht=scontent.fsvq4-1.fna&_nc_gid=9t0ifcLkpcbwKYgQjFtNrA&oh=00_AfJxj3xTvCj-HlevhRI5WAh9oombMqs1izFoDMtE3D6EXQ&oe=68280A54'); background-size: contain; background-position: center center; background-repeat: no-repeat;">
+   <!-- Capa oscura -->
+   <div class="position-absolute w-100 h-100 top-0 start-0 bg-dark opacity-50"></div>
 
-<!--====== tienda ======-->
-<section class="features-area features-one py-5" style="background-color: #f7f7f7;">
-    <div class="container">
-       <div class="row justify-content-center mb-4">
-          <div class="col-lg-6">
-             <div class="text-center">
-                <h3 class="display-4">Tienda</h3>
-                <p class="text-muted">
-                   Tienda que vende cosas.
-                </p>
-             </div>
-          </div>
+   <!-- Contenido del hero -->
+   <div class="position-relative d-flex flex-column justify-content-center align-items-center text-white text-center h-100 px-3">
+       <div class="container">
+           <h1 class="display-4 fw-bold mb-3">Bienvenido a MotorPartExpress</h1>
+           <a href="#services" class="btn btn-light btn-lg px-4 py-2 shadow">Ver Servicios</a>
        </div>
-       
-       <!-- Features -->
-       <div class="row justify-content-center">
-          <div class="col-lg-4 col-md-6 col-sm-9 mb-4">
-             <div class="card text-center p-4 shadow-sm border-0" style="background-color: white;">
-                <div class="mb-3">
-                   <i class="lni lni-compass display-4" style="color: #007bff;"></i>
-                </div>
-                <div class="card-body">
-                   <h4 class="card-title">Cajas de cambio mas vendida</h4>
-                   <p class="card-text text-muted">
-                      Más
-                   </p>
-                   <a href="" class="btn btn-outline-primary rounded-pill">Más</a>
-                </div>
-             </div>
-          </div>
-          
-          <div class="col-lg-4 col-md-6 col-sm-9 mb-4">
-             <div class="card text-center p-4 shadow-sm border-0" style="background-color: white;">
-                <div class="mb-3">
-                   <i class="lni lni-construction display-4" style="color: #007bff;"></i>
-                </div>
-                <div class="card-body">
-                   <h4 class="card-title">Kit de airbag</h4>
-                   <p class="card-text text-muted">
-                      Más
-                   </p>
-                   <a href="javascript:void(0)" class="btn btn-outline-primary rounded-pill">Más</a>
-                </div>
-             </div>
-          </div>
- 
-          <div class="col-lg-4 col-md-6 col-sm-9 mb-4">
-             <div class="card text-center p-4 shadow-sm border-0" style="background-color: white;">
-                <div class="mb-3">
-                   <i class="lni lni-cup display-4" style="color: #007bff;"></i>
-                </div>
-                <div class="card-body">
-                   <h4 class="card-title">Motores</h4>
-                   <p class="card-text text-muted">
-                    Más
-                   </p>
-                   <a href="javascript:void(0)" class="btn btn-outline-primary rounded-pill">Más</a>
-                </div>
-             </div>
-          </div>
+   </div>
+</div>
+
+<!--====== CAROUSEL ======-->
+<div id="carouselExampleIndicators" class="carousel slide mb-5" data-bs-ride="carousel">
+   <!-- Indicadores -->
+   <div class="carousel-indicators">
+     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+   </div>
+
+   <!-- Slides -->
+   <div class="carousel-inner text-center">
+     <!-- Slide 1 -->
+     <div class="carousel-item active">
+       <img src="https://tecvolucion.com/wp-content/uploads/2019/08/Caja-de-cambios-e1566463929654.jpg"
+            class="img-fluid mx-auto d-block" style="max-height: 400px;" alt="Caja de cambio">
+       <!-- Texto móvil -->
+       <div class="d-md-none bg-dark bg-opacity-50 text-white py-2 px-3">
+         <h5 class="mb-1">Caja de cambios</h5>
+         <p class="mb-0">Transmite la potencia del motor a las ruedas de forma eficiente.</p>
        </div>
-    </div>
- </section>
- <!--====== FEATURE ONE PART ENDS ======-->
- 
-{%endblock %}
+       <!-- Texto desktop -->
+       <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded p-2">
+         <h5>Caja de cambios</h5>
+         <p>Transmite la potencia del motor a las ruedas de forma eficiente.</p>
+       </div>
+     </div>
+
+     <!-- Slide 2 -->
+     <div class="carousel-item">
+       <img src="https://cdn.autobild.es/sites/navi.axelspringer.es/public/media/image/2019/09/partes-motor_1.jpg?tf=3840x"
+            class="img-fluid mx-auto d-block" style="max-height: 400px;" alt="Motor">
+       <div class="d-md-none bg-dark bg-opacity-50 text-white py-2 px-3">
+         <h5 class="mb-1">Motor de combustión</h5>
+         <p class="mb-0">Transforma la energía del combustible en movimiento.</p>
+       </div>
+       <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded p-2">
+         <h5>Motor de combustión</h5>
+         <p>Transforma la energía del combustible en movimiento.</p>
+       </div>
+     </div>
+
+     <!-- Slide 3 -->
+     <div class="carousel-item">
+       <img src="https://autorrautomocion.com/cdn/shop/products/kit-airbags-jaguar-f-type-autorr.jpg?v=1742267947"
+            class="img-fluid mx-auto d-block" style="max-height: 400px;" alt="Kit de airbag">
+       <div class="d-md-none bg-dark bg-opacity-50 text-white py-2 px-3">
+         <h5 class="mb-1">Kit de airbag</h5>
+         <p class="mb-0">Sistema diseñado para proteger en caso de colisión.</p>
+       </div>
+       <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded p-2">
+         <h5>Kit de airbag</h5>
+         <p>Sistema diseñado para proteger en caso de colisión.</p>
+       </div>
+     </div>
+   </div>
+
+   <!-- Controles -->
+   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+     <span class="visually-hidden">Anterior</span>
+   </button>
+   <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+     <span class="carousel-control-next-icon" aria-hidden="true"></span>
+     <span class="visually-hidden">Siguiente</span>
+   </button>
+</div>
+
+{% endblock %}
