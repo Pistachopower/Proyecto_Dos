@@ -22,7 +22,7 @@ Controlar los errores en los formularios
 
 
 Peticiones hoy en clase
-Entrar en Tienda -> Boton para ver sus productos (inventario)
+Entrar en Tienda -> Boton para ver sus productos 
 
 Vendedor -> Entra Pieza, Listar Pieza: Lista de sus productos sin importar la tienda
 
