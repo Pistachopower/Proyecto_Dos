@@ -22,11 +22,11 @@ Controlar los errores en los formularios
 
 
 Peticiones hoy en clase
-Tienda -> Boton para ver sus productos (inventario)
+Entrar en Tienda -> Boton para ver sus productos (inventario)
 
-Vendedor -> Lista de sus productos sin importar la tienda
+Vendedor -> Entra Pieza, Listar Pieza: Lista de sus productos sin importar la tienda
 
-Productos -> Tienen que mostrar la tienda a la que pertenece
+Productos ->Entra Tienda, Listar inventario: Tienen que mostrar la tienda a la que pertenece
         -> Cuantos hay en stock
 
 Cliente -> Puede buscar producto en cualquier sitio

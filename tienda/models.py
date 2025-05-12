@@ -17,14 +17,14 @@ class Usuario(AbstractUser):
 
 
 #cliente y usuario usara los atributos de Usuario 
-class Cliente(models.Model):
+# class Cliente(models.Model):
     
-    usuario = models.OneToOneField(Usuario, on_delete= models.CASCADE)
+#     usuario = models.OneToOneField(Usuario, on_delete= models.CASCADE)
     
-    def __str__(self):
-        return self.usuario.username  
-    
+#     def __str__(self):
+#         return self.usuario.username  
 
+ 
 
 class Vendedor(models.Model):
     
@@ -47,6 +47,18 @@ class Pieza(models.Model):
     
     def __str__(self):
         return self.nombre
+
+
+
+    
+#REQUISITO JORGE
+class Cliente(models.Model):
+    usuario = models.OneToOneField(Usuario, on_delete=models.CASCADE)
+    # Relación muchos a muchos con Pieza a través de Pedido
+    piezas_pedidas = models.ManyToManyField(Pieza, through='Pedido', related_name='clientes')
+    
+    def __str__(self):
+        return self.usuario.username
     
     
     
@@ -90,17 +102,38 @@ class Inventario(models.Model):
 
     
     
+# class Pedido(models.Model):
+#     ESTADO= [("P", "Pendiente"), ("C", "Completado"), ("A", "Anulado")]
+#     estado= models.CharField(max_length=1, choices=ESTADO, default="P")
+#     fecha= models.DateField(null=True, blank=True)
+#     direccion= models.CharField(max_length=100)
+#     #many to one
+#     pieza= models.ForeignKey(Pieza, on_delete=models.CASCADE)
+#     cliente= models.ForeignKey(Cliente, on_delete=models.CASCADE)
+    
+#     def __str__(self):
+#         return self.direccion
+
+
+#REQUISITO JORGE
 class Pedido(models.Model):
-    ESTADO= [("P", "Pendiente"), ("C", "Completado"), ("A", "Anulado")]
-    estado= models.CharField(max_length=1, choices=ESTADO, default="P")
-    fecha= models.DateField(null=True, blank=True)
-    direccion= models.CharField(max_length=100)
-    #many to one
-    pieza= models.ForeignKey(Pieza, on_delete=models.CASCADE)
-    cliente= models.ForeignKey(Cliente, on_delete=models.CASCADE)
+    ESTADO = [
+        ("P", "Pendiente"),
+        ("C", "Completado"),
+        ("A", "Anulado")
+    ]
+    estado = models.CharField(max_length=1, choices=ESTADO, default="P")
+    fecha = models.DateField(null=True, blank=True)
+    direccion = models.CharField(max_length=100)
+    
+    # Relación muchos a muchos utilizando la tabla Pedido como intermedia
+    cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE, related_name='pedidos')
+    pieza = models.ForeignKey(Pieza, on_delete=models.CASCADE, related_name='pedidos')
+    
+
     
     def __str__(self):
-        return self.direccion
+        return f"Pedido de {self.cliente.usuario.username} - {self.pieza.nombre}"
     
 
     

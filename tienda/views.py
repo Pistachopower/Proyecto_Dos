@@ -87,7 +87,9 @@ def pieza_create(request):
 
 
 def dame_producto(request, id_pieza):
-    pieza = Pieza.objects.get(id=id_pieza)
+    pieza = Pieza.objects.filter(id=id_pieza).first()
+    
+    #DatosVendedor.objects.filter(id=id_Datovendedor).first()
 
     return render(request, "piezas/pieza_id.html", {"pieza": pieza})
 
@@ -108,7 +110,7 @@ def pieza_editar(request, id_pieza):
 
             messages.success(request, "Se ha editado la pieza")
 
-            return redirect("dame_producto", id=pieza.id)
+            return redirect("dame_producto", id_pieza=pieza.id)
             # return redirect("lista_pieza")
 
     else:

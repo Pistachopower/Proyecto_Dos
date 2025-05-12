@@ -393,13 +393,91 @@
     "model": "admin.logentry",
     "pk": 31,
     "fields": {
-        "action_time": "2025-05-06T09:34:43.540",
+        "action_time": "2025-05-08T10:51:38.539",
         "user": 1,
-        "content_type": 13,
-        "object_id": "5",
-        "object_repr": "Inventario object (5)",
+        "content_type": 3,
+        "object_id": "2",
+        "object_repr": "vendedores",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Permissions\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 32,
+    "fields": {
+        "action_time": "2025-05-11T20:44:03.109",
+        "user": 1,
+        "content_type": 3,
+        "object_id": "1",
+        "object_repr": "clientes",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Permissions\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 33,
+    "fields": {
+        "action_time": "2025-05-11T20:50:45.707",
+        "user": 1,
+        "content_type": 3,
+        "object_id": "1",
+        "object_repr": "clientes",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Permissions\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 34,
+    "fields": {
+        "action_time": "2025-05-11T21:17:20.058",
+        "user": 1,
+        "content_type": 14,
+        "object_id": "2",
+        "object_repr": "calle quinitas",
         "action_flag": 3,
         "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 35,
+    "fields": {
+        "action_time": "2025-05-11T21:17:31.528",
+        "user": 1,
+        "content_type": 14,
+        "object_id": "1",
+        "object_repr": "calle cancionera",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 36,
+    "fields": {
+        "action_time": "2025-05-12T19:25:34.537",
+        "user": 1,
+        "content_type": 3,
+        "object_id": "1",
+        "object_repr": "clientes",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Permissions\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 37,
+    "fields": {
+        "action_time": "2025-05-12T19:26:05.432",
+        "user": 1,
+        "content_type": 3,
+        "object_id": "1",
+        "object_repr": "clientes",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Permissions\"]}}]"
     }
 },
 {
@@ -912,10 +990,11 @@
     "fields": {
         "name": "clientes",
         "permissions": [
-            32,
             33,
             34,
             36,
+            53,
+            56,
             24
         ]
     }
@@ -931,11 +1010,13 @@
             46,
             48,
             49,
+            51,
             52,
             21,
             22,
             24,
             41,
+            43,
             44,
             40
         ]
@@ -1055,10 +1136,10 @@
 },
 {
     "model": "sessions.session",
-    "pk": "23co8hl0wmb5kwgs2t53bliq9t2isquv",
+    "pk": "1r06l8m5gxxkctc5hqsj9cyb4mlefz72",
     "fields": {
-        "session_data": ".eJxVjDsOwyAQBa8SUUcYFoPBZfqcAS2wDiQRSP5UUe4eR3Lj9s3M-7CJYkZfaomlsZGJvhO6AwH6Is2ogV2Zx23Nflto9iXtijpvAeOL6h-kJ9ZH47HVdS6B_xV-0IXfW6L37XBPBxmXvNcGkpXk-kEllNIakBCcEyoEIHI2GqdRD0YrKzUh4UTBwiAdCGvIOMm-P2XSP9I:1uBaiB:0Oo__Vb5XoSWeTdZynUz6Vn7o4ea9hNjfoxAZD6qWXs",
-        "expire_date": "2025-05-18T16:52:59.634"
+        "session_data": "eyJmZWNoYV9pbmljaW8iOiIwNi8wNS8yMDI1IDE1OjM3In0:1uCIUg:7oOrtykIZuXf1S-1sAUUdjK-UDpu6DmPJAL2fxknL9s",
+        "expire_date": "2025-05-20T15:37:58.398"
     }
 },
 {
@@ -1087,14 +1168,6 @@
 },
 {
     "model": "sessions.session",
-    "pk": "94d8533p7rw9pg2ccwr3eluhmkczfj0b",
-    "fields": {
-        "session_data": ".eJxVjDsOwyAQBa8SUUd4-RnbZfqcAS0LBJIIJH-qKHePI7lx-2bmfViKlNGVWqg0NjHoOzCdBGkuME5KsytzuK3ZbUucXQm7Is6bR3rF-gfhifXROLW6zsXzv8IPuvB7C_F9O9zTQcYl77WipJVA8lIIFUaMFIJBa5AsAkgrepB-HIzxMVAakjSDphgFaQHWW82-P5-2QSM:1uCCot:c8ceMGdcOg-7_acn6vn6j6vN12YMJ45wSZRgEhaKZ_0",
-        "expire_date": "2025-05-20T09:34:27.879"
-    }
-},
-{
-    "model": "sessions.session",
     "pk": "eeseytmefp1csmgji347y0lnv97whe53",
     "fields": {
         "session_data": ".eJxVjMsOwiAQRX_FsDaU4VFql-79BjIMIKiBpI-V8d9tky50e8-5580crkt26xwnVwIbGbDz7-aRnrHuIDyw3hunVpepeL4r_KAzv7UQX9fD_QtknPP2VpS0AiQvAVS4YKQQDFqDZFEIaaEX0l8GY3wMlIYkzaApRiANwnqrt2iKlNGVWqi0rShVJ3QnhTQn6Efo2ecLHJJBHw:1u7au8:9fJTPJ5BjFe4kHhuSZOxCQhsC1ZKRWmZIE0nl_GTjaY",
@@ -1111,10 +1184,10 @@
 },
 {
     "model": "sessions.session",
-    "pk": "er1k93ovv8n3qmks9bg6vczy3oh6m5g9",
+    "pk": "fmhep7x2jbr0vt1jhrrul3dr4gzjg66u",
     "fields": {
-        "session_data": ".eJxVjDkOwjAQRa-CXCPHS7ylpOcM1mQyxgZkS1kqxN0JUpq0_733PywRZoilFiyNDUzYTphOCWUuIgzasSuLsK05bgvNsUy7os7bCPii-gfTE-qjcWx1ncvI_wo_6MLvbaL37XBPBxmWvNdkSVoPZKB3TmqlnNfWGNIorEuIxoWUrPPGh17LIMhbBQol6JDAWGLfH2kvP-Q:1uCCrn:Ym6sl9p4MvuTVZOVTJrHbRkhRNXag5utE3TT_TDl3h0",
-        "expire_date": "2025-05-20T09:37:27.039"
+        "session_data": ".eJxVjs0OwiAQhF_FcDYUtiBtj959BrIsi0UNJP05Gd_dNulBr_PNfJm38Lguo19nnnyOYhBanH-zgPTksoP4wHKvkmpZphzkXpEHneWtRn5dj-6fYMR53NYtJdNqpABat7FHphgtOovkUClw-qIg9J21gSOlLoHtDDFrMlq54MwmTUwj-lwy5bofhUbZBhTYk-4HMOLzBRyNQSA:1uEWtf:gvRC1eWz07dVDA7UK_RepURv5KzKiTziSpMotR8S4vY",
+        "expire_date": "2025-05-26T19:24:59.888"
     }
 },
 {
@@ -1135,6 +1208,14 @@
 },
 {
     "model": "sessions.session",
+    "pk": "nyhv73t8h9usy7ofxeh8vvmq1s5hgpew",
+    "fields": {
+        "session_data": ".eJxVjMsOwiAQRX_FsDaUoSC1S_d-AxmGQVADSR8r479rk266veec-xGJKaMvtVBpYhQAnbKdVtqeNIxgxVl4XJfs15knX-KmHLeA9OK6gfjE-miSWl2mEuSmyJ3O8t4iv2-7ezjIOOd_3VMyPSAFDdDHKzLFaNFZJIdKaQcXpcN1sDZwpDQkbQdDzEAGlAvOiO8Pl_5BGA:1uEC9C:CaaNtDQ67rDMn9wMNQyWMy4joSvM_ccQPf5edtPwf-c",
+        "expire_date": "2025-05-25T21:15:38.688"
+    }
+},
+{
+    "model": "sessions.session",
     "pk": "r5pulox8nxzpy413ko9zvud3l1l59wbr",
     "fields": {
         "session_data": ".eJxVjEEOwiAQRe_C2hCGglCX7nsGMswMUjVtUtqV8e7apAvd_vfef6mE21rT1mRJI6uLAnX63TLSQ6Yd8B2n26xpntZlzHpX9EGbHmaW5_Vw_w4qtvqtOyquA6RsATruUYjZY_BIAY2xAc7G5j56n4WpxGJ9dCQC5MCEHJx6fwD6HjhI:1u7YVl:dApU4EIgQ6sUnvMYuUTQIlfI_AQEzVu7Vp2Lk4egHmI",
@@ -1151,6 +1232,14 @@
 },
 {
     "model": "sessions.session",
+    "pk": "tgj8m9iasu7yds1jlzd80viybhwwcubw",
+    "fields": {
+        "session_data": ".eJxVjDsOwyAQBa8SUUfYuwQMLtPnDGiBdUwSgeRPFeXusSU3bt_MvK8YOI7kc8kxV9ELwKbVDbaoL-B67MRVeFqX0a8zTz6nTVHnLVB8c9lBelF5VhlrWaYc5K7Ig87yURN_7od7OhhpHrfaYLLA7tapRADWIGBwrlUhILOz0ThNujNaWdBMTAMHix04bK1h40D8_mh_P9Y:1uEWwA:EimVtVKotL9QR78gzRLUZ9aJSleq3AtMaQIFueA3FaA",
+        "expire_date": "2025-05-26T19:27:34.856"
+    }
+},
+{
+    "model": "sessions.session",
     "pk": "wd0sjbq3kbal3x7e421fv6y3n197tfc5",
     "fields": {
         "session_data": ".eJxVjDsOwyAQBa8SUUeYBYPBZfqcAS2wDiQRSP5UUe6eWHLj9s3M-7CJYkZfaomlsZEp0Ym-k0LqC-gRFLsyj9ua_bbQ7EvalfMWML6o7iA9sT4aj62ucwl8V_hBF35vid63wz0dZFzyvzYyWSDXDyohgDUSZHBOqBAkkbPROI16MFpZ0ISEEwUrB3BSWEPGAfv-AGGnP8w:1uA7Fn:RXU3u7AB94l98xqZIHsWcSC3980qLJoOdogIAMITVQk",
@@ -1158,19 +1247,11 @@
     }
 },
 {
-    "model": "sessions.session",
-    "pk": "yrj3wf63pdy1h65o0y978fnx56tu0i6j",
-    "fields": {
-        "session_data": ".eJxVjDsOwyAQBa8SUUcYlvBzmT5nQAusY5IIJH-qKHePLblx-2bmfdlAacRQakmlsZ4J0wndgQB9Eb5Xll1ZwHUZwzrTFEreFHXeIqY31R3kF9Zn46nVZSqR7wo_6MwfLdPnfringxHncasNZCfJ36zKKKUzICF6L1SMQORdMl6jtkYrJzUh4UDRgZUehDNkvGS_P2qsP9k:1uCCsf:qZGrJnhz3vom2Rdp7wGacuH-OI0sDFak1u1knSnAWhg",
-        "expire_date": "2025-05-20T09:38:21.903"
-    }
-},
-{
     "model": "tienda.usuario",
     "pk": 1,
     "fields": {
         "password": "pbkdf2_sha256$870000$JjCoHJX8T1MWvmnGZd2MxH$j+BpuO2AG2wdM6yIfJa1wH9XQlNWEW4JSVYJhSlgU8o=",
-        "last_login": "2025-05-06T09:34:27.803",
+        "last_login": "2025-05-12T19:24:59.773",
         "is_superuser": true,
         "username": "nelson",
         "first_name": "",
@@ -1189,7 +1270,7 @@
     "pk": 2,
     "fields": {
         "password": "pbkdf2_sha256$870000$ItretZb7lQVbi4cG8g7c60$EGhdAcnW2O7YYNITDtuEJM63YE3dDnRic+n/uq6yQIM=",
-        "last_login": "2025-05-06T09:37:26.979",
+        "last_login": "2025-05-12T18:47:04.614",
         "is_superuser": false,
         "username": "maria",
         "first_name": "maria",
@@ -1210,7 +1291,7 @@
     "pk": 3,
     "fields": {
         "password": "pbkdf2_sha256$870000$nBiZWWyruLgnBllmyTq3uH$4Trf7luVQOqizPG+cARJF/HGEDIuSwcbMDtdzMeYY/E=",
-        "last_login": "2025-05-06T09:38:21.842",
+        "last_login": "2025-05-12T19:27:34.793",
         "is_superuser": false,
         "username": "pedro",
         "first_name": "pedro",
@@ -1245,13 +1326,6 @@
             2
         ],
         "user_permissions": []
-    }
-},
-{
-    "model": "tienda.cliente",
-    "pk": 1,
-    "fields": {
-        "usuario": 2
     }
 },
 {
@@ -1305,30 +1379,51 @@
 },
 {
     "model": "tienda.pieza",
-    "pk": 5,
+    "pk": 6,
     "fields": {
-        "nombre": "Caja de cambio",
-        "version": "1.5",
-        "referencia": "00055448l",
-        "estado": "R",
-        "descripcion": "Es una pieza que está en buenas condiciones.",
-        "marca": "Toyota",
+        "nombre": "Filtro de aceite",
+        "version": "V1.2",
+        "referencia": "FO-3421",
+        "estado": "N",
+        "descripcion": "Este filtro es como un colador para el aceite del motor. Evita que la suciedad y las partículas entren al motor, lo que ayuda a que dure más tiempo.",
+        "marca": "Bosch",
+        "precio": 15.99,
+        "anio": 2023
+    }
+},
+{
+    "model": "tienda.pieza",
+    "pk": 7,
+    "fields": {
+        "nombre": "Bujía",
+        "version": "NGK-R3",
+        "referencia": "BG-7788",
+        "estado": "N",
+        "descripcion": "Es como una chispa mágica que enciende el motor. Si no hay chispa, el coche no arranca.",
+        "marca": "NGK",
+        "precio": 7.5,
+        "anio": 2024
+    }
+},
+{
+    "model": "tienda.pieza",
+    "pk": 8,
+    "fields": {
+        "nombre": "Turbo",
+        "version": "5.5",
+        "referencia": "8741565scwqq",
+        "estado": "REC",
+        "descripcion": "Es una pieza que fue reconstruida por una casa de reparación.",
+        "marca": "Opel",
         "precio": 550.0,
         "anio": 2000
     }
 },
 {
-    "model": "tienda.pieza",
-    "pk": 6,
+    "model": "tienda.cliente",
+    "pk": 1,
     "fields": {
-        "nombre": "kit de airbag",
-        "version": "6.5",
-        "referencia": "00055448waaa",
-        "estado": "R",
-        "descripcion": "Es un kit bueno para usar.",
-        "marca": "Ford",
-        "precio": 250.0,
-        "anio": 1995
+        "usuario": 2
     }
 },
 {
@@ -1401,20 +1496,40 @@
 },
 {
     "model": "tienda.inventario",
-    "pk": 6,
+    "pk": 5,
     "fields": {
         "tienda": 4,
         "pieza": 3,
-        "cantidad": 5
+        "cantidad": 3
     }
 },
 {
     "model": "tienda.inventario",
-    "pk": 7,
+    "pk": 6,
     "fields": {
-        "tienda": 6,
+        "tienda": 3,
         "pieza": 6,
         "cantidad": 3
+    }
+},
+{
+    "model": "tienda.inventario",
+    "pk": 8,
+    "fields": {
+        "tienda": 6,
+        "pieza": 8,
+        "cantidad": 5
+    }
+},
+{
+    "model": "tienda.pedido",
+    "pk": 3,
+    "fields": {
+        "estado": "P",
+        "fecha": "2025-05-11",
+        "direccion": "calle cancionera",
+        "cliente": 1,
+        "pieza": 1
     }
 }
 ]
