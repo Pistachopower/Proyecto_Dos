@@ -16,6 +16,7 @@ urlpatterns = [
     path('pieza-editar/<int:id_pieza>',views.pieza_editar,name='pieza_editar'),
     path('pieza-eliminar/<int:id_pieza>',views.pieza_eliminar,name='pieza_eliminar'),
     
+    
     #modelo tienda
     path('tienda',views.lista_tienda,name='lista_tienda'),
     path('crear-tienda',views.tienda_create,name='tienda_create'),
@@ -43,6 +44,9 @@ urlpatterns = [
     path('add-inventario', views.agregar_Inventario,name='agregar_Inventario'),
     path('eliminar-inventario/<int:id_Inventario>',views.datosInventario_delete,name='datosInventario_delete'),
     path('editar-inventario/<int:id_Inventario>', views.editar_Inventario,name='editar_Inventario'),
+    
+    path('compra-seleccion-pieza/<int:id_Inventario>',views.compra_pieza,name='compra_pieza'),
+
 
     
     

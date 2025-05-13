@@ -1,45 +1,12 @@
-- Listar producto de una tienda
+Para el jueves 
+Quitar en pedido el campo fecha
 
-- crear relación usuario con productos: pedidos(manyTomany) 
+Cambiar la vista: lista_pieza a listar_inventario
 
-- editar la cantidad de un producto de una tienda 
+En lista_ProductosTienda agregar el boton de comprar 
 
-- eliminar un producto de una tienda 
+Luego crear la url: path('compra-seleccion-pieza/<int:id_Inventario>',views.compra_pieza,name='compra_pieza'),
 
-- controlar permisos
-
-- bien hecho los crud
-
-- búsqueda de productos por nombre
-
-
-
-
-Pendiente por hacer:
-Controlar los errores en los formularios
-
-
-
-
-Peticiones hoy en clase
-Entrar en Tienda -> Boton para ver sus productos 
-
-Vendedor -> Entra Pieza, Listar Pieza: Lista de sus productos sin importar la tienda
-
-Productos ->Entra Tienda, Listar inventario: Tienen que mostrar la tienda a la que pertenece
-        -> Cuantos hay en stock
-
-Cliente -> Puede buscar producto en cualquier sitio
-
-
-Para el martes 
-Mejorar  tabla pedido con los siguientes atributos:
-Pedido:
-            pieza, fecha, estado, cliente
-
-Crear una vista que me muestre las tiendas y las piezas con la tabla inventario
-
-Cliente -> crea un pedido
-
-Cliente -> Compre un producto y debe restar ese producto
-
+Crear la vista: listar productos con todas las tiendas, que me muestre: tienda, producto, precio, stock
+con un formulario generico. Además del campo de tipo imput cantidad. Cuando el usuario de el boton de 
+compra, reduce el producto de la tienda del stock y crear el pedido, lo redirigimos a otro lado 

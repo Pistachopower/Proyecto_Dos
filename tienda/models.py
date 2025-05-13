@@ -42,7 +42,7 @@ class Pieza(models.Model):
     estado = models.CharField(max_length=3, choices=ESTADO)
     descripcion= models.TextField()
     marca= models.CharField(max_length=100)
-    precio= models.FloatField(default=1.0) 
+    precio= models.FloatField(default=1.0) #QUITAR
     anio= models.IntegerField()
     
     def __str__(self):
@@ -98,6 +98,7 @@ class Inventario(models.Model):
     tienda= models.ForeignKey(Tienda, on_delete= models.CASCADE)
     pieza= models.ForeignKey(Pieza, on_delete= models.CASCADE)
     cantidad= models.IntegerField()
+    precio= models.FloatField(default=1.0) 
     
 
     
@@ -134,6 +135,26 @@ class Pedido(models.Model):
     
     def __str__(self):
         return f"Pedido de {self.cliente.usuario.username} - {self.pieza.nombre}"
+    
+# TODO: cambiar pedido    
+# class Pedido_2(models.Model):
+#     ESTADO = [
+#         ("P", "Pendiente"),
+#         ("C", "Completado"),
+#         ("A", "Anulado")
+#     ]
+#     estado = models.CharField(max_length=1, choices=ESTADO, default="P")
+#     fecha = models.DateField(null=True, blank=True)
+#     direccion = models.CharField(max_length=100)
+    
+#     # Relación muchos a muchos utilizando la tabla Pedido como intermedia
+#     cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE, related_name='pedidos')
+#     pieza = models.ForeignKey(Pieza, on_delete=models.CASCADE, related_name='pedidos')
+    
+
+    
+#     def __str__(self):
+#         return f"Pedido de {self.cliente.usuario.username} - {self.pieza.nombre}"
     
 
     

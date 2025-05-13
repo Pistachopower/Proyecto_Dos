@@ -256,6 +256,11 @@ class PedidoModelForm(ModelForm):
         }
             
             
+class CompraInventarioModelForm(forms.Form):  
+    cantidad = forms.CharField(required=False, label="Cantidad")
+
+            
+            
 
             
             

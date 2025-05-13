@@ -446,7 +446,7 @@ def lista_ProductosTienda(request):
         request, "inventario/lista_Inventario.html", {"inventario": inventario}
     )
 
-@permission_required("tienda.view_inventario")
+@permission_required("tienda.change_inventario")
 def editar_Inventario(request, id_Inventario):
     inventario = Inventario.objects.prefetch_related("tienda", "pieza").all()
     inventarioQuery = inventario.filter(id=id_Inventario).first()
@@ -557,6 +557,20 @@ def pedido_create(request):
         formulario = PedidoModelForm()
 
     return render(request, "pedido/crear_pedido.html", {"formulario": formulario})
+
+
+
+def compra_pieza(request):
+    if request.method == "POST":
+        #inventario = Inventario.objects.prefetch_related("tienda", "pieza").all()        
+
+        formulario = CompraInventarioModelForm(request.POST)
+    else:
+        formulario = CompraInventarioModelForm()
+    
+    
+    
+    return render(request, "compra/formulario_compra.html", {"formulario":formulario})
 
 
 # Pagina de error

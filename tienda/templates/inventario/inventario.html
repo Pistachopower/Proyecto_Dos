@@ -3,8 +3,11 @@
         <p class="card-text">Nombre de la pieza: {{ registro.pieza.nombre }}</p>
         <p class="card-text">Dirección de la tienda: {{ registro.tienda.direccion }}</p>
         <p class="card-text">Cantidad de piezas: {{ registro.cantidad }}</p>
+        <p class="card-text">Precio: {{ registro.precio }}</p>
     </div>
     {% load bootstrap_icons %}
+
+    {% if perms.tienda.change_inventario %}
     <div class="card-footer d-flex justify-content-between">
         <a href="{% url 'editar_Inventario' registro.id %}" class="btn btn-primary btn-sm">Editar</a>
     </div>
@@ -16,5 +19,7 @@
         </button>
     
       </form>
+      {% endif %}
+
   </div>
   

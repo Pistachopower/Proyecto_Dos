@@ -481,6 +481,110 @@
     }
 },
 {
+    "model": "admin.logentry",
+    "pk": 38,
+    "fields": {
+        "action_time": "2025-05-13T09:47:55.730",
+        "user": 1,
+        "content_type": 6,
+        "object_id": "1",
+        "object_repr": "Caja de cambio",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Precio\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 39,
+    "fields": {
+        "action_time": "2025-05-13T09:54:23.223",
+        "user": 1,
+        "content_type": 3,
+        "object_id": "1",
+        "object_repr": "clientes",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Permissions\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 40,
+    "fields": {
+        "action_time": "2025-05-13T09:59:06.329",
+        "user": 1,
+        "content_type": 3,
+        "object_id": "1",
+        "object_repr": "clientes",
+        "action_flag": 2,
+        "change_message": "[]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 41,
+    "fields": {
+        "action_time": "2025-05-13T10:10:23.454",
+        "user": 1,
+        "content_type": 13,
+        "object_id": "8",
+        "object_repr": "Inventario object (8)",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Precio\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 42,
+    "fields": {
+        "action_time": "2025-05-13T10:10:29.794",
+        "user": 1,
+        "content_type": 13,
+        "object_id": "7",
+        "object_repr": "Inventario object (7)",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Precio\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 43,
+    "fields": {
+        "action_time": "2025-05-13T10:10:36.322",
+        "user": 1,
+        "content_type": 13,
+        "object_id": "6",
+        "object_repr": "Inventario object (6)",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Precio\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 44,
+    "fields": {
+        "action_time": "2025-05-13T10:10:47.633",
+        "user": 1,
+        "content_type": 13,
+        "object_id": "5",
+        "object_repr": "Inventario object (5)",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Precio\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 45,
+    "fields": {
+        "action_time": "2025-05-13T10:10:57.665",
+        "user": 1,
+        "content_type": 13,
+        "object_id": "4",
+        "object_repr": "Inventario object (4)",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Precio\"]}}]"
+    }
+},
+{
     "model": "auth.permission",
     "pk": 1,
     "fields": {
@@ -993,6 +1097,7 @@
             33,
             34,
             36,
+            52,
             53,
             56,
             24
@@ -1136,10 +1241,26 @@
 },
 {
     "model": "sessions.session",
+    "pk": "014l1o2be38lwecmqnuq5n9d8w6pwsu2",
+    "fields": {
+        "session_data": ".eJxVjDkOwjAQRa-CXCPHS8ZLSnrOYE2cMTYgW8pSIe5OkNKk_e-9_2GJYsZQaomlsYFJ3QnolFBwEX4Aya4s4LbmsC00hzLtijpvI8YX1T-YnlgfjcdW17mM_K_wgy783iZ63w73dJBxyXtNhqRxSIC9tVIrZZ02AKSjMDbFCNanZKwD53stvSBnFKooUfuEYIh9f2UIP94:1uEkQa:5AjhOOnS4_rPEGezzdF6PgJrjqRHnEb7wDCfDnqFeBw",
+        "expire_date": "2025-05-27T09:51:52.653"
+    }
+},
+{
+    "model": "sessions.session",
     "pk": "1r06l8m5gxxkctc5hqsj9cyb4mlefz72",
     "fields": {
         "session_data": "eyJmZWNoYV9pbmljaW8iOiIwNi8wNS8yMDI1IDE1OjM3In0:1uCIUg:7oOrtykIZuXf1S-1sAUUdjK-UDpu6DmPJAL2fxknL9s",
         "expire_date": "2025-05-20T15:37:58.398"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "23co8hl0wmb5kwgs2t53bliq9t2isquv",
+    "fields": {
+        "session_data": ".eJxVjDsOwyAQBa8SUUcYFoPBZfqcAS2wDiQRSP5UUe4eR3Lj9s3M-7CJYkZfaomlsZGJvhO6AwH6Is2ogV2Zx23Nflto9iXtijpvAeOL6h-kJ9ZH47HVdS6B_xV-0IXfW6L37XBPBxmXvNcGkpXk-kEllNIakBCcEyoEIHI2GqdRD0YrKzUh4UTBwiAdCGvIOMm-P2XSP9I:1uBaiB:0Oo__Vb5XoSWeTdZynUz6Vn7o4ea9hNjfoxAZD6qWXs",
+        "expire_date": "2025-05-18T16:52:59.634"
     }
 },
 {
@@ -1168,6 +1289,14 @@
 },
 {
     "model": "sessions.session",
+    "pk": "94d8533p7rw9pg2ccwr3eluhmkczfj0b",
+    "fields": {
+        "session_data": ".eJxVjDsOwyAQBa8SUUd4-RnbZfqcAS0LBJIIJH-qKHePI7lx-2bmfViKlNGVWqg0NjHoOzCdBGkuME5KsytzuK3ZbUucXQm7Is6bR3rF-gfhifXROLW6zsXzv8IPuvB7C_F9O9zTQcYl77WipJVA8lIIFUaMFIJBa5AsAkgrepB-HIzxMVAakjSDphgFaQHWW82-P5-2QSM:1uCCot:c8ceMGdcOg-7_acn6vn6j6vN12YMJ45wSZRgEhaKZ_0",
+        "expire_date": "2025-05-20T09:34:27.879"
+    }
+},
+{
+    "model": "sessions.session",
     "pk": "eeseytmefp1csmgji347y0lnv97whe53",
     "fields": {
         "session_data": ".eJxVjMsOwiAQRX_FsDaU4VFql-79BjIMIKiBpI-V8d9tky50e8-5580crkt26xwnVwIbGbDz7-aRnrHuIDyw3hunVpepeL4r_KAzv7UQX9fD_QtknPP2VpS0AiQvAVS4YKQQDFqDZFEIaaEX0l8GY3wMlIYkzaApRiANwnqrt2iKlNGVWqi0rShVJ3QnhTQn6Efo2ecLHJJBHw:1u7au8:9fJTPJ5BjFe4kHhuSZOxCQhsC1ZKRWmZIE0nl_GTjaY",
@@ -1180,6 +1309,14 @@
     "fields": {
         "session_data": ".eJxVjEEOwiAQRe_C2hCGglCX7nsGMswMUjVtUtqV8e7apAvd_vfef6mE21rT1mRJI6uLAnX63TLSQ6Yd8B2n26xpntZlzHpX9EGbHmaW5_Vw_w4qtvqtOyquA6RsATruUYjZY_BIAY2xAc7G5j56n4WpxGJ9dCQC5MCEHJx6fwD6HjhI:1uBZp8:1LK9Fa2cz3P2LesC36mskKXq-wBwqIF3yX5EQ0TDx9A",
         "expire_date": "2025-05-18T15:56:06.100"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "embgpx0k9zalog5t1vkv173y6eq3tkdw",
+    "fields": {
+        "session_data": ".eJxVjEEOwiAQRe_C2hCGglCX7nsGMswMUjVtUtqV8e7apAvd_vfef6mE21rT1mRJI6uLAnX63TLSQ6Yd8B2n26xpntZlzHpX9EGbHmaW5_Vw_w4qtvqtOyquA6RsATruUYjZY_BIAY2xAc7G5j56n4WpxGJ9dCQC5MCEHJx6fwD6HjhI:1uEkSh:CpD33kxVf7X3wOxm_51DqpCVVocBHrCRqwUjUqgbs88",
+        "expire_date": "2025-05-27T09:54:03.317"
     }
 },
 {
@@ -1232,6 +1369,14 @@
 },
 {
     "model": "sessions.session",
+    "pk": "rggveufo1vsu1ko9g9dk31gmm2jsx1lg",
+    "fields": {
+        "session_data": ".eJxVjEEOwiAQRe_C2hCGglCX7nsGMswMUjVtUtqV8e7apAvd_vfef6mE21rT1mRJI6uLAnX63TLSQ6Yd8B2n26xpntZlzHpX9EGbHmaW5_Vw_w4qtvqtOyquA6RsATruUYjZY_BIAY2xAc7G5j56n4WpxGJ9dCQC5MCEHJx6fwD6HjhI:1uEkMQ:ghrWHsG3-POMpYPN-ZESh_-ftSGaENxzkHsIpiGEvRg",
+        "expire_date": "2025-05-27T09:47:34.600"
+    }
+},
+{
+    "model": "sessions.session",
     "pk": "tgj8m9iasu7yds1jlzd80viybhwwcubw",
     "fields": {
         "session_data": ".eJxVjDsOwyAQBa8SUUfYuwQMLtPnDGiBdUwSgeRPFeXusSU3bt_MvK8YOI7kc8kxV9ELwKbVDbaoL-B67MRVeFqX0a8zTz6nTVHnLVB8c9lBelF5VhlrWaYc5K7Ig87yURN_7od7OhhpHrfaYLLA7tapRADWIGBwrlUhILOz0ThNujNaWdBMTAMHix04bK1h40D8_mh_P9Y:1uEWwA:EimVtVKotL9QR78gzRLUZ9aJSleq3AtMaQIFueA3FaA",
@@ -1247,11 +1392,19 @@
     }
 },
 {
+    "model": "sessions.session",
+    "pk": "yrj3wf63pdy1h65o0y978fnx56tu0i6j",
+    "fields": {
+        "session_data": ".eJxVjDsOwyAQBa8SUUcYlvBzmT5nQAusY5IIJH-qKHePLblx-2bmfdlAacRQakmlsZ4J0wndgQB9Eb5Xll1ZwHUZwzrTFEreFHXeIqY31R3kF9Zn46nVZSqR7wo_6MwfLdPnfringxHncasNZCfJ36zKKKUzICF6L1SMQORdMl6jtkYrJzUh4UDRgZUehDNkvGS_P2qsP9k:1uCCsf:qZGrJnhz3vom2Rdp7wGacuH-OI0sDFak1u1knSnAWhg",
+        "expire_date": "2025-05-20T09:38:21.903"
+    }
+},
+{
     "model": "tienda.usuario",
     "pk": 1,
     "fields": {
         "password": "pbkdf2_sha256$870000$JjCoHJX8T1MWvmnGZd2MxH$j+BpuO2AG2wdM6yIfJa1wH9XQlNWEW4JSVYJhSlgU8o=",
-        "last_login": "2025-05-12T19:24:59.773",
+        "last_login": "2025-05-13T09:54:03.251",
         "is_superuser": true,
         "username": "nelson",
         "first_name": "",
@@ -1270,7 +1423,7 @@
     "pk": 2,
     "fields": {
         "password": "pbkdf2_sha256$870000$ItretZb7lQVbi4cG8g7c60$EGhdAcnW2O7YYNITDtuEJM63YE3dDnRic+n/uq6yQIM=",
-        "last_login": "2025-05-12T18:47:04.614",
+        "last_login": "2025-05-13T09:51:52.582",
         "is_superuser": false,
         "username": "maria",
         "first_name": "maria",
@@ -1291,7 +1444,7 @@
     "pk": 3,
     "fields": {
         "password": "pbkdf2_sha256$870000$nBiZWWyruLgnBllmyTq3uH$4Trf7luVQOqizPG+cARJF/HGEDIuSwcbMDtdzMeYY/E=",
-        "last_login": "2025-05-12T19:27:34.793",
+        "last_login": "2025-05-13T09:50:45.426",
         "is_superuser": false,
         "username": "pedro",
         "first_name": "pedro",
@@ -1359,7 +1512,7 @@
         "estado": "R",
         "descripcion": "Es una pieza que está en buenas condiciones.",
         "marca": "Toyota",
-        "precio": 550.0,
+        "precio": 800.0,
         "anio": 2005
     }
 },
@@ -1373,6 +1526,20 @@
         "estado": "R",
         "descripcion": "Es un alternador bueno para vender.",
         "marca": "Ford",
+        "precio": 550.0,
+        "anio": 2000
+    }
+},
+{
+    "model": "tienda.pieza",
+    "pk": 5,
+    "fields": {
+        "nombre": "Caja de cambio",
+        "version": "1.5",
+        "referencia": "00055448l",
+        "estado": "R",
+        "descripcion": "Es una pieza que está en buenas condiciones.",
+        "marca": "Toyota",
         "precio": 550.0,
         "anio": 2000
     }
@@ -1491,7 +1658,8 @@
     "fields": {
         "tienda": 5,
         "pieza": 1,
-        "cantidad": 10
+        "cantidad": 10,
+        "precio": 400.0
     }
 },
 {
@@ -1500,7 +1668,8 @@
     "fields": {
         "tienda": 4,
         "pieza": 3,
-        "cantidad": 3
+        "cantidad": 2,
+        "precio": 250.0
     }
 },
 {
@@ -1509,7 +1678,18 @@
     "fields": {
         "tienda": 3,
         "pieza": 6,
-        "cantidad": 3
+        "cantidad": 3,
+        "precio": 350.0
+    }
+},
+{
+    "model": "tienda.inventario",
+    "pk": 7,
+    "fields": {
+        "tienda": 6,
+        "pieza": 6,
+        "cantidad": 3,
+        "precio": 600.0
     }
 },
 {
@@ -1518,7 +1698,8 @@
     "fields": {
         "tienda": 6,
         "pieza": 8,
-        "cantidad": 5
+        "cantidad": 5,
+        "precio": 550.0
     }
 },
 {
@@ -1530,6 +1711,17 @@
         "direccion": "calle cancionera",
         "cliente": 1,
         "pieza": 1
+    }
+},
+{
+    "model": "tienda.pedido",
+    "pk": 4,
+    "fields": {
+        "estado": "P",
+        "fecha": "2025-05-13",
+        "direccion": "calle saarra",
+        "cliente": 1,
+        "pieza": 3
     }
 }
 ]
