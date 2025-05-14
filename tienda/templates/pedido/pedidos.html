@@ -1,22 +1,37 @@
 <div class="card h-100 shadow-sm">
     <div class="card-body">
-        <p class="card-text">Nombre de cliente: {{ registro.cliente.usuario.username }}</p>
-        <p class="card-text">Nombre de la pieza: {{ registro.pieza.nombre }}</p>
-        <p class="card-text">Fecha del pedido: {{ registro.fecha }}</p>
-        <p class="card-text">Estado del pedido: {{ registro.estado }}</p>
-        
+      <table class="table table-sm">
+        <tbody>
+          <tr>
+            <th scope="row">Cliente</th>
+            <td>{{ registro.cliente.usuario.username }}</td>
+          </tr>
+          <tr>
+            <th scope="row">Pieza</th>
+            <td>{{ registro.pieza.nombre }}</td>
+          </tr>
+          <tr>
+            <th scope="row">Fecha del pedido</th>
+            <td>{{ registro.fecha|date:"d/m/Y H:i" }}</td>
+          </tr>
+          <tr>
+            <th scope="row">Estado</th>
+            <td>{{ registro.estado }}</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
+  
     {% load bootstrap_icons %}
-    <div class="card-footer d-flex justify-content-between">
-        <a href="{% url 'editar_Inventario' registro.id %}" class="btn btn-primary btn-sm">Editar</a>
-    </div>
-
-    <form action="" method="post">
+    <div class="card-footer d-flex justify-content-between align-items-center">
+      <a href="{% url 'editar_Inventario' registro.id %}" class="btn btn-primary btn-sm">Editar</a>
+  
+      <form action="" method="post" class="d-inline" onsubmit="return eliminar();">
         {% csrf_token %}
-        <button  class="btn-btn-danger" type="submit" onclick="return eliminar();">
-            <span>{% bs_icon 'trash'%}</span>
+        <button class="btn btn-danger btn-sm" type="submit">
+          {% bs_icon 'trash' %} Eliminar
         </button>
-    
       </form>
+    </div>
   </div>
   

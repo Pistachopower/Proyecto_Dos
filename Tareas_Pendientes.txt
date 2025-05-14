@@ -1,7 +1,11 @@
-Para el jueves 
-Quitar en pedido el campo fecha
+Por modificar para darle logica a la aplicacion
+Quitar en el menu crear pedido (ya tiene hacer compra)
 
-Cambiar la vista: lista_pieza a listar_inventario
+
+Para el jueves 
+Quitar en pedido el campo fecha (listo)
+
+Cambiar la vista: lista_pieza a listar_inventario (listo)
 
 En lista_ProductosTienda agregar el boton de comprar 
 

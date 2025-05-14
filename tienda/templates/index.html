@@ -3,20 +3,23 @@
 {% block contenido %}
 {% load static %}
 
-<!--====== Hero ======-->
-<!-- Hero Section Optimizado - Solo Bootstrap -->
-<div class="vh-100 d-flex justify-content-center align-items-center position-relative overflow-hidden mb-5" style="background-image: url('https://scontent.fsvq4-1.fna.fbcdn.net/v/t39.30808-6/306660358_486579543479806_4320885311267801665_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=d3PlhhBeF_wQ7kNvwEXI3Kq&_nc_oc=Adm5jIirYEUgicGut8mplGlkewm_ehbruAvgyONGnfLjwW4B2udTx46Dx3We6eT2Cpk&_nc_zt=23&_nc_ht=scontent.fsvq4-1.fna&_nc_gid=9t0ifcLkpcbwKYgQjFtNrA&oh=00_AfJxj3xTvCj-HlevhRI5WAh9oombMqs1izFoDMtE3D6EXQ&oe=68280A54'); background-size: contain; background-position: center center; background-repeat: no-repeat;">
-   <!-- Capa oscura -->
-   <div class="position-absolute w-100 h-100 top-0 start-0 bg-dark opacity-50"></div>
+<div class="position-relative overflow-hidden mb-5" 
+     style="height: 60vh; background-image: url('{% static "imagenes/MotorPartsExpress.jpg" %}'); 
+     background-size: cover; background-position: center center; background-repeat: no-repeat;">
+    
+    <!-- Capa oscura para mejorar el contraste del texto -->
+    <div class="position-absolute w-100 h-100 top-0 start-0 bg-dark opacity-50"></div>
 
-   <!-- Contenido del hero -->
-   <div class="position-relative d-flex flex-column justify-content-center align-items-center text-white text-center h-100 px-3">
-       <div class="container">
-           <h1 class="display-4 fw-bold mb-3">Bienvenido a MotorPartExpress</h1>
-           <a href="#services" class="btn btn-light btn-lg px-4 py-2 shadow">Ver Servicios</a>
-       </div>
-   </div>
+    <!-- Contenido del hero -->
+    <div class="position-relative d-flex flex-column justify-content-center align-items-center text-white text-center h-100 px-3">
+        <div class="container">
+            <h1 class="display-5 fw-bold mb-3">Bienvenido a <span class="text-warning">MotorPartExpress</span></h1>
+            <p class="lead">Encuentra las piezas que tu motor necesita, rápido y fácil.</p>
+            <a href="#services" class="btn btn-outline-light btn-lg px-4 py-2 mt-3 shadow">Ver Servicios</a>
+        </div>
+    </div>
 </div>
+
 
 <!--====== CAROUSEL ======-->
 <div id="carouselExampleIndicators" class="carousel slide mb-5" data-bs-ride="carousel">

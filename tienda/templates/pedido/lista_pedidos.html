@@ -1,27 +1,51 @@
 {% extends "estructura/principal.html" %}
+{% load bootstrap_icons %}
+
 
 {% block contenido %}
-<section class="intro my-5">
-  <div class="bg-image h-100">
-    <div class="mask d-flex align-items-center h-100">
-      <div class="container">
-        <div class="row justify-content-center">
-          {% for registro in pedidos_mostrar %}
-          <div class="col-md-4 mb-4">
-            {% include 'pedido/pedidos.html' %}
-          </div>
+<div class="container my-5">
+  <h2 class="text-center mb-4">Lista de pedidos</h2>
 
-          
-          {% empty %}
-          <div class="col-12">
-            <div class="alert alert-info" role="alert">
-              El inventario no está disponibles en este momento.
-            </div>
-          </div>
+  {% if pedidos_mostrar %}
+    <div class="table-responsive">
+      <table class="table table-striped table-bordered table-hover align-middle">
+        <thead class="table-dark text-center">
+          <tr>
+            <th>#</th>
+            <th>Cliente</th>
+            <th>Pieza</th>
+            <th>Fecha del pedido</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for registro in pedidos_mostrar %}
+            <tr class="text-center">
+              <td>{{ forloop.counter }}</td>
+              <td>{{ registro.cliente.usuario.username }}</td>
+              <td>{{ registro.pieza.nombre }}</td>
+              <td>{{ registro.fecha|date:"d/m/Y H:i" }}</td>
+              <td>{{ registro.estado }}</td>
+              <td>
+                <a href="{% url 'editar_Inventario' registro.id %}" class="btn btn-sm btn-primary">Editar</a>
+
+                <form action="" method="post" class="d-inline" onsubmit="return eliminar();">
+                  {% csrf_token %}
+                  <button type="submit" class="btn btn-sm btn-danger">
+                    {% bs_icon 'trash' %} Eliminar
+                  </button>
+                </form>
+              </td>
+            </tr>
           {% endfor %}
-        </div><!-- /.row -->
-      </div><!-- /.container -->
-    </div><!-- /.mask -->
-  </div><!-- /.bg-image -->
-</section>
+        </tbody>
+      </table>
+    </div>
+  {% else %}
+    <div class="alert alert-info text-center">
+      No hay pedidos disponibles en este momento.
+    </div>
+  {% endif %}
+</div>
 {% endblock %}

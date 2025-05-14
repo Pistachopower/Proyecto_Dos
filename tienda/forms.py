@@ -192,7 +192,7 @@ class DatosVendedorModelForms_Editar(ModelForm):
         
 class DatosVendedorModelForms(ModelForm):
     class Meta:
-        model = Inventario 
+        model = Producto_Tienda 
         fields = ['tienda', 'pieza','cantidad']  
         help_texts = {
             'tienda' : ("Selecciona la tienda"),
@@ -216,7 +216,7 @@ class DatosVendedorModelForms(ModelForm):
         
 class DatosInventarioEditarModelForms(ModelForm):
     class Meta:
-        model = Inventario 
+        model = Producto_Tienda 
         fields = ['tienda','pieza','cantidad']  
         help_texts = {
             'cantidad': ("Indica la cantidad"),
@@ -233,7 +233,7 @@ class BusquedaPiezaModelForm(forms.Form):
 class PedidoModelForm(ModelForm):
         class Meta:
             model = Pedido 
-            fields = ['estado', 'fecha','direccion','pieza']
+            fields = ['estado', 'direccion','pieza']
             help_texts = {
                 'pieza': ("Selecciona la pieza"),
 
@@ -246,19 +246,41 @@ class PedidoModelForm(ModelForm):
             estado = forms.ChoiceField(choices=Pedido.ESTADO,
                                initial="Pendiente")
             
-            #Selector de fecha date picker 
-            widgets = {
-            'fecha': forms.DateInput(attrs={
-                'type': 'date',
-                'class': 'form-control',
-                'placeholder': 'Selecciona una fecha',
-            }),
-        }
+  
             
             
-class CompraInventarioModelForm(forms.Form):  
-    cantidad = forms.CharField(required=False, label="Cantidad")
+class CompraInventarioModelForm(forms.Form):
+    #disabled=True: deshabilita el campo para que no se pueda editar
+    tienda = forms.CharField(disabled=True, required=False, label="Tienda")
+    pieza = forms.CharField(disabled=True, required=False, label="Pieza")
+    precio = forms.FloatField(disabled=True, required=False, label="Precio")
+    stock = forms.IntegerField(disabled=True, required=False, label="Stock disponible")
 
+    direccion = forms.CharField(max_length=100, label="Dirección de envío")
+    cantidad = forms.IntegerField(min_value=1, label="Cantidad a comprar")
+
+    #producto_tienda_obj: Sobreescribimos el formulario para recibir el registro (bd) de la vista
+    def __init__(self, *args, producto_tienda_obj=None, **kwargs):
+        super().__init__(*args, **kwargs)
+        
+        # Guardamos el objeto recibido desde la vista
+        self.producto_tienda_obj = producto_tienda_obj
+
+        # Usamos ese objeto para rellenar los campos
+        if self.producto_tienda_obj:
+            self.fields['tienda'].initial = self.producto_tienda_obj.tienda.direccion
+            self.fields['pieza'].initial = self.producto_tienda_obj.pieza.nombre
+            self.fields['precio'].initial = self.producto_tienda_obj.precio
+            self.fields['stock'].initial = self.producto_tienda_obj.cantidad
+
+    def clean_cantidad(self):
+        cantidad = self.cleaned_data.get('cantidad')
+        if self.producto_tienda_obj and cantidad > self.producto_tienda_obj.cantidad:
+            self.add_error(
+                'cantidad',
+                f"La cantidad solicitada ({cantidad}) excede el stock disponible ({self.producto_tienda_obj.cantidad})."
+            )
+        return cantidad
             
             
 

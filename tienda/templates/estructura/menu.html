@@ -30,11 +30,11 @@
                 {% if perms.tienda.view_pieza or perms.tienda.add_pieza %}
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="piezasDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Piezas
+                        Catálogo de Piezas
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="piezasDropdown">
                         {% if perms.tienda.view_pieza %}
-                        <li><a class="dropdown-item" href="{% url 'lista_pieza' %}">Ver piezas</a></li>
+                        <li><a class="dropdown-item" href="{% url 'lista_catalogo' %}">Lista de catalogo de piezas</a></li>
                         {% endif %}
 
                         {% if perms.tienda.view_pieza %}
@@ -70,10 +70,10 @@
                 
 
                 <!-- Dropdown de Tienda -->
-                {% if perms.tienda.view_tienda or perms.tienda.add_tienda or perms.tienda.view_inventario %}
+                {% if perms.tienda.view_tienda or perms.tienda.add_tienda or perms.tienda.view_producto_tienda %}
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="tiendaDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Tienda
+                        Productos disponibles en tienda
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="tiendaDropdown">
                         {% if perms.tienda.view_tienda %}
@@ -87,8 +87,8 @@
 
                         {% endif %}
 
-                        {% if perms.tienda.view_inventario %}
-                        <li><a class="dropdown-item" href="{% url 'lista_ProductosTienda' %}">Listar inventario</a></li>
+                        {% if perms.tienda.view_producto_tienda %}
+                        <li><a class="dropdown-item" href="{% url 'lista_ProductosTienda' %}">Listar productos de la tienda</a></li>
                         {% endif %}
 
 

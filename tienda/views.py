@@ -64,9 +64,9 @@ def registrar_usuario(request):
 
 
 @permission_required("tienda.view_pieza")
-def lista_pieza(request):
+def lista_catalogo(request):
     pieza = Pieza.objects.all()
-    return render(request, "piezas/lista_pieza.html", {"piezas_mostrar": pieza})
+    return render(request, "piezas/lista_catalogo.html", {"piezas_mostrar": pieza})
 
 
 @permission_required("tienda.add_pieza")
@@ -88,9 +88,6 @@ def pieza_create(request):
 
 def dame_producto(request, id_pieza):
     pieza = Pieza.objects.filter(id=id_pieza).first()
-    
-    #DatosVendedor.objects.filter(id=id_Datovendedor).first()
-
     return render(request, "piezas/pieza_id.html", {"pieza": pieza})
 
 
@@ -416,7 +413,7 @@ def agregar_Inventario(request):
 
         if formulario.is_valid():
             # aqui vemos si existe en inventario hay un producto existente
-            inventario = Inventario.objects.filter(
+            inventario = Producto_Tienda.objects.filter(
                 tienda=formulario.cleaned_data.get("tienda"),
                 pieza=formulario.cleaned_data.get("pieza"),
             ).first()
@@ -439,16 +436,16 @@ def agregar_Inventario(request):
         request, "inventario/crear_inventario.html", {"formulario": formulario}
     )
 
-@permission_required("tienda.view_inventario")
+@permission_required("tienda.view_producto_tienda")
 def lista_ProductosTienda(request):
-    inventario = Inventario.objects.prefetch_related("tienda", "pieza").all()
+    productosTiendas = Producto_Tienda.objects.prefetch_related("tienda", "pieza").all()
     return render(
-        request, "inventario/lista_Inventario.html", {"inventario": inventario}
+        request, "productosTienda/lista_productosTienda.html", {"productosTiendas": productosTiendas}
     )
 
 @permission_required("tienda.change_inventario")
 def editar_Inventario(request, id_Inventario):
-    inventario = Inventario.objects.prefetch_related("tienda", "pieza").all()
+    inventario = Producto_Tienda.objects.prefetch_related("tienda", "pieza").all()
     inventarioQuery = inventario.filter(id=id_Inventario).first()
 
     if request.method == "POST":
@@ -472,7 +469,7 @@ def editar_Inventario(request, id_Inventario):
 
 @permission_required("tienda.delete_inventario")
 def datosInventario_delete(request, id_Inventario):
-    inventario = Inventario.objects.prefetch_related("tienda", "pieza").all()
+    inventario = Producto_Tienda.objects.prefetch_related("tienda", "pieza").all()
     inventarioQuery = inventario.filter(id=id_Inventario).first()
 
     try:
@@ -516,7 +513,7 @@ def lista_pedidos(request):
     pedidos= Pedido.objects.select_related("pieza", "cliente__usuario").all()
     return render(request, "pedido/lista_pedidos.html", {"pedidos_mostrar": pedidos})
     
-
+#TODO: Pendiente por corregir la lógica 
 @permission_required("tienda.add_pedido")
 def pedido_create(request):
     if request.method == "POST":
@@ -528,7 +525,7 @@ def pedido_create(request):
 
             #Buscamos inventarios con esa pieza y stock mayor a 0
             #gte: mayor o igual que
-            inventario = Inventario.objects.filter(
+            inventario = Producto_Tienda.objects.filter(
                 pieza_id=pieza_seleccionada,
                 cantidad__gte=1
             ).select_related("tienda").first()
@@ -560,17 +557,36 @@ def pedido_create(request):
 
 
 
-def compra_pieza(request):
-    if request.method == "POST":
-        #inventario = Inventario.objects.prefetch_related("tienda", "pieza").all()        
 
-        formulario = CompraInventarioModelForm(request.POST)
+def comprar_inventario_view(request, productoTienda_id):
+    producto_tienda = Producto_Tienda.objects.filter(id=productoTienda_id).first()
+
+    if request.method == 'POST':
+        #producto_tienda: pasamos ese registro de la bd al formulario
+        #request.POST: recogemos los datos del formulario escritos del usuario
+        formulario = CompraInventarioModelForm(request.POST, producto_tienda_obj=producto_tienda)
+        if formulario.is_valid():
+            cantidad = formulario.cleaned_data['cantidad']
+            direccion = formulario.cleaned_data['direccion']
+
+            producto_tienda.cantidad -= cantidad
+            producto_tienda.save()
+
+            cliente = Cliente.objects.filter(usuario=request.user).first()
+            Pedido.objects.create(
+                cliente=cliente,
+                pieza=producto_tienda.pieza,
+                direccion=direccion,
+                estado='P'
+            )
+
+            messages.success(request, "Compra realizada con éxito. Stock actualizado.")
+            return redirect('lista_pedidos')
     else:
-        formulario = CompraInventarioModelForm()
-    
-    
-    
-    return render(request, "compra/formulario_compra.html", {"formulario":formulario})
+        formulario = CompraInventarioModelForm(producto_tienda_obj=producto_tienda)
+
+    return render(request, 'compra/formulario_compra.html', {'formulario': formulario})
+
 
 
 # Pagina de error

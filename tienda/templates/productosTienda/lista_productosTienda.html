@@ -6,17 +6,17 @@
     <div class="mask d-flex align-items-center h-100">
       <div class="container">
         <div class="row justify-content-center">
-          {% for registro in inventario %}
+          {% for registro in productosTiendas %}
           <div class="col-md-4 mb-4">
             <!-- Card for each product (pieza) -->
-            {% include 'inventario/inventario.html' %}
+            {% include 'productosTienda/productosTienda.html' %}
           </div>
 
           
           {% empty %}
           <div class="col-12">
             <div class="alert alert-info" role="alert">
-              El inventario no está disponibles en este momento.
+              No hay datos disponibles de los productos de las tiendas disponibles en este momento.
             </div>
           </div>
           {% endfor %}
