@@ -1,16 +1,4 @@
-Por modificar para darle logica a la aplicacion
-Quitar en el menu crear pedido (ya tiene hacer compra)
+Tareas 
+Arreglar la vista y la lógica en comprar_inventario_view
 
-
-Para el jueves 
-Quitar en pedido el campo fecha (listo)
-
-Cambiar la vista: lista_pieza a listar_inventario (listo)
-
-En lista_ProductosTienda agregar el boton de comprar 
-
-Luego crear la url: path('compra-seleccion-pieza/<int:id_Inventario>',views.compra_pieza,name='compra_pieza'),
-
-Crear la vista: listar productos con todas las tiendas, que me muestre: tienda, producto, precio, stock
-con un formulario generico. Además del campo de tipo imput cantidad. Cuando el usuario de el boton de 
-compra, reduce el producto de la tienda del stock y crear el pedido, lo redirigimos a otro lado 
+Para el martes 

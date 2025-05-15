@@ -230,57 +230,74 @@ class BusquedaPiezaModelForm(forms.Form):
     nombre = forms.CharField(required=False, label="Nombre")
     
     
-class PedidoModelForm(ModelForm):
-        class Meta:
-            model = Pedido 
-            fields = ['estado', 'direccion','pieza']
-            help_texts = {
-                'pieza': ("Selecciona la pieza"),
+# class PedidoModelForm(ModelForm):
+#         class Meta:
+#             model = Pedido 
+#             fields = ['estado', 'direccion','pieza']
+#             help_texts = {
+#                 'pieza': ("Selecciona la pieza"),
 
-            }
-            labels = {
-                "estado": ("Estado del pedido"),
-                "direccion": ("Direccion de entrega"),
-            }
+#             }
+#             labels = {
+#                 "estado": ("Estado del pedido"),
+#                 "direccion": ("Direccion de entrega"),
+#             }
             
-            estado = forms.ChoiceField(choices=Pedido.ESTADO,
-                               initial="Pendiente")
+#             estado = forms.ChoiceField(choices=Pedido.ESTADO,
+#                                initial="Pendiente")
             
   
             
             
-class CompraInventarioModelForm(forms.Form):
-    #disabled=True: deshabilita el campo para que no se pueda editar
-    tienda = forms.CharField(disabled=True, required=False, label="Tienda")
-    pieza = forms.CharField(disabled=True, required=False, label="Pieza")
-    precio = forms.FloatField(disabled=True, required=False, label="Precio")
-    stock = forms.IntegerField(disabled=True, required=False, label="Stock disponible")
+# class CompraInventarioModelForm(forms.Form):
+#     #disabled=True: deshabilita el campo para que no se pueda editar
+#     tienda = forms.CharField(disabled=True, required=False, label="Tienda")
+#     pieza = forms.CharField(disabled=True, required=False, label="Pieza")
+#     precio = forms.FloatField(disabled=True, required=False, label="Precio")
+#     stock = forms.IntegerField(disabled=True, required=False, label="Stock disponible")
+#     direccion = forms.CharField(max_length=100, label="Dirección de envío")
+#     cantidad = forms.IntegerField(min_value=1, label="Cantidad a comprar")
 
-    direccion = forms.CharField(max_length=100, label="Dirección de envío")
-    cantidad = forms.IntegerField(min_value=1, label="Cantidad a comprar")
+#     #producto_tienda_obj: Sobreescribimos el formulario para recibir el registro (bd) de la vista
+#     def __init__(self, *args, producto_tienda_obj=None, **kwargs):
+#         super().__init__(*args, **kwargs)
+        
+#         # Guardamos el objeto recibido desde la vista
+#         self.producto_tienda_obj = producto_tienda_obj
+
+#         # Usamos ese objeto para rellenar los campos
+#         if self.producto_tienda_obj:
+#             self.fields['tienda'].initial = self.producto_tienda_obj.tienda.direccion
+#             self.fields['pieza'].initial = self.producto_tienda_obj.pieza.nombre
+#             self.fields['precio'].initial = self.producto_tienda_obj.precio
+#             self.fields['stock'].initial = self.producto_tienda_obj.cantidad
+
+#     def clean_cantidad(self):
+#         cantidad = self.cleaned_data.get('cantidad')
+#         if self.producto_tienda_obj and cantidad > self.producto_tienda_obj.cantidad:
+#             self.add_error(
+#                 'cantidad',
+#                 f"La cantidad solicitada ({cantidad}) excede el stock disponible ({self.producto_tienda_obj.cantidad})."
+#             )
+#         return cantidad
+
+
+
+class CompraInventarioModelForm(forms.Form):
+    cantidad = forms.IntegerField (required=True)
+
 
     #producto_tienda_obj: Sobreescribimos el formulario para recibir el registro (bd) de la vista
-    def __init__(self, *args, producto_tienda_obj=None, **kwargs):
-        super().__init__(*args, **kwargs)
+    def __init__(self, *args, **kwargs):
+        self.request= kwargs.pop("producto_tienda_obj")
+        super(CompraInventarioModelForm, self).__init__(*args, **kwargs)
         
-        # Guardamos el objeto recibido desde la vista
-        self.producto_tienda_obj = producto_tienda_obj
-
-        # Usamos ese objeto para rellenar los campos
-        if self.producto_tienda_obj:
-            self.fields['tienda'].initial = self.producto_tienda_obj.tienda.direccion
-            self.fields['pieza'].initial = self.producto_tienda_obj.pieza.nombre
-            self.fields['precio'].initial = self.producto_tienda_obj.precio
-            self.fields['stock'].initial = self.producto_tienda_obj.cantidad
-
-    def clean_cantidad(self):
-        cantidad = self.cleaned_data.get('cantidad')
-        if self.producto_tienda_obj and cantidad > self.producto_tienda_obj.cantidad:
-            self.add_error(
-                'cantidad',
-                f"La cantidad solicitada ({cantidad}) excede el stock disponible ({self.producto_tienda_obj.cantidad})."
-            )
-        return cantidad
+        
+    #incluir validacion
+        
+        
+        
+    
             
             
 

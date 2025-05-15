@@ -43,7 +43,6 @@ class Pieza(models.Model):
 class Cliente(models.Model):
     usuario = models.OneToOneField(Usuario, on_delete=models.CASCADE)
     # Relación muchos a muchos con Pieza a través de Pedido
-    piezas_pedidas = models.ManyToManyField(Pieza, through='Pedido', related_name='clientes')
     
     def __str__(self):
         return self.usuario.username
@@ -85,7 +84,7 @@ class DatosVendedor(models.Model):
 class Producto_Tienda(models.Model):
     tienda= models.ForeignKey(Tienda, on_delete= models.CASCADE)
     pieza= models.ForeignKey(Pieza, on_delete= models.CASCADE)
-    cantidad= models.IntegerField()
+    cantidad= models.IntegerField() #cambiar cantidad por stock
     precio= models.FloatField(default=1.0) 
     
 
@@ -99,15 +98,25 @@ class Pedido(models.Model):
     estado = models.CharField(max_length=1, choices=ESTADO, default="P")
     fecha = models.DateTimeField(auto_now_add=True) #asigna la fecha y hora actual al crear el pedido
     direccion = models.CharField(max_length=100)
+
     
     # Relación muchos a muchos utilizando la tabla Pedido como intermedia
     cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE, related_name='pedidos')
-    pieza = models.ForeignKey(Pieza, on_delete=models.CASCADE, related_name='pedidos')
-    
+
 
     
     def __str__(self):
-        return f"Pedido de {self.cliente.usuario.username} - {self.pieza.nombre}"
+        return f"Pedido de {self.cliente.usuario.username}"
+    
+    
+class LineaPedido(models.Model):
+    pedido= models.ForeignKey(Pedido, on_delete= models.CASCADE, related_name="pedido_lineaPedido")
+    pieza= models.ForeignKey(Pieza, on_delete= models.CASCADE, related_name="pieza_lineaPedido") 
+    tienda= models.ForeignKey(Tienda, on_delete= models.CASCADE, related_name="tienda_lineaPedido")
+    precio= models.FloatField(default=1.0) 
+    cantidad= models.IntegerField() 
+
+
     
 
 

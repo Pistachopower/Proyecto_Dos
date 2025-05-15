@@ -558,7 +558,7 @@ def pedido_create(request):
 
 
 
-def comprar_inventario_view(request, productoTienda_id):
+def comprar_inventario_view_antigua(request, productoTienda_id):
     producto_tienda = Producto_Tienda.objects.filter(id=productoTienda_id).first()
 
     if request.method == 'POST':
@@ -584,6 +584,35 @@ def comprar_inventario_view(request, productoTienda_id):
             return redirect('lista_pedidos')
     else:
         formulario = CompraInventarioModelForm(producto_tienda_obj=producto_tienda)
+
+    return render(request, 'compra/formulario_compra.html', {'formulario': formulario})
+
+
+def comprar_inventario_view(request, productoTienda_id):
+    
+    #producto_tienda = Producto_Tienda.objects.filter(id=productoTienda_id).first()
+    pedido = Pedido.objects.filter(id_cliente=request.user).first()
+
+    if request.method == 'POST':
+        if (pedido is None):
+            pedido = Pedido.object.create(
+                estado=formulario.cleaned_data.get("estado"),
+                cliente=formulario.cleaned_data.get("request.user"),
+  
+            )
+        
+        
+        lineaPedido= LineaPedido.objects.create(
+            pedido=formulario.cleaned_data.get("pedido"),
+            producto=formulario.cleaned_data.get("producto"),
+            tienda= formulario.cleaned_data.get("tienda"),
+            precio= formulario.cleaned_data.get("precio"),     
+        )
+        
+        lineaPedido.save()
+
+    else:
+        formulario = CompraInventarioModelForm()
 
     return render(request, 'compra/formulario_compra.html', {'formulario': formulario})
 
