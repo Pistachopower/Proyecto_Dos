@@ -509,46 +509,29 @@ def pieza_Buscar(request):
 
 @permission_required("tienda.view_pedido")
 def lista_pedidos(request):
-    #pedidos = Pedido.objects.all()
-    pedidos= Pedido.objects.select_related("pieza", "cliente__usuario").all()
+    pedidos= Pedido.objects.select_related("cliente").all()
     return render(request, "pedido/lista_pedidos.html", {"pedidos_mostrar": pedidos})
     
-#TODO: Pendiente por corregir la lógica 
+
 @permission_required("tienda.add_pedido")
 def pedido_create(request):
     if request.method == "POST":
         formulario = PedidoModelForm(request.POST)
 
         if formulario.is_valid():
-            #obtenemos la pieza seleccionada del formulario
-            pieza_seleccionada = formulario.cleaned_data.get("pieza")
-
-            #Buscamos inventarios con esa pieza y stock mayor a 0
-            #gte: mayor o igual que
-            inventario = Producto_Tienda.objects.filter(
-                pieza_id=pieza_seleccionada,
-                cantidad__gte=1
-            ).select_related("tienda").first()
-
-            if inventario:
-                #Restamos 1 unidad
-                inventario.cantidad -= 1
-                inventario.save()
-
-                #Creamos el pedido
-                pedido = Pedido.objects.create(
-                    estado=formulario.cleaned_data.get("estado"),
+            #Creamos el pedido
+            pedido = Pedido.objects.create(
+                    estado='P',
                     fecha=formulario.cleaned_data.get("fecha"),
                     direccion=formulario.cleaned_data.get("direccion"),
-                    pieza=pieza_seleccionada,
                     cliente=request.user.cliente
                 )
+            
+            pedido.save()
 
-                messages.success(request, "Pedido realizado con éxito. Stock actualizado.")
-                return redirect("lista_pedidos") 
+            messages.success(request, "Pedido realizado con éxito. Stock actualizado.")
+            return redirect("lista_pedidos") 
 
-            else:
-                return render(request, "pedido/crear_pedido.html", {"formulario": formulario})
 
     else:
         formulario = PedidoModelForm()
@@ -558,63 +541,71 @@ def pedido_create(request):
 
 
 
-def comprar_inventario_view_antigua(request, productoTienda_id):
+# def comprar_inventario_view_antigua(request, productoTienda_id):
+#     producto_tienda = Producto_Tienda.objects.filter(id=productoTienda_id).first()
+
+#     if request.method == 'POST':
+#         #producto_tienda: pasamos ese registro de la bd al formulario
+#         #request.POST: recogemos los datos del formulario escritos del usuario
+#         formulario = CompraProductoTiendaModelForm(request.POST, producto_tienda_obj=producto_tienda)
+#         if formulario.is_valid():
+#             cantidad = formulario.cleaned_data['cantidad']
+#             direccion = formulario.cleaned_data['direccion']
+
+#             producto_tienda.cantidad -= cantidad
+#             producto_tienda.save()
+
+#             cliente = Cliente.objects.filter(usuario=request.user).first()
+#             Pedido.objects.create(
+#                 cliente=cliente,
+#                 pieza=producto_tienda.pieza,
+#                 direccion=direccion,
+#                 estado='P'
+#             )
+
+#             messages.success(request, "Compra realizada con éxito. Stock actualizado.")
+#             return redirect('lista_pedidos')
+#     else:
+#         formulario = CompraProductoTiendaModelForm(producto_tienda_obj=producto_tienda)
+
+#     return render(request, 'compra/formulario_compra.html', {'formulario': formulario})
+
+
+@permission_required("tienda.add_pedido")
+def comprar_producto_tienda(request, productoTienda_id):
     producto_tienda = Producto_Tienda.objects.filter(id=productoTienda_id).first()
+    cliente = Cliente.objects.get(usuario=request.user)
 
     if request.method == 'POST':
-        #producto_tienda: pasamos ese registro de la bd al formulario
-        #request.POST: recogemos los datos del formulario escritos del usuario
-        formulario = CompraInventarioModelForm(request.POST, producto_tienda_obj=producto_tienda)
+        formulario = CompraProductoTiendaModelForm(request.POST, producto_tienda_obj=producto_tienda)
         if formulario.is_valid():
             cantidad = formulario.cleaned_data['cantidad']
             direccion = formulario.cleaned_data['direccion']
 
-            producto_tienda.cantidad -= cantidad
-            producto_tienda.save()
-
-            cliente = Cliente.objects.filter(usuario=request.user).first()
-            Pedido.objects.create(
+            # 1. Creamos el pedido
+            pedido = Pedido.objects.create(
                 cliente=cliente,
-                pieza=producto_tienda.pieza,
                 direccion=direccion,
-                estado='P'
+                estado='P',  # O el estado que corresponda
             )
+
+            # 2. Creamos la línea de pedido asociada
+            LineaPedido.objects.create(
+                pedido=pedido,
+                pieza=producto_tienda.pieza,
+                tienda=producto_tienda.tienda,
+                precio=producto_tienda.precio,
+                cantidad=cantidad,
+            )
+
+
 
             messages.success(request, "Compra realizada con éxito. Stock actualizado.")
             return redirect('lista_pedidos')
     else:
-        formulario = CompraInventarioModelForm(producto_tienda_obj=producto_tienda)
+        formulario = CompraProductoTiendaModelForm(producto_tienda_obj=producto_tienda)
 
-    return render(request, 'compra/formulario_compra.html', {'formulario': formulario})
-
-
-def comprar_inventario_view(request, productoTienda_id):
-    
-    #producto_tienda = Producto_Tienda.objects.filter(id=productoTienda_id).first()
-    pedido = Pedido.objects.filter(id_cliente=request.user).first()
-
-    if request.method == 'POST':
-        if (pedido is None):
-            pedido = Pedido.object.create(
-                estado=formulario.cleaned_data.get("estado"),
-                cliente=formulario.cleaned_data.get("request.user"),
-  
-            )
-        
-        
-        lineaPedido= LineaPedido.objects.create(
-            pedido=formulario.cleaned_data.get("pedido"),
-            producto=formulario.cleaned_data.get("producto"),
-            tienda= formulario.cleaned_data.get("tienda"),
-            precio= formulario.cleaned_data.get("precio"),     
-        )
-        
-        lineaPedido.save()
-
-    else:
-        formulario = CompraInventarioModelForm()
-
-    return render(request, 'compra/formulario_compra.html', {'formulario': formulario})
+    return render(request, 'compra/formulario_compra.html', {'formulario': formulario, 'producto_tienda': producto_tienda})
 
 
 

@@ -24,9 +24,9 @@
             <tr class="text-center">
               <td>{{ forloop.counter }}</td>
               <td>{{ registro.cliente.usuario.username }}</td>
-              <td>{{ registro.pieza.nombre }}</td>
-              <td>{{ registro.fecha|date:"d/m/Y H:i" }}</td>
               <td>{{ registro.estado }}</td>
+              <td>{{ registro.fecha|date:"d/m/Y H:i" }}</td>
+              <td>{{ registro.direccion }}</td>
               <td>
                 <a href="{% url 'editar_Inventario' registro.id %}" class="btn btn-sm btn-primary">Editar</a>
 

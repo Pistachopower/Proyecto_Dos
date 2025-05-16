@@ -230,70 +230,47 @@ class BusquedaPiezaModelForm(forms.Form):
     nombre = forms.CharField(required=False, label="Nombre")
     
     
-# class PedidoModelForm(ModelForm):
-#         class Meta:
-#             model = Pedido 
-#             fields = ['estado', 'direccion','pieza']
-#             help_texts = {
-#                 'pieza': ("Selecciona la pieza"),
-
-#             }
-#             labels = {
-#                 "estado": ("Estado del pedido"),
-#                 "direccion": ("Direccion de entrega"),
-#             }
+class PedidoModelForm(ModelForm):
+        class Meta:
+            model = Pedido 
+            fields = ['direccion']
             
-#             estado = forms.ChoiceField(choices=Pedido.ESTADO,
-#                                initial="Pendiente")
+
+            
+            labels = {
+                "direccion": ("Direccion de entrega"),
+            }
+            
+
+            
+
             
   
             
-            
-# class CompraInventarioModelForm(forms.Form):
-#     #disabled=True: deshabilita el campo para que no se pueda editar
-#     tienda = forms.CharField(disabled=True, required=False, label="Tienda")
-#     pieza = forms.CharField(disabled=True, required=False, label="Pieza")
-#     precio = forms.FloatField(disabled=True, required=False, label="Precio")
-#     stock = forms.IntegerField(disabled=True, required=False, label="Stock disponible")
-#     direccion = forms.CharField(max_length=100, label="Dirección de envío")
-#     cantidad = forms.IntegerField(min_value=1, label="Cantidad a comprar")
-
-#     #producto_tienda_obj: Sobreescribimos el formulario para recibir el registro (bd) de la vista
-#     def __init__(self, *args, producto_tienda_obj=None, **kwargs):
-#         super().__init__(*args, **kwargs)
-        
-#         # Guardamos el objeto recibido desde la vista
-#         self.producto_tienda_obj = producto_tienda_obj
-
-#         # Usamos ese objeto para rellenar los campos
-#         if self.producto_tienda_obj:
-#             self.fields['tienda'].initial = self.producto_tienda_obj.tienda.direccion
-#             self.fields['pieza'].initial = self.producto_tienda_obj.pieza.nombre
-#             self.fields['precio'].initial = self.producto_tienda_obj.precio
-#             self.fields['stock'].initial = self.producto_tienda_obj.cantidad
-
-#     def clean_cantidad(self):
-#         cantidad = self.cleaned_data.get('cantidad')
-#         if self.producto_tienda_obj and cantidad > self.producto_tienda_obj.cantidad:
-#             self.add_error(
-#                 'cantidad',
-#                 f"La cantidad solicitada ({cantidad}) excede el stock disponible ({self.producto_tienda_obj.cantidad})."
-#             )
-#         return cantidad
 
 
-
-class CompraInventarioModelForm(forms.Form):
+class CompraProductoTiendaModelForm(forms.Form):
+    #datos que escribe el usuario
     cantidad = forms.IntegerField (required=True)
+    direccion = forms.CharField(required=False, label="Dirección de envío")
 
 
-    #producto_tienda_obj: Sobreescribimos el formulario para recibir el registro (bd) de la vista
-    def __init__(self, *args, **kwargs):
-        self.request= kwargs.pop("producto_tienda_obj")
-        super(CompraInventarioModelForm, self).__init__(*args, **kwargs)
-        
-        
-    #incluir validacion
+    def clean(self):
+        super().clean()
+    
+        cantidad = self.cleaned_data.get('cantidad')
+        direccion = self.cleaned_data.get('direccion')
+    
+        #comprobamos si la cantidad es menor que el stock
+        if cantidad  > self.producto_tienda_obj.cantidad:
+            self.add_error('cantidad' , 'La cantidad debe ser menor que ' + str(self.inventario.cantidad))
+            
+        return self.cleaned_data  
+
+    def __init__ (self, *args, **kwargs):
+        # Guardamos el objeto recibido desde la vista
+        self.producto_tienda_obj = kwargs.pop("producto_tienda_obj")
+        super(CompraProductoTiendaModelForm, self).__init__(*args, **kwargs)
         
         
         

@@ -22,7 +22,7 @@
         <form action="" method="post">
             {% csrf_token %}
             <!--Pasamos el id de la tienda-->
-            <a href="{% url 'comprar_inventario' registro.id %}" class="btn btn-success btn-sm">Comprar</a>
+            <a href="{% url 'comprar_producto_tienda' registro.id %}" class="btn btn-success btn-sm">Comprar</a>
         </form>
     </div>
     {% endif %}

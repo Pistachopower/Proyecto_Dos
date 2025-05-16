@@ -42,7 +42,7 @@ class Pieza(models.Model):
 
 class Cliente(models.Model):
     usuario = models.OneToOneField(Usuario, on_delete=models.CASCADE)
-    # Relación muchos a muchos con Pieza a través de Pedido
+    
     
     def __str__(self):
         return self.usuario.username

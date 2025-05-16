@@ -7,6 +7,14 @@
     <div class="col-md-6">
       <h1 class="text-center">Comprar pieza</h1>
 
+      {% if producto_tienda %}
+      <p>Dirección de la tienda: {{ producto_tienda.tienda }}</p>
+      <p>Pieza en la tienda: {{ producto_tienda.pieza }}</p>
+      <p>Precio de la pieza: {{ producto_tienda.precio }} €</p>
+      <p>Stock: {{ producto_tienda.cantidad }} €</p>
+
+      {% endif %}
+
       <form method="post">
         {% csrf_token %}
         {% bootstrap_form formulario %}

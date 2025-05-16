@@ -1,4 +1,8 @@
 Tareas 
-Arreglar la vista y la lógica en comprar_inventario_view
+Mirar bien las url y views de inventario. Corregir cual funciona y cual no
+
+Corregir vistas de los usuarios
+
+Validaciones en formularios
 
 Para el martes 

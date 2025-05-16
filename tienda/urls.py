@@ -39,27 +39,21 @@ urlpatterns = [
     path('datos-vendedor/<int:id_Datovendedor>',views.datosVendedor_delete,name='datosVendedor_delete'),
     path('datos-vendedor-editar/<int:id_Datovendedor>',views.datosVendedor_editar,name='datosVendedor_editar'),
     
-    #tabla productosTienda many to many
-    path('listas-productos-tienda', views.lista_ProductosTienda,name='lista_ProductosTienda'),
     
-    #Revisar si se puede eliminar
+    #TODO: Revisar si se puede eliminar
     path('add-inventario', views.agregar_Inventario,name='agregar_Inventario'),
     path('eliminar-inventario/<int:id_Inventario>',views.datosInventario_delete,name='datosInventario_delete'),
     path('editar-inventario/<int:id_Inventario>', views.editar_Inventario,name='editar_Inventario'),
     
-    #path('compra-seleccion-pieza/<int:id_PiezaCompra>',views.compra_pieza,name='compra_pieza'),
-    path('comprar/<int:productoTienda_id>/', views.comprar_inventario_view, name='comprar_inventario'),
+    #tabla productosTienda many to many
+    path('listas-productos-tienda', views.lista_ProductosTienda,name='lista_ProductosTienda'),
+    path('comprar/<int:productoTienda_id>/', views.comprar_producto_tienda, name='comprar_producto_tienda'),
 
-
-    
-    
     #búsqueda pieza
     path('buscar-pieza', views.pieza_Buscar, name='pieza_Buscar'),
     
     #tabla pedidos
     path('pedidos',views.lista_pedidos,name='lista_pedidos'),
-    
-    #TODO: REVISAR
     path('crear-pedido',views.pedido_create,name='pedido_create'),
     
 ]
