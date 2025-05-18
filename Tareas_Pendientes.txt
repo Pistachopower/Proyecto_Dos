@@ -1,7 +1,4 @@
-Tareas 
-Mirar bien las url y views de inventario. Corregir cual funciona y cual no
-
-Corregir vistas de los usuarios
+Tareas aparte
 
 Validaciones en formularios
 

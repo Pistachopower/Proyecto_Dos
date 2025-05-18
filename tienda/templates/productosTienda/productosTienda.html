@@ -8,22 +8,25 @@
     {% load bootstrap_icons %}
 
     <!--TODO: DALE COHERENCIA A LOS BOTONES QUE PUEDE MOSTRAR-->
-    {% if perms.tienda.change_inventario or perms.tienda.view_producto_tienda %}
+    
     <div class="card-footer d-flex justify-content-between">
+        {% if perms.tienda.change_producto_tienda or perms.tienda.delete_producto_tienda %}
         <div>
-            <a href="{% url 'editar_Inventario' registro.id %}" class="btn btn-primary btn-sm">Editar</a>
-            <form action="{% url 'datosInventario_delete' registro.id %}" method="post" class="d-inline">
+            <a href="{% url 'editar_ProductoTienda' registro.id %}" class="btn btn-primary btn-sm">Editar</a>
+            <form action="{% url 'productoTienda_delete' registro.id %}" method="post" class="d-inline">
                 {% csrf_token %}
                 <button class="btn btn-danger btn-sm" type="submit" onclick="return eliminar();">
                     <span>{% bs_icon 'trash' %}</span>
                 </button>
             </form>
         </div>
+        {% endif %}
+
+
         <form action="" method="post">
             {% csrf_token %}
             <!--Pasamos el id de la tienda-->
             <a href="{% url 'comprar_producto_tienda' registro.id %}" class="btn btn-success btn-sm">Comprar</a>
         </form>
     </div>
-    {% endif %}
 </div>

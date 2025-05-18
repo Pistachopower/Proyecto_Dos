@@ -188,8 +188,8 @@ def tienda_create(request):
 def dame_tienda(request, id_tienda):
     tienda = Tienda.objects.get(id=id_tienda)
     
-    inventarios = Inventario.objects.filter(tienda_id=tienda).first()
-    return render(request, "tienda/tienda_detalle.html", {"tienda": tienda,"inventarios":inventarios})
+    productoTiendaDetalle = Producto_Tienda.objects.filter(tienda_id=tienda).first()
+    return render(request, "tienda/tienda_detalle.html", {"tienda": tienda,"productoTiendaDetalle":productoTiendaDetalle})
 
 
 @permission_required("tienda.change_tienda")
@@ -406,8 +406,8 @@ def datosVendedor_editar(request, id_Datovendedor):
 
 
 # pruba agregar producto para probar
-@permission_required("tienda.add_inventario")
-def agregar_Inventario(request):
+@permission_required("tienda.add_producto_tienda")
+def agregar_ProductoTienda(request):
     if request.method == "POST":
         formulario = DatosVendedorModelForms(request.POST, request=request)
 
@@ -433,7 +433,7 @@ def agregar_Inventario(request):
     else:
         formulario = DatosVendedorModelForms(None, request=request)
     return render(
-        request, "inventario/crear_inventario.html", {"formulario": formulario}
+        request, "productosTienda/crear_productoTienda.html", {"formulario": formulario}
     )
 
 @permission_required("tienda.view_producto_tienda")
@@ -443,13 +443,13 @@ def lista_ProductosTienda(request):
         request, "productosTienda/lista_productosTienda.html", {"productosTiendas": productosTiendas}
     )
 
-@permission_required("tienda.change_inventario")
-def editar_Inventario(request, id_Inventario):
-    inventario = Producto_Tienda.objects.prefetch_related("tienda", "pieza").all()
-    inventarioQuery = inventario.filter(id=id_Inventario).first()
+@permission_required("tienda.change_producto_tienda")
+def editar_ProductoTienda(request, id_ProductoTienda):
+    productoTiendaRegistros = Producto_Tienda.objects.prefetch_related("tienda", "pieza").all()
+    productoTiendaRegistrosUnico = productoTiendaRegistros.filter(id=id_ProductoTienda).first()
 
     if request.method == "POST":
-        formulario = DatosInventarioEditarModelForms(request.POST, instance=inventarioQuery)
+        formulario = DatosInventarioEditarModelForms(request.POST, instance=productoTiendaRegistrosUnico)
 
         if formulario.is_valid():
 
@@ -459,21 +459,22 @@ def editar_Inventario(request, id_Inventario):
             return redirect("lista_ProductosTienda")
 
     else:
-        formulario = DatosInventarioEditarModelForms(instance=inventarioQuery)
+        formulario = DatosInventarioEditarModelForms(instance=productoTiendaRegistrosUnico)
 
     return render(
         request,
-        "inventario/editar_Inventario.html",
-        {"formulario": formulario, "inventarioQuery": inventarioQuery},
+        "productosTienda/editar_ProductoTienda.html",
+        {"formulario": formulario, "productoTiendaRegistrosUnico": productoTiendaRegistrosUnico},
     )
 
-@permission_required("tienda.delete_inventario")
-def datosInventario_delete(request, id_Inventario):
-    inventario = Producto_Tienda.objects.prefetch_related("tienda", "pieza").all()
-    inventarioQuery = inventario.filter(id=id_Inventario).first()
+@permission_required("tienda.delete_producto_tienda")
+def productoTienda_delete(request, id_productoTienda):
+    productoTiendaRegistros = Producto_Tienda.objects.prefetch_related("tienda", "pieza").all()
+    
+    productoTiendaRegistrosUnico = productoTiendaRegistros.filter(id=id_productoTienda).first()
 
     try:
-        inventarioQuery.delete()
+        productoTiendaRegistrosUnico.delete()
         messages.success(request, "Se ha eliminado los datos del inventario.")
 
         return redirect("lista_ProductosTienda")

@@ -193,11 +193,12 @@ class DatosVendedorModelForms_Editar(ModelForm):
 class DatosVendedorModelForms(ModelForm):
     class Meta:
         model = Producto_Tienda 
-        fields = ['tienda', 'pieza','cantidad']  
+        fields = ['tienda', 'pieza','cantidad', 'precio']  
         help_texts = {
             'tienda' : ("Selecciona la tienda"),
             'pieza' : ("Selecciona la pieza"),
             'cantidad': ("Indica la cantidad"),
+            'precio': ("Indica el precio"),
         }  
         
     #se usa esto para obtener solo las tiendas que puede ver el usuario loggeado
@@ -206,7 +207,7 @@ class DatosVendedorModelForms(ModelForm):
         super(DatosVendedorModelForms, self).__init__(*args, **kwargs)
         
         #hacemos un filtro para que solo vea las tiendas que le pertenecen al vendedor
-        tiendasDisponibles= Tienda.objects.filter(vendedor_id= self.request.user.vendedor).all()
+        tiendasDisponibles= Tienda.objects.filter(vendedor= self.request.user.vendedor).all()
         self.fields["tienda"]= forms.ModelChoiceField(
             queryset= tiendasDisponibles, 
             widget=forms.Select,
@@ -263,7 +264,7 @@ class CompraProductoTiendaModelForm(forms.Form):
     
         #comprobamos si la cantidad es menor que el stock
         if cantidad  > self.producto_tienda_obj.cantidad:
-            self.add_error('cantidad' , 'La cantidad debe ser menor que ' + str(self.inventario.cantidad))
+            self.add_error('cantidad' , 'La cantidad debe ser menor que ' + str(self.producto_tienda_obj.cantidad))
             
         return self.cleaned_data  
 
