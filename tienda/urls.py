@@ -54,4 +54,9 @@ urlpatterns = [
     path('pedidos',views.lista_pedidos,name='lista_pedidos'),
     path('crear-pedido',views.pedido_create,name='pedido_create'),
     
+    #linea de pedido
+    path('detalle-linea-pedido/<int:id_pedido>',views.dame_lineaPedido,name='dame_lineaPedido'),
+
+    
+    
 ]

@@ -183,7 +183,7 @@ def tienda_create(request):
         return render(request, "tienda/crear_tienda.html", {"formulario": formulario})
 
 
-#TODO: Agregar lo que recibe inventarios a la template
+
 @permission_required("tienda.view_tienda")
 def dame_tienda(request, id_tienda):
     tienda = Tienda.objects.get(id=id_tienda)
@@ -609,6 +609,14 @@ def comprar_producto_tienda(request, productoTienda_id):
     return render(request, 'compra/formulario_compra.html', {'formulario': formulario, 'producto_tienda': producto_tienda})
 
 
+
+def dame_lineaPedido(request, id_pedido):
+    linea_pedido = LineaPedido.objects.filter(pedido=id_pedido).first()
+    
+    #productoTiendaDetalle = Producto_Tienda.objects.filter(tienda_id=tienda).first()
+    return render(request, "lineaPedido/lineaPedido_detalle.html", {"linea_pedido": linea_pedido})
+    
+    
 
 # Pagina de error
 def mi_error_404(request, exception=None):

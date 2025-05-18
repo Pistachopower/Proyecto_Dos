@@ -1,0 +1,32 @@
+{% extends "estructura/principal.html" %}
+
+{% block contenido %}
+
+<div class="container my-5">
+    <h1 class="mb-4">Detalles de la línea de pedido</h1>
+
+    <!-- Card para mostrar los detalles -->
+    <div class="card h-100 shadow-sm">
+        <img src="" class="card-img-top" alt="">
+        <div class="card-body">
+            {% comment %} {{ tienda.vendedor.usuario.first_name }} {% endcomment %}
+            <h5 class="card-title">Línea pedido</h5>
+            <p class="card-text"><strong>Estado del pedido:</strong> {{ linea_pedido.pedido.estado}} </p>
+            <p class="card-text"><strong>pieza:</strong> {{ linea_pedido.pieza.nombre}} </p>
+            <p class="card-text"><strong>tienda:</strong> {{ linea_pedido.tienda.direccion}}</p>
+            <p class="card-text"><strong>precio:</strong> {{ linea_pedido.precio}}</p>
+            <p class="card-text"><strong>cantidad:</strong> {{ linea_pedido.cantidad}}</p>
+
+{% comment %}             
+            {% if productoTiendaDetalle %}
+            <p class="card-text"><strong>Nombre de la pieza:</strong>  {{ productoTiendaDetalle.pieza.nombre}}</p>
+            <p class="card-text"><strong>Cantidad de la pieza:</strong>  {{ productoTiendaDetalle.cantidad}}</p>
+            {% else %}
+            <p class="card-text">No hay inventario disponible para esta tienda.</p>
+            {% endif %} {% endcomment %}
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

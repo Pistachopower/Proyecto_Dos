@@ -3,3 +3,17 @@ Tareas aparte
 Validaciones en formularios
 
 Para el martes 
+Ver mi pedido actual 
+Todas las lineas de pedido que tiene 
+Finalizar pedido (inventario)
+
+Búsqueda avanzada de productos: filtros por 
+precio mayor o menor y por tienda y por 
+stock 
+
+Quitar lineas de pedidos de un pedido 
+
+Ver mis pedidos completados 
+
+Anular un pedido
+

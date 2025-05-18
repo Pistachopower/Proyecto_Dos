@@ -13,9 +13,9 @@
           <tr>
             <th>#</th>
             <th>Cliente</th>
-            <th>Pieza</th>
-            <th>Fecha del pedido</th>
             <th>Estado</th>
+            <th>Fecha del pedido</th>
+            <th>Dirección de la tienda</th>
             <th>Acciones</th>
           </tr>
         </thead>
@@ -28,7 +28,8 @@
               <td>{{ registro.fecha|date:"d/m/Y H:i" }}</td>
               <td>{{ registro.direccion }}</td>
               <td>
-                <a href="{% url 'editar_Inventario' registro.id %}" class="btn btn-sm btn-primary">Editar</a>
+                {% comment %} {% url 'editar_Inventario' registro.id %} {% endcomment %}
+                <a href="" class="btn btn-sm btn-primary">Editar</a>
 
                 <form action="" method="post" class="d-inline" onsubmit="return eliminar();">
                   {% csrf_token %}
@@ -36,6 +37,11 @@
                     {% bs_icon 'trash' %} Eliminar
                   </button>
                 </form>
+
+                {% comment %} {% url 'dame_lineaPedido' registro.id %} {% endcomment %}
+                <a href="{% url 'dame_lineaPedido' registro.id %}" class="btn btn-primary btn-sm px-3">
+                  <i class="fas fa-edit"></i> Ver detalles
+              </a>
               </td>
             </tr>
           {% endfor %}
