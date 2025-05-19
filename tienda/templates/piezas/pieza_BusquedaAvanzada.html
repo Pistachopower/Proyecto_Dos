@@ -18,8 +18,8 @@
 
         <div class="mb-3">
           {% bootstrap_field formulario.direccion show_label=True %}
-          {% bootstrap_field formulario.precioMay show_label=True %}
           {% bootstrap_field formulario.precioMen show_label=True %}
+          {% bootstrap_field formulario.precioMay show_label=True %}
           {% bootstrap_field formulario.stock show_label=True %}
         </div>
 
@@ -35,7 +35,7 @@
             <div class="card-body">
               <strong>Tienda:</strong> {{ producto.tienda.direccion }}<br>
               <strong>Pieza de la tienda:</strong> {{ producto.pieza.nombre }}<br>
-              <strong>Precio:</strong> {{ producto.precio }}<br>
+              <strong>Precio:</strong> {{ producto.pieza.precio }}<br>
               <strong>Stock:</strong> {{ producto.stock }}
             </div>
         </div>

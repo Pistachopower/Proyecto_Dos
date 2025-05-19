@@ -269,10 +269,10 @@ class CompraProductoTiendaModelForm(forms.Form):
         
         
 class BusquedaAvanzadaPiezaForm(forms.Form):
-    direccion= forms.CharField(required=False)
-    precioMen= forms.FloatField(required=False)
-    precioMay= forms.FloatField(required=False)
-    stock= forms.IntegerField(required=False)
+    direccion= forms.CharField(required=False,  label="Dirección")
+    precioMen= forms.FloatField(required=False, label="Precio mínimo de la pieza")
+    precioMay= forms.FloatField(required=False, label="Precio máximo de la pieza")
+    stock= forms.IntegerField(required=False, label="Stock de la pieza")
     
     def clean(self):
         super().clean()
@@ -283,7 +283,7 @@ class BusquedaAvanzadaPiezaForm(forms.Form):
         precioMay = self.cleaned_data.get('precioMay')
         stock = self.cleaned_data.get('stock')
 
-        # Validar que al menos uno esté lleno
+        #Validamos que al menos uno esté lleno
         if not direccion and precioMen is None and precioMay is None and stock is None:
             self.add_error('direccion', 'El campo no puede estar vacío')
             self.add_error('precioMen', 'El campo no puede estar vacío')
@@ -291,12 +291,12 @@ class BusquedaAvanzadaPiezaForm(forms.Form):
             self.add_error('stock', 'El campo no puede estar vacío')
             
         
-                # Validar que los valores numéricos no sean negativos
+                # Validamos que los valores numéricos no sean negativos
         if precioMen is not None and precioMen < 0:
-            self.add_error('precioMen', 'El precio mayor no puede ser negativo.')
+            self.add_error('precioMen', 'El precio menor no puede ser negativo.')
 
         if precioMay is not None and precioMay < 0:
-            self.add_error('precioMay', 'El precio menor no puede ser negativo.')
+            self.add_error('precioMay', 'El precio mayor no puede ser negativo.')
 
         if stock is not None and stock < 0:
             self.add_error('stock', 'La cantidad no puede ser negativa.')

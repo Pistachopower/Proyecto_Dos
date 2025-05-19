@@ -636,14 +636,20 @@ def busqueda_avanzada_pieza(request):
             if direccion:
                 condiciones &= Q(tienda__direccion__icontains=direccion)
             if precioMen is not None:
-                condiciones &= Q(pieza__precio__lte=precioMen)  
+                #gte: Mayor o igual que
+                condiciones &= Q(pieza__precio__gte=precioMen) 
             if precioMay is not None:
-                condiciones &= Q(pieza__precio__gte=precioMay) 
+                #lte: Menor o igual que
+                condiciones &= Q(pieza__precio__lte=precioMay) 
             if stock is not None:
                 condiciones &= Q(stock=stock)
 
             QSProductoTienda = QSProductoTienda.filter(condiciones)
-                
+            
+            print(Producto_Tienda.objects.filter(pieza__precio__gte=5, pieza__precio__lte=9).values('pieza__precio'))
+
+            
+            
             return render(request, 'piezas/pieza_BusquedaAvanzada.html', {
                 'formulario': formulario,
                 'QSProductoTienda': QSProductoTienda})

@@ -1487,14 +1487,6 @@
 },
 {
     "model": "sessions.session",
-    "pk": "4cpfgdxkqmdnyv72mykuyizobtc2w73y",
-    "fields": {
-        "session_data": ".eJxVjDsOwjAQBa-CXCPH6w9OUtJzBmu9XhMDsqV8KsTdIVIa2jcz7y0y04Sh1EKliVHA0CnXaaXdCfxorDiLgNs6hW3hOZS0K_9bRHpy3UF6YL03Sa2uc4lyV-RBF3lriV_Xw_07mHCZfrWhbA0gRQ1g0oBMKTn0DsmjUtrDRek49M5FTpT7rF1viRnIgvLRW_H5AqH0QSY:1uH2Vb:t_MN7aXEJ9ZnsFvdFd4UV379Rm6kvn1N2iEdIIoqKqs",
-        "expire_date": "2025-06-02T17:34:31.440"
-    }
-},
-{
-    "model": "sessions.session",
     "pk": "5dfzclw41y5ywkhcxmbyhjk0rhufac0c",
     "fields": {
         "session_data": "eyJmZWNoYV9pbmljaW8iOiIyNC8wNC8yMDI1IDEyOjQxIn0:1u7u1m:TMtTNSw5IDUZYJNrGAXq1mpLftVyXxBt4AnVwLk3U10",
@@ -1515,6 +1507,14 @@
     "fields": {
         "session_data": ".eJxVjMsOwiAQRX_FsDaUoYy0Xbr3G8gwgKAGkj5Wxn_XJt24veec-xYpciZXauHSxCRg7BR2Wmk8AU5gxFk42tbstiXOroRd-d888TPWHYQH1XuT3Oo6Fy93RR50kbcW4ut6uH8HmZb8q3tOpgdirwH6MFLkEJAsEltSSlu4KO3HAdHHwGlIGgfDMQIbUNZbIz5fnzhBIg:1uH0Jn:wXE7WM0zMsm8zetqgswA2lLs9DU4luILu9iR2tebIEM",
         "expire_date": "2025-06-02T15:14:11.911"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "bj2xyk9bhaapxo9c8lza65tww1gb6b3y",
+    "fields": {
+        "session_data": ".eJxVjjsOwjAQRK-CXCPHX5ykpOcM1nq9xgZkS_lUiLuTSCmgnTfzNG_mYV2yX2eafIlsZJKdf7MA-KS6g_iAem8cW12mEvhe4Qed-a1Fel2P7p8gw5y3tcZktAQMSkodByCM0YKzgA6EUE5ehApDb22giKlPyvYGiSQaKVxwZpMmwgy-1IKl7UeHTthOCWVPSo9mYJ8vHP5BKQ:1uH8Md:vY73q5Jk8NKj4-WfRKCuhhijxA9gFEqglSykFDkM200",
+        "expire_date": "2025-06-02T23:49:39.616"
     }
 },
 {
@@ -1610,7 +1610,7 @@
     "pk": 1,
     "fields": {
         "password": "pbkdf2_sha256$870000$JjCoHJX8T1MWvmnGZd2MxH$j+BpuO2AG2wdM6yIfJa1wH9XQlNWEW4JSVYJhSlgU8o=",
-        "last_login": "2025-05-19T17:34:31.404",
+        "last_login": "2025-05-19T23:49:13.621",
         "is_superuser": true,
         "username": "nelson",
         "first_name": "",
@@ -1629,7 +1629,7 @@
     "pk": 2,
     "fields": {
         "password": "pbkdf2_sha256$870000$ItretZb7lQVbi4cG8g7c60$EGhdAcnW2O7YYNITDtuEJM63YE3dDnRic+n/uq6yQIM=",
-        "last_login": "2025-05-18T20:06:24.526",
+        "last_login": "2025-05-19T21:47:12.364",
         "is_superuser": false,
         "username": "maria",
         "first_name": "maria",
@@ -1718,7 +1718,7 @@
         "estado": "R",
         "descripcion": "Es una pieza que está en buenas condiciones.",
         "marca": "Toyota",
-        "precio": 550.0,
+        "precio": 10.0,
         "anio": 2005
     }
 },
@@ -1732,7 +1732,7 @@
         "estado": "R",
         "descripcion": "Es un alternador bueno para vender.",
         "marca": "Ford",
-        "precio": 550.0,
+        "precio": 30.0,
         "anio": 2000
     }
 },
@@ -1774,7 +1774,7 @@
         "estado": "REC",
         "descripcion": "Es una pieza que fue reconstruida por una casa de reparación.",
         "marca": "Opel",
-        "precio": 550.0,
+        "precio": 40.0,
         "anio": 2000
     }
 },
