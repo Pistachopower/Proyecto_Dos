@@ -580,7 +580,7 @@ def comprar_producto_tienda(request, productoTienda_id):
     if request.method == 'POST':
         formulario = CompraProductoTiendaModelForm(request.POST, producto_tienda_obj=producto_tienda)
         if formulario.is_valid():
-            cantidad = formulario.cleaned_data['cantidad']
+            stock = formulario.cleaned_data['stock']
             direccion = formulario.cleaned_data['direccion']
 
             # 1. Creamos el pedido
@@ -596,7 +596,7 @@ def comprar_producto_tienda(request, productoTienda_id):
                 pieza=producto_tienda.pieza,
                 tienda=producto_tienda.tienda,
                 precio=producto_tienda.precio,
-                cantidad=cantidad,
+                stock=stock,
             )
 
 
@@ -616,7 +616,47 @@ def dame_lineaPedido(request, id_pedido):
     #productoTiendaDetalle = Producto_Tienda.objects.filter(tienda_id=tienda).first()
     return render(request, "lineaPedido/lineaPedido_detalle.html", {"linea_pedido": linea_pedido})
     
+from django.db.models import Q
+def busqueda_avanzada_pieza(request):
+    #Obtenemos todos los productos de la tienda
+    QSProductoTienda = Producto_Tienda.objects.select_related("tienda", "pieza").all() 
     
+    if len(request.GET) > 0:  # Si hay datos en la URL...
+        formulario = BusquedaAvanzadaPiezaForm(request.GET)  # Creamos el formulario con esos datos
+        
+        if formulario.is_valid():  # Si los datos son correctos según el formulario...
+            
+            #obtenemos los filtros
+            direccion = formulario.cleaned_data.get('direccion')
+            precioMen = formulario.cleaned_data.get('precioMen')
+            precioMay = formulario.cleaned_data.get('precioMay')
+            stock = formulario.cleaned_data.get('stock')
+            
+            condiciones = Q()  # Crea un objeto Q vacío (inicialmente sin condiciones)
+            if direccion:
+                condiciones &= Q(tienda__direccion__icontains=direccion)
+            if precioMen is not None:
+                condiciones &= Q(pieza__precio__lte=precioMen)  
+            if precioMay is not None:
+                condiciones &= Q(pieza__precio__gte=precioMay) 
+            if stock is not None:
+                condiciones &= Q(stock=stock)
+
+            QSProductoTienda = QSProductoTienda.filter(condiciones)
+                
+            return render(request, 'piezas/pieza_BusquedaAvanzada.html', {
+                'formulario': formulario,
+                'QSProductoTienda': QSProductoTienda})
+
+    
+    else:  # Si no hay datos en la URL
+        formulario = BusquedaAvanzadaPiezaForm(None)  # Creamos un formulario vacío
+
+    return render(request, 'piezas/pieza_BusquedaAvanzada.html', {'formulario': formulario})
+
+    
+
+   
 
 # Pagina de error
 def mi_error_404(request, exception=None):

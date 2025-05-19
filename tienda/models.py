@@ -33,7 +33,7 @@ class Pieza(models.Model):
     estado = models.CharField(max_length=3, choices=ESTADO)
     descripcion= models.TextField()
     marca= models.CharField(max_length=100)
-    precio= models.FloatField(default=1.0) #QUITAR
+    precio= models.FloatField(default=1.0) 
     anio= models.IntegerField()
     
     def __str__(self):
@@ -84,7 +84,7 @@ class DatosVendedor(models.Model):
 class Producto_Tienda(models.Model):
     tienda= models.ForeignKey(Tienda, on_delete= models.CASCADE)
     pieza= models.ForeignKey(Pieza, on_delete= models.CASCADE)
-    cantidad= models.IntegerField() #cambiar cantidad por stock
+    stock= models.IntegerField() 
     precio= models.FloatField(default=1.0) 
     
 

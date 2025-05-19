@@ -1,0 +1,51 @@
+{% extends "estructura/principal.html" %} 
+
+{% block contenido %}
+{% load django_bootstrap5 %}
+
+<div class="container my-5">
+  <div class="card shadow-sm mx-auto" style="max-width: 600px;">
+    <div class="card-header bg-primary text-white">
+      Buscar pieza avanzada
+    </div>
+    <div class="card-body">
+      <form
+        action="{% url 'busqueda_avanzada_pieza' %}"
+        method="GET"
+        enctype="multipart/form-data"
+      >
+        {% csrf_token %}
+
+        <div class="mb-3">
+          {% bootstrap_field formulario.direccion show_label=True %}
+          {% bootstrap_field formulario.precioMay show_label=True %}
+          {% bootstrap_field formulario.precioMen show_label=True %}
+          {% bootstrap_field formulario.stock show_label=True %}
+        </div>
+
+        <button type="submit" class="btn btn-outline-primary">
+          <i class="bi bi-search"></i> Buscar
+        </button>
+      </form>
+
+      {% if QSProductoTienda %}
+      <h3 class="mt-4">Resultados:</h3>
+      {% for producto in QSProductoTienda %}
+        <div class="card mt-2">
+            <div class="card-body">
+              <strong>Tienda:</strong> {{ producto.tienda.direccion }}<br>
+              <strong>Pieza de la tienda:</strong> {{ producto.pieza.nombre }}<br>
+              <strong>Precio:</strong> {{ producto.precio }}<br>
+              <strong>Stock:</strong> {{ producto.stock }}
+            </div>
+        </div>
+
+      {% empty %}
+        <div class="alert alert-info mt-4">No hay resultados.</div>
+      {% endfor %}
+      {% endif %}
+
+    </div>
+  </div>
+</div>
+{% endblock %}

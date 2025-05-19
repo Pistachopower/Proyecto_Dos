@@ -49,6 +49,7 @@ urlpatterns = [
 
     #búsqueda pieza
     path('buscar-pieza', views.pieza_Buscar, name='pieza_Buscar'),
+    path('busqueda-avanzada-pieza', views.busqueda_avanzada_pieza, name='busqueda_avanzada_pieza'),
     
     #tabla pedidos
     path('pedidos',views.lista_pedidos,name='lista_pedidos'),

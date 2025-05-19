@@ -193,11 +193,11 @@ class DatosVendedorModelForms_Editar(ModelForm):
 class DatosVendedorModelForms(ModelForm):
     class Meta:
         model = Producto_Tienda 
-        fields = ['tienda', 'pieza','cantidad', 'precio']  
+        fields = ['tienda', 'pieza','stock', 'precio']  
         help_texts = {
             'tienda' : ("Selecciona la tienda"),
             'pieza' : ("Selecciona la pieza"),
-            'cantidad': ("Indica la cantidad"),
+            'stock': ("Indica la cantidad"),
             'precio': ("Indica el precio"),
         }  
         
@@ -218,9 +218,9 @@ class DatosVendedorModelForms(ModelForm):
 class DatosInventarioEditarModelForms(ModelForm):
     class Meta:
         model = Producto_Tienda 
-        fields = ['tienda','pieza','cantidad']  
+        fields = ['tienda','pieza','stock']  
         help_texts = {
-            'cantidad': ("Indica la cantidad"),
+            'cantidad': ("Indica el stock"),
         }  
             
         
@@ -244,12 +244,6 @@ class PedidoModelForm(ModelForm):
             
 
             
-
-            
-  
-            
-
-
 class CompraProductoTiendaModelForm(forms.Form):
     #datos que escribe el usuario
     cantidad = forms.IntegerField (required=True)
@@ -274,9 +268,41 @@ class CompraProductoTiendaModelForm(forms.Form):
         super(CompraProductoTiendaModelForm, self).__init__(*args, **kwargs)
         
         
-        
+class BusquedaAvanzadaPiezaForm(forms.Form):
+    direccion= forms.CharField(required=False)
+    precioMen= forms.FloatField(required=False)
+    precioMay= forms.FloatField(required=False)
+    stock= forms.IntegerField(required=False)
     
+    def clean(self):
+        super().clean()
+        
+        #Obtenemos los campos 
+        direccion = self.cleaned_data.get('direccion')
+        precioMen = self.cleaned_data.get('precioMen')
+        precioMay = self.cleaned_data.get('precioMay')
+        stock = self.cleaned_data.get('stock')
+
+        # Validar que al menos uno esté lleno
+        if not direccion and precioMen is None and precioMay is None and stock is None:
+            self.add_error('direccion', 'El campo no puede estar vacío')
+            self.add_error('precioMen', 'El campo no puede estar vacío')
+            self.add_error('precioMay', 'El campo no puede estar vacío')
+            self.add_error('stock', 'El campo no puede estar vacío')
             
+        
+                # Validar que los valores numéricos no sean negativos
+        if precioMen is not None and precioMen < 0:
+            self.add_error('precioMen', 'El precio mayor no puede ser negativo.')
+
+        if precioMay is not None and precioMay < 0:
+            self.add_error('precioMay', 'El precio menor no puede ser negativo.')
+
+        if stock is not None and stock < 0:
+            self.add_error('stock', 'La cantidad no puede ser negativa.')
+            
+        return self.cleaned_data
+        
             
 
             
