@@ -246,19 +246,19 @@ class PedidoModelForm(ModelForm):
             
 class CompraProductoTiendaModelForm(forms.Form):
     #datos que escribe el usuario
-    cantidad = forms.IntegerField (required=True)
-    direccion = forms.CharField(required=False, label="Dirección de envío")
+    stock = forms.IntegerField (required=True)
+    direccion = forms.CharField(required=False, label="Dirección de envío") #
 
 
     def clean(self):
         super().clean()
     
-        cantidad = self.cleaned_data.get('cantidad')
+        stock = self.cleaned_data.get('stock')
         direccion = self.cleaned_data.get('direccion')
     
         #comprobamos si la cantidad es menor que el stock
-        if cantidad  > self.producto_tienda_obj.cantidad:
-            self.add_error('cantidad' , 'La cantidad debe ser menor que ' + str(self.producto_tienda_obj.cantidad))
+        if stock  > self.producto_tienda_obj.stock:
+            self.add_error('stock' , 'La cantidad debe ser menor que ' + str(self.producto_tienda_obj.stock))
             
         return self.cleaned_data  
 

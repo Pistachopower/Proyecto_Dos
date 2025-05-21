@@ -107,7 +107,17 @@
 
 
             <!-- Contenedor derecho -->
+             <!--Carrito-->
             <div class="d-flex align-items-center">
+                <a href="{% url 'listarLineaPedidoCarrito' request.user.cliente.id  %}" class="btn btn-outline-primary me-3 position-relative">
+                    <i class="bi bi-cart3 fs-4"></i>
+                    {% if carrito_cantidad and carrito_cantidad > 0 %}
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                            {{ carrito_cantidad }}
+                        </span> 
+                    {% endif %}
+                </a>
+
                 {% if request.user.is_authenticated %}
                 <!-- Dropdown de Usuario -->
                 <div class="dropdown">

@@ -57,6 +57,8 @@ urlpatterns = [
     
     #linea de pedido
     path('detalle-linea-pedido/<int:id_pedido>',views.dame_lineaPedido,name='dame_lineaPedido'),
+    path('listar-linea-pedido-carrito/<int:id_usuario>',views.listarLineaPedidoCarrito,name='listarLineaPedidoCarrito'),
+    
 
     
     

@@ -5,28 +5,26 @@
 <div class="container my-5">
     <h1 class="mb-4">Detalles de la línea de pedido</h1>
 
+    {% for registro in linea_pedido %}
     <!-- Card para mostrar los detalles -->
-    <div class="card h-100 shadow-sm">
-        <img src="" class="card-img-top" alt="">
+    <div class="card h-100 shadow-sm mb-4">
+        {% if registro.pieza.imagen %}
+            <img src="{{ registro.pieza.imagen.url }}" class="card-img-top" alt="{{ registro.pieza.nombre }}">
+        {% endif %}
         <div class="card-body">
-            {% comment %} {{ tienda.vendedor.usuario.first_name }} {% endcomment %}
-            <h5 class="card-title">Línea pedido</h5>
-            <p class="card-text"><strong>Estado del pedido:</strong> {{ linea_pedido.pedido.estado}} </p>
-            <p class="card-text"><strong>pieza:</strong> {{ linea_pedido.pieza.nombre}} </p>
-            <p class="card-text"><strong>tienda:</strong> {{ linea_pedido.tienda.direccion}}</p>
-            <p class="card-text"><strong>precio:</strong> {{ linea_pedido.precio}}</p>
-            <p class="card-text"><strong>cantidad:</strong> {{ linea_pedido.cantidad}}</p>
-
-{% comment %}             
-            {% if productoTiendaDetalle %}
-            <p class="card-text"><strong>Nombre de la pieza:</strong>  {{ productoTiendaDetalle.pieza.nombre}}</p>
-            <p class="card-text"><strong>Cantidad de la pieza:</strong>  {{ productoTiendaDetalle.cantidad}}</p>
-            {% else %}
-            <p class="card-text">No hay inventario disponible para esta tienda.</p>
-            {% endif %} {% endcomment %}
-
+            <h5 class="card-title">Línea de pedido</h5>
+            <p class="card-text"><strong>Estado del pedido:</strong> {{ registro.pedido.estado }}</p>
+            <p class="card-text"><strong>Pieza:</strong> {{ registro.pieza.nombre }}</p>
+            <p class="card-text"><strong>Tienda:</strong> {{ registro.tienda.direccion }}</p>
+            <p class="card-text"><strong>Precio:</strong> {{ registro.precio }}</p>
+            <p class="card-text"><strong>Cantidad:</strong> {{ registro.cantidad }}</p>
         </div>
     </div>
+    {% empty %}
+    <div class="alert alert-info" role="alert">
+        No hay piezas disponibles en este momento.
+    </div>
+    {% endfor %}
 </div>
 
 {% endblock %}

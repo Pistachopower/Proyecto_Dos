@@ -2,6 +2,8 @@ Tareas aparte
 
 Validaciones en formularios
 
+Corregir la vista de crear un pedido
+
 Para el martes 
 Ver mi pedido actual 
 Todas las lineas de pedido que tiene 

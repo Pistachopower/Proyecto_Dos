@@ -571,6 +571,52 @@ def pedido_create(request):
 
 #     return render(request, 'compra/formulario_compra.html', {'formulario': formulario})
 
+    """
+1- Comprobar si existe un pedido de ese cliente por si esta pendiente
+
+2- Sino existe, lo creo
+
+Si existe, lo actualizo
+
+
+    """
+
+
+# @permission_required("tienda.add_pedido")
+# def comprar_producto_tienda(request, productoTienda_id):
+#     producto_tienda = Producto_Tienda.objects.filter(id=productoTienda_id).first()
+#     cliente = Cliente.objects.get(usuario=request.user)
+
+#     if request.method == 'POST':
+#         formulario = CompraProductoTiendaModelForm(request.POST, producto_tienda_obj=producto_tienda)
+#         if formulario.is_valid():
+#             stock = formulario.cleaned_data['stock']
+#             direccion = formulario.cleaned_data['direccion'] #QUITAR
+
+#             # 1. Creamos el pedido
+#             pedido = Pedido.objects.create(
+#                 cliente=cliente,
+#                 direccion=direccion, #QUITAR O DEJARLO VACIO HASTA LA COMPRA
+#                 estado='P',  # O el estado que corresponda
+#             )
+
+#             # 2. Creamos la línea de pedido asociada
+#             LineaPedido.objects.create(
+#                 pedido=pedido,
+#                 pieza=producto_tienda.pieza,
+#                 tienda=producto_tienda.tienda,
+#                 precio=producto_tienda.precio,
+#                 cantidad=stock, #quitar 
+#             )
+
+
+
+#             messages.success(request, "Compra realizada con éxito. Stock actualizado.")
+#             return redirect('lista_pedidos')
+#     else:
+#         formulario = CompraProductoTiendaModelForm(producto_tienda_obj=producto_tienda)
+
+#     return render(request, 'compra/formulario_compra.html', {'formulario': formulario, 'producto_tienda': producto_tienda})
 
 @permission_required("tienda.add_pedido")
 def comprar_producto_tienda(request, productoTienda_id):
@@ -580,26 +626,35 @@ def comprar_producto_tienda(request, productoTienda_id):
     if request.method == 'POST':
         formulario = CompraProductoTiendaModelForm(request.POST, producto_tienda_obj=producto_tienda)
         if formulario.is_valid():
-            stock = formulario.cleaned_data['stock']
-            direccion = formulario.cleaned_data['direccion']
+            cantidad = formulario.cleaned_data['stock']  # Usa cantidad no 'stock
 
-            # 1. Creamos el pedido
-            pedido = Pedido.objects.create(
-                cliente=cliente,
-                direccion=direccion,
-                estado='P',  # O el estado que corresponda
-            )
+            # 1. Buscamos pedido pendiente
+            pedido = Pedido.objects.filter(cliente=cliente, estado='P').first()
+            
+            if not pedido:
+                # Si no existe lo creo
+                pedido = Pedido.objects.create(
+                    cliente=cliente,
+                    direccion="",  # O pide la dirección en el formulario
+                    estado='P',
+                )
+                pedido.save()
 
-            # 2. Creamos la línea de pedido asociada
+            # 2- Agregamos la línea de pedido
+            #por que no se esta guardando la linea pedido?
             LineaPedido.objects.create(
                 pedido=pedido,
                 pieza=producto_tienda.pieza,
                 tienda=producto_tienda.tienda,
                 precio=producto_tienda.precio,
-                stock=stock,
+                cantidad=cantidad,
             )
+            
+            
 
-
+            # 3- Actualizamos stock del producto en tienda
+            # producto_tienda.stock -= cantidad
+            # producto_tienda.save()
 
             messages.success(request, "Compra realizada con éxito. Stock actualizado.")
             return redirect('lista_pedidos')
@@ -609,9 +664,8 @@ def comprar_producto_tienda(request, productoTienda_id):
     return render(request, 'compra/formulario_compra.html', {'formulario': formulario, 'producto_tienda': producto_tienda})
 
 
-
 def dame_lineaPedido(request, id_pedido):
-    linea_pedido = LineaPedido.objects.filter(pedido=id_pedido).first()
+    linea_pedido = LineaPedido.objects.filter(pedido=id_pedido).all()
     
     #productoTiendaDetalle = Producto_Tienda.objects.filter(tienda_id=tienda).first()
     return render(request, "lineaPedido/lineaPedido_detalle.html", {"linea_pedido": linea_pedido})
@@ -661,7 +715,13 @@ def busqueda_avanzada_pieza(request):
     return render(request, 'piezas/pieza_BusquedaAvanzada.html', {'formulario': formulario})
 
     
-
+def listarLineaPedidoCarrito(request, id_usuario):
+    #id=id_usuario
+    
+    #Hacemos la consulta para obtener los resultado
+    todas_lineas_pedido = LineaPedido.objects.select_related("pedido","pieza", "tienda").filter(pedido__cliente_id=id_usuario).all()
+    
+    return render(request, "lineaPedido/carrito.html", {"carrito": todas_lineas_pedido})
    
 
 # Pagina de error
