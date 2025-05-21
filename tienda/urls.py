@@ -41,7 +41,7 @@ urlpatterns = [
     
     #tabla productosTienda many to many
     path('listas-productos-tienda', views.lista_ProductosTienda,name='lista_ProductosTienda'),
-    path('comprar/<int:productoTienda_id>/', views.comprar_producto_tienda, name='comprar_producto_tienda'),
+    path('anadir-pieza-carrito/<int:productoTienda_id>/', views.anadir_producto_tienda_carrito, name='anadir_producto_tienda_carrito'),
     path('add-producto-tienda', views.agregar_ProductoTienda,name='agregar_ProductoTienda'),
     path('eliminar-inventario/<int:id_productoTienda>',views.productoTienda_delete,name='productoTienda_delete'),
     path('editar-inventario/<int:id_ProductoTienda>', views.editar_ProductoTienda,name='editar_ProductoTienda'),

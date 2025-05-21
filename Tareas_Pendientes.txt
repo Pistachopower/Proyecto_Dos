@@ -19,3 +19,15 @@ Ver mis pedidos completados
 
 Anular un pedido
 
+
+Implementaciones por construir
+Construccion del carrito:  (TODAVIA NO)
+Problema: se muestran productos repetidos.
+
+Cuando el usuario añade una pieza al carrito:
+Busca si ya hay una línea de pedido para ese pedido y esa pieza.
+Si la hay:
+Suma la cantidad nueva a la cantidad que ya tenía esa línea.
+Si no la hay:
+Crea una línea nueva con la cantidad.
+

@@ -244,28 +244,30 @@ class PedidoModelForm(ModelForm):
             
 
             
-class CompraProductoTiendaModelForm(forms.Form):
+class AnadirProductoTiendaModelForm(forms.Form):
     #datos que escribe el usuario
-    stock = forms.IntegerField (required=True)
-    direccion = forms.CharField(required=False, label="Dirección de envío") #
-
-
+    cantidad = forms.IntegerField (required=True, label="Cantidad")
+    
     def clean(self):
         super().clean()
     
-        stock = self.cleaned_data.get('stock')
-        direccion = self.cleaned_data.get('direccion')
+        cantidad = self.cleaned_data.get('cantidad')
+        
     
         #comprobamos si la cantidad es menor que el stock
-        if stock  > self.producto_tienda_obj.stock:
-            self.add_error('stock' , 'La cantidad debe ser menor que ' + str(self.producto_tienda_obj.stock))
-            
+        if cantidad <= 0:
+            self.add_error('cantidad', 'La cantidad debe ser un número positivo.')
+
+        elif cantidad > self.producto_tienda_obj.stock:
+            self.add_error('cantidad', 'La cantidad debe ser menor que ' + str(self.producto_tienda_obj.stock))
+
+
         return self.cleaned_data  
 
     def __init__ (self, *args, **kwargs):
         # Guardamos el objeto recibido desde la vista
         self.producto_tienda_obj = kwargs.pop("producto_tienda_obj")
-        super(CompraProductoTiendaModelForm, self).__init__(*args, **kwargs)
+        super(AnadirProductoTiendaModelForm, self).__init__(*args, **kwargs)
         
         
 class BusquedaAvanzadaPiezaForm(forms.Form):
