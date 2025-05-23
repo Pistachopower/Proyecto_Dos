@@ -1,17 +1,16 @@
-Tareas aparte
+Preguntar a Jorge
+Vista crear pedido. Preguntar si se puede eliminar, porque fue una peticion que él hizo, 
+pero ahora no le veo sentido
 
-Validaciones en formularios
+Tareas por continuar
+Arreglar logica de listarLineaPedidoCarrito: en template 
 
-Corregir la vista de crear un pedido
 
 Para el martes 
 Ver mi pedido actual 
 Todas las lineas de pedido que tiene 
 Finalizar pedido (inventario)
 
-Búsqueda avanzada de productos: filtros por 
-precio mayor o menor y por tienda y por 
-stock 
 
 Quitar lineas de pedidos de un pedido 
 

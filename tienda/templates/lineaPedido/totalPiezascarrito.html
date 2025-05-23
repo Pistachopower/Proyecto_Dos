@@ -2,7 +2,7 @@
 
 {% block contenido %}
 <div class="container my-5">
-  <h2 class="mb-4">Carrito</h2>
+  <h2 class="mb-4">Pedido actual</h2>
 
   {% for item in carrito %}
   <div class="card mb-3">
@@ -17,29 +17,21 @@
             {{ item.pieza.descripcion|truncatechars:150 }}
           </p>
           <div class="mb-2">
-            <span class="fw-bold">Precio: </span>{{ item.pieza.precio }}€
+            <span class="fw-bold">Precio: </span>{{ item.precio }}€
+          </div>
+
+          <div class="mb-2">
+            <span class="fw-bold">Cantidad: </span>{{ item.cantidad }}
           </div>
 
           <div class="d-flex align-items-center mb-3">
-            <form method="POST" action="" class="d-flex align-items-center">
-              {% csrf_token %}
-              <button class="btn btn-outline-secondary btn-sm me-2" name="action" value="restar">−</button>
-              <span class="px-2">{{ item.cantidad }}</span>
-              <button class="btn btn-outline-secondary btn-sm me-3" name="action" value="sumar">+</button>
-            </form>
-
-            <form method="POST" action="">
+            <form method="POST" action="{% url 'lineaPedido_delete' item.id %}" onsubmit="return eliminar();">
               {% csrf_token %}
               <button class="btn btn-danger btn-sm me-2">Eliminar</button>
             </form>
 
-            <a href="#" class="btn btn-outline-primary btn-sm me-2">Guardar para más tarde</a>
-            <a href="#" class="btn btn-outline-secondary btn-sm">Compartir</a>
           </div>
 
-          {% if item.es_regalo %}
-            <span class="badge bg-success">Es un regalo 🎁</span>
-          {% endif %}
         </div>
       </div>
     </div>
@@ -48,7 +40,8 @@
 
   <!-- Subtotal -->
   <div class="text-end">
-    <h5 class="fw-bold">Subtotal ({{ total_productos }} productos): US${{ total_precio }}</h5>
+    <h5 class="fw-bold"> Total de piezas: {{ total_productos }}</h5>
+    <h5 class="fw-bold"> Precio total: {{ total_precio }}€</h5>
   </div>
 </div>
 {% endblock %}

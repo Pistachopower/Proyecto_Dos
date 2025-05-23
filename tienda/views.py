@@ -718,12 +718,43 @@ def busqueda_avanzada_pieza(request):
     return render(request, 'piezas/pieza_BusquedaAvanzada.html', {'formulario': formulario})
 
     
+from django.db.models import Sum, F
 def listarLineaPedidoCarrito(request, id_usuario):
-    #Hacemos la consulta para obtener los resultado
-    todas_lineas_pedido = LineaPedido.objects.select_related("pedido","pieza", "tienda").filter(pedido__cliente_id=id_usuario).all()
-    
-    return render(request, "lineaPedido/totalPiezascarrito.html", {"carrito": todas_lineas_pedido})
+    # Filtra las líneas del pedido pendiente de ese cliente
+    lineas = LineaPedido.objects.filter(pedido__cliente_id=id_usuario, pedido__estado='P')
+
+    # Calcula la suma total de todas las cantidades y el precio total (cantidad * precio)
+    totales = lineas.aggregate( #usamos aggregate para hacer calculos con los registros del modelo
+        total_cantidad=Sum('cantidad'),
+        #F: se usa para obtener las columnas de la base de datos
+        total_precio=Sum(F('cantidad') * F('precio'))
+    )
+
+    # Por si no hay nada, evita que sean None
+    total_productos = totales['total_cantidad'] or 0
+    total_precio = totales['total_precio'] or 0
+
+    # Envía la lista y los totales al template
+    return render(request, 'lineaPedido/totalPiezascarrito.html', {
+        'carrito': lineas,
+        'total_productos': total_productos,
+        'total_precio': total_precio,
+    })
+
    
+
+def lineaPedido_delete(request, id_lineaPedido):
+    #Hacemos la consulta la linea de pedido
+    lineaPedido = LineaPedido.objects.filter(id=id_lineaPedido).first()
+    
+    try:
+        lineaPedido.delete()
+        messages.success(request, "Se ha eliminado la pieza del carrito correctamente.")
+    except Exception as error:
+        print(error)
+    
+    return redirect("listarLineaPedidoCarrito", id_usuario=request.user.cliente.id)
+
 
 # Pagina de error
 def mi_error_404(request, exception=None):
