@@ -116,7 +116,13 @@ class LineaPedido(models.Model):
     precio= models.FloatField(default=1.0) 
     cantidad= models.IntegerField() 
 
+class ProductosTerceros(models.Model):
+    nombre = models.CharField(max_length=100)
+    precio = models.FloatField(default=1.0) 
 
+    
+    def __str__(self):
+        return self.nombre
     
 
 
