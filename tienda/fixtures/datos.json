@@ -715,6 +715,149 @@
     }
 },
 {
+    "model": "admin.logentry",
+    "pk": 56,
+    "fields": {
+        "action_time": "2025-05-20T17:21:14.501",
+        "user": 1,
+        "content_type": 13,
+        "object_id": "9",
+        "object_repr": "Producto_Tienda object (9)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 57,
+    "fields": {
+        "action_time": "2025-05-20T17:21:36.489",
+        "user": 1,
+        "content_type": 13,
+        "object_id": "10",
+        "object_repr": "Producto_Tienda object (10)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 58,
+    "fields": {
+        "action_time": "2025-05-23T20:56:06.416",
+        "user": 1,
+        "content_type": 13,
+        "object_id": "4",
+        "object_repr": "Producto_Tienda object (4)",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Stock\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 59,
+    "fields": {
+        "action_time": "2025-05-23T21:10:58.149",
+        "user": 1,
+        "content_type": 14,
+        "object_id": "22",
+        "object_repr": "Pedido de maria",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 60,
+    "fields": {
+        "action_time": "2025-05-23T21:11:12.028",
+        "user": 1,
+        "content_type": 14,
+        "object_id": "21",
+        "object_repr": "Pedido de maria",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 61,
+    "fields": {
+        "action_time": "2025-05-23T21:11:19.591",
+        "user": 1,
+        "content_type": 14,
+        "object_id": "20",
+        "object_repr": "Pedido de maria",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 62,
+    "fields": {
+        "action_time": "2025-05-23T21:11:28.417",
+        "user": 1,
+        "content_type": 14,
+        "object_id": "19",
+        "object_repr": "Pedido de maria",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 63,
+    "fields": {
+        "action_time": "2025-05-23T21:11:34.986",
+        "user": 1,
+        "content_type": 14,
+        "object_id": "18",
+        "object_repr": "Pedido de maria",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 64,
+    "fields": {
+        "action_time": "2025-05-23T21:11:41.431",
+        "user": 1,
+        "content_type": 14,
+        "object_id": "17",
+        "object_repr": "Pedido de maria",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 65,
+    "fields": {
+        "action_time": "2025-05-23T21:11:47.684",
+        "user": 1,
+        "content_type": 14,
+        "object_id": "16",
+        "object_repr": "Pedido de maria",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 66,
+    "fields": {
+        "action_time": "2025-05-23T21:12:01.767",
+        "user": 1,
+        "content_type": 14,
+        "object_id": "12",
+        "object_repr": "Pedido de maria",
+        "action_flag": 2,
+        "change_message": "[]"
+    }
+},
+{
     "model": "auth.permission",
     "pk": 1,
     "fields": {
@@ -1291,6 +1434,42 @@
     }
 },
 {
+    "model": "auth.permission",
+    "pk": 65,
+    "fields": {
+        "name": "Can add productos terceros",
+        "content_type": 16,
+        "codename": "add_productosterceros"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 66,
+    "fields": {
+        "name": "Can change productos terceros",
+        "content_type": 16,
+        "codename": "change_productosterceros"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 67,
+    "fields": {
+        "name": "Can delete productos terceros",
+        "content_type": 16,
+        "codename": "delete_productosterceros"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 68,
+    "fields": {
+        "name": "Can view productos terceros",
+        "content_type": 16,
+        "codename": "view_productosterceros"
+    }
+},
+{
     "model": "auth.group",
     "pk": 1,
     "fields": {
@@ -1454,6 +1633,14 @@
     }
 },
 {
+    "model": "contenttypes.contenttype",
+    "pk": 16,
+    "fields": {
+        "app_label": "tienda",
+        "model": "productosterceros"
+    }
+},
+{
     "model": "sessions.session",
     "pk": "0szpumw2pmlkw7fzmtwddb2titb7u32h",
     "fields": {
@@ -1511,10 +1698,10 @@
 },
 {
     "model": "sessions.session",
-    "pk": "bj2xyk9bhaapxo9c8lza65tww1gb6b3y",
+    "pk": "7cwpz1g82p5jfrxu3atutgr0hxziz2c5",
     "fields": {
-        "session_data": ".eJxVjjsOwjAQRK-CXCPHX5ykpOcM1nq9xgZkS_lUiLuTSCmgnTfzNG_mYV2yX2eafIlsZJKdf7MA-KS6g_iAem8cW12mEvhe4Qed-a1Fel2P7p8gw5y3tcZktAQMSkodByCM0YKzgA6EUE5ehApDb22giKlPyvYGiSQaKVxwZpMmwgy-1IKl7UeHTthOCWVPSo9mYJ8vHP5BKQ:1uH8Md:vY73q5Jk8NKj4-WfRKCuhhijxA9gFEqglSykFDkM200",
-        "expire_date": "2025-06-02T23:49:39.616"
+        "session_data": ".eJxVjDkOwjAQRa-CXCPHS8ZLSnrOYE2cMTYgW8pSIe4OkdKk_e-9_2GJYsZQaomlsYEp3QnolFBwUXoAwa4s4LbmsC00hzLtynkbMb6o7mB6Yn00Hltd5zLyXeEHXfi9TfS-He7pIOOS_zUZksYhAfbWSq2UddoAkI7C2BQjWJ-SsQ6c77X0gpxRqKJE7ROCIfb9AWJZP9o:1uIaIE:dYyymbgt3i_c8XbkvXg2y28ivywPGer3Yo8EbM5WRpk",
+        "expire_date": "2025-06-06T23:51:06.099"
     }
 },
 {
@@ -1599,6 +1786,14 @@
 },
 {
     "model": "sessions.session",
+    "pk": "w720kwxtssj2tlj6m33z0bk8p63yl4ve",
+    "fields": {
+        "session_data": ".eJxVjDsOwyAQBa8SUUcYFvNzmT5nQGu8BJIIJH-qKHdPLLlx-2bmfViimDGUWmJpbGCgOqE7EKAvIAcJ7MoCbmsO20JzKNOunLcR44vqDqYn1kfjsdV1LiPfFX7Qhd_bRO_b4Z4OMi75X5MhaRySxt5aqQCsU0ZrUlEYm2LU1qdkrNPO90p6Qc4AQpSofEJtiH1_X5s_1g:1uIXoq:TtqNTjpmg9P94qpo8Z2YBR6MdXohnTIUx9_RAF-MuYE",
+        "expire_date": "2025-06-06T21:12:36.124"
+    }
+},
+{
+    "model": "sessions.session",
     "pk": "wd0sjbq3kbal3x7e421fv6y3n197tfc5",
     "fields": {
         "session_data": ".eJxVjDsOwyAQBa8SUUeYBYPBZfqcAS2wDiQRSP5UUe6eWHLj9s3M-7CJYkZfaomlsZEp0Ym-k0LqC-gRFLsyj9ua_bbQ7EvalfMWML6o7iA9sT4aj62ucwl8V_hBF35vid63wz0dZFzyvzYyWSDXDyohgDUSZHBOqBAkkbPROI16MFpZ0ISEEwUrB3BSWEPGAfv-AGGnP8w:1uA7Fn:RXU3u7AB94l98xqZIHsWcSC3980qLJoOdogIAMITVQk",
@@ -1610,7 +1805,7 @@
     "pk": 1,
     "fields": {
         "password": "pbkdf2_sha256$870000$JjCoHJX8T1MWvmnGZd2MxH$j+BpuO2AG2wdM6yIfJa1wH9XQlNWEW4JSVYJhSlgU8o=",
-        "last_login": "2025-05-19T23:49:13.621",
+        "last_login": "2025-05-23T21:10:42.676",
         "is_superuser": true,
         "username": "nelson",
         "first_name": "",
@@ -1629,7 +1824,7 @@
     "pk": 2,
     "fields": {
         "password": "pbkdf2_sha256$870000$ItretZb7lQVbi4cG8g7c60$EGhdAcnW2O7YYNITDtuEJM63YE3dDnRic+n/uq6yQIM=",
-        "last_login": "2025-05-19T21:47:12.364",
+        "last_login": "2025-05-23T23:51:06.061",
         "is_superuser": false,
         "username": "maria",
         "first_name": "maria",
@@ -1840,7 +2035,7 @@
     "fields": {
         "tienda": 5,
         "pieza": 1,
-        "stock": 2,
+        "stock": 5,
         "precio": 200.0
     }
 },
@@ -1850,7 +2045,7 @@
     "fields": {
         "tienda": 4,
         "pieza": 3,
-        "stock": 2,
+        "stock": 1,
         "precio": 1000.0
     }
 },
@@ -1860,8 +2055,28 @@
     "fields": {
         "tienda": 6,
         "pieza": 8,
-        "stock": 3,
+        "stock": 2,
         "precio": 140.0
+    }
+},
+{
+    "model": "tienda.producto_tienda",
+    "pk": 9,
+    "fields": {
+        "tienda": 4,
+        "pieza": 6,
+        "stock": 5,
+        "precio": 150.0
+    }
+},
+{
+    "model": "tienda.producto_tienda",
+    "pk": 10,
+    "fields": {
+        "tienda": 5,
+        "pieza": 7,
+        "stock": 4,
+        "precio": 250.0
     }
 },
 {
@@ -1906,35 +2121,35 @@
 },
 {
     "model": "tienda.lineapedido",
-    "pk": 1,
+    "pk": 17,
     "fields": {
         "pedido": 12,
         "pieza": 1,
         "tienda": 5,
-        "precio": 1.0,
+        "precio": 200.0,
         "cantidad": 2
     }
 },
 {
     "model": "tienda.lineapedido",
-    "pk": 2,
+    "pk": 18,
     "fields": {
-        "pedido": 14,
+        "pedido": 12,
         "pieza": 1,
         "tienda": 5,
-        "precio": 1.0,
-        "cantidad": 1
+        "precio": 200.0,
+        "cantidad": 2
     }
 },
 {
     "model": "tienda.lineapedido",
-    "pk": 3,
+    "pk": 19,
     "fields": {
-        "pedido": 15,
+        "pedido": 12,
         "pieza": 1,
         "tienda": 5,
-        "precio": 1.0,
-        "cantidad": 1
+        "precio": 200.0,
+        "cantidad": 2
     }
 }
 ]
