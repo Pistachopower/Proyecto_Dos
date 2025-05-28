@@ -629,7 +629,7 @@ def anadir_producto_tienda_carrito(request, productoTienda_id):
     if request.method == 'POST':
         formulario = AnadirProductoTiendaModelForm(request.POST, producto_tienda_obj=producto_tienda)
         if formulario.is_valid():
-            cantidad = formulario.cleaned_data['cantidad']  # Usa cantidad no 'stock
+            cantidad = formulario.cleaned_data['cantidad'] 
 
             # 1. Buscamos pedido pendiente
             pedido = Pedido.objects.filter(cliente=cliente, estado='P').first()
@@ -643,21 +643,26 @@ def anadir_producto_tienda_carrito(request, productoTienda_id):
                 )
                 pedido.save()
 
-            # 2- Agregamos la línea de pedido
-            #por que no se esta guardando la linea pedido?
-            LineaPedido.objects.create(
+            # 2. Agregamos la línea de pedido (o actualizamos si ya existe la misma pieza y tienda)
+            linea_existente = LineaPedido.objects.filter(
                 pedido=pedido,
                 pieza=producto_tienda.pieza,
-                tienda=producto_tienda.tienda,
-                precio=producto_tienda.precio,
-                cantidad=cantidad,
-            )
-            
-            
+                tienda=producto_tienda.tienda
+            ).first()
 
-            # 3- Actualizamos stock del producto en tienda
-            # producto_tienda.stock -= cantidad
-            # producto_tienda.save()
+            # Si ya existe una línea de pedido para esa pieza y tienda, actualizamos la cantidad
+            if linea_existente:
+                linea_existente.cantidad += cantidad
+                linea_existente.save()
+            else:
+                LineaPedido.objects.create(
+                    pedido=pedido,
+                    pieza=producto_tienda.pieza,
+                    tienda=producto_tienda.tienda,
+                    precio=producto_tienda.precio,
+                    cantidad=cantidad,
+                )
+
 
             messages.success(request, "Compra realizada con éxito. Stock actualizado.")
             return redirect('lista_pedidos')
