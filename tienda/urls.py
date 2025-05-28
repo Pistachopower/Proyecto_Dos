@@ -59,6 +59,7 @@ urlpatterns = [
     path('detalle-linea-pedido/<int:id_pedido>',views.dame_lineaPedido,name='dame_lineaPedido'),
     path('listar-linea-pedido-carrito/<int:id_usuario>',views.listarLineaPedidoCarrito,name='listarLineaPedidoCarrito'),
     path('eliminar-linea-pedido/<int:id_lineaPedido>',views.lineaPedido_delete,name='lineaPedido_delete'),
+    path('editar-linea-pedido/<int:id_lineaPedido>/', views.editar_linea_pedido, name='editar_linea_pedido'),
 
 
     

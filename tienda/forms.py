@@ -305,6 +305,16 @@ class BusquedaAvanzadaPiezaForm(forms.Form):
             
         return self.cleaned_data
         
+        
+class EditarLineaPedidoForm(forms.ModelForm):
+    class Meta:
+        model = LineaPedido
+        fields = ['cantidad']
+        labels = {
+                'cantidad': ("Indica la cantidad de la pieza"),
+            }
+ 
+
             
 
             

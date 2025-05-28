@@ -761,6 +761,24 @@ def lineaPedido_delete(request, id_lineaPedido):
     return redirect("listarLineaPedidoCarrito", id_usuario=request.user.cliente.id)
 
 
+
+#editar_linea_pedido
+def editar_linea_pedido(request, id_lineaPedido):
+    linea = LineaPedido.objects.filter(id=id_lineaPedido).first()
+    
+    if request.method == 'POST':
+        formulario = EditarLineaPedidoForm(request.POST, instance=linea)
+        if formulario.is_valid():
+            formulario.save()
+            messages.success(request, "Cantidad actualizada correctamente.")
+            return redirect("listarLineaPedidoCarrito", id_usuario=request.user.cliente.id)
+    else:
+        formulario = EditarLineaPedidoForm(instance=linea)
+
+    return render(request, 'carrito/editar_linea.html', {'formulario': formulario, 'linea': linea})
+
+
+
 # Pagina de error
 def mi_error_404(request, exception=None):
     return render(request, "errores/404.html", None, None, 404)
