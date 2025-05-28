@@ -313,6 +313,15 @@ class EditarLineaPedidoForm(forms.ModelForm):
         labels = {
                 'cantidad': ("Indica la cantidad de la pieza"),
             }
+        
+        
+class FinalizarPedidoForm(ModelForm):
+    class Meta:
+        model = Pedido
+        fields = ['direccion']
+        labels = {
+                'Dirección': ("Indica la dirección de envío"),
+            }
  
 
             

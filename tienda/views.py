@@ -724,26 +724,59 @@ def busqueda_avanzada_pieza(request):
 
     
 from django.db.models import Sum, F
-def listarLineaPedidoCarrito(request, id_usuario):
-    # Filtra las líneas del pedido pendiente de ese cliente
-    lineas = LineaPedido.objects.filter(pedido__cliente_id=id_usuario, pedido__estado='P')
+# def listarLineaPedidoCarrito(request, id_usuario):
+#     # Filtra las líneas del pedido pendiente de ese cliente
+#     lineas = LineaPedido.objects.filter(pedido__cliente_id=id_usuario, pedido__estado='P')
+    
+#     # Obtenemos el pedido pendiente de ese cliente (puede ser None si no hay)
+#     pedido = Pedido.objects.filter(cliente_id=id_usuario, estado='P').first()
 
-    # Calcula la suma total de todas las cantidades y el precio total (cantidad * precio)
-    totales = lineas.aggregate( #usamos aggregate para hacer calculos con los registros del modelo
+#     # Calcula la suma total de todas las cantidades y el precio total (cantidad * precio)
+#     totales = lineas.aggregate( #usamos aggregate para hacer calculos con los registros del modelo
+#         total_cantidad=Sum('cantidad'),
+#         #F: se usa para obtener las columnas de la base de datos
+#         total_precio=Sum(F('cantidad') * F('precio'))
+#     )
+
+#     # Por si no hay nada, evita que sean None
+#     total_productos = totales['total_cantidad'] or 0
+#     total_precio = totales['total_precio'] or 0
+
+#     # Envía la lista y los totales al template
+#     return render(request, 'lineaPedido/totalPiezascarrito.html', {
+#         'carrito': lineas,
+#         'total_productos': total_productos,
+#         'total_precio': total_precio,
+#         'pedido': pedido 
+#     })
+    
+    
+def listarLineaPedidoCarrito(request, id_usuario):
+    # Filtramos las líneas del pedido pendiente de ese cliente
+    lineas = LineaPedido.objects.select_related('pedido', 'pieza', 'tienda').filter(
+        pedido__cliente_id=id_usuario,
+        pedido__estado='P'
+    )
+
+    # Obtenemos el pedido pendiente de ese cliente 
+    pedido = Pedido.objects.filter(cliente_id=id_usuario, estado='P').first()
+
+    #Calculamos la suma total de todas las cantidades y el precio total (cantidad * precio)
+    totales = lineas.aggregate(
         total_cantidad=Sum('cantidad'),
-        #F: se usa para obtener las columnas de la base de datos
         total_precio=Sum(F('cantidad') * F('precio'))
     )
 
-    # Por si no hay nada, evita que sean None
+    #Por si no hay nada, evita que sean None
     total_productos = totales['total_cantidad'] or 0
     total_precio = totales['total_precio'] or 0
 
-    # Envía la lista y los totales al template
+    # Envía la lista, los totales y el pedido al template
     return render(request, 'lineaPedido/totalPiezascarrito.html', {
         'carrito': lineas,
         'total_productos': total_productos,
         'total_precio': total_precio,
+        'pedido': pedido,
     })
 
    
@@ -777,6 +810,27 @@ def editar_linea_pedido(request, id_lineaPedido):
 
     return render(request, 'carrito/editar_linea.html', {'formulario': formulario, 'linea': linea})
 
+
+
+def finalizar_pedido(request, pedido_id):
+    pedido = Pedido.objects.filter(id=pedido_id, estado='P').first()
+    
+    if request.method == 'POST':
+        formulario = FinalizarPedidoForm(request.POST, instance=pedido)
+        if formulario.is_valid():
+            #Actualizamos dirección y estado
+            pedido.direccion = formulario.cleaned_data['direccion']
+            pedido.estado = 'C'
+            pedido.save()
+            
+            messages.success(request, "Tu compra se ha realizado con éxito.")
+            return redirect("lista_pedidos")
+            
+            
+    else:
+        formulario = FinalizarPedidoForm(instance=pedido)
+        
+    return render(request, 'carrito/finalizar_pedido.html', {'formulario': formulario, 'pedido': pedido})
 
 
 # Pagina de error

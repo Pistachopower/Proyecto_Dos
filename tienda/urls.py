@@ -60,6 +60,10 @@ urlpatterns = [
     path('listar-linea-pedido-carrito/<int:id_usuario>',views.listarLineaPedidoCarrito,name='listarLineaPedidoCarrito'),
     path('eliminar-linea-pedido/<int:id_lineaPedido>',views.lineaPedido_delete,name='lineaPedido_delete'),
     path('editar-linea-pedido/<int:id_lineaPedido>/', views.editar_linea_pedido, name='editar_linea_pedido'),
+    
+    # urls.py
+    path('finalizar-pedido/<int:pedido_id>/', views.finalizar_pedido, name='finalizar_pedido'),
+
 
 
     

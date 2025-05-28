@@ -29,7 +29,7 @@
             <a href="{% url 'editar_linea_pedido' item.id %}" class="btn btn-primary btn-sm me-2">Editar</a>
 
             <!-- Botón Eliminar -->
-            <form method="POST" action="{% url 'lineaPedido_delete' item.id %}" onsubmit="return eliminar();">
+            <form method="POST" action="" onsubmit="return eliminar();">
               {% csrf_token %}
               <button class="btn btn-danger btn-sm">Eliminar</button>
             </form>
@@ -46,6 +46,19 @@
     <h5 class="fw-bold"> Total de piezas: {{ total_productos }}</h5>
     <h5 class="fw-bold"> Precio total: {{ total_precio }}€</h5>
   </div>
+
+  <!-- Botón Finalizar Pedido -->
+  <div class="text-end mt-4">
+    {% if pedido %}
+    <form method="GET" action="{% url 'finalizar_pedido' pedido.id %}">
+      <button type="submit" class="btn btn-success btn-lg">Tramitar pedido</button>
+    </form>
+    {% endif %}
+
+  </div>
 </div>
+
+
+
 
 {% endblock %}

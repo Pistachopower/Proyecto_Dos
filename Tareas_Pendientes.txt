@@ -2,31 +2,11 @@ Preguntar a Jorge
 Vista crear pedido. Preguntar si se puede eliminar, porque fue una peticion que él hizo, 
 pero ahora no le veo sentido
 
-Tareas por continuar
-Arreglar logica de listarLineaPedidoCarrito: en template 
+Pedir a Jorge que vea los modelos para modificar correctamente la vista listar Pedidos
 
 
-Para el martes 
-Ver mi pedido actual 
-Todas las lineas de pedido que tiene 
-Finalizar pedido (inventario)
 
 
-Quitar lineas de pedidos de un pedido 
-
-Ver mis pedidos completados 
-
-Anular un pedido
 
 
-Implementaciones por construir
-Construccion del carrito:  (TODAVIA NO)
-Problema: se muestran productos repetidos.
-
-Cuando el usuario añade una pieza al carrito:
-Busca si ya hay una línea de pedido para ese pedido y esa pieza.
-Si la hay:
-Suma la cantidad nueva a la cantidad que ya tenía esa línea.
-Si no la hay:
-Crea una línea nueva con la cantidad.
 
