@@ -23,7 +23,6 @@ urlpatterns = [
     path("__debug__/", include("debug_toolbar.urls")),
     path('', include('tienda.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
-    path('oauth2/', include('oauth2_provider.urls', namespace='oauth2_provider')) #para los tokens
     
 ]
 

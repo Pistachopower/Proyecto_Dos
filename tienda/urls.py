@@ -65,6 +65,8 @@ urlpatterns = [
     path('finalizar-pedido/<int:pedido_id>/', views.finalizar_pedido, name='finalizar_pedido'),
 
 
+    #datos de la api
+    path('lista-productos-terceros/', views.listar_productos_terceros_api, name='listar_productos_terceros_api'),
 
     
     

@@ -7,6 +7,7 @@ from django.contrib.auth import login
 from django.contrib.auth.decorators import permission_required
 from django.contrib import messages
 from django.http import Http404
+import requests
 
 
 def index(request):
@@ -832,6 +833,20 @@ def finalizar_pedido(request, pedido_id):
         
     return render(request, 'carrito/finalizar_pedido.html', {'formulario': formulario, 'pedido': pedido})
 
+
+def listar_productos_terceros_api(request):
+    headers= {
+        'Authorization': 'Bearer dulmwogNLx4iwVhfpZBTXR1RtTkq3g'
+    }
+    
+    #datos de la API
+    response = requests.get('http://0.0.0.0:8081/api/v1/listar_productosTercero/',
+                            headers=headers)
+    
+    #transformar los datos a un formato JSON
+    listar_productosTercero_Api = response.json()
+    
+    return render(request, "productos_terceros_api/productosTerceros.html", {"productos": listar_productosTercero_Api})
 
 # Pagina de error
 def mi_error_404(request, exception=None):
