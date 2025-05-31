@@ -874,7 +874,6 @@ def crear_producto_tercero(request):
             # Enviamos los datos a la API
             headers = {
                 'Authorization': 'Bearer dulmwogNLx4iwVhfpZBTXR1RtTkq3g',
-                #'Content-Type': 'application/json'
             }
             
             
