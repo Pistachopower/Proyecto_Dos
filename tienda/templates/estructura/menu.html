@@ -14,6 +14,10 @@
                     <a class="nav-link active" href="{% url 'index' %}">Inicio</a>
                 </li>
 
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'lista_catalogo' %}">Lista de catalogo de piezas</a>
+                </li>
+
                 {% if perms.tienda.view_cliente %}
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'lista_clientes' %}">Ver clientes</a>
@@ -33,10 +37,6 @@
                         Catálogo de Piezas
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="piezasDropdown">
-                        {% if perms.tienda.view_pieza %}
-                        <li><a class="dropdown-item" href="{% url 'lista_catalogo' %}">Lista de catalogo de piezas</a></li>
-                        {% endif %}
-
                         {% if perms.tienda.view_pieza %}
                         <li><a class="dropdown-item" href="{% url 'pieza_Buscar' %}">Buscar piezas</a></li>
                         {% endif %}

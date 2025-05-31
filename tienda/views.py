@@ -64,7 +64,7 @@ def registrar_usuario(request):
     return render(request, "registration/signup.html", {"formulario": formulario})
 
 
-@permission_required("tienda.view_pieza")
+
 def lista_catalogo(request):
     pieza = Pieza.objects.all()
     return render(request, "piezas/lista_catalogo.html", {"piezas_mostrar": pieza})

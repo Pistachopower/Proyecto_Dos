@@ -910,6 +910,19 @@
     }
 },
 {
+    "model": "admin.logentry",
+    "pk": 71,
+    "fields": {
+        "action_time": "2025-05-31T16:14:22.531",
+        "user": 1,
+        "content_type": 3,
+        "object_id": "1",
+        "object_repr": "clientes",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Permissions\"]}}]"
+    }
+},
+{
     "model": "auth.permission",
     "pk": 1,
     "fields": {
@@ -1702,12 +1715,47 @@
     }
 },
 {
+    "model": "auth.permission",
+    "pk": 89,
+    "fields": {
+        "name": "Can add pago",
+        "content_type": 22,
+        "codename": "add_pago"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 90,
+    "fields": {
+        "name": "Can change pago",
+        "content_type": 22,
+        "codename": "change_pago"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 91,
+    "fields": {
+        "name": "Can delete pago",
+        "content_type": 22,
+        "codename": "delete_pago"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 92,
+    "fields": {
+        "name": "Can view pago",
+        "content_type": 22,
+        "codename": "view_pago"
+    }
+},
+{
     "model": "auth.group",
     "pk": 1,
     "fields": {
         "name": "clientes",
         "permissions": [
-            32,
             33,
             34,
             36,
@@ -1914,6 +1962,14 @@
     }
 },
 {
+    "model": "contenttypes.contenttype",
+    "pk": 22,
+    "fields": {
+        "app_label": "tienda",
+        "model": "pago"
+    }
+},
+{
     "model": "sessions.session",
     "pk": "0szpumw2pmlkw7fzmtwddb2titb7u32h",
     "fields": {
@@ -1955,6 +2011,14 @@
 },
 {
     "model": "sessions.session",
+    "pk": "5qqynhxnzucw47obzg7rle5msj9vg64l",
+    "fields": {
+        "session_data": ".eJxVjDkOwjAQRa-CXCPHS8ZLSnrOYE2cMTYgW8pSIe5OkNKk_e-9_2GJYsZQaomlsYFp2QnolFBwkTAAsCsLuK05bAvNoUy7os7biPFF9Q-mJ9ZH47HVdS4j_yv8oAu_t4net8M9HWRc8l6TIWkcEmBvrdRKWacNAOkojE0xgvUpGevA-V5LL8gZhSpK1D4hGGLfH2WvP98:1uLMh3:hBysyxsZ68CgndJIB2uHDRI-k7FBN6oKOGMZkxAqGKM",
+        "expire_date": "2025-06-14T15:56:13.400"
+    }
+},
+{
+    "model": "sessions.session",
     "pk": "6jm4bsxwepw70gb2foqp8rbjknoz50ad",
     "fields": {
         "session_data": ".eJxVjDkOwjAQRa-CXCPHS7ylpOcM1mQyxgZkS1kqxN0JUpq0_733PywRZoilFiyNDUz6TphOCWUuSgxCsCuLsK05bgvNsUy7os7bCPii-gfTE-qjcWx1ncvI_wo_6MLvbaL37XBPBxmWvNdkSVoPZKB3TmqlnNfWGNIorEuIxoWUrPPGh17LIMhbBQol6JDAWGLfH1_OP9Y:1uGiJZ:29vBHLfEQo_b9OkTWiCz3ZPDbi4qIxv5jTxhjcv7e0k",
@@ -1979,10 +2043,26 @@
 },
 {
     "model": "sessions.session",
+    "pk": "7pziyqnq8ucey5ybhrxyv6qqai4s3ja2",
+    "fields": {
+        "session_data": "eyJmZWNoYV9pbmljaW8iOiIzMC8wNS8yMDI1IDE3OjM5In0:1uL1pa:2wdvHDnI9FpbkLlnJy6mhNRi0LH62pBfA5TynvhbkmY",
+        "expire_date": "2025-06-13T17:39:38.031"
+    }
+},
+{
+    "model": "sessions.session",
     "pk": "bj5ubq699b715zrmv5lvdf53z2pislo2",
     "fields": {
         "session_data": ".eJxVjDkOwjAQRa-CXCPHS8ZLSnrOYE2cMTYgW8pSIe4OkdKk_e-9_2GJYsZQaomlsYEp1wnolFBwkXYAwa4s4LbmsC00hzLtynkbMb6o7mB6Yn00Hltd5zLyXeEHXfi9TfS-He7pIOOS_zUZksYhAfbWSq2UddoAkI7C2BQjWJ-SsQ6c77X0gpxRqKJE7ROCIfb9AWgPP-I:1uKJ38:WXQVdG_t4rpRc23sORnhKmU9748b7n15JYgGvpApMVc",
         "expire_date": "2025-06-11T17:50:38.258"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "ecdnwg2earqtxutmcj4zgknxdduigf6q",
+    "fields": {
+        "session_data": ".eJxVjTsOwyAQBa8SUUc2i8HYLtPnDGhZlkASgeRPFeXuiSU3bt-M5n1EZErocsmUq5hEB600rZLKXKCfpBZX4XBbk9sWnl0OfwXOm0d6cdlBeGJ51IZqWefsm11pDro09xr4fTvcUyDhkvZniroDJK8AujAiUwgGrUGyKKWy0Evlx8EYz4HiEJUZNDEDaZDWWy2-P5raQRw:1uLMxB:Lu-1gzLqzIU-EMuDcMs5lnyUB5RdvgLpD1kk9NE1fqI",
+        "expire_date": "2025-06-14T16:12:53.228"
     }
 },
 {
@@ -2015,6 +2095,14 @@
     "fields": {
         "session_data": ".eJxVjDkOwjAQRa-CXCPHS8ZLSnrOYE2cMTYgW8pSIe4OkdKk_e-9_2GJYsZQaomlsYEp2wnolFBwkW4AYFcWcFtz2BaaQ5l25byNGF9UdzA9sT4aj62ucxn5rvCDLvzeJnrfDvd0kHHJ_5oMSeOQAHtrpVbKOm0ASEdhbIoRrE_JWAfO91p6Qc4oVFGi9gnBEPv-AGtlP-c:1uJxik:JVt1khEco3dG5dx6oDCo0-FzerMKvMrkLRJTgc9wlTE",
         "expire_date": "2025-06-10T19:04:10.705"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "k1i4ju3dhpwnpjczi2mgk63h3hxzump6",
+    "fields": {
+        "session_data": ".eJxVjcsOwiAQRX_FsDaUoSC1S_d-AxmGQVADSR8r479rk266vefk3I9ITBl9qYVKE6PoVadsp5W2J3CjNeIsPK5L9uvMky_xr8BxC0gvrhuIT6yPJqnVZSpBborc6SzvLfL7truHQMY5b8-UTA9IQQP08YpMMVp0FsmhUtrBRelwHawNHCkNSdvBEDOQAeWCM-L7A541QSE:1uL243:IQwRR02JRn6S_veD3Kzx0az4yLTA90urYtg_Z7RLcpk",
+        "expire_date": "2025-06-13T17:54:35.159"
     }
 },
 {
@@ -2118,7 +2206,7 @@
     "pk": 1,
     "fields": {
         "password": "pbkdf2_sha256$870000$JjCoHJX8T1MWvmnGZd2MxH$j+BpuO2AG2wdM6yIfJa1wH9XQlNWEW4JSVYJhSlgU8o=",
-        "last_login": "2025-05-28T18:48:19.285",
+        "last_login": "2025-05-31T16:12:53.195",
         "is_superuser": true,
         "username": "nelson",
         "first_name": "",
@@ -2137,7 +2225,7 @@
     "pk": 2,
     "fields": {
         "password": "pbkdf2_sha256$870000$ItretZb7lQVbi4cG8g7c60$EGhdAcnW2O7YYNITDtuEJM63YE3dDnRic+n/uq6yQIM=",
-        "last_login": "2025-05-28T17:50:38.220",
+        "last_login": "2025-05-31T15:56:13.364",
         "is_superuser": false,
         "username": "maria",
         "first_name": "maria",
@@ -2413,6 +2501,26 @@
     }
 },
 {
+    "model": "tienda.pedido",
+    "pk": 24,
+    "fields": {
+        "estado": "C",
+        "fecha": "2025-05-29T10:54:15.085",
+        "direccion": "fijsuedsfniunfui",
+        "cliente": 1
+    }
+},
+{
+    "model": "tienda.pedido",
+    "pk": 25,
+    "fields": {
+        "estado": "P",
+        "fecha": "2025-05-31T15:57:05.641",
+        "direccion": "",
+        "cliente": 1
+    }
+},
+{
     "model": "tienda.lineapedido",
     "pk": 17,
     "fields": {
@@ -2435,53 +2543,14 @@
     }
 },
 {
-    "model": "oauth2_provider.application",
-    "pk": 1,
+    "model": "tienda.lineapedido",
+    "pk": 21,
     "fields": {
-        "client_id": "tienda",
-        "user": 1,
-        "redirect_uris": "",
-        "post_logout_redirect_uris": "",
-        "client_type": "confidential",
-        "authorization_grant_type": "password",
-        "client_secret": "pbkdf2_sha256$870000$4dy6DYuq0jCFs0f3PZUs0F$8TY5t1EnBMApySrwYCC0lWtyr6Mc2hO9tuymNRAJBeo=",
-        "hash_client_secret": false,
-        "name": "tienda",
-        "skip_authorization": false,
-        "created": "2025-05-26T19:13:06.738",
-        "updated": "2025-05-26T19:22:04.274",
-        "algorithm": "",
-        "allowed_origins": ""
-    }
-},
-{
-    "model": "oauth2_provider.accesstoken",
-    "pk": 1,
-    "fields": {
-        "user": 1,
-        "source_refresh_token": null,
-        "token": "2Jrcl9KE2TVxJ70AGr4YYjLR2UBHdD",
-        "token_checksum": "c7b71cbcd0fa6d60ab03af7f0fca3f9bd2dd7c97618f4075322ffae8ffb5007f",
-        "id_token": null,
-        "application": 1,
-        "expires": "2183-11-05T04:21:55.277",
-        "scope": "read write groups",
-        "created": "2025-05-26T19:28:35.278",
-        "updated": "2025-05-26T19:28:35.278"
-    }
-},
-{
-    "model": "oauth2_provider.refreshtoken",
-    "pk": 1,
-    "fields": {
-        "user": 1,
-        "token": "WM8pD2dqPecP07CnwuqcNZJkt34ek6",
-        "application": 1,
-        "access_token": 1,
-        "token_family": "b0eb0f57-f996-4f8f-befc-f917b2d8d919",
-        "created": "2025-05-26T19:28:35.279",
-        "updated": "2025-05-26T19:28:35.279",
-        "revoked": null
+        "pedido": 24,
+        "pieza": 1,
+        "tienda": 5,
+        "precio": 200.0,
+        "cantidad": 3
     }
 }
 ]

@@ -117,6 +117,19 @@ class LineaPedido(models.Model):
     cantidad= models.IntegerField() 
 
 
+
+class Pago(models.Model):
+    #Un pago está asociado a un solo pedido, y un pedido solo puede tener un pago
+    pedido = models.OneToOneField(Pedido, on_delete=models.CASCADE, related_name="pago")
+    
+    #El pago se hace desde una cuenta bancaria, así que conectamos con CuentaBancaria usando ForeignKey
+    cuenta_bancaria = models.ForeignKey(CuentaBancaria, on_delete=models.CASCADE, related_name="pagos")
+    monto = models.FloatField()
+    fecha_pago = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Pago de {self.monto} € por {self.pedido}"
+
     
 
 
