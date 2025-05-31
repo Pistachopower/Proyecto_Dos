@@ -6,7 +6,7 @@ class Usuario(AbstractUser):
     CLIENTE = 2
     VENDEDOR = 3
     ROLES = (
-        (ADMINISTRADOR, 'administardor'),
+        (ADMINISTRADOR, 'administrador'),
         (CLIENTE, 'cliente'),
         (VENDEDOR, 'vendedor'),
     )

@@ -835,6 +835,15 @@ def finalizar_pedido(request, pedido_id):
 
 
 def listar_productos_terceros_api(request):
+    
+    if request.user.is_anonymous:
+        return mi_error_500(request)
+
+    if request.user.rol != 3:
+        #llamamos a mi metodo de error 500
+        return mi_error_500(request)
+        
+    
     headers= {
         'Authorization': 'Bearer dulmwogNLx4iwVhfpZBTXR1RtTkq3g'
     }
