@@ -857,6 +857,46 @@ def listar_productos_terceros_api(request):
     
     return render(request, "productos_terceros_api/productosTerceros.html", {"productos": listar_productosTercero_Api})
 
+
+def crear_producto_tercero(request):
+    if request.user.is_anonymous:
+        return mi_error_500(request)
+
+    if request.user.rol != 3:
+        #llamamos a mi metodo de error 500
+        return mi_error_500(request)
+
+    #enviamos a la vista del formulario para crear un producto tercero
+    if request.method == "POST":
+        formulario = CrearProductoTerceroForm(request.POST)
+
+        if formulario.is_valid():
+            # Enviamos los datos a la API
+            headers = {
+                'Authorization': 'Bearer dulmwogNLx4iwVhfpZBTXR1RtTkq3g',
+                #'Content-Type': 'application/json'
+            }
+            
+            
+            
+            response = requests.post('http://0.0.0.0:8081/api/v1/crear-producto-tercero/',
+                            headers=headers,
+                            data=formulario.cleaned_data)
+            
+            
+    
+            #transformar los datos a un formato JSON
+            respuesta_api= response.json()
+            
+            messages.success(request, "Producto creado correctamente.")
+            
+            return redirect("listar_productos_terceros_api")
+    else:
+        formulario = CrearProductoTerceroForm()
+        return render(request, "productos_terceros_api/crear_productoTercero.html", {"formulario": formulario})
+
+
+
 # Pagina de error
 def mi_error_404(request, exception=None):
     return render(request, "errores/404.html", None, None, 404)

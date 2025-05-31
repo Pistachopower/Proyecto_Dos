@@ -67,7 +67,7 @@ urlpatterns = [
 
     #datos de la api
     path('lista-productos-terceros/', views.listar_productos_terceros_api, name='listar_productos_terceros_api'),
-
+    path('crear-producto-tercero/', views.crear_producto_tercero, name='crear_producto_tercero'),
     
     
 ]

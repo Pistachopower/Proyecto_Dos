@@ -322,6 +322,12 @@ class FinalizarPedidoForm(ModelForm):
         labels = {
                 'Dirección': ("Indica la dirección de envío"),
             }
+        
+        
+class CrearProductoTerceroForm(forms.Form):
+    nombre= forms.CharField(required=False,  label="Nombre del producto")
+    precio= forms.FloatField(required=False, label="Precio de la pieza")
+    
  
 
             
