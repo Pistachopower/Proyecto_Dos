@@ -103,7 +103,9 @@
                 {% endif %}
 
             <!--API-->
+            
                 <li class="nav-item dropdown">
+                    {% if request.user.rol == 3 %}
                     <a class="nav-link dropdown-toggle" href="#" id="tercerosDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Productos de terceros
                     </a>
@@ -111,9 +113,11 @@
                         <li><a class="dropdown-item" href="{% url 'listar_productos_terceros_api' %}">Listar productos</a></li>     
                         <li><a class="dropdown-item" href="{% url 'crear_producto_tercero' %}">Crear producto</a></li>
                     </ul>
+                    {% endif %}
                 </li>
 
             </ul>
+            
 
 
 
