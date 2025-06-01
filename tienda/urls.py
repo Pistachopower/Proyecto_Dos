@@ -62,7 +62,7 @@ urlpatterns = [
     path('editar-linea-pedido/<int:id_lineaPedido>/', views.editar_linea_pedido, name='editar_linea_pedido'),
     
     # urls.py
-    path('finalizar-pedido/<int:pedido_id>/', views.finalizar_pedido, name='finalizar_pedido'),
+    path('finalizar-pedido/<int:id_usuario>/', views.finalizar_pedido, name='finalizar_pedido'),
 
 
     #datos de la api

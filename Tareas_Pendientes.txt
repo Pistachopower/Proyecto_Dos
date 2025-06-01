@@ -7,7 +7,10 @@ Pedir a Jorge que vea los modelos para modificar correctamente la vista listar P
 
 
 Por hacer 
-Tratar de dar una respuesta coherente cuando el nombre está repetido
+finalizar_pedido: la consulta devuelve una query vacia, no reste el stock ni cambia el estado.
+
+
+
 
 
 

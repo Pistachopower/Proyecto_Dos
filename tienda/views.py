@@ -665,8 +665,8 @@ def anadir_producto_tienda_carrito(request, productoTienda_id):
                 )
 
 
-            messages.success(request, "Compra realizada con éxito. Stock actualizado.")
-            return redirect('lista_pedidos')
+            messages.success(request, "Producto añadido al carrito con éxito.")
+            return redirect('listarLineaPedidoCarrito', id_usuario=request.user.cliente.id)
     else:
         formulario = AnadirProductoTiendaModelForm(producto_tienda_obj=producto_tienda)
 
@@ -812,26 +812,47 @@ def editar_linea_pedido(request, id_lineaPedido):
     return render(request, 'carrito/editar_linea.html', {'formulario': formulario, 'linea': linea})
 
 
-
-def finalizar_pedido(request, pedido_id):
-    pedido = Pedido.objects.filter(id=pedido_id, estado='P').first()
+#Antigua forma de finalizar pedido
+# def finalizar_pedido(request, pedido_id):
+#     pedido = Pedido.objects.filter(id=pedido_id, estado='P').first()
     
-    if request.method == 'POST':
-        formulario = FinalizarPedidoForm(request.POST, instance=pedido)
-        if formulario.is_valid():
-            #Actualizamos dirección y estado
-            pedido.direccion = formulario.cleaned_data['direccion']
-            pedido.estado = 'C'
-            pedido.save()
+#     if request.method == 'POST':
+#         formulario = FinalizarPedidoForm(request.POST, instance=pedido)
+#         if formulario.is_valid():
+#             #Actualizamos dirección y estado
+#             pedido.direccion = formulario.cleaned_data['direccion']
+#             pedido.estado = 'C'
+#             pedido.save()
             
-            messages.success(request, "Tu compra se ha realizado con éxito.")
-            return redirect("lista_pedidos")
+#             messages.success(request, "Tu compra se ha realizado con éxito.")
+#             return redirect("lista_pedidos")
             
             
-    else:
-        formulario = FinalizarPedidoForm(instance=pedido)
+#     else:
+#         formulario = FinalizarPedidoForm(instance=pedido)
         
-    return render(request, 'carrito/finalizar_pedido.html', {'formulario': formulario, 'pedido': pedido})
+#     return render(request, 'carrito/finalizar_pedido.html', {'formulario': formulario, 'pedido': pedido})
+
+
+def finalizar_pedido(request, id_usuario):
+    lineas = LineaPedido.objects.select_related('pedido', 'pieza', 'tienda').filter(
+        pedido__cliente_id=id_usuario,
+        pedido__estado='P'
+    )
+    
+    for linea in lineas:
+        producto = Producto_Tienda.objects.get(pieza=linea.pieza, tienda=linea.tienda)
+        
+        producto.pedido.estado = 'C'  # Cambiamos el estado del pedido a Completado
+        
+        
+        
+        producto.stock -= linea.cantidad  # Restamos la cantidad comprada al stock del producto
+        producto.save()
+        
+        messages.success(request, "Tu compra se ha realizado con éxito.")
+        return redirect("lista_pedidos")
+
 
 
 def listar_productos_terceros_api(request):
