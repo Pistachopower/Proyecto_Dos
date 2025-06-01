@@ -883,13 +883,25 @@ def crear_producto_tercero(request):
                             data=formulario.cleaned_data)
             
             
-    
-            #transformar los datos a un formato JSON
-            respuesta_api= response.json()
+            # Comprobamos si la respuesta de la API es exitosa
+            if(response.status_code == requests.codes.ok):
+                #transformar los datos a un formato JSON
+                respuesta_api= response.json()
+
+                messages.success(request, "Producto creado correctamente.")
+
+                return redirect("listar_productos_terceros_api")
             
-            messages.success(request, "Producto creado correctamente.")
-            
-            return redirect("listar_productos_terceros_api")
+            else:
+                print(response.status_code)
+                errores_api = response.json()
+                
+                #pasamos los errores de la API al formulario
+                for error in errores_api:
+                    formulario.add_error(error, errores_api[error])
+                return render(request, "productos_terceros_api/crear_productoTercero.html", {"formulario": formulario, "errores_api": errores_api})
+                
+                
     else:
         formulario = CrearProductoTerceroForm()
         return render(request, "productos_terceros_api/crear_productoTercero.html", {"formulario": formulario})
