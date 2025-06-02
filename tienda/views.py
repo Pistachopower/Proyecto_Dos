@@ -934,8 +934,12 @@ import json
 from requests.exceptions import HTTPError
 def editar_nombre_producto_tercero(request, producto_id):
     
+    #Inicializamos datosFormulario como None cuando sea get,
+    #es decir, cuando se entra por primera vez y tomamos
+    #el registro del producto que viene de la api
     datosFormulario = None
     
+    #Si entra aqui es porque el usuario ha mandado datos 
     if request.method == "POST":
         datosFormulario = request.POST
         
@@ -948,6 +952,7 @@ def editar_nombre_producto_tercero(request, producto_id):
         }
     )
     
+    #Enviamos los datos a la API para editar el nombre del producto
     if (request.method == "POST"):
         try:
             formulario = NombreProductoForm(request.POST)
@@ -962,16 +967,18 @@ def editar_nombre_producto_tercero(request, producto_id):
             response = requests.patch(
                     'http://0.0.0.0:8081/api/v1/editar-nombre-producto-tercero/'+str(producto_id) + '/',
                     headers=headers,
-                    data=json.dumps(datos)
+                    data=json.dumps(datos) #convertimos los datos a JSON
                 )
 
             if(response.status_code == requests.codes.ok):
+                    messages.success(request, "Se ha editado correctamente el nombre del producto.")
                     return redirect("listar_productos_terceros_api")
 
             else:
                     response.raise_for_status()
         
         except HTTPError as http_err:
+            #Si hay errores en la api, los mostramos en el formulario
             if response.status_code == 400:
                 errores = response.json()
                 for error in errores:
@@ -992,7 +999,27 @@ def editar_nombre_producto_tercero(request, producto_id):
     return render(request, 'productos_terceros_api/actualizar_nombre.html',{"formulario":formulario,"producto":producto})
         
         
-    
+def eliminar_producto(request, producto_id):
+    try:
+        headers= {
+                        'Authorization': 'Bearer L9eQiozaBqE9rOhLPjl1Wte3StPBzW',
+                        'Content-Type': 'application/json'
+                    }
+        
+        response = requests.delete(
+            'http://0.0.0.0:8081/api/v1/eliminar-producto/'+str(producto_id) + '/',
+            headers=headers,
+        )
+        if response.status_code == requests.codes.ok:
+            messages.success(request, "Producto eliminado correctamente.")
+            return redirect("listar_productos_terceros_api")
+        else:
+            print(response.status_code)
+            response.raise_for_status()
+    except Exception as err:
+        print(f"Ocurrió un error: {err}")
+        return mi_error_500(request)
+    return redirect("listar_productos_terceros_api")  
 
 
 

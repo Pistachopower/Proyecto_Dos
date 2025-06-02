@@ -17,7 +17,7 @@
           </a>
 
           <!-- Botón Eliminar -->
-          <form action="" method="post" onsubmit="return confirm('¿Estás seguro de que deseas eliminar este producto?')">
+          <form action="{% url 'eliminar_producto' p.id %}" method="post" onsubmit="return confirm('¿Estás seguro de que deseas eliminar este producto?')">
             {% csrf_token %}
             <button type="submit" class="btn btn-sm btn-outline-danger">
               <i class="bi bi-trash"></i> Eliminar

@@ -69,5 +69,8 @@ urlpatterns = [
     path('lista-productos-terceros/', views.listar_productos_terceros_api, name='listar_productos_terceros_api'),
     path('crear-producto-tercero/', views.crear_producto_tercero, name='crear_producto_tercero'),
     path('editar-nombre-producto-tercero/<int:producto_id>', views.editar_nombre_producto_tercero, name='editar_nombre_producto_tercero'),
+    path('eliminar-producto//<int:producto_id>/', views.eliminar_producto, name='eliminar_producto'),
+        
+
     
 ]
