@@ -2,15 +2,18 @@ import requests
 
 
 class helper:
-    #NO SE ESTÁ IMPLEMENTANDO EL MÉTODO DE OBTENER PRODUCTOS DE TERCEROS
-    def obtener_producto_terceros_select():
+    
+    def obtener_producto(id):
         
-        headers = {
-            
-                'Authorization': 'Bearer dulmwogNLx4iwVhfpZBTXR1RtTkq3g',
-                   
+        headers = {    
+                'Authorization': 'Bearer 3hlwlzqAPrQot5seySUvYGQ69kXHaY',
                    } 
         
-        response = requests.get('http://0.0.0.0:8081/api/v1/listar_productosTercero/',headers=headers)
+        response = requests.get('http://0.0.0.0:8081/api/v1/obtener-producto/'
+                                + str(id), headers=headers)
         
-        producto_tercero = response.json()
+        
+        producto = response.json()
+        
+        return producto
+        

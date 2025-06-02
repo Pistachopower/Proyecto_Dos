@@ -7,6 +7,8 @@ Pedir a Jorge que vea los modelos para modificar correctamente la vista listar P
 
 
 Por hacer 
+Terminar Patch (trae el atributo pero no lo guarda en la api. Revisar error en la api)
+
 finalizar_pedido: la consulta devuelve una query vacia, no reste el stock ni cambia el estado.
 
 

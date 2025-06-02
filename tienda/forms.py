@@ -332,7 +332,11 @@ class CrearProductoTerceroForm(forms.Form):
     
  
 
-            
+class NombreProductoForm(forms.Form):
+    nombre = forms.CharField(label="Nombre del producto",
+                             required=True, 
+                             max_length=50,
+                             help_text="50 caracteres como máximo") 
 
             
             

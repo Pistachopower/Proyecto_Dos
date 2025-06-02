@@ -866,7 +866,7 @@ def listar_productos_terceros_api(request):
         
     
     headers= {
-        'Authorization': 'Bearer dulmwogNLx4iwVhfpZBTXR1RtTkq3g'
+        'Authorization': 'Bearer 3hlwlzqAPrQot5seySUvYGQ69kXHaY'
     }
     
     #datos de la API
@@ -894,7 +894,7 @@ def crear_producto_tercero(request):
         if formulario.is_valid():
             # Enviamos los datos a la API
             headers = {
-                'Authorization': 'Bearer dulmwogNLx4iwVhfpZBTXR1RtTkq3g',
+                'Authorization': 'Bearer 3hlwlzqAPrQot5seySUvYGQ69kXHaY',
             }
             
             
@@ -926,6 +926,47 @@ def crear_producto_tercero(request):
     else:
         formulario = CrearProductoTerceroForm()
         return render(request, "productos_terceros_api/crear_productoTercero.html", {"formulario": formulario})
+
+
+import json
+def editar_nombre_producto_tercero(request, producto_id):
+    
+    datosFormulario = None
+    
+    if request.method == "POST":
+        datosFormulario = request.POST
+        
+    producto= helper.obtener_producto(producto_id)
+    
+    formulario= NombreProductoForm(
+        initial={
+            'nombre': producto['nombre'],
+        }
+    )
+    
+    if (request.method == "POST"):
+        formulario = NombreProductoForm(request.POST)
+        
+        headers= {
+                    'Authorization': 'Bearer 3hlwlzqAPrQot5seySUvYGQ69kXHaY',
+                }
+        
+        datos = request.POST.copy()
+        
+        response = requests.patch(
+                'http://0.0.0.0:8081/api/v1/editar-nombre-producto-tercero/'+str(producto_id),
+                headers=headers,
+                data=json.dumps(datos)
+            )
+        
+        if(response.status_code == requests.codes.ok):
+                return redirect("listar_productos_terceros_api")
+            
+            
+    return render(request, 'productos_terceros_api/actualizar_nombre.html',{"formulario":formulario,"producto":producto})
+        
+        
+    
 
 
 
