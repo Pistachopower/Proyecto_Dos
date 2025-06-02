@@ -1,20 +1,23 @@
 {% extends "estructura/principal.html" %}
-
-
 {% block contenido %}
 <div class="container mt-5 mb-5">
-    <div class="row justify-content-center">
-      <div class="col-md-6">
-        <h1 class="text-center">Añadir dirección de envío</h1>
-<form action = "" method = "post"> 
-    
-    {% load django_bootstrap5 %}
-    {% csrf_token %} 
-    {% bootstrap_form formulario %}         
-    {% bootstrap_button "Enviar" button_type="submit" button_class="btn-primary" %}
-</form>
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <h1 class="text-center">Añadir dirección de envío</h1>
 
-</div>
-</div>
+      {% load django_bootstrap5 %}
+      <form action="" method="post"> 
+        {% csrf_token %} 
+        {% bootstrap_form formulario %}         
+        {% bootstrap_button "Enviar" button_type="submit" button_class="btn-primary" %}
+      </form>
+
+      <!-- Usamos esto para mostrar mensajes de error cuando se captura un error 
+      desde la vista finalizar pedido. Se puede dar el caso que otro usuario haya 
+      pedido el mismo producto y se haya agotado, por lo que no se puede
+      finalizar el pedido y de mostrar un mensaje de error al usuario.º 
+      -->
+    </div>
+  </div>
 </div>
 {% endblock %}

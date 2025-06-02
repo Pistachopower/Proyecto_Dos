@@ -1,10 +1,14 @@
 Cliente 
 maria
-    333sddeS@
+333sddeS@
 
 Vendedor
 Pedro 
 333sddeS@
+
+Mario
+333sddeS@
+
 
 Permisos 
 Cliente: el usuario puede ver las piezas y el detalle de la piezas

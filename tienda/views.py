@@ -220,7 +220,7 @@ def tienda_editar(request, id_tienda):
 
 
 # modelo cliente
-@permission_required("tienda.view_cliente")
+@permission_required("tienda.view_cuentabancaria")
 def perfil_cliente(request, id_usuario):
 
     if request.user.cliente.id == id_usuario:
@@ -812,46 +812,84 @@ def editar_linea_pedido(request, id_lineaPedido):
     return render(request, 'carrito/editar_linea.html', {'formulario': formulario, 'linea': linea})
 
 
-#Antigua forma de finalizar pedido
-# def finalizar_pedido(request, pedido_id):
-#     pedido = Pedido.objects.filter(id=pedido_id, estado='P').first()
+
+def finalizar_pedido(request, pedido_id):
+    #Buscamos el pedido pendiente de ese cliente
+    pedido = Pedido.objects.filter(id=pedido_id, estado='P').first()
     
-#     if request.method == 'POST':
-#         formulario = FinalizarPedidoForm(request.POST, instance=pedido)
-#         if formulario.is_valid():
-#             #Actualizamos dirección y estado
-#             pedido.direccion = formulario.cleaned_data['direccion']
-#             pedido.estado = 'C'
-#             pedido.save()
-            
-#             messages.success(request, "Tu compra se ha realizado con éxito.")
-#             return redirect("lista_pedidos")
-            
-            
-#     else:
-#         formulario = FinalizarPedidoForm(instance=pedido)
+    if request.method == 'POST':
+        #Se llena el formulario con la dirección del usuario y el pedido existente
+        formulario = FinalizarPedidoForm(request.POST, instance=pedido)
         
-#     return render(request, 'carrito/finalizar_pedido.html', {'formulario': formulario, 'pedido': pedido})
+        if formulario.is_valid():
+            #Verificamos si el cliente tiene una cuenta bancaria ANTES de continuar
+            cuenta = CuentaBancaria.objects.filter(cliente=pedido.cliente).first()
+            if not cuenta:
+                messages.error(request, "Debe registrar una cuenta bancaria antes de finalizar el pedido.")
+                return render(request, 'carrito/finalizar_pedido.html', {
+                            'formulario': formulario,
+                            'pedido': pedido
+                        })
+            
+            
+            
+            #Actualizamos dirección y estado
+            pedido.direccion = formulario.cleaned_data['direccion']
+            pedido.estado = 'C'
+            pedido.save()
+            
+            #Implementacion cuando otro usuario pide el mismo producto y se agota en stock
+            try:
+                #Usamos related_name="pedido_lineaPedido" de LineaPedido
+                for linea in pedido.pedido_lineaPedido.all():
+
+                    #Hacemos una consulta para obtener el producto que corresponde a la tienda
+                    #y la pieza 
+                    producto = Producto_Tienda.objects.get(tienda=linea.tienda, pieza=linea.pieza)
+
+                    if producto.stock < linea.cantidad:
+                        messages.error(request, "Parece que no hay suficiente stock para completar tu pedido.")
+                        return render(request, 'carrito/finalizar_pedido.html', {
+                            'formulario': formulario,
+                            'pedido': pedido
+                        })
 
 
-def finalizar_pedido(request, id_usuario):
-    lineas = LineaPedido.objects.select_related('pedido', 'pieza', 'tienda').filter(
-        pedido__cliente_id=id_usuario,
-        pedido__estado='P'
-    )
-    
-    for linea in lineas:
-        producto = Producto_Tienda.objects.get(pieza=linea.pieza, tienda=linea.tienda)
+                    producto.stock -= linea.cantidad
+                    producto.save()
+                    
+            except ValueError as e:
+                messages.error(request, str(e))
+                return redirect("finalizar_pedido", pedido_id=pedido.id)
+                
+            #Calculamos monto total del pedido
+            total = 0  # empieza en cero
+            
+            for linea in pedido.pedido_lineaPedido.all():
+                subtotal = linea.precio * linea.cantidad
+                total += subtotal  # lo vamos sumando
+
+
+
+            # Creamos el objeto Pago
+            Pago.objects.create(
+                pedido=pedido,
+                cuenta_bancaria=cuenta,
+                monto=total
+            )
+            
+            
+            messages.success(request, "Tu compra se ha realizado con éxito.")
+            return redirect("lista_pedidos")
+            
+            
+    else:
+        formulario = FinalizarPedidoForm(instance=pedido)
         
-        producto.pedido.estado = 'C'  # Cambiamos el estado del pedido a Completado
-        
-        
-        
-        producto.stock -= linea.cantidad  # Restamos la cantidad comprada al stock del producto
-        producto.save()
-        
-        messages.success(request, "Tu compra se ha realizado con éxito.")
-        return redirect("lista_pedidos")
+    return render(request, 'carrito/finalizar_pedido.html', {'formulario': formulario, 'pedido': pedido})
+
+
+
 
 
 
@@ -933,6 +971,13 @@ def crear_producto_tercero(request):
 import json
 from requests.exceptions import HTTPError
 def editar_nombre_producto_tercero(request, producto_id):
+    
+    if request.user.is_anonymous:
+        return mi_error_500(request)
+
+    if request.user.rol != 3:
+        #llamamos a mi metodo de error 500
+        return mi_error_500(request)
     
     #Inicializamos datosFormulario como None cuando sea get,
     #es decir, cuando se entra por primera vez y tomamos
