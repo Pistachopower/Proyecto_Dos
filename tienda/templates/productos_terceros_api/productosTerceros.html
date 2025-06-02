@@ -8,7 +8,22 @@
     <div class="card shadow-sm mb-4">
       <div class="card-body">
         <h5 class="card-title">{{ p.nombre }}</h5>
-        <p class="card-text mb-1">Precio{{ p.precio }}€</p>
+        <p class="card-text mb-1">Precio: {{ p.precio }}€</p>
+
+        <div class="mt-3 d-flex justify-content-start gap-2">
+          <!-- Botón Editar -->
+          <a href="{% url 'editar_nombre_producto_tercero' p.id %}" class="btn btn-sm btn-outline-primary">
+            <i class="bi bi-pencil-square"></i> Editar
+          </a>
+
+          <!-- Botón Eliminar -->
+          <form action="" method="post" onsubmit="return confirm('¿Estás seguro de que deseas eliminar este producto?')">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-sm btn-outline-danger">
+              <i class="bi bi-trash"></i> Eliminar
+            </button>
+          </form>
+        </div>
       </div>
     </div>
   {% empty %}

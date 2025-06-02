@@ -866,7 +866,8 @@ def listar_productos_terceros_api(request):
         
     
     headers= {
-        'Authorization': 'Bearer 3hlwlzqAPrQot5seySUvYGQ69kXHaY'
+        'Authorization': 'Bearer L9eQiozaBqE9rOhLPjl1Wte3StPBzW',
+        'Content-Type': 'application/json'
     }
     
     #datos de la API
@@ -894,7 +895,8 @@ def crear_producto_tercero(request):
         if formulario.is_valid():
             # Enviamos los datos a la API
             headers = {
-                'Authorization': 'Bearer 3hlwlzqAPrQot5seySUvYGQ69kXHaY',
+                'Authorization': 'Bearer L9eQiozaBqE9rOhLPjl1Wte3StPBzW',
+                'Content-Type': 'application/json'
             }
             
             
@@ -929,6 +931,7 @@ def crear_producto_tercero(request):
 
 
 import json
+from requests.exceptions import HTTPError
 def editar_nombre_producto_tercero(request, producto_id):
     
     datosFormulario = None
@@ -939,28 +942,51 @@ def editar_nombre_producto_tercero(request, producto_id):
     producto= helper.obtener_producto(producto_id)
     
     formulario= NombreProductoForm(
+        datosFormulario,
         initial={
             'nombre': producto['nombre'],
         }
     )
     
     if (request.method == "POST"):
-        formulario = NombreProductoForm(request.POST)
+        try:
+            formulario = NombreProductoForm(request.POST)
+
+            headers= {
+                        'Authorization': 'Bearer L9eQiozaBqE9rOhLPjl1Wte3StPBzW',
+                        'Content-Type': 'application/json'
+                    }
+
+            datos = request.POST.copy()
+
+            response = requests.patch(
+                    'http://0.0.0.0:8081/api/v1/editar-nombre-producto-tercero/'+str(producto_id) + '/',
+                    headers=headers,
+                    data=json.dumps(datos)
+                )
+
+            if(response.status_code == requests.codes.ok):
+                    return redirect("listar_productos_terceros_api")
+
+            else:
+                    response.raise_for_status()
         
-        headers= {
-                    'Authorization': 'Bearer 3hlwlzqAPrQot5seySUvYGQ69kXHaY',
-                }
+        except HTTPError as http_err:
+            if response.status_code == 400:
+                errores = response.json()
+                for error in errores:
+                    formulario.add_error(error, errores[error])
+                return render(request, 
+                              'productos_terceros_api/actualizar_nombre.html',
+                              {"formulario":formulario,
+                               "producto":producto})
+
+            else:
+                return mi_error_500(request)
+        except Exception as err:
+            print(f"Ocurrió un error: {err}")
+            return mi_error_500(request)
         
-        datos = request.POST.copy()
-        
-        response = requests.patch(
-                'http://0.0.0.0:8081/api/v1/editar-nombre-producto-tercero/'+str(producto_id),
-                headers=headers,
-                data=json.dumps(datos)
-            )
-        
-        if(response.status_code == requests.codes.ok):
-                return redirect("listar_productos_terceros_api")
             
             
     return render(request, 'productos_terceros_api/actualizar_nombre.html',{"formulario":formulario,"producto":producto})
