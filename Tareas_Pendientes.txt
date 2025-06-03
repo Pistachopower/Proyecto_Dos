@@ -2,7 +2,7 @@ Preguntar a Jorge
 Vista crear pedido. Preguntar si se puede eliminar, porque fue una peticion que él hizo, 
 pero ahora no le veo sentido
 
-Pedir a Jorge que vea los modelos para modificar correctamente la vista listar Pedidos
+Pedir a Jorge que vea los modelos para modificar correctamente la vista listar Pedidos 
 
 ¿El cliente puede eliminar o editar una cuenta bancaria?
 

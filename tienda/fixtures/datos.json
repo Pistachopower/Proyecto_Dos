@@ -1863,11 +1863,11 @@
             33,
             34,
             36,
+            60,
+            24,
             53,
             54,
-            56,
-            24,
-            60
+            56
         ]
     }
 },
@@ -1881,15 +1881,15 @@
             45,
             46,
             48,
-            21,
-            22,
-            24,
             49,
             57,
             58,
             51,
             52,
             60,
+            21,
+            22,
+            24,
             41,
             43,
             44,
@@ -1998,7 +1998,7 @@
     "pk": 13,
     "fields": {
         "app_label": "tienda",
-        "model": "producto_tienda"
+        "model": "pedido"
     }
 },
 {
@@ -2006,7 +2006,7 @@
     "pk": 14,
     "fields": {
         "app_label": "tienda",
-        "model": "pedido"
+        "model": "producto_tienda"
     }
 },
 {
@@ -2251,6 +2251,14 @@
 },
 {
     "model": "sessions.session",
+    "pk": "o7pd3i2eegp1mg7luc0p76ej2ullz8v5",
+    "fields": {
+        "session_data": ".eJxVjDsOwyAQBa8SUUcYloDBZfqcAS2wDiQRSP5UUe4eW3Lj9s3M-7KRYkZfaomlsYEJ1QnTgQB9kWIAw67M47pkv840-ZI2RZ23gPFNdQfphfXZeGx1mUrgu8IPOvNHS_S5H-7pIOOct9pAspLcrVcJpbQGJATnhAoBiJyNxmnUvdHKSk1IOFKw0EsHwhoyTrLfH2JZP80:1uMMzC:vh-vneyi9_VpSVs0V02TiBsOLvZPYXTFps1q8KGh9v8",
+        "expire_date": "2025-06-17T10:27:06.649"
+    }
+},
+{
+    "model": "sessions.session",
     "pk": "r5pulox8nxzpy413ko9zvud3l1l59wbr",
     "fields": {
         "session_data": ".eJxVjEEOwiAQRe_C2hCGglCX7nsGMswMUjVtUtqV8e7apAvd_vfef6mE21rT1mRJI6uLAnX63TLSQ6Yd8B2n26xpntZlzHpX9EGbHmaW5_Vw_w4qtvqtOyquA6RsATruUYjZY_BIAY2xAc7G5j56n4WpxGJ9dCQC5MCEHJx6fwD6HjhI:1u7YVl:dApU4EIgQ6sUnvMYuUTQIlfI_AQEzVu7Vp2Lk4egHmI",
@@ -2358,7 +2366,7 @@
     "pk": 3,
     "fields": {
         "password": "pbkdf2_sha256$870000$nBiZWWyruLgnBllmyTq3uH$4Trf7luVQOqizPG+cARJF/HGEDIuSwcbMDtdzMeYY/E=",
-        "last_login": "2025-06-02T13:47:00.395",
+        "last_login": "2025-06-03T10:27:06.576",
         "is_superuser": false,
         "username": "pedro",
         "first_name": "pedro",

@@ -814,7 +814,7 @@ def editar_linea_pedido(request, id_lineaPedido):
 
 
 def finalizar_pedido(request, pedido_id):
-    #Buscamos el pedido pendiente de ese cliente
+    #Cambiar 
     pedido = Pedido.objects.filter(id=pedido_id, estado='P').first()
     
     if request.method == 'POST':
@@ -841,6 +841,7 @@ def finalizar_pedido(request, pedido_id):
             #Implementacion cuando otro usuario pide el mismo producto y se agota en stock
             try:
                 #Usamos related_name="pedido_lineaPedido" de LineaPedido
+                #VALIDAR EN FORMULARIO
                 for linea in pedido.pedido_lineaPedido.all():
 
                     #Hacemos una consulta para obtener el producto que corresponde a la tienda
@@ -904,7 +905,7 @@ def listar_productos_terceros_api(request):
         
     
     headers= {
-        'Authorization': 'Bearer L9eQiozaBqE9rOhLPjl1Wte3StPBzW',
+        'Authorization': 'Bearer sq2fpC4hCklRpF6HGI8B2kGRxJH95N',
         'Content-Type': 'application/json'
     }
     
@@ -933,7 +934,7 @@ def crear_producto_tercero(request):
         if formulario.is_valid():
             # Enviamos los datos a la API
             headers = {
-                'Authorization': 'Bearer L9eQiozaBqE9rOhLPjl1Wte3StPBzW',
+                'Authorization': 'Bearer sq2fpC4hCklRpF6HGI8B2kGRxJH95N',
                 'Content-Type': 'application/json'
             }
             
@@ -941,7 +942,7 @@ def crear_producto_tercero(request):
             
             response = requests.post('http://0.0.0.0:8081/api/v1/crear-producto-tercero/',
                             headers=headers,
-                            data=formulario.cleaned_data)
+                            data=json.dumps(formulario.cleaned_data))
             
             
             # Comprobamos si la respuesta de la API es exitosa
@@ -971,7 +972,7 @@ def crear_producto_tercero(request):
 import json
 from requests.exceptions import HTTPError
 def editar_nombre_producto_tercero(request, producto_id):
-    
+    #colocar is login
     if request.user.is_anonymous:
         return mi_error_500(request)
 
@@ -1003,7 +1004,7 @@ def editar_nombre_producto_tercero(request, producto_id):
             formulario = NombreProductoForm(request.POST)
 
             headers= {
-                        'Authorization': 'Bearer L9eQiozaBqE9rOhLPjl1Wte3StPBzW',
+                        'Authorization': 'Bearer sq2fpC4hCklRpF6HGI8B2kGRxJH95N',
                         'Content-Type': 'application/json'
                     }
 
@@ -1047,7 +1048,7 @@ def editar_nombre_producto_tercero(request, producto_id):
 def eliminar_producto(request, producto_id):
     try:
         headers= {
-                        'Authorization': 'Bearer L9eQiozaBqE9rOhLPjl1Wte3StPBzW',
+                        'Authorization': 'Bearer sq2fpC4hCklRpF6HGI8B2kGRxJH95N',
                         'Content-Type': 'application/json'
                     }
         
