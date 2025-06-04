@@ -88,4 +88,134 @@
    </button>
 </div>
 
+<!--====== SECCIÓN DE TESTIMONIOS ======-->
+<section class="py-5 bg-light text-center">
+  <div class="container">
+    <h6 class="text-primary fw-bold text-uppercase">Testimonios</h6>
+    <h2 class="fw-bold mb-3">Lo que dicen las personas</h2>
+    <p class="mb-5 text-muted">Existen muchas variaciones de pasajes de Lorem Ipsum disponibles, pero la mayoría han sufrido alteraciones.</p>
+
+    <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+
+        <!-- Primera diapositiva -->
+        <div class="carousel-item active">
+          <div class="row justify-content-center">
+            <div class="col-lg-4 col-md-6">
+              <div class="card mb-4">
+                <div class="position-relative mx-auto mb-3">
+                  <img src="{% static 'imagenes/persona1.jpg' %}" alt="Isabela" class="testimonial-img">
+                  <div class="quote-icon">❝</div>
+                </div>
+                <p>Deja de perder tiempo y dinero diseñando y gestionando una web que no funciona. ¡Felicidad garantizada!</p>
+                <h5 class="fw-bold">Isabela Moreira</h5>
+                <small class="text-muted">CEO, GrayGrids</small>
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+              <div class="card mb-4">
+                <div class="position-relative mx-auto mb-3">
+                  <img src="{% static 'imagenes/persona2.jpg' %}" alt="Fajar" class="testimonial-img">
+                  <div class="quote-icon">❝</div>
+                </div>
+                <p>Deja de perder tiempo y dinero diseñando y gestionando una web que no funciona. ¡Felicidad garantizada!</p>
+                <h5 class="fw-bold">Fajar Siddiq</h5>
+                <small class="text-muted">Fundador, MakerFlix</small>
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+              <div class="card mb-4">
+                <div class="position-relative mx-auto mb-3">
+                  <img src="{% static 'imagenes/persona3.jpg' %}" alt="Fiona" class="testimonial-img">
+                  <div class="quote-icon">❝</div>
+                </div>
+                <p>Deja de perder tiempo y dinero diseñando y gestionando una web que no funciona. ¡Felicidad garantizada!</p>
+                <h5 class="fw-bold">Fiona</h5>
+                <small class="text-muted">Diseñadora principal, Uldeck</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!--====== CONTACT FORM ======-->
+<div class="container py-5">
+  <div class="row">
+    <!-- Columna izquierda: formulario -->
+    <div class="col-lg-7 mb-5">
+      <h3 class="fw-bold mb-4">Get in touch</h3>
+      <form>
+        <div class="row g-3">
+          <div class="col-md-6 position-relative">
+            <i class="bi bi-person"></i>
+            <div class="form-floating">
+              <input type="text" class="form-control" id="nombre" placeholder="Full Name">
+              <label for="nombre">Full Name</label>
+            </div>
+          </div>
+          <div class="col-md-6 position-relative">
+            <i class="bi bi-envelope"></i>
+            <div class="form-floating">
+              <input type="email" class="form-control" id="email" placeholder="Email Address">
+              <label for="email">Email Address</label>
+            </div>
+          </div>
+          <div class="col-md-6 position-relative">
+            <i class="bi bi-telephone"></i>
+            <div class="form-floating">
+              <input type="tel" class="form-control" id="telefono" placeholder="Phone Number">
+              <label for="telefono">Phone Number</label>
+            </div>
+          </div>
+          <div class="col-md-6 position-relative">
+            <i class="bi bi-chat-left-text"></i>
+            <div class="form-floating">
+              <input type="text" class="form-control" id="asunto" placeholder="Subject">
+              <label for="asunto">Subject</label>
+            </div>
+          </div>
+          <div class="col-12 position-relative">
+            <i class="bi bi-pencil-square"></i>
+            <div class="form-floating">
+              <textarea class="form-control" placeholder="Your Message" id="mensaje" style="height: 150px;"></textarea>
+              <label for="mensaje">Your Message</label>
+            </div>
+          </div>
+        </div>
+        <hr class="my-4">
+        <button type="submit" class="btn btn-primary px-4 py-2 rounded-pill fw-bold">
+          SEND MESSAGE
+        </button>
+      </form>
+    </div>
+
+    <!-- Columna derecha: info de contacto -->
+    <div class="col-lg-5">
+      <h5 class="fw-bold mb-3">Contact Information</h5>
+      <ul class="list-unstyled">
+        <li class="mb-3"><i class="bi bi-geo-alt-fill me-2"></i>Level 13, 2 Elizabeth St, Melbourne, Australia</li>
+        <li class="mb-3"><i class="bi bi-telephone-fill me-2"></i>+61 (8) 8234 3555</li>
+        <li class="mb-3"><i class="bi bi-printer-fill me-2"></i>+61 (8) 8234 3555</li>
+        <li class="mb-3"><i class="bi bi-envelope-fill me-2"></i>admin@uideck.com</li>
+      </ul>
+      <div class="mt-4">
+        <a href="#" class="btn btn-outline-secondary btn-sm me-2"><i class="bi bi-facebook"></i></a>
+        <a href="#" class="btn btn-outline-secondary btn-sm me-2"><i class="bi bi-twitter"></i></a>
+        <a href="#" class="btn btn-outline-secondary btn-sm me-2"><i class="bi bi-instagram"></i></a>
+        <a href="#" class="btn btn-outline-secondary btn-sm"><i class="bi bi-linkedin"></i></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
 {% endblock %}

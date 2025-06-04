@@ -4,12 +4,6 @@ pero ahora no le veo sentido
 
 Pedir a Jorge que vea los modelos para modificar correctamente la vista listar Pedidos 
 
-¿El cliente puede eliminar o editar una cuenta bancaria?
-
-Por hacer 
-finalizar_pedido: la consulta devuelve una query vacia, no reste el stock ni cambia el estado.
-Controlar que stock sea disponible cuando lo pides y cuando se finaliza
-
 Caso de uso para probar cuando un usuario hace un pedido de una pieza y otro la tomó:
 Cambiar el stock a propósito desde el admin:
 
@@ -26,12 +20,17 @@ Cambiar el stock a propósito desde el admin:
 👉 Resultado esperado: te va a lanzar el error "Stock insuficiente para Motor V8" (o lo que sea la pieza).
 
 
+Por hacer 
+Controlar que el cliente pueda ver sus líneas de pedido con los permisos
+#@permission_required("tienda.lineapedido")
+def dame_lineaPedido(request, id_pedido):
+
 Tienda 
 Crear modelo pago, para registrar con qué cuenta bancaria se hizo 
 el pago de un pedido y cuánto se pagó al finalizar_pedido (Listo)
 
-Ver detalles de un pedido completado con cuenta bancaria del pago
-dinero total que se gastó (debes mostrar la propiedad de pago y el modelo cuenta bancaria)
+Ver detalles de un pedido completado con cuenta bancaria del pago y el 
+dinero total que se gastó 
 
 Permitir que un cliente devuelva un producto que haya comprado
 
@@ -49,7 +48,7 @@ Configurar OAuth2 (LISTO)
 El vendedor puede añadir un producto nuevo a los productos terceros
 de la api, pero no pueden repetir nombre (LISTO)
 
-Un vendedor puede cambiar el nombre de un producto tercero que él haya creado (Falta relacionar el producto con el vendedor)
+Un vendedor puede cambiar el nombre de un producto tercero que él haya creado (LISTO)
 
 Un vendedor puede eliminar un producto tercero que él haya creado (Falta relacionar el producto con el vendedor)
 

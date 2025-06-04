@@ -8,6 +8,7 @@ from django.contrib.auth.decorators import permission_required
 from django.contrib import messages
 from django.http import Http404
 import requests
+from django.contrib.auth.decorators import login_required
 
 
 def index(request):
@@ -153,8 +154,7 @@ def pieza_eliminar(request, id_pieza):
     return redirect("lista_pieza")
 
 
-# Modelo tienda
-# TODO: hacer try catch en consultas de la bd
+
 @permission_required("tienda.view_tienda")
 def lista_tienda(request):
     tienda = Tienda.objects.all()
@@ -406,7 +406,6 @@ def datosVendedor_editar(request, id_Datovendedor):
     )
 
 
-# pruba agregar producto para probar
 @permission_required("tienda.add_producto_tienda")
 def agregar_ProductoTienda(request):
     if request.method == "POST":
@@ -672,7 +671,7 @@ def anadir_producto_tienda_carrito(request, productoTienda_id):
 
     return render(request, 'carrito/formulario_agregarPiezas.html', {'formulario': formulario, 'producto_tienda': producto_tienda})
 
-
+#@permission_required("tienda.lineapedido")
 def dame_lineaPedido(request, id_pedido):
     linea_pedido = LineaPedido.objects.filter(pedido=id_pedido).all()
     
@@ -815,7 +814,7 @@ def editar_linea_pedido(request, id_lineaPedido):
 
 def finalizar_pedido(request, pedido_id):
     #Cambiar 
-    pedido = Pedido.objects.filter(id=pedido_id, estado='P').first()
+    pedido = Pedido.objects.filter(id=pedido_id).first()
     
     if request.method == 'POST':
         #Se llena el formulario con la dirección del usuario y el pedido existente
@@ -838,30 +837,11 @@ def finalizar_pedido(request, pedido_id):
             pedido.estado = 'C'
             pedido.save()
             
-            #Implementacion cuando otro usuario pide el mismo producto y se agota en stock
-            try:
-                #Usamos related_name="pedido_lineaPedido" de LineaPedido
-                #VALIDAR EN FORMULARIO
-                for linea in pedido.pedido_lineaPedido.all():
-
-                    #Hacemos una consulta para obtener el producto que corresponde a la tienda
-                    #y la pieza 
-                    producto = Producto_Tienda.objects.get(tienda=linea.tienda, pieza=linea.pieza)
-
-                    if producto.stock < linea.cantidad:
-                        messages.error(request, "Parece que no hay suficiente stock para completar tu pedido.")
-                        return render(request, 'carrito/finalizar_pedido.html', {
-                            'formulario': formulario,
-                            'pedido': pedido
-                        })
-
-
-                    producto.stock -= linea.cantidad
-                    producto.save()
-                    
-            except ValueError as e:
-                messages.error(request, str(e))
-                return redirect("finalizar_pedido", pedido_id=pedido.id)
+            # Restamos stock (ya validado en el formulario)
+            for linea in pedido.pedido_lineaPedido.all():
+                producto = Producto_Tienda.objects.get(tienda=linea.tienda, pieza=linea.pieza)
+                producto.stock -= linea.cantidad
+                producto.save()
                 
             #Calculamos monto total del pedido
             total = 0  # empieza en cero
@@ -893,19 +873,15 @@ def finalizar_pedido(request, pedido_id):
 
 
 
-
+@login_required
 def listar_productos_terceros_api(request):
-    
-    if request.user.is_anonymous:
-        return mi_error_500(request)
-
     if request.user.rol != 3:
         #llamamos a mi metodo de error 500
         return mi_error_500(request)
         
     
     headers= {
-        'Authorization': 'Bearer sq2fpC4hCklRpF6HGI8B2kGRxJH95N',
+        'Authorization': 'Bearer 5cNtVstb83HtyRUBEQg0w6H62EqEob',
         'Content-Type': 'application/json'
     }
     
@@ -918,11 +894,8 @@ def listar_productos_terceros_api(request):
     
     return render(request, "productos_terceros_api/productosTerceros.html", {"productos": listar_productosTercero_Api})
 
-
+@login_required
 def crear_producto_tercero(request):
-    if request.user.is_anonymous:
-        return mi_error_500(request)
-
     if request.user.rol != 3:
         #llamamos a mi metodo de error 500
         return mi_error_500(request)
@@ -930,19 +903,29 @@ def crear_producto_tercero(request):
     #enviamos a la vista del formulario para crear un producto tercero
     if request.method == "POST":
         formulario = CrearProductoTerceroForm(request.POST)
+        
+        #agregar el id del vendedor con request.user.id
 
         if formulario.is_valid():
             # Enviamos los datos a la API
             headers = {
-                'Authorization': 'Bearer sq2fpC4hCklRpF6HGI8B2kGRxJH95N',
+                'Authorization': 'Bearer 5cNtVstb83HtyRUBEQg0w6H62EqEob',
                 'Content-Type': 'application/json'
             }
             
+            #Hacemos una copia del formulario para agregar el id del usuario
+            datos = formulario.cleaned_data.copy()  
             
+            #Debe coincidir con el campo de la base de datos de la api
+            datos['vendedor'] = request.user.id 
+
             
             response = requests.post('http://0.0.0.0:8081/api/v1/crear-producto-tercero/',
                             headers=headers,
-                            data=json.dumps(formulario.cleaned_data))
+                            data=json.dumps(datos)
+                            ) #convertimos los datos a JSON
+            
+            
             
             
             # Comprobamos si la respuesta de la API es exitosa
@@ -971,11 +954,8 @@ def crear_producto_tercero(request):
 
 import json
 from requests.exceptions import HTTPError
+@login_required
 def editar_nombre_producto_tercero(request, producto_id):
-    #colocar is login
-    if request.user.is_anonymous:
-        return mi_error_500(request)
-
     if request.user.rol != 3:
         #llamamos a mi metodo de error 500
         return mi_error_500(request)
@@ -1004,24 +984,29 @@ def editar_nombre_producto_tercero(request, producto_id):
             formulario = NombreProductoForm(request.POST)
 
             headers= {
-                        'Authorization': 'Bearer sq2fpC4hCklRpF6HGI8B2kGRxJH95N',
+                        'Authorization': 'Bearer 5cNtVstb83HtyRUBEQg0w6H62EqEob',
                         'Content-Type': 'application/json'
                     }
 
-            datos = request.POST.copy()
+            if formulario.is_valid():
+                #Hacemos una copia del formulario para agregar el id del usuario
+                datos = formulario.cleaned_data.copy()  
 
-            response = requests.patch(
-                    'http://0.0.0.0:8081/api/v1/editar-nombre-producto-tercero/'+str(producto_id) + '/',
-                    headers=headers,
-                    data=json.dumps(datos) #convertimos los datos a JSON
-                )
+                #Debe coincidir con el campo de la base de datos de la api
+                datos['vendedor'] = request.user.id 
 
-            if(response.status_code == requests.codes.ok):
-                    messages.success(request, "Se ha editado correctamente el nombre del producto.")
-                    return redirect("listar_productos_terceros_api")
+                response = requests.patch(
+                        'http://0.0.0.0:8081/api/v1/editar-nombre-producto-tercero/'+str(producto_id) + '/',
+                        headers=headers,
+                        data=json.dumps(datos) #convertimos los datos a JSON
+                    )
 
-            else:
-                    response.raise_for_status()
+                if(response.status_code == requests.codes.ok):
+                        messages.success(request, "Se ha editado correctamente el nombre del producto.")
+                        return redirect("listar_productos_terceros_api")
+
+                else:
+                        response.raise_for_status()
         
         except HTTPError as http_err:
             #Si hay errores en la api, los mostramos en el formulario
@@ -1043,12 +1028,13 @@ def editar_nombre_producto_tercero(request, producto_id):
             
             
     return render(request, 'productos_terceros_api/actualizar_nombre.html',{"formulario":formulario,"producto":producto})
+   
         
-        
+@login_required   
 def eliminar_producto(request, producto_id):
     try:
         headers= {
-                        'Authorization': 'Bearer sq2fpC4hCklRpF6HGI8B2kGRxJH95N',
+                        'Authorization': 'Bearer 5cNtVstb83HtyRUBEQg0w6H62EqEob',
                         'Content-Type': 'application/json'
                     }
         

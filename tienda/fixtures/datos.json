@@ -1027,6 +1027,71 @@
     }
 },
 {
+    "model": "admin.logentry",
+    "pk": 80,
+    "fields": {
+        "action_time": "2025-06-03T16:03:02.150",
+        "user": 1,
+        "content_type": 13,
+        "object_id": "9",
+        "object_repr": "Producto_Tienda object (9)",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Stock\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 81,
+    "fields": {
+        "action_time": "2025-06-03T16:16:34.894",
+        "user": 1,
+        "content_type": 13,
+        "object_id": "10",
+        "object_repr": "Producto_Tienda object (10)",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Stock\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 82,
+    "fields": {
+        "action_time": "2025-06-03T16:16:41.490",
+        "user": 1,
+        "content_type": 13,
+        "object_id": "9",
+        "object_repr": "Producto_Tienda object (9)",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Stock\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 83,
+    "fields": {
+        "action_time": "2025-06-03T16:33:12.483",
+        "user": 1,
+        "content_type": 3,
+        "object_id": "1",
+        "object_repr": "clientes",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Permissions\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 84,
+    "fields": {
+        "action_time": "2025-06-03T16:34:38.084",
+        "user": 1,
+        "content_type": 3,
+        "object_id": "1",
+        "object_repr": "clientes",
+        "action_flag": 2,
+        "change_message": "[]"
+    }
+},
+{
     "model": "auth.permission",
     "pk": 1,
     "fields": {
@@ -1863,11 +1928,12 @@
             33,
             34,
             36,
-            60,
-            24,
+            64,
             53,
             54,
-            56
+            56,
+            24,
+            60
         ]
     }
 },
@@ -1881,15 +1947,15 @@
             45,
             46,
             48,
+            21,
+            22,
+            24,
             49,
             57,
             58,
             51,
             52,
             60,
-            21,
-            22,
-            24,
             41,
             43,
             44,
@@ -1998,7 +2064,7 @@
     "pk": 13,
     "fields": {
         "app_label": "tienda",
-        "model": "pedido"
+        "model": "producto_tienda"
     }
 },
 {
@@ -2006,7 +2072,7 @@
     "pk": 14,
     "fields": {
         "app_label": "tienda",
-        "model": "producto_tienda"
+        "model": "pedido"
     }
 },
 {
@@ -2107,10 +2173,26 @@
 },
 {
     "model": "sessions.session",
+    "pk": "3g2in2qsp7743mrq954ctx4f06ikg0k9",
+    "fields": {
+        "session_data": ".eJxVjDsOwyAQBa8SUUd4-RnbZfqcAS0LBJIIJH-qKHePI7lx-2bmfViKlNGVWqg0NjFQHfSdBGkuop8A2JU53NbstiXOroRdEefNI71i_YPwxPponFpd5-L5X-EHXfi9hfi-He7pIOOS91pR0kogeSmECiNGCsGgNUgWAaQVPUg_Dsb4GCgNSZpBU4yCtADrrWbfH5ggQRg:1uMSC7:1C3xJ_A368rWBxmzgUnsyk3m4gh9iFoGoYPI4KL7bjo",
+        "expire_date": "2025-06-17T16:00:47.362"
+    }
+},
+{
+    "model": "sessions.session",
     "pk": "5dfzclw41y5ywkhcxmbyhjk0rhufac0c",
     "fields": {
         "session_data": "eyJmZWNoYV9pbmljaW8iOiIyNC8wNC8yMDI1IDEyOjQxIn0:1u7u1m:TMtTNSw5IDUZYJNrGAXq1mpLftVyXxBt4AnVwLk3U10",
         "expire_date": "2025-05-08T12:41:58.698"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "5nxlxowwmt14oqkwsn2qptl8wcccscpj",
+    "fields": {
+        "session_data": ".eJxVjDkOwjAQRa-CXCPH-5KSnjNEk8kYG5AtZakQdydIadL-997_sESYYSi1YGmsZ8J0wnVKKHuRsTeSXdkA25qHbaF5KNOuqPM2Ar6o_sH0hPpoHFtd5zLyv8IPuvB7m-h9O9zTQYYl7zU5ki4AWTDeS62UD9pZSxqF8wnR-piS88GGaLSMgoJToFCCjgmsI_b9AWXCP98:1uMs7v:2X4QV3EejZCP7VVVrsnK5BU84iaSBRPQU0KHeoeDY5E",
+        "expire_date": "2025-06-18T19:42:11.878"
     }
 },
 {
@@ -2283,14 +2365,6 @@
 },
 {
     "model": "sessions.session",
-    "pk": "tjh0t7auyps90ffnz1xop3v7pvxklpbp",
-    "fields": {
-        "session_data": ".eJxVjDsOwyAQBa8SUUcYFvNzmT5nQGu8BJIIJH-qKHePI7lx-2bmfViimDGUWmJpbGACOmE6EKAvIAfdsysLuK05bAvNoUy7AudtxPii-gfTE-uj8djqOpeR_xV-0IXf20Tv2-GeDjIuea_JkDQOSWNvrVQA1imjNakojE0xautTMtZp53slvSBnACFKVD6hNsS-P2IyP9o:1uMBFL:f0j2harMRJDsqygj9Y_HiTqX4disFPDOObQU2XhIpB8",
-        "expire_date": "2025-06-16T21:54:59.041"
-    }
-},
-{
-    "model": "sessions.session",
     "pk": "ttg7g6u8lcum9uk96qns6zuab3zx08bj",
     "fields": {
         "session_data": ".eJxVjDsOwyAQBa8SUUcY1mCwy_Q5A1oWCCQRSP5UUe4eR3Lj9s3M-7AUKaMrtVBpbGICOjF0IEBfAKbesitzuK3ZbUucXQm7Is-bR3rF-gfhifXROLW6zsXzv8IPuvB7C_F9O9zTQcYl73VPSfUSyYOUfRgxUggajUYyKAQYOQjwo9Xax0DJJtBWUYySlBTGG8W-P5zIQR8:1uMBvi:GtLq6bppUxIW7ryYX_KoHuxzTYHvMtiP4n3xbFCvU2g",
@@ -2326,7 +2400,7 @@
     "pk": 1,
     "fields": {
         "password": "pbkdf2_sha256$870000$JjCoHJX8T1MWvmnGZd2MxH$j+BpuO2AG2wdM6yIfJa1wH9XQlNWEW4JSVYJhSlgU8o=",
-        "last_login": "2025-06-02T22:38:46.392",
+        "last_login": "2025-06-03T16:00:47.326",
         "is_superuser": true,
         "username": "nelson",
         "first_name": "",
@@ -2345,7 +2419,7 @@
     "pk": 2,
     "fields": {
         "password": "pbkdf2_sha256$870000$ItretZb7lQVbi4cG8g7c60$EGhdAcnW2O7YYNITDtuEJM63YE3dDnRic+n/uq6yQIM=",
-        "last_login": "2025-06-02T21:54:59.005",
+        "last_login": "2025-06-04T19:42:11.840",
         "is_superuser": false,
         "username": "maria",
         "first_name": "maria",
@@ -2366,7 +2440,7 @@
     "pk": 3,
     "fields": {
         "password": "pbkdf2_sha256$870000$nBiZWWyruLgnBllmyTq3uH$4Trf7luVQOqizPG+cARJF/HGEDIuSwcbMDtdzMeYY/E=",
-        "last_login": "2025-06-03T10:27:06.576",
+        "last_login": "2025-06-04T17:49:36.780",
         "is_superuser": false,
         "username": "pedro",
         "first_name": "pedro",
@@ -2408,7 +2482,7 @@
     "pk": 5,
     "fields": {
         "password": "pbkdf2_sha256$870000$Ca9MhHFs16L3r4J3ExDdVO$PlsGp0jcnCoaBAmUxA6aA6eyxzTE58h1LaEvitEBR90=",
-        "last_login": "2025-06-02T21:00:12.040",
+        "last_login": "2025-06-04T19:25:10.756",
         "is_superuser": false,
         "username": "mario",
         "first_name": "Mario",
@@ -2570,6 +2644,16 @@
     }
 },
 {
+    "model": "tienda.cuentabancaria",
+    "pk": 12,
+    "fields": {
+        "iban": "ES1234567890123456789012",
+        "banco": "Santander",
+        "moneda": "EUR",
+        "cliente": 1
+    }
+},
+{
     "model": "tienda.datosvendedor",
     "pk": 2,
     "fields": {
@@ -2614,7 +2698,7 @@
     "fields": {
         "tienda": 4,
         "pieza": 6,
-        "stock": 4,
+        "stock": 99,
         "precio": 150.0
     }
 },
@@ -2624,7 +2708,7 @@
     "fields": {
         "tienda": 5,
         "pieza": 7,
-        "stock": 0,
+        "stock": 100,
         "precio": 250.0
     }
 },
@@ -2722,9 +2806,9 @@
     "model": "tienda.pedido",
     "pk": 32,
     "fields": {
-        "estado": "P",
+        "estado": "C",
         "fecha": "2025-06-03T00:07:13.790",
-        "direccion": "",
+        "direccion": "Tienda El Sur",
         "cliente": 1
     }
 },
@@ -2847,6 +2931,16 @@
         "tienda": 4,
         "precio": 150.0,
         "cantidad": 1
+    }
+},
+{
+    "model": "tienda.pago",
+    "pk": 3,
+    "fields": {
+        "pedido": 32,
+        "cuenta_bancaria": 12,
+        "monto": 150.0,
+        "fecha_pago": "2025-06-03T16:17:31.671"
     }
 }
 ]

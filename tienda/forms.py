@@ -322,8 +322,23 @@ class FinalizarPedidoForm(ModelForm):
         model = Pedido
         fields = ['direccion']
         labels = {
-                'Dirección': ("Indica la dirección de envío"),
-            }
+            'direccion': ("Indica la dirección de envío"),
+        }
+
+    def clean(self):
+        cleaned_data = super().clean()
+        pedido = self.instance  # El pedido que se está finalizando
+
+        # Validar stock de cada línea del pedido
+        for linea in pedido.pedido_lineaPedido.all():
+            
+            producto = Producto_Tienda.objects.get(tienda=linea.tienda, pieza=linea.pieza)
+            if producto.stock < linea.cantidad:
+                self.add_error(
+                    None,  # Error general, no de un campo específico
+                    f"No hay suficiente stock para la pieza '{linea.pieza.nombre}' en la tienda '{linea.tienda.direccion}'. Stock disponible: {producto.stock}, solicitado: {linea.cantidad}"
+                )
+        return cleaned_data
         
         
 class CrearProductoTerceroForm(forms.Form):
