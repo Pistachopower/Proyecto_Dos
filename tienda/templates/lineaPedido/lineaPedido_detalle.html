@@ -3,28 +3,62 @@
 {% block contenido %}
 
 <div class="container my-5">
-    <h1 class="mb-4">Detalles de la línea de pedido</h1>
+
+    <h1 class="mb-4">Detalles del pedido</h1>
+
+    <!-- Sección de cuenta bancaria -->
+    {% if cuenta_bancaria %}
+    <div class="card mb-5 shadow">
+        <div class="card-header bg-primary text-white">
+            <h4>Datos de la cuenta bancaria del cliente</h4>
+        </div>
+        <div class="card-body">
+            <p><strong>Banco:</strong> {{ cuenta_bancaria.banco }}</p>
+            <p><strong>IBAN:</strong> {{ cuenta_bancaria.iban }}</p>
+            <p><strong>Moneda:</strong> {{ cuenta_bancaria.get_moneda_display }}</p>
+        </div>
+    </div>
+    {% else %}
+    <div class="alert alert-warning">
+        Este cliente no tiene una cuenta bancaria registrada.
+    </div>
+    {% endif %}
+
+
+    <!-- Sección de líneas de pedido -->
+    <h2 class="mb-3">Líneas de pedido</h2>
 
     {% for registro in linea_pedido %}
-    <!-- Card para mostrar los detalles -->
     <div class="card h-100 shadow-sm mb-4">
         {% if registro.pieza.imagen %}
-            <img src="{{ registro.pieza.imagen.url }}" class="card-img-top" alt="{{ registro.pieza.nombre }}">
+        <img src="{{ registro.pieza.imagen.url }}" class="card-img-top" alt="{{ registro.pieza.nombre }}">
         {% endif %}
         <div class="card-body">
-            <h5 class="card-title">Línea de pedido</h5>
-            <p class="card-text"><strong>Estado del pedido:</strong> {{ registro.pedido.estado }}</p>
-            <p class="card-text"><strong>Pieza:</strong> {{ registro.pieza.nombre }}</p>
-            <p class="card-text"><strong>Tienda:</strong> {{ registro.tienda.direccion }}</p>
-            <p class="card-text"><strong>Precio:</strong> {{ registro.precio }}</p>
-            <p class="card-text"><strong>Cantidad:</strong> {{ registro.cantidad }}</p>
+            <h5 class="card-title">{{ registro.pieza.nombre }}</h5>
+            <p><strong>Descripción:</strong> {{ registro.pieza.descripcion }}</p>
+            <p><strong>Versión:</strong> {{ registro.pieza.version }}</p>
+            <p><strong>Referencia:</strong> {{ registro.pieza.referencia }}</p>
+            <p><strong>Tienda:</strong> {{ registro.tienda.direccion }}</p>
+            <p><strong>Precio unitario:</strong> {{ registro.precio }} €</p>
+            <p><strong>Cantidad:</strong> {{ registro.cantidad }}</p>
+            <p><strong>Subtotal:</strong> {{ registro.precio|floatformat:2|add:"0"|floatformat:2|floatformat:2|stringformat:"s"|add:registro.cantidad|floatformat:2 }} €</p>
         </div>
     </div>
     {% empty %}
     <div class="alert alert-info" role="alert">
-        No hay piezas disponibles en este momento.
+        No hay líneas de pedido registradas.
     </div>
     {% endfor %}
+
+    <!-- Total general -->
+    {% if linea_pedido %}
+    <div class="card mt-4 shadow">
+        <div class="card-body">
+            <h4 class="card-title text-end"><strong>Total del pedido:</strong> {{ total }} €</h4>
+        </div>
+    </div>
+    {% endif %}
+
 </div>
 
 {% endblock %}

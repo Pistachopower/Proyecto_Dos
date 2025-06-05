@@ -673,10 +673,21 @@ def anadir_producto_tienda_carrito(request, productoTienda_id):
 
 #@permission_required("tienda.lineapedido")
 def dame_lineaPedido(request, id_pedido):
+    # 1. Obtenemos las líneas del pedido
     linea_pedido = LineaPedido.objects.filter(pedido=id_pedido).all()
     
+     # 2. Obtenemos la cuenta bancaria directamente usando relaciones
+    cuenta_bancaria = CuentaBancaria.objects.filter(
+        cliente__pedidos__id=id_pedido
+    ).first()
+    
+     # 3. Calculamos el total gastado (suma de cantidad * precio)
+    total = linea_pedido.aggregate(
+        total_gastado=Sum(F('cantidad') * F('precio'))
+    )['total_gastado'] or 0
+    
     #productoTiendaDetalle = Producto_Tienda.objects.filter(tienda_id=tienda).first()
-    return render(request, "lineaPedido/lineaPedido_detalle.html", {"linea_pedido": linea_pedido})
+    return render(request, "lineaPedido/lineaPedido_detalle.html", {"linea_pedido": linea_pedido, "cuenta_bancaria": cuenta_bancaria, "total": total})
     
 from django.db.models import Q
 def busqueda_avanzada_pieza(request):
@@ -764,6 +775,7 @@ def listarLineaPedidoCarrito(request, id_usuario):
     #Calculamos la suma total de todas las cantidades y el precio total (cantidad * precio)
     totales = lineas.aggregate(
         total_cantidad=Sum('cantidad'),
+        #F: obtiene el campo de la bd  
         total_precio=Sum(F('cantidad') * F('precio'))
     )
 
@@ -881,7 +893,7 @@ def listar_productos_terceros_api(request):
         
     
     headers= {
-        'Authorization': 'Bearer 5cNtVstb83HtyRUBEQg0w6H62EqEob',
+        'Authorization': 'Bearer DuQVYacektprgh40kIjnG0e1TYHc9W',
         'Content-Type': 'application/json'
     }
     
@@ -909,7 +921,7 @@ def crear_producto_tercero(request):
         if formulario.is_valid():
             # Enviamos los datos a la API
             headers = {
-                'Authorization': 'Bearer 5cNtVstb83HtyRUBEQg0w6H62EqEob',
+                'Authorization': 'Bearer DuQVYacektprgh40kIjnG0e1TYHc9W',
                 'Content-Type': 'application/json'
             }
             
@@ -984,7 +996,7 @@ def editar_nombre_producto_tercero(request, producto_id):
             formulario = NombreProductoForm(request.POST)
 
             headers= {
-                        'Authorization': 'Bearer 5cNtVstb83HtyRUBEQg0w6H62EqEob',
+                        'Authorization': 'Bearer DuQVYacektprgh40kIjnG0e1TYHc9W',
                         'Content-Type': 'application/json'
                     }
 
@@ -1034,7 +1046,7 @@ def editar_nombre_producto_tercero(request, producto_id):
 def eliminar_producto(request, producto_id):
     try:
         headers= {
-                        'Authorization': 'Bearer 5cNtVstb83HtyRUBEQg0w6H62EqEob',
+                        'Authorization': 'Bearer DuQVYacektprgh40kIjnG0e1TYHc9W',
                         'Content-Type': 'application/json'
                     }
         

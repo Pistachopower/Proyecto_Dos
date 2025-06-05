@@ -1920,6 +1920,78 @@
     }
 },
 {
+    "model": "auth.permission",
+    "pk": 93,
+    "fields": {
+        "name": "Can add pedido",
+        "content_type": 13,
+        "codename": "add_pedido"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 94,
+    "fields": {
+        "name": "Can change pedido",
+        "content_type": 13,
+        "codename": "change_pedido"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 95,
+    "fields": {
+        "name": "Can delete pedido",
+        "content_type": 13,
+        "codename": "delete_pedido"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 96,
+    "fields": {
+        "name": "Can view pedido",
+        "content_type": 13,
+        "codename": "view_pedido"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 97,
+    "fields": {
+        "name": "Can add producto_ tienda",
+        "content_type": 14,
+        "codename": "add_producto_tienda"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 98,
+    "fields": {
+        "name": "Can change producto_ tienda",
+        "content_type": 14,
+        "codename": "change_producto_tienda"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 99,
+    "fields": {
+        "name": "Can delete producto_ tienda",
+        "content_type": 14,
+        "codename": "delete_producto_tienda"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 100,
+    "fields": {
+        "name": "Can view producto_ tienda",
+        "content_type": 14,
+        "codename": "view_producto_tienda"
+    }
+},
+{
     "model": "auth.group",
     "pk": 1,
     "fields": {
@@ -1929,11 +2001,11 @@
             34,
             36,
             64,
+            60,
+            24,
             53,
             54,
-            56,
-            24,
-            60
+            56
         ]
     }
 },
@@ -1947,15 +2019,15 @@
             45,
             46,
             48,
-            21,
-            22,
-            24,
             49,
             57,
             58,
             51,
             52,
             60,
+            21,
+            22,
+            24,
             41,
             43,
             44,
@@ -2064,7 +2136,7 @@
     "pk": 13,
     "fields": {
         "app_label": "tienda",
-        "model": "producto_tienda"
+        "model": "pedido"
     }
 },
 {
@@ -2072,7 +2144,7 @@
     "pk": 14,
     "fields": {
         "app_label": "tienda",
-        "model": "pedido"
+        "model": "producto_tienda"
     }
 },
 {
@@ -2177,6 +2249,14 @@
     "fields": {
         "session_data": ".eJxVjDsOwyAQBa8SUUd4-RnbZfqcAS0LBJIIJH-qKHePI7lx-2bmfViKlNGVWqg0NjFQHfSdBGkuop8A2JU53NbstiXOroRdEefNI71i_YPwxPponFpd5-L5X-EHXfi9hfi-He7pIOOS91pR0kogeSmECiNGCsGgNUgWAaQVPUg_Dsb4GCgNSZpBU4yCtADrrWbfH5ggQRg:1uMSC7:1C3xJ_A368rWBxmzgUnsyk3m4gh9iFoGoYPI4KL7bjo",
         "expire_date": "2025-06-17T16:00:47.362"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "4eq94lq84h8e60gaby7ir2g5k6c1t0ds",
+    "fields": {
+        "session_data": ".eJxdjDkOwjAQRa-CXCPHS7ylpOcM1mQyxgZkS1kqxN1JJBpo_3vvv1gizBBLLVgaG5gwnbCdEsqcpBiEYmcWYVtz3BaaY5l25W8bAR9UDzDdod4ax1bXuYz8UPiXLvzaJnpevu7PQYYl7zVZktYDGeidk1op57U1hjQK6xKicSEl67zxodcyCPJWgUIJOiQwltj7A15CP9Q:1uN5Yi:bL_Ix33L3leEYRSB1mReMHVgXuFEEU4Q-faTnMVIpi8",
+        "expire_date": "2025-06-19T10:02:44.412"
     }
 },
 {
@@ -2365,6 +2445,14 @@
 },
 {
     "model": "sessions.session",
+    "pk": "tjh0t7auyps90ffnz1xop3v7pvxklpbp",
+    "fields": {
+        "session_data": ".eJxVjDsOwyAQBa8SUUcYFvNzmT5nQGu8BJIIJH-qKHePI7lx-2bmfViimDGUWmJpbGACOmE6EKAvIAfdsysLuK05bAvNoUy7AudtxPii-gfTE-uj8djqOpeR_xV-0IXf20Tv2-GeDjIuea_JkDQOSWNvrVQA1imjNakojE0xautTMtZp53slvSBnACFKVD6hNsS-P2IyP9o:1uMBFL:f0j2harMRJDsqygj9Y_HiTqX4disFPDOObQU2XhIpB8",
+        "expire_date": "2025-06-16T21:54:59.041"
+    }
+},
+{
+    "model": "sessions.session",
     "pk": "ttg7g6u8lcum9uk96qns6zuab3zx08bj",
     "fields": {
         "session_data": ".eJxVjDsOwyAQBa8SUUcY1mCwy_Q5A1oWCCQRSP5UUe4eR3Lj9s3M-7AUKaMrtVBpbGICOjF0IEBfAKbesitzuK3ZbUucXQm7Is-bR3rF-gfhifXROLW6zsXzv8IPuvB7C_F9O9zTQcYl73VPSfUSyYOUfRgxUggajUYyKAQYOQjwo9Xax0DJJtBWUYySlBTGG8W-P5zIQR8:1uMBvi:GtLq6bppUxIW7ryYX_KoHuxzTYHvMtiP4n3xbFCvU2g",
@@ -2419,7 +2507,7 @@
     "pk": 2,
     "fields": {
         "password": "pbkdf2_sha256$870000$ItretZb7lQVbi4cG8g7c60$EGhdAcnW2O7YYNITDtuEJM63YE3dDnRic+n/uq6yQIM=",
-        "last_login": "2025-06-04T19:42:11.840",
+        "last_login": "2025-06-05T10:02:44.341",
         "is_superuser": false,
         "username": "maria",
         "first_name": "maria",
@@ -2440,7 +2528,7 @@
     "pk": 3,
     "fields": {
         "password": "pbkdf2_sha256$870000$nBiZWWyruLgnBllmyTq3uH$4Trf7luVQOqizPG+cARJF/HGEDIuSwcbMDtdzMeYY/E=",
-        "last_login": "2025-06-04T17:49:36.780",
+        "last_login": "2025-06-05T09:43:31.577",
         "is_superuser": false,
         "username": "pedro",
         "first_name": "pedro",
@@ -2668,7 +2756,7 @@
     "fields": {
         "tienda": 5,
         "pieza": 1,
-        "stock": 1,
+        "stock": 0,
         "precio": 200.0
     }
 },
@@ -2813,6 +2901,16 @@
     }
 },
 {
+    "model": "tienda.pedido",
+    "pk": 33,
+    "fields": {
+        "estado": "C",
+        "fecha": "2025-06-05T10:02:55.818",
+        "direccion": "calle saarra",
+        "cliente": 1
+    }
+},
+{
     "model": "tienda.lineapedido",
     "pk": 17,
     "fields": {
@@ -2934,6 +3032,17 @@
     }
 },
 {
+    "model": "tienda.lineapedido",
+    "pk": 32,
+    "fields": {
+        "pedido": 33,
+        "pieza": 1,
+        "tienda": 5,
+        "precio": 200.0,
+        "cantidad": 1
+    }
+},
+{
     "model": "tienda.pago",
     "pk": 3,
     "fields": {
@@ -2941,6 +3050,16 @@
         "cuenta_bancaria": 12,
         "monto": 150.0,
         "fecha_pago": "2025-06-03T16:17:31.671"
+    }
+},
+{
+    "model": "tienda.pago",
+    "pk": 4,
+    "fields": {
+        "pedido": 33,
+        "cuenta_bancaria": 12,
+        "monto": 200.0,
+        "fecha_pago": "2025-06-05T10:03:14.317"
     }
 }
 ]

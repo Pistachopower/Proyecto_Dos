@@ -12,26 +12,28 @@
         <thead class="table-dark text-center">
           <tr>
             <th>#</th>
-            <th>Cliente</th>
+            <th>ID de pedido</th>
+            <th>Usuario</th>
             <th>Estado</th>
             <th>Fecha del pedido</th>
             <th>Dirección de la tienda</th>
-            <th>Piezas pedidas</th>
+            <th>Acciones</th>
           </tr>
         </thead>
         <tbody>
           {% for registro in pedidos_mostrar %}
             <tr class="text-center">
               <td>{{ forloop.counter }}</td>
+              <td>{{ registro.id }}</td>
               <td>{{ registro.cliente.usuario.username }}</td>
-              <td>{{ registro.estado }}</td>
+              <td>{{ registro.get_estado_display }}</td>
               <td>{{ registro.fecha|date:"d/m/Y H:i" }}</td>
               <td>{{ registro.direccion }}</td>
               <td>
                 
                 {% comment %} {% url 'dame_lineaPedido' registro.id %} {% endcomment %}
                 <a href="{% url 'dame_lineaPedido' registro.id %}" class="btn btn-primary btn-sm px-3">
-                  <i class="fas fa-edit"></i> Línea de pedido
+                  <i class="fas fa-edit"></i> Detalle del pedido
               </a>
               </td>
             </tr>
