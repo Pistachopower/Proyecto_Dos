@@ -1,0 +1,30 @@
+{% extends "estructura/principal.html" %}
+
+{% block contenido %}
+
+<div class="container my-5">
+    <h1 class="mb-4">Detalles de la Tienda</h1>
+
+    <!-- Card para mostrar los detalles de una sola tienda -->
+    <div class="card h-100 shadow-sm">
+        <!-- Imagen de la tienda, se puede ajustar según lo que tengas -->
+        <img src="" class="card-img-top" alt="">
+        <div class="card-body">
+            <h5 class="card-title">Tienda</h5>
+            <p class="card-text"><strong>Dirección:</strong> {{ tienda.direccion }}</p>
+            <p class="card-text"><strong>Teléfono:</strong> {{ tienda.telefono }}</p>
+            <p class="card-text"><strong>Email:</strong> {{ tienda.email }}</p>
+            <p class="card-text"><strong>Nombre vendedor:</strong> {{ tienda.vendedor.usuario.first_name }}</p>
+            
+            {% if productoTiendaDetalle %}
+            <p class="card-text"><strong>Nombre de la pieza:</strong>  {{ productoTiendaDetalle.pieza.nombre}}</p>
+            <p class="card-text"><strong>Cantidad de la pieza:</strong>  {{ productoTiendaDetalle.cantidad}}</p>
+            {% else %}
+            <p class="card-text">No hay inventario disponible para esta tienda.</p>
+            {% endif %}
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

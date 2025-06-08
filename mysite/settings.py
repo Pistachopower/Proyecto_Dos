@@ -48,6 +48,8 @@ INSTALLED_APPS = [
     'django_bootstrap_icons',
 ]
 
+
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

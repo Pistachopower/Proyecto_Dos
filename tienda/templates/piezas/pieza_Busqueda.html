@@ -1,0 +1,30 @@
+{% extends "estructura/principal.html" %} 
+
+{% block contenido %}
+{% load django_bootstrap5 %}
+
+<div class="container my-5">
+  <div class="card shadow-sm mx-auto" style="max-width: 600px;">
+    <div class="card-header bg-primary text-white">
+      Buscar pieza
+    </div>
+    <div class="card-body">
+      <form
+        action="{% url 'pieza_Buscar' %}"
+        method="GET"
+        enctype="multipart/form-data"
+      >
+        {% csrf_token %}
+
+        <div class="mb-3">
+          {% bootstrap_field formulario.nombre show_label=True %}
+        </div>
+
+        <button type="submit" class="btn btn-outline-primary">
+          <i class="bi bi-search"></i> Buscar
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

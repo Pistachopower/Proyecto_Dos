@@ -6,15 +6,17 @@
     <div class="mask d-flex align-items-center h-100">
       <div class="container">
         <div class="row justify-content-center">
-          {% for pieza in piezas_mostrar %}
+          {% for registro in productosTiendas %}
           <div class="col-md-4 mb-4">
             <!-- Card for each product (pieza) -->
-            {% include 'piezas/pieza.html' %}
+            {% include 'productosTienda/productosTienda.html' %}
           </div>
+
+          
           {% empty %}
           <div class="col-12">
             <div class="alert alert-info" role="alert">
-              No hay piezas disponibles en este momento.
+              No hay datos disponibles de los productos de las tiendas disponibles en este momento.
             </div>
           </div>
           {% endfor %}

@@ -2,6 +2,59 @@ Cliente
 maria
 333sddeS@
 
+carlos
+
 Vendedor
 Pedro 
 333sddeS@
+
+Mario
+333sddeS@
+
+
+Permisos 
+Cliente: el usuario puede ver las piezas y el detalle de la piezas
+
+Vendedor: puede ver las piezas, el detalle de las piezas, puede agregar piezas, editar piezas,  ver clientes,ver tiendas
+
+Sin login: solo ve la pagina de inicio
+
+
+
+
+Formulario 
+crear url y boton en menu
+crear vista creacion producto
+crear la template
+controlar que usuarios pueden crear
+
+
+
+Mostrar valor de del objeto request 
+    print("\n=== INFO BÁSICA DEL USUARIO ===")
+    user = request.user
+    print("ID:", user.id)
+    print("Username:", user.username)
+    print("Email:", user.email)
+    print("¿Está autenticado?", user.is_authenticated)
+
+    print("\n=== GRUPOS Y PERMISOS ===")
+    print("Grupos:", list(user.groups.values_list('name', flat=True)))
+    print("Permisos:", list(user.user_permissions.values_list('codename', flat=True)))
+
+    # 👇 Aquí revisamos los modelos relacionados al usuario
+    print("\n=== MODELOS RELACIONADOS ===")
+    relaciones = ['cliente', 'vendedor', 'perfil']  # cambia esto según tus modelos relacionados
+
+    for relacion in relaciones:
+        try:
+            related_obj = getattr(user, relacion)
+            print(f"✔️ Tiene relación '{relacion}':")
+            print.pprint(vars(related_obj))
+        except AttributeError:
+            print(f"❌ No tiene relación '{relacion}'")
+
+
+
+
+

@@ -1,0 +1,64 @@
+{% extends "estructura/principal.html" %}
+
+{% block contenido %}
+<div class="container my-5">
+  <h2 class="mb-4">Pedido actual</h2>
+
+  {% for item in carrito %}
+  <div class="card mb-3">
+    <div class="row g-0">
+      <div class="col-md-2 d-flex align-items-center justify-content-center">
+        <img src="" class="img-fluid rounded-start" alt="Imagen del producto" style="max-height: 150px;">
+      </div>
+      <div class="col-md-10">
+        <div class="card-body">
+          <h5 class="card-title">{{ item.pieza.nombre }}</h5>
+          <p class="card-text text-muted">
+            {{ item.pieza.descripcion|truncatechars:150 }}
+          </p>
+          <div class="mb-2">
+            <span class="fw-bold">Precio: </span>{{ item.precio }}€
+          </div>
+
+          <div class="mb-2">
+            <span class="fw-bold">Cantidad: </span>{{ item.cantidad }}
+          </div>
+
+          <div class="d-flex align-items-center mb-3">
+            <!-- Botón Editar -->
+            <a href="{% url 'editar_linea_pedido' item.id %}" class="btn btn-primary btn-sm me-2">Editar</a>
+
+            <!-- Botón Eliminar -->
+            <form method="POST" action="{% url 'lineaPedido_delete' item.id %}" onsubmit="return eliminar();">
+              {% csrf_token %}
+              <button class="btn btn-danger btn-sm">Eliminar</button>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+
+  <!-- Subtotal -->
+  <div class="text-end">
+    <h5 class="fw-bold"> Total de piezas: {{ total_productos }}</h5>
+    <h5 class="fw-bold"> Precio total: {{ total_precio }}€</h5>
+  </div>
+
+  <!-- Botón Finalizar Pedido -->
+  <div class="text-end mt-4">
+    {% if pedido %}
+    <form method="GET" action="{% url 'finalizar_pedido' pedido.id %}">
+      <button type="submit" class="btn btn-success btn-lg">Tramitar pedido</button>
+    </form>
+    {% endif %}
+
+  </div>
+</div>
+
+
+
+
+{% endblock %}

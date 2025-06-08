@@ -1,13 +1,31 @@
 <div class="card h-100 shadow-sm">
-    <img src="https://cdn.autobild.es/sites/navi.axelspringer.es/public/media/image/2024/11/motor-2ad-toyota-4263068.jpg?tf=3840x" class="card-img-top" alt="{{ pieza.nombre }}">
-    <div class="card-body">
-      <h5 class="card-title">{{ pieza.nombre }}</h5>
-      <p class="card-text">{{ pieza.marca }}</p>
-      <p class="card-text">{{ pieza.descripcion|truncatewords:15 }}</p>
-    </div>
-    <div class="card-footer d-flex justify-content-between">
-      <span class="text-muted">{{ pieza.precio }} €</span>
-      <a href="" class="btn btn-primary btn-sm">Ver detalles</a>
-    </div>
+  <img src="https://cdn.autobild.es/sites/navi.axelspringer.es/public/media/image/2024/11/motor-2ad-toyota-4263068.jpg?tf=3840x" class="card-img-top" alt="{{ pieza.nombre }}">
+  <div class="card-body">
+      <!-- Aquí envuelves el título con un enlace -->
+      <h5 class="card-title">
+          <a href="{% url 'dame_producto' pieza.id %}" class="text-decoration-none">{{ pieza.nombre }}</a>
+      </h5>
+      <p class="card-text">Marca: {{ pieza.marca }}</p>
+      <p class="card-text">Referencia: {{ pieza.referencia }}</p>
+      <p class="card-text">{{ pieza.descripcion|truncatewords:500 }}</p>
+      <span class="text-muted">Precio: {{ pieza.precio }} €</span>
   </div>
-  
+
+  {% if perms.tienda.change_pieza %}
+  {% load bootstrap_icons %}
+  <div class="card-footer d-flex justify-content-between">
+      <a href="{% url 'pieza_editar' pieza.id %}" class="btn btn-primary btn-sm">Editar</a>
+  </div>
+
+  <form action="{% url 'pieza_eliminar' pieza.id %}" method="post">
+    {% csrf_token %}
+    <button  class="btn-btn-danger" type="submit" onclick="return eliminar();">
+        <span>{% bs_icon 'trash'%}</span>
+    </button>
+
+  </form>
+  {% endif %}
+
+  {% block busqueda %}
+  {% endblock %}
+</div>

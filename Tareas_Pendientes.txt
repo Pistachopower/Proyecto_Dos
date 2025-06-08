@@ -1,0 +1,76 @@
+Preguntar a Jorge
+Vista crear pedido. Preguntar si se puede eliminar, porque fue una peticion que él hizo, 
+pero ahora no le veo sentido
+
+Pedir a Jorge que vea los modelos para modificar correctamente la vista listar Pedidos 
+
+Caso de uso para probar cuando un usuario hace un pedido de una pieza y otro la tomó:
+Cambiar el stock a propósito desde el admin:
+
+    Entra al Django Admin o a tu base de datos.
+
+    Ve al modelo Producto_Tienda.
+
+    Busca el producto relacionado con la pieza y tienda del pedido.
+
+    Cambia el stock a un valor menor que el valor de linea.cantidad (por ejemplo: pon 0 o 1).
+
+    Intenta finalizar el pedido en la web.
+
+👉 Resultado esperado: te va a lanzar el error "Stock insuficiente para Motor V8" (o lo que sea la pieza).
+
+
+Por hacer 
+Clientes
+Controlar que el cliente pueda ver sus líneas de pedido con los permisos
+#@permission_required("tienda.lineapedido")
+def dame_lineaPedido(request, id_pedido):
+
+Controlar que un cliente solo pueda ver sus productos del carrito
+
+vendedores
+Controlar que un vendedor no vea la lista de vendedores
+
+10. Ver los productos pedidos por los clientes en el perfil de vendedor
+
+16. Ver cuánto pagó un cliente por un pedido y la cuenta que usó.
+
+
+Facil 
+Quitar las acciones a los vendedores, solo al administrador 
+Montar la vista de devolucion del vendedor 
+
+Terminar
+Falta detallar los permisos en el 3 de crear tienda
+
+
+
+
+Tienda 
+Crear modelo pago, para registrar con qué cuenta bancaria se hizo 
+el pago de un pedido y cuánto se pagó al finalizar_pedido (Listo)
+
+Ver detalles de un pedido completado con cuenta bancaria del pago y el 
+dinero total que se gastó (LISTO)
+
+Permitir que un cliente devuelva un producto que haya comprado (Listo)
+
+Los vendedores pueden ver las devoluciones y aceptarlas o denegarlas. Si
+las aceptan, das un saldo de puntos al cliente
+
+API
+Crear aplicacion con un modelo que sea ProductosTercero (LISTO)
+
+Desde la aplicación de la tienda, los vendedores deben poder 
+obtener un listado de esos productos (LISTO)
+
+Configurar OAuth2 (LISTO)
+
+El vendedor puede añadir un producto nuevo a los productos terceros
+de la api, pero no pueden repetir nombre (LISTO)
+
+Un vendedor puede cambiar el nombre de un producto tercero que él haya creado (LISTO)
+
+Un vendedor puede eliminar un producto tercero que él haya creado (Falta relacionar el producto con el vendedor)
+
+

@@ -1,0 +1,42 @@
+{% extends "estructura/principal.html" %}
+
+{% block contenido %}
+<div class="container my-5">
+    <h1 class="mb-4">Cuenta del Cliente</h1>
+
+    {% if cuentaBancariaCliente %}
+    <div class="card mt-4 shadow-sm">
+        <div class="card-body">
+            <h5 class="card-title">Cuenta Bancaria</h5>
+            <p><strong>IBAN:</strong> {{ cuentaBancariaCliente.iban }}</p>
+            <p><strong>Banco:</strong> {{ cuentaBancariaCliente.banco }}</p>
+            <p><strong>Moneda:</strong> {{ cuentaBancariaCliente.get_moneda_display }}</p>
+
+           
+
+           
+            <form method="post" action="{% url 'cuentaBancaria_delete' cuentaBancariaCliente.id %}" class="mt-3">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger">
+                    Eliminar Cuenta Bancaria
+                </button>
+            </form>
+
+
+            
+            <div class="card-footer d-flex justify-content-between">
+                <a href="{% url 'cuentaBancaria_editar' cuentaBancariaCliente.id %}" class="btn btn-primary btn-sm">Editar Cuenta Bancaria</a>
+            </div>
+            
+
+        </div>
+    </div>
+    {% else %}
+    <div class="mt-4">
+        <a href="{% url 'cuentaBancaria_create'  %}" class="btn btn-primary">
+            Agregar Cuenta Bancaria
+        </a>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

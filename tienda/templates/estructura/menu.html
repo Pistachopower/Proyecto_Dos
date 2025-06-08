@@ -1,4 +1,5 @@
 {% load django_bootstrap5 %}
+{% load static %}
 <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
     <div class="container-fluid">
         <a class="navbar-brand fw-bold" href="{% url 'index' %}">Tienda</a>
@@ -7,10 +8,16 @@
             <span class="navbar-toggler-icon"></span>
         </button>
 
+        <a class="nav-link" href="{% url 'lista_devoluciones' %}">Lista de Devoluciones pendientes</a>
+
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
                     <a class="nav-link active" href="{% url 'index' %}">Inicio</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'lista_catalogo' %}">Lista de catalogo de piezas</a>
                 </li>
 
                 {% if perms.tienda.view_cliente %}
@@ -22,18 +29,115 @@
                 {% if perms.tienda.view_vendedor %}
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'lista_vendedores' %}">Ver vendedores</a>
+                </li> 
+                {% endif %}
+
+                <!-- Dropdown de Piezas -->
+                {% if perms.tienda.view_pieza or perms.tienda.add_pieza %}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="piezasDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Catálogo de Piezas
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="piezasDropdown">
+                        {% if perms.tienda.view_pieza %}
+                        <li><a class="dropdown-item" href="{% url 'pieza_Buscar' %}">Buscar piezas</a></li>
+                        {% endif %}
+
+                        {% if perms.tienda.view_pieza %}
+                        <li><a class="dropdown-item" href="{% url 'busqueda_avanzada_pieza' %}">Búsqueda avanzada pieza</a></li>
+                        {% endif %}
+        
+                        {% if perms.tienda.add_pieza %}
+                        <li><a class="dropdown-item" href="{% url 'pieza_create' %}">Crear pieza</a></li>
+                        {% endif %}
+                    </ul>
                 </li>
                 {% endif %}
 
-                {% if perms.tienda.view_pieza %}
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'lista_pieza' %}">Ver piezas</a>
+                <!-- Dropdown de Pedidos -->
+                {% if perms.tienda.view_pedido or perms.tienda.add_pedido %}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="piezasDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Pedidos
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="piezasDropdown">
+                        {% if perms.tienda.view_pedido %}
+                        <li><a class="dropdown-item" href="{% url 'lista_pedidos' %}">Ver pedidos</a></li>
+                        {% endif %}
+       
+                    </ul>
                 </li>
                 {% endif %}
+                
+
+                <!-- Dropdown de Tienda -->
+                {% if perms.tienda.view_tienda or perms.tienda.add_tienda or perms.tienda.view_producto_tienda %}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="tiendaDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Productos disponibles en tienda
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="tiendaDropdown">
+                        {% if perms.tienda.view_tienda %}
+                        <li><a class="dropdown-item" href="{% url 'lista_tienda' %}">Ver tienda</a></li>
+                        {% endif %}
+        
+                        {% if perms.tienda.add_tienda %}
+                        <li><a class="dropdown-item" href="{% url 'tienda_create' %}">Crear tienda</a></li>
+
+                        <li><a class="dropdown-item" href="{% url 'agregar_ProductoTienda' %}">Agregar producto tienda</a></li>
+
+                        {% endif %}
+
+                        {% if perms.tienda.view_producto_tienda %}
+                        <li><a class="dropdown-item" href="{% url 'lista_ProductosTienda' %}">Listar productos de la tienda</a></li>
+                        {% endif %}
+
+
+
+
+                    </ul>
+                </li>
+                {% endif %}
+
+            <!--API-->
+            
+                <li class="nav-item dropdown">
+                    {% if request.user.rol == 3 %}
+                    <a class="nav-link dropdown-toggle" href="#" id="tercerosDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Productos de terceros
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="tercerosDropdown">   
+                        <li><a class="dropdown-item" href="{% url 'listar_productos_terceros_api' %}">Listar productos</a></li>     
+                        <li><a class="dropdown-item" href="{% url 'crear_producto_tercero' %}">Crear producto</a></li>
+                    </ul>
+                    {% endif %}
+                </li>
+
             </ul>
+            
+
+
+
+              
+
+     
+
 
             <!-- Contenedor derecho -->
+             <!--Carrito-->
             <div class="d-flex align-items-center">
+                {% if request.user.is_authenticated and request.user.cliente %}
+                <a href="{% url 'listarLineaPedidoCarrito' request.user.cliente.id  %}" class="btn btn-outline-primary me-3 position-relative">
+                    <i class="bi bi-cart3 fs-4"></i>
+                    {% if carrito_cantidad and carrito_cantidad > 0 %}
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                            {{ carrito_cantidad }}
+                        </span> 
+                    {% endif %}
+                </a>
+
+                {% endif %}
+
                 {% if request.user.is_authenticated %}
                 <!-- Dropdown de Usuario -->
                 <div class="dropdown">
@@ -43,26 +147,47 @@
                         <span class="fw-semibold">{{ request.user }}</span>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-end shadow-sm" aria-labelledby="userDropdown">
+                        
+                        <!--Perfil cliente-->
+                        {% if request.user.rol == 2 %}
+                        <li>
+                            <a href="{% url 'perfil_cliente' request.user.cliente.id  %}" class="dropdown-item">
+                                <i class="bi bi-person me-2"></i> Perfil cliente
+                            </a>
+                        </li>
+                        {% endif %}
+
+                        {% if request.user.rol == 3 %}
+                        <li>
+                            
+                            <a href="{% url 'perfil_vendedor' request.user.vendedor.id  %}" class="dropdown-item">
+                                <i class="bi bi-person me-2"></i> Perfil vendedor
+                            </a>
+                        </li>
+                        {% endif %}
+
+                        
                         <li class="dropdown-item text-muted text-wrap">
                             <small>Sesión: {{ request.session.fecha_inicio }}</small>
                         </li>
+                      
 
                         <li class="dropdown-item">
                             <small>
                                 Rol: 
-                                {% if request.user.is_authenticated %}
-                                  {% if request.user.rol == 1 %}
+                                {% if request.user.rol == 1 %}
                                     <strong>Administrador</strong>
-                                  {% elif request.user.rol == 2 %}
+                                {% elif request.user.rol == 2 %}
                                     <strong>Cliente</strong>
-                                  {% elif request.user.rol == 3 %}
+                                {% elif request.user.rol == 3 %}
                                     <strong>Vendedor</strong>
-                                  {% else %}
+                                {% else %}
                                     <strong>No asignado</strong>
-                                  {% endif %}
                                 {% endif %}
                             </small>
                         </li>
+
+
 
                         <li><hr class="dropdown-divider"></li>
                         <li>
@@ -72,6 +197,8 @@
                                     <i class="bi bi-box-arrow-right me-2"></i>Salir
                                 </button>
                             </form>
+
+                              
                         </li>
                     </ul>
                 </div>
@@ -85,3 +212,12 @@
         </div>
     </div>
 </nav>
+
+{% if messages %}
+{% for message in messages %}
+    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+{% endfor %}
+{% endif %}

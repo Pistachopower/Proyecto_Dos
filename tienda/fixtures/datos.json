@@ -3,11 +3,11 @@
     "model": "admin.logentry",
     "pk": 1,
     "fields": {
-        "action_time": "2025-04-02T12:19:45.550",
-        "user": 3,
+        "action_time": "2025-04-23T11:17:45.320",
+        "user": 1,
         "content_type": 3,
         "object_id": "1",
-        "object_repr": "vendedores",
+        "object_repr": "clientes",
         "action_flag": 1,
         "change_message": "[{\"added\": {}}]"
     }
@@ -16,11 +16,11 @@
     "model": "admin.logentry",
     "pk": 2,
     "fields": {
-        "action_time": "2025-04-02T12:20:30.571",
-        "user": 3,
+        "action_time": "2025-04-23T11:20:15.161",
+        "user": 1,
         "content_type": 3,
         "object_id": "2",
-        "object_repr": "clientes",
+        "object_repr": "vendedores",
         "action_flag": 1,
         "change_message": "[{\"added\": {}}]"
     }
@@ -29,26 +29,1326 @@
     "model": "admin.logentry",
     "pk": 3,
     "fields": {
-        "action_time": "2025-04-02T12:30:23.472",
-        "user": 3,
-        "content_type": 6,
+        "action_time": "2025-04-23T11:21:54.986",
+        "user": 1,
+        "content_type": 3,
         "object_id": "1",
-        "object_repr": "Motor",
-        "action_flag": 1,
-        "change_message": "[{\"added\": {}}]"
+        "object_repr": "clientes",
+        "action_flag": 2,
+        "change_message": "[]"
     }
 },
 {
     "model": "admin.logentry",
     "pk": 4,
     "fields": {
-        "action_time": "2025-04-02T12:35:14.442",
-        "user": 3,
+        "action_time": "2025-04-23T11:39:30.652",
+        "user": 1,
         "content_type": 7,
-        "object_id": "3",
+        "object_id": "1",
         "object_repr": "nelson",
         "action_flag": 2,
         "change_message": "[{\"changed\": {\"fields\": [\"Rol\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 5,
+    "fields": {
+        "action_time": "2025-04-23T13:43:40.129",
+        "user": 1,
+        "content_type": 9,
+        "object_id": "1",
+        "object_repr": "Santander",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 6,
+    "fields": {
+        "action_time": "2025-04-23T14:23:34.026",
+        "user": 1,
+        "content_type": 9,
+        "object_id": "2",
+        "object_repr": "Santander",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 7,
+    "fields": {
+        "action_time": "2025-04-23T14:26:04.805",
+        "user": 1,
+        "content_type": 9,
+        "object_id": "3",
+        "object_repr": "Santander",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 8,
+    "fields": {
+        "action_time": "2025-04-23T14:28:10.745",
+        "user": 1,
+        "content_type": 9,
+        "object_id": "4",
+        "object_repr": "Santander",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 9,
+    "fields": {
+        "action_time": "2025-04-23T14:34:10.426",
+        "user": 1,
+        "content_type": 9,
+        "object_id": "5",
+        "object_repr": "Santander",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 10,
+    "fields": {
+        "action_time": "2025-04-23T14:36:18.624",
+        "user": 1,
+        "content_type": 9,
+        "object_id": "6",
+        "object_repr": "Santander",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 11,
+    "fields": {
+        "action_time": "2025-04-23T19:28:43.313",
+        "user": 1,
+        "content_type": 3,
+        "object_id": "2",
+        "object_repr": "vendedores",
+        "action_flag": 2,
+        "change_message": "[]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 12,
+    "fields": {
+        "action_time": "2025-04-23T21:34:25.954",
+        "user": 1,
+        "content_type": 3,
+        "object_id": "2",
+        "object_repr": "vendedores",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Permissions\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 13,
+    "fields": {
+        "action_time": "2025-04-24T12:41:52.903",
+        "user": 1,
+        "content_type": 3,
+        "object_id": "2",
+        "object_repr": "vendedores",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Permissions\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 14,
+    "fields": {
+        "action_time": "2025-04-26T13:17:56.833",
+        "user": 1,
+        "content_type": 11,
+        "object_id": "4",
+        "object_repr": "Tienda Las Palmas de Gran Canarias",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Direccion\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 15,
+    "fields": {
+        "action_time": "2025-04-26T13:18:11.738",
+        "user": 1,
+        "content_type": 11,
+        "object_id": "3",
+        "object_repr": "Tienda Vecindario",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Direccion\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 16,
+    "fields": {
+        "action_time": "2025-04-26T13:18:25.617",
+        "user": 1,
+        "content_type": 11,
+        "object_id": "2",
+        "object_repr": "Tienda El Sur",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Direccion\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 17,
+    "fields": {
+        "action_time": "2025-04-26T13:18:51.938",
+        "user": 1,
+        "content_type": 11,
+        "object_id": "1",
+        "object_repr": "Tienda Arinaga",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Direccion\", \"Vendedor\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 18,
+    "fields": {
+        "action_time": "2025-04-26T13:19:09.147",
+        "user": 1,
+        "content_type": 13,
+        "object_id": "1",
+        "object_repr": "Inventario object (1)",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Cantidad\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 19,
+    "fields": {
+        "action_time": "2025-04-29T00:21:45.598",
+        "user": 1,
+        "content_type": 6,
+        "object_id": "2",
+        "object_repr": "Alternador",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 20,
+    "fields": {
+        "action_time": "2025-04-30T13:03:10.807",
+        "user": 1,
+        "content_type": 10,
+        "object_id": "3",
+        "object_repr": "nelson",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 21,
+    "fields": {
+        "action_time": "2025-04-30T13:04:48.455",
+        "user": 1,
+        "content_type": 10,
+        "object_id": "3",
+        "object_repr": "nelson",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 22,
+    "fields": {
+        "action_time": "2025-04-30T13:06:12.767",
+        "user": 1,
+        "content_type": 10,
+        "object_id": "4",
+        "object_repr": "nelson",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 23,
+    "fields": {
+        "action_time": "2025-05-02T19:35:57.166",
+        "user": 1,
+        "content_type": 3,
+        "object_id": "2",
+        "object_repr": "vendedores",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Permissions\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 24,
+    "fields": {
+        "action_time": "2025-05-02T19:36:28.410",
+        "user": 1,
+        "content_type": 3,
+        "object_id": "2",
+        "object_repr": "vendedores",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Permissions\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 25,
+    "fields": {
+        "action_time": "2025-05-02T19:51:56.824",
+        "user": 1,
+        "content_type": 3,
+        "object_id": "1",
+        "object_repr": "clientes",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Permissions\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 26,
+    "fields": {
+        "action_time": "2025-05-02T19:57:01.858",
+        "user": 1,
+        "content_type": 3,
+        "object_id": "1",
+        "object_repr": "clientes",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Permissions\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 27,
+    "fields": {
+        "action_time": "2025-05-04T15:23:20.721",
+        "user": 1,
+        "content_type": 6,
+        "object_id": "4",
+        "object_repr": "Caja de cambio",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 28,
+    "fields": {
+        "action_time": "2025-05-04T15:56:22.838",
+        "user": 1,
+        "content_type": 11,
+        "object_id": "2",
+        "object_repr": "Tienda El Sur",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 29,
+    "fields": {
+        "action_time": "2025-05-04T16:51:26.979",
+        "user": 1,
+        "content_type": 3,
+        "object_id": "1",
+        "object_repr": "clientes",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Permissions\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 30,
+    "fields": {
+        "action_time": "2025-05-04T16:54:00.180",
+        "user": 1,
+        "content_type": 3,
+        "object_id": "2",
+        "object_repr": "vendedores",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Permissions\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 31,
+    "fields": {
+        "action_time": "2025-05-08T10:51:38.539",
+        "user": 1,
+        "content_type": 3,
+        "object_id": "2",
+        "object_repr": "vendedores",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Permissions\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 32,
+    "fields": {
+        "action_time": "2025-05-11T20:44:03.109",
+        "user": 1,
+        "content_type": 3,
+        "object_id": "1",
+        "object_repr": "clientes",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Permissions\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 33,
+    "fields": {
+        "action_time": "2025-05-11T20:50:45.707",
+        "user": 1,
+        "content_type": 3,
+        "object_id": "1",
+        "object_repr": "clientes",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Permissions\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 34,
+    "fields": {
+        "action_time": "2025-05-11T21:17:20.058",
+        "user": 1,
+        "content_type": 14,
+        "object_id": "2",
+        "object_repr": "calle quinitas",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 35,
+    "fields": {
+        "action_time": "2025-05-11T21:17:31.528",
+        "user": 1,
+        "content_type": 14,
+        "object_id": "1",
+        "object_repr": "calle cancionera",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 36,
+    "fields": {
+        "action_time": "2025-05-12T19:25:34.537",
+        "user": 1,
+        "content_type": 3,
+        "object_id": "1",
+        "object_repr": "clientes",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Permissions\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 37,
+    "fields": {
+        "action_time": "2025-05-12T19:26:05.432",
+        "user": 1,
+        "content_type": 3,
+        "object_id": "1",
+        "object_repr": "clientes",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Permissions\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 38,
+    "fields": {
+        "action_time": "2025-05-13T15:43:20.885",
+        "user": 1,
+        "content_type": 3,
+        "object_id": "1",
+        "object_repr": "clientes",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Permissions\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 39,
+    "fields": {
+        "action_time": "2025-05-14T23:17:33.338",
+        "user": 1,
+        "content_type": 3,
+        "object_id": "1",
+        "object_repr": "clientes",
+        "action_flag": 2,
+        "change_message": "[]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 40,
+    "fields": {
+        "action_time": "2025-05-14T23:17:47.307",
+        "user": 1,
+        "content_type": 14,
+        "object_id": "9",
+        "object_repr": "Pedido de maria - Caja de cambio",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 41,
+    "fields": {
+        "action_time": "2025-05-14T23:17:54.129",
+        "user": 1,
+        "content_type": 14,
+        "object_id": "8",
+        "object_repr": "Pedido de maria - Caja de cambio",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 42,
+    "fields": {
+        "action_time": "2025-05-14T23:18:01.167",
+        "user": 1,
+        "content_type": 14,
+        "object_id": "7",
+        "object_repr": "Pedido de maria - Caja de cambio",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 43,
+    "fields": {
+        "action_time": "2025-05-14T23:18:07.718",
+        "user": 1,
+        "content_type": 14,
+        "object_id": "6",
+        "object_repr": "Pedido de maria - Caja de cambio",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 44,
+    "fields": {
+        "action_time": "2025-05-14T23:18:14.298",
+        "user": 1,
+        "content_type": 14,
+        "object_id": "3",
+        "object_repr": "Pedido de maria - Caja de cambio",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 45,
+    "fields": {
+        "action_time": "2025-05-16T23:08:57.108",
+        "user": 1,
+        "content_type": 14,
+        "object_id": "11",
+        "object_repr": "Pedido de maria",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 46,
+    "fields": {
+        "action_time": "2025-05-16T23:09:02.793",
+        "user": 1,
+        "content_type": 14,
+        "object_id": "10",
+        "object_repr": "Pedido de maria",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 47,
+    "fields": {
+        "action_time": "2025-05-16T23:09:08.015",
+        "user": 1,
+        "content_type": 14,
+        "object_id": "5",
+        "object_repr": "Pedido de maria",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 48,
+    "fields": {
+        "action_time": "2025-05-16T23:09:14.928",
+        "user": 1,
+        "content_type": 14,
+        "object_id": "4",
+        "object_repr": "Pedido de maria",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 49,
+    "fields": {
+        "action_time": "2025-05-17T00:06:54.427",
+        "user": 1,
+        "content_type": 3,
+        "object_id": "1",
+        "object_repr": "clientes",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Permissions\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 50,
+    "fields": {
+        "action_time": "2025-05-18T19:36:02.358",
+        "user": 1,
+        "content_type": 3,
+        "object_id": "2",
+        "object_repr": "vendedores",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Permissions\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 51,
+    "fields": {
+        "action_time": "2025-05-19T18:01:01.691",
+        "user": 1,
+        "content_type": 13,
+        "object_id": "4",
+        "object_repr": "Producto_Tienda object (4)",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Precio\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 52,
+    "fields": {
+        "action_time": "2025-05-19T18:01:10.358",
+        "user": 1,
+        "content_type": 13,
+        "object_id": "8",
+        "object_repr": "Producto_Tienda object (8)",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Precio\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 53,
+    "fields": {
+        "action_time": "2025-05-19T18:01:13.659",
+        "user": 1,
+        "content_type": 13,
+        "object_id": "4",
+        "object_repr": "Producto_Tienda object (4)",
+        "action_flag": 2,
+        "change_message": "[]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 54,
+    "fields": {
+        "action_time": "2025-05-19T18:01:25.493",
+        "user": 1,
+        "content_type": 13,
+        "object_id": "5",
+        "object_repr": "Producto_Tienda object (5)",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Precio\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 55,
+    "fields": {
+        "action_time": "2025-05-19T18:38:15.057",
+        "user": 1,
+        "content_type": 11,
+        "object_id": "8",
+        "object_repr": "TIENDA SIN RELACION",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 56,
+    "fields": {
+        "action_time": "2025-05-20T17:21:14.501",
+        "user": 1,
+        "content_type": 13,
+        "object_id": "9",
+        "object_repr": "Producto_Tienda object (9)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 57,
+    "fields": {
+        "action_time": "2025-05-20T17:21:36.489",
+        "user": 1,
+        "content_type": 13,
+        "object_id": "10",
+        "object_repr": "Producto_Tienda object (10)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 58,
+    "fields": {
+        "action_time": "2025-05-23T20:56:06.416",
+        "user": 1,
+        "content_type": 13,
+        "object_id": "4",
+        "object_repr": "Producto_Tienda object (4)",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Stock\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 59,
+    "fields": {
+        "action_time": "2025-05-23T21:10:58.149",
+        "user": 1,
+        "content_type": 14,
+        "object_id": "22",
+        "object_repr": "Pedido de maria",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 60,
+    "fields": {
+        "action_time": "2025-05-23T21:11:12.028",
+        "user": 1,
+        "content_type": 14,
+        "object_id": "21",
+        "object_repr": "Pedido de maria",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 61,
+    "fields": {
+        "action_time": "2025-05-23T21:11:19.591",
+        "user": 1,
+        "content_type": 14,
+        "object_id": "20",
+        "object_repr": "Pedido de maria",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 62,
+    "fields": {
+        "action_time": "2025-05-23T21:11:28.417",
+        "user": 1,
+        "content_type": 14,
+        "object_id": "19",
+        "object_repr": "Pedido de maria",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 63,
+    "fields": {
+        "action_time": "2025-05-23T21:11:34.986",
+        "user": 1,
+        "content_type": 14,
+        "object_id": "18",
+        "object_repr": "Pedido de maria",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 64,
+    "fields": {
+        "action_time": "2025-05-23T21:11:41.431",
+        "user": 1,
+        "content_type": 14,
+        "object_id": "17",
+        "object_repr": "Pedido de maria",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 65,
+    "fields": {
+        "action_time": "2025-05-23T21:11:47.684",
+        "user": 1,
+        "content_type": 14,
+        "object_id": "16",
+        "object_repr": "Pedido de maria",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 66,
+    "fields": {
+        "action_time": "2025-05-23T21:12:01.767",
+        "user": 1,
+        "content_type": 14,
+        "object_id": "12",
+        "object_repr": "Pedido de maria",
+        "action_flag": 2,
+        "change_message": "[]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 67,
+    "fields": {
+        "action_time": "2025-05-28T17:52:02.277",
+        "user": 1,
+        "content_type": 3,
+        "object_id": "1",
+        "object_repr": "clientes",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Permissions\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 68,
+    "fields": {
+        "action_time": "2025-05-28T18:48:37.535",
+        "user": 1,
+        "content_type": 14,
+        "object_id": "13",
+        "object_repr": "Pedido de maria",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 69,
+    "fields": {
+        "action_time": "2025-05-28T18:48:44.112",
+        "user": 1,
+        "content_type": 14,
+        "object_id": "15",
+        "object_repr": "Pedido de maria",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 70,
+    "fields": {
+        "action_time": "2025-05-28T18:48:50.711",
+        "user": 1,
+        "content_type": 14,
+        "object_id": "14",
+        "object_repr": "Pedido de maria",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 71,
+    "fields": {
+        "action_time": "2025-05-31T16:14:22.531",
+        "user": 1,
+        "content_type": 3,
+        "object_id": "1",
+        "object_repr": "clientes",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Permissions\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 72,
+    "fields": {
+        "action_time": "2025-06-02T22:40:20.122",
+        "user": 1,
+        "content_type": 13,
+        "object_id": "10",
+        "object_repr": "Producto_Tienda object (10)",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Stock\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 73,
+    "fields": {
+        "action_time": "2025-06-02T22:41:36.927",
+        "user": 1,
+        "content_type": 13,
+        "object_id": "10",
+        "object_repr": "Producto_Tienda object (10)",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Stock\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 74,
+    "fields": {
+        "action_time": "2025-06-02T22:55:44.362",
+        "user": 1,
+        "content_type": 14,
+        "object_id": "28",
+        "object_repr": "Pedido de maria",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Estado\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 75,
+    "fields": {
+        "action_time": "2025-06-02T22:58:25.313",
+        "user": 1,
+        "content_type": 14,
+        "object_id": "28",
+        "object_repr": "Pedido de maria",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Estado\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 76,
+    "fields": {
+        "action_time": "2025-06-02T23:06:17.418",
+        "user": 1,
+        "content_type": 14,
+        "object_id": "28",
+        "object_repr": "Pedido de maria",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Estado\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 77,
+    "fields": {
+        "action_time": "2025-06-02T23:08:29.718",
+        "user": 1,
+        "content_type": 14,
+        "object_id": "28",
+        "object_repr": "Pedido de maria",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Estado\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 78,
+    "fields": {
+        "action_time": "2025-06-02T23:35:41.712",
+        "user": 1,
+        "content_type": 9,
+        "object_id": "11",
+        "object_repr": "Santander",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 79,
+    "fields": {
+        "action_time": "2025-06-02T23:42:00.939",
+        "user": 1,
+        "content_type": 14,
+        "object_id": "29",
+        "object_repr": "Pedido de maria",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 80,
+    "fields": {
+        "action_time": "2025-06-03T16:03:02.150",
+        "user": 1,
+        "content_type": 13,
+        "object_id": "9",
+        "object_repr": "Producto_Tienda object (9)",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Stock\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 81,
+    "fields": {
+        "action_time": "2025-06-03T16:16:34.894",
+        "user": 1,
+        "content_type": 13,
+        "object_id": "10",
+        "object_repr": "Producto_Tienda object (10)",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Stock\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 82,
+    "fields": {
+        "action_time": "2025-06-03T16:16:41.490",
+        "user": 1,
+        "content_type": 13,
+        "object_id": "9",
+        "object_repr": "Producto_Tienda object (9)",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Stock\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 83,
+    "fields": {
+        "action_time": "2025-06-03T16:33:12.483",
+        "user": 1,
+        "content_type": 3,
+        "object_id": "1",
+        "object_repr": "clientes",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Permissions\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 84,
+    "fields": {
+        "action_time": "2025-06-03T16:34:38.084",
+        "user": 1,
+        "content_type": 3,
+        "object_id": "1",
+        "object_repr": "clientes",
+        "action_flag": 2,
+        "change_message": "[]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 85,
+    "fields": {
+        "action_time": "2025-06-06T23:44:22.104",
+        "user": 1,
+        "content_type": 3,
+        "object_id": "2",
+        "object_repr": "vendedores",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Permissions\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 86,
+    "fields": {
+        "action_time": "2025-06-07T00:01:58.175",
+        "user": 1,
+        "content_type": 3,
+        "object_id": "2",
+        "object_repr": "vendedores",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Permissions\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 87,
+    "fields": {
+        "action_time": "2025-06-07T00:14:36.472",
+        "user": 1,
+        "content_type": 3,
+        "object_id": "2",
+        "object_repr": "vendedores",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Permissions\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 88,
+    "fields": {
+        "action_time": "2025-06-07T10:57:09.312",
+        "user": 1,
+        "content_type": 3,
+        "object_id": "2",
+        "object_repr": "vendedores",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Permissions\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 89,
+    "fields": {
+        "action_time": "2025-06-07T10:57:54.954",
+        "user": 1,
+        "content_type": 3,
+        "object_id": "2",
+        "object_repr": "vendedores",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Permissions\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 90,
+    "fields": {
+        "action_time": "2025-06-07T23:17:23.449",
+        "user": 1,
+        "content_type": 7,
+        "object_id": "8",
+        "object_repr": "sol",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 91,
+    "fields": {
+        "action_time": "2025-06-07T23:50:24.523",
+        "user": 1,
+        "content_type": 8,
+        "object_id": "6",
+        "object_repr": "a",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 92,
+    "fields": {
+        "action_time": "2025-06-07T23:57:13.478",
+        "user": 1,
+        "content_type": 8,
+        "object_id": "5",
+        "object_repr": "sol",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 93,
+    "fields": {
+        "action_time": "2025-06-08T00:14:03.877",
+        "user": 1,
+        "content_type": 7,
+        "object_id": "10",
+        "object_repr": "a",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 94,
+    "fields": {
+        "action_time": "2025-06-08T00:25:43.293",
+        "user": 1,
+        "content_type": 7,
+        "object_id": "11",
+        "object_repr": "a",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 95,
+    "fields": {
+        "action_time": "2025-06-08T00:30:48.840",
+        "user": 1,
+        "content_type": 7,
+        "object_id": "9",
+        "object_repr": "sol",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 96,
+    "fields": {
+        "action_time": "2025-06-08T00:58:34.956",
+        "user": 1,
+        "content_type": 7,
+        "object_id": "12",
+        "object_repr": "sol",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 97,
+    "fields": {
+        "action_time": "2025-06-08T02:25:15.146",
+        "user": 1,
+        "content_type": 11,
+        "object_id": "10",
+        "object_repr": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaxqqqwdq291794",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 98,
+    "fields": {
+        "action_time": "2025-06-08T02:39:46.058",
+        "user": 1,
+        "content_type": 11,
+        "object_id": "11",
+        "object_repr": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaxqqqwdq291794",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 99,
+    "fields": {
+        "action_time": "2025-06-08T13:48:37.665",
+        "user": 1,
+        "content_type": 3,
+        "object_id": "1",
+        "object_repr": "clientes",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Permissions\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 100,
+    "fields": {
+        "action_time": "2025-06-08T14:44:15.130",
+        "user": 1,
+        "content_type": 3,
+        "object_id": "1",
+        "object_repr": "clientes",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Permissions\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 101,
+    "fields": {
+        "action_time": "2025-06-08T15:21:52.230",
+        "user": 1,
+        "content_type": 3,
+        "object_id": "1",
+        "object_repr": "clientes",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Permissions\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 102,
+    "fields": {
+        "action_time": "2025-06-08T15:28:04.608",
+        "user": 1,
+        "content_type": 14,
+        "object_id": "35",
+        "object_repr": "Pedido de maria",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 103,
+    "fields": {
+        "action_time": "2025-06-08T16:20:57.209",
+        "user": 1,
+        "content_type": 3,
+        "object_id": "2",
+        "object_repr": "vendedores",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Permissions\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 104,
+    "fields": {
+        "action_time": "2025-06-08T16:27:54.362",
+        "user": 1,
+        "content_type": 3,
+        "object_id": "2",
+        "object_repr": "vendedores",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Permissions\"]}}]"
     }
 },
 {
@@ -343,48 +1643,668 @@
     "model": "auth.permission",
     "pk": 33,
     "fields": {
-        "name": "Can add vendedor",
+        "name": "Can add cuenta bancaria",
         "content_type": 9,
-        "codename": "add_vendedor"
+        "codename": "add_cuentabancaria"
     }
 },
 {
     "model": "auth.permission",
     "pk": 34,
     "fields": {
-        "name": "Can change vendedor",
+        "name": "Can change cuenta bancaria",
         "content_type": 9,
-        "codename": "change_vendedor"
+        "codename": "change_cuentabancaria"
     }
 },
 {
     "model": "auth.permission",
     "pk": 35,
     "fields": {
-        "name": "Can delete vendedor",
+        "name": "Can delete cuenta bancaria",
         "content_type": 9,
-        "codename": "delete_vendedor"
+        "codename": "delete_cuentabancaria"
     }
 },
 {
     "model": "auth.permission",
     "pk": 36,
     "fields": {
-        "name": "Can view vendedor",
+        "name": "Can view cuenta bancaria",
         "content_type": 9,
+        "codename": "view_cuentabancaria"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 37,
+    "fields": {
+        "name": "Can add vendedor",
+        "content_type": 10,
+        "codename": "add_vendedor"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 38,
+    "fields": {
+        "name": "Can change vendedor",
+        "content_type": 10,
+        "codename": "change_vendedor"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 39,
+    "fields": {
+        "name": "Can delete vendedor",
+        "content_type": 10,
+        "codename": "delete_vendedor"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 40,
+    "fields": {
+        "name": "Can view vendedor",
+        "content_type": 10,
         "codename": "view_vendedor"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 41,
+    "fields": {
+        "name": "Can add tienda",
+        "content_type": 11,
+        "codename": "add_tienda"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 42,
+    "fields": {
+        "name": "Can change tienda",
+        "content_type": 11,
+        "codename": "change_tienda"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 43,
+    "fields": {
+        "name": "Can delete tienda",
+        "content_type": 11,
+        "codename": "delete_tienda"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 44,
+    "fields": {
+        "name": "Can view tienda",
+        "content_type": 11,
+        "codename": "view_tienda"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 45,
+    "fields": {
+        "name": "Can add datos vendedor",
+        "content_type": 12,
+        "codename": "add_datosvendedor"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 46,
+    "fields": {
+        "name": "Can change datos vendedor",
+        "content_type": 12,
+        "codename": "change_datosvendedor"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 47,
+    "fields": {
+        "name": "Can delete datos vendedor",
+        "content_type": 12,
+        "codename": "delete_datosvendedor"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 48,
+    "fields": {
+        "name": "Can view datos vendedor",
+        "content_type": 12,
+        "codename": "view_datosvendedor"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 49,
+    "fields": {
+        "name": "Can add inventario",
+        "content_type": 13,
+        "codename": "add_inventario"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 50,
+    "fields": {
+        "name": "Can change inventario",
+        "content_type": 13,
+        "codename": "change_inventario"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 51,
+    "fields": {
+        "name": "Can delete inventario",
+        "content_type": 13,
+        "codename": "delete_inventario"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 52,
+    "fields": {
+        "name": "Can view inventario",
+        "content_type": 13,
+        "codename": "view_inventario"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 53,
+    "fields": {
+        "name": "Can add pedido",
+        "content_type": 14,
+        "codename": "add_pedido"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 54,
+    "fields": {
+        "name": "Can change pedido",
+        "content_type": 14,
+        "codename": "change_pedido"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 55,
+    "fields": {
+        "name": "Can delete pedido",
+        "content_type": 14,
+        "codename": "delete_pedido"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 56,
+    "fields": {
+        "name": "Can view pedido",
+        "content_type": 14,
+        "codename": "view_pedido"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 57,
+    "fields": {
+        "name": "Can add producto_ tienda",
+        "content_type": 13,
+        "codename": "add_producto_tienda"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 58,
+    "fields": {
+        "name": "Can change producto_ tienda",
+        "content_type": 13,
+        "codename": "change_producto_tienda"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 59,
+    "fields": {
+        "name": "Can delete producto_ tienda",
+        "content_type": 13,
+        "codename": "delete_producto_tienda"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 60,
+    "fields": {
+        "name": "Can view producto_ tienda",
+        "content_type": 13,
+        "codename": "view_producto_tienda"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 61,
+    "fields": {
+        "name": "Can add linea pedido",
+        "content_type": 15,
+        "codename": "add_lineapedido"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 62,
+    "fields": {
+        "name": "Can change linea pedido",
+        "content_type": 15,
+        "codename": "change_lineapedido"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 63,
+    "fields": {
+        "name": "Can delete linea pedido",
+        "content_type": 15,
+        "codename": "delete_lineapedido"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 64,
+    "fields": {
+        "name": "Can view linea pedido",
+        "content_type": 15,
+        "codename": "view_lineapedido"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 65,
+    "fields": {
+        "name": "Can add productos terceros",
+        "content_type": 16,
+        "codename": "add_productosterceros"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 66,
+    "fields": {
+        "name": "Can change productos terceros",
+        "content_type": 16,
+        "codename": "change_productosterceros"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 67,
+    "fields": {
+        "name": "Can delete productos terceros",
+        "content_type": 16,
+        "codename": "delete_productosterceros"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 68,
+    "fields": {
+        "name": "Can view productos terceros",
+        "content_type": 16,
+        "codename": "view_productosterceros"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 69,
+    "fields": {
+        "name": "Can add application",
+        "content_type": 17,
+        "codename": "add_application"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 70,
+    "fields": {
+        "name": "Can change application",
+        "content_type": 17,
+        "codename": "change_application"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 71,
+    "fields": {
+        "name": "Can delete application",
+        "content_type": 17,
+        "codename": "delete_application"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 72,
+    "fields": {
+        "name": "Can view application",
+        "content_type": 17,
+        "codename": "view_application"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 73,
+    "fields": {
+        "name": "Can add access token",
+        "content_type": 18,
+        "codename": "add_accesstoken"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 74,
+    "fields": {
+        "name": "Can change access token",
+        "content_type": 18,
+        "codename": "change_accesstoken"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 75,
+    "fields": {
+        "name": "Can delete access token",
+        "content_type": 18,
+        "codename": "delete_accesstoken"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 76,
+    "fields": {
+        "name": "Can view access token",
+        "content_type": 18,
+        "codename": "view_accesstoken"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 77,
+    "fields": {
+        "name": "Can add grant",
+        "content_type": 19,
+        "codename": "add_grant"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 78,
+    "fields": {
+        "name": "Can change grant",
+        "content_type": 19,
+        "codename": "change_grant"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 79,
+    "fields": {
+        "name": "Can delete grant",
+        "content_type": 19,
+        "codename": "delete_grant"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 80,
+    "fields": {
+        "name": "Can view grant",
+        "content_type": 19,
+        "codename": "view_grant"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 81,
+    "fields": {
+        "name": "Can add refresh token",
+        "content_type": 20,
+        "codename": "add_refreshtoken"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 82,
+    "fields": {
+        "name": "Can change refresh token",
+        "content_type": 20,
+        "codename": "change_refreshtoken"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 83,
+    "fields": {
+        "name": "Can delete refresh token",
+        "content_type": 20,
+        "codename": "delete_refreshtoken"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 84,
+    "fields": {
+        "name": "Can view refresh token",
+        "content_type": 20,
+        "codename": "view_refreshtoken"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 85,
+    "fields": {
+        "name": "Can add id token",
+        "content_type": 21,
+        "codename": "add_idtoken"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 86,
+    "fields": {
+        "name": "Can change id token",
+        "content_type": 21,
+        "codename": "change_idtoken"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 87,
+    "fields": {
+        "name": "Can delete id token",
+        "content_type": 21,
+        "codename": "delete_idtoken"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 88,
+    "fields": {
+        "name": "Can view id token",
+        "content_type": 21,
+        "codename": "view_idtoken"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 89,
+    "fields": {
+        "name": "Can add pago",
+        "content_type": 22,
+        "codename": "add_pago"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 90,
+    "fields": {
+        "name": "Can change pago",
+        "content_type": 22,
+        "codename": "change_pago"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 91,
+    "fields": {
+        "name": "Can delete pago",
+        "content_type": 22,
+        "codename": "delete_pago"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 92,
+    "fields": {
+        "name": "Can view pago",
+        "content_type": 22,
+        "codename": "view_pago"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 93,
+    "fields": {
+        "name": "Can add pedido",
+        "content_type": 13,
+        "codename": "add_pedido"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 94,
+    "fields": {
+        "name": "Can change pedido",
+        "content_type": 13,
+        "codename": "change_pedido"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 95,
+    "fields": {
+        "name": "Can delete pedido",
+        "content_type": 13,
+        "codename": "delete_pedido"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 96,
+    "fields": {
+        "name": "Can view pedido",
+        "content_type": 13,
+        "codename": "view_pedido"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 97,
+    "fields": {
+        "name": "Can add producto_ tienda",
+        "content_type": 14,
+        "codename": "add_producto_tienda"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 98,
+    "fields": {
+        "name": "Can change producto_ tienda",
+        "content_type": 14,
+        "codename": "change_producto_tienda"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 99,
+    "fields": {
+        "name": "Can delete producto_ tienda",
+        "content_type": 14,
+        "codename": "delete_producto_tienda"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 100,
+    "fields": {
+        "name": "Can view producto_ tienda",
+        "content_type": 14,
+        "codename": "view_producto_tienda"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 101,
+    "fields": {
+        "name": "Can add devolucion",
+        "content_type": 23,
+        "codename": "add_devolucion"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 102,
+    "fields": {
+        "name": "Can change devolucion",
+        "content_type": 23,
+        "codename": "change_devolucion"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 103,
+    "fields": {
+        "name": "Can delete devolucion",
+        "content_type": 23,
+        "codename": "delete_devolucion"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 104,
+    "fields": {
+        "name": "Can view devolucion",
+        "content_type": 23,
+        "codename": "view_devolucion"
     }
 },
 {
     "model": "auth.group",
     "pk": 1,
     "fields": {
-        "name": "vendedores",
+        "name": "clientes",
         "permissions": [
-            29,
-            30,
-            31,
-            32
+            33,
+            34,
+            36,
+            61,
+            62,
+            63,
+            64,
+            53,
+            54,
+            56,
+            24,
+            60
         ]
     }
 },
@@ -392,9 +2312,28 @@
     "model": "auth.group",
     "pk": 2,
     "fields": {
-        "name": "clientes",
+        "name": "vendedores",
         "permissions": [
-            24
+            32,
+            45,
+            46,
+            47,
+            48,
+            92,
+            56,
+            21,
+            22,
+            24,
+            49,
+            57,
+            58,
+            51,
+            52,
+            60,
+            41,
+            43,
+            44,
+            40
         ]
     }
 },
@@ -467,23 +2406,431 @@
     "pk": 9,
     "fields": {
         "app_label": "tienda",
+        "model": "cuentabancaria"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 10,
+    "fields": {
+        "app_label": "tienda",
         "model": "vendedor"
     }
 },
 {
-    "model": "sessions.session",
-    "pk": "otsl7pkosovshp10c82f40n0n6g1w748",
+    "model": "contenttypes.contenttype",
+    "pk": 11,
     "fields": {
-        "session_data": ".eJxVjDsOwjAQBa-CXCNn483mV9Jzhsi7trEB2VI-FeLuBClN2jcz76OCl2inlJOkokYFpoKmMmDoUpsRW3VVk93WOG2Ln6fkdgXPG1t5-fwH7mnzo2gpeZ0T67-iD7roe3H-fTvc00G0S9zrgcE02AUwEpCGjpERDHJNjaAAwcDUd6YPRJ6CB6KBgAP2gaWX1qnvD1roQBc:1tzw0u:fryRZA9T7r2eodRvWfPa_K3gTAnMdC_f3lCzQ4eg_Jo",
-        "expire_date": "2025-04-16T13:12:08.754"
+        "app_label": "tienda",
+        "model": "tienda"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 12,
+    "fields": {
+        "app_label": "tienda",
+        "model": "datosvendedor"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 13,
+    "fields": {
+        "app_label": "tienda",
+        "model": "producto_tienda"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 14,
+    "fields": {
+        "app_label": "tienda",
+        "model": "pedido"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 15,
+    "fields": {
+        "app_label": "tienda",
+        "model": "lineapedido"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 16,
+    "fields": {
+        "app_label": "tienda",
+        "model": "productosterceros"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 17,
+    "fields": {
+        "app_label": "oauth2_provider",
+        "model": "application"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 18,
+    "fields": {
+        "app_label": "oauth2_provider",
+        "model": "accesstoken"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 19,
+    "fields": {
+        "app_label": "oauth2_provider",
+        "model": "grant"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 20,
+    "fields": {
+        "app_label": "oauth2_provider",
+        "model": "refreshtoken"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 21,
+    "fields": {
+        "app_label": "oauth2_provider",
+        "model": "idtoken"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 22,
+    "fields": {
+        "app_label": "tienda",
+        "model": "pago"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 23,
+    "fields": {
+        "app_label": "tienda",
+        "model": "devolucion"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "0szpumw2pmlkw7fzmtwddb2titb7u32h",
+    "fields": {
+        "session_data": ".eJxVjs0OwiAQhF_FcDaUpVBqj959BrIsi0UNJP05Gd_dNulBr_PNfJm38Lguo19nnnyOYhAgzr9ZQHpy2UF8YLlXSbUsUw5yr8iDzvJWI7-uR_dPMOI8buuWkmkBKWiANl6QKUaLziI5VEo76JQOl97awJFSn7TtDTEDGVAuOLNJE9OIPpdMue5HTaNso5W2J60G6MTnCxyCQRs:1uFGeh:I9KvDCGPhU7CLqOw8AdhxCEXnqfAoIqrjANl5B5VI3Y",
+        "expire_date": "2025-05-28T20:16:35.419"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "1r06l8m5gxxkctc5hqsj9cyb4mlefz72",
+    "fields": {
+        "session_data": "eyJmZWNoYV9pbmljaW8iOiIwNi8wNS8yMDI1IDE1OjM3In0:1uCIUg:7oOrtykIZuXf1S-1sAUUdjK-UDpu6DmPJAL2fxknL9s",
+        "expire_date": "2025-05-20T15:37:58.398"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "31nt6ftpgqtzy9ldx7wj2mezpege9cqr",
+    "fields": {
+        "session_data": ".eJxVjDkOwjAQRa-CXCPHS8ZLSnrOYE2cMTYgW8pSIe5OkNKk_e-9_2GJYsZQaomlsYEJ1QnolFBwkX4Aw64s4LbmsC00hzLtijpvI8YX1T-YnlgfjcdW17mM_K_wgy783iZ63w73dJBxyXtNhqRxSIC9tVIrZZ02AKSjMDbFCNanZKwD53stvSBnFKooUfuEYIh9f2ejP-I:1uAucn:hD1QU9LnAPZoPR76LrV5CnrtgPFED8JvQKqZ2QwLU3U",
+        "expire_date": "2025-05-16T19:56:37.390"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "337iuh2c17oe6uzdp35kv3k3rho21p5b",
+    "fields": {
+        "session_data": ".eJxVjEEOwiAQRe_C2hCGglCX7nsGMswMUjVtUtqV8e7apAvd_vfef6mE21rT1mRJI6uLAnX63TLSQ6Yd8B2n26xpntZlzHpX9EGbHmaW5_Vw_w4qtvqtOyquA6RsATruUYjZY_BIAY2xAc7G5j56n4WpxGJ9dCQC5MCEHJx6fwD6HjhI:1u9Wqw:h7gZ3eej6elpg2vFRLvIsWwmWgzXA54lnm8d6jrVqXQ",
+        "expire_date": "2025-05-13T00:21:30.125"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "3g2in2qsp7743mrq954ctx4f06ikg0k9",
+    "fields": {
+        "session_data": ".eJxVjDsOwyAQBa8SUUd4-RnbZfqcAS0LBJIIJH-qKHePI7lx-2bmfViKlNGVWqg0NjFQHfSdBGkuop8A2JU53NbstiXOroRdEefNI71i_YPwxPponFpd5-L5X-EHXfi9hfi-He7pIOOS91pR0kogeSmECiNGCsGgNUgWAaQVPUg_Dsb4GCgNSZpBU4yCtADrrWbfH5ggQRg:1uMSC7:1C3xJ_A368rWBxmzgUnsyk3m4gh9iFoGoYPI4KL7bjo",
+        "expire_date": "2025-06-17T16:00:47.362"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "4eq94lq84h8e60gaby7ir2g5k6c1t0ds",
+    "fields": {
+        "session_data": ".eJxdjDkOwjAQRa-CXCPHS7ylpOcM1mQyxgZkS1kqxN1JJBpo_3vvv1gizBBLLVgaG5gwnbCdEsqcpBiEYmcWYVtz3BaaY5l25W8bAR9UDzDdod4ax1bXuYz8UPiXLvzaJnpevu7PQYYl7zVZktYDGeidk1op57U1hjQK6xKicSEl67zxodcyCPJWgUIJOiQwltj7A15CP9Q:1uN5Yi:bL_Ix33L3leEYRSB1mReMHVgXuFEEU4Q-faTnMVIpi8",
+        "expire_date": "2025-06-19T10:02:44.412"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "56h73zda6z6jri3v1sdsrs8vv7f8nsus",
+    "fields": {
+        "session_data": ".eJxVjTsOwyAQBa8SUUd4vYDBLtPnDGj5BZIIJH-qKHdPLLlx-2Y078NS9JlsqcWXxiYGpoOhQ0B1QZxUz67M0rZmuy1xtiX8FXXeHPlXrDsIT6qPxn2r61wc3xV-0IXfW4jv2-GeApmWvD9Hp7UUyVCKJDBJTdoEcCIKPWqMQCh6lAhmAOGTMmokqQboPXrVK8e-P336P98:1uON0M:sZoYrfR2Q6wz4gbxJ8TY69wxjr-uc6sPpFIQfQU2ux4",
+        "expire_date": "2025-06-22T22:52:34.452"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "5dfzclw41y5ywkhcxmbyhjk0rhufac0c",
+    "fields": {
+        "session_data": "eyJmZWNoYV9pbmljaW8iOiIyNC8wNC8yMDI1IDEyOjQxIn0:1u7u1m:TMtTNSw5IDUZYJNrGAXq1mpLftVyXxBt4AnVwLk3U10",
+        "expire_date": "2025-05-08T12:41:58.698"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "5nxlxowwmt14oqkwsn2qptl8wcccscpj",
+    "fields": {
+        "session_data": ".eJxVjDkOwjAQRa-CXCPH-5KSnjNEk8kYG5AtZakQdydIadL-997_sESYYSi1YGmsZ8J0wnVKKHuRsTeSXdkA25qHbaF5KNOuqPM2Ar6o_sH0hPpoHFtd5zLyv8IPuvB7m-h9O9zTQYYl7zU5ki4AWTDeS62UD9pZSxqF8wnR-piS88GGaLSMgoJToFCCjgmsI_b9AWXCP98:1uMs7v:2X4QV3EejZCP7VVVrsnK5BU84iaSBRPQU0KHeoeDY5E",
+        "expire_date": "2025-06-18T19:42:11.878"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "5s8p42vjf5i8num1wnvn5tznoiwnk5ax",
+    "fields": {
+        "session_data": ".eJxVjDsOwyAQBa8SUUcYloDBZfqcAS2wDiQRSP5UUe4eW3Lj9s3M-7KRYkZfaomlsYEJ3QnTgQB9kW4Qll2Zx3XJfp1p8iVtijpvAeOb6g7SC-uz8djqMpXAd4UfdOaPluhzP9zTQcY5b7WBZCW5W68SSmkNSAjOCRUCEDkbjdOoe6OVlZqQcKRgoZcOhDVknGS_P2n9P9g:1uNE4p:Zk6a92ZX7-cTZNtmu_lLT6qZbBylFLNVscSqh8tWRrY",
+        "expire_date": "2025-06-19T19:08:27.727"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "6jm4bsxwepw70gb2foqp8rbjknoz50ad",
+    "fields": {
+        "session_data": ".eJxVjDkOwjAQRa-CXCPHS7ylpOcM1mQyxgZkS1kqxN0JUpq0_733PywRZoilFiyNDUz6TphOCWUuSgxCsCuLsK05bgvNsUy7os7bCPii-gfTE-qjcWx1ncvI_wo_6MLvbaL37XBPBxmWvNdkSVoPZKB3TmqlnNfWGNIorEuIxoWUrPPGh17LIMhbBQol6JDAWGLfH1_OP9Y:1uGiJZ:29vBHLfEQo_b9OkTWiCz3ZPDbi4qIxv5jTxhjcv7e0k",
+        "expire_date": "2025-06-01T20:00:45.356"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "6luntcwz3as3s058r6g03m4ay2h4kj5b",
+    "fields": {
+        "session_data": ".eJxVjMsOwiAQRX_FsDaUoYy0Xbr3G8gwgKAGkj5Wxn_XJt24veec-xYpciZXauHSxCRg7BR2Wmk8AU5gxFk42tbstiXOroRd-d888TPWHYQH1XuT3Oo6Fy93RR50kbcW4ut6uH8HmZb8q3tOpgdirwH6MFLkEJAsEltSSlu4KO3HAdHHwGlIGgfDMQIbUNZbIz5fnzhBIg:1uH0Jn:wXE7WM0zMsm8zetqgswA2lLs9DU4luILu9iR2tebIEM",
+        "expire_date": "2025-06-02T15:14:11.911"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "7cwpz1g82p5jfrxu3atutgr0hxziz2c5",
+    "fields": {
+        "session_data": ".eJxVjDkOwjAQRa-CXCPHS8ZLSnrOYE2cMTYgW8pSIe4OkdKk_e-9_2GJYsZQaomlsYEp3QnolFBwUXoAwa4s4LbmsC00hzLtynkbMb6o7mB6Yn00Hltd5zLyXeEHXfi9TfS-He7pIOOS_zUZksYhAfbWSq2UddoAkI7C2BQjWJ-SsQ6c77X0gpxRqKJE7ROCIfb9AWJZP9o:1uIaIE:dYyymbgt3i_c8XbkvXg2y28ivywPGer3Yo8EbM5WRpk",
+        "expire_date": "2025-06-06T23:51:06.099"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "7pziyqnq8ucey5ybhrxyv6qqai4s3ja2",
+    "fields": {
+        "session_data": "eyJmZWNoYV9pbmljaW8iOiIzMC8wNS8yMDI1IDE3OjM5In0:1uL1pa:2wdvHDnI9FpbkLlnJy6mhNRi0LH62pBfA5TynvhbkmY",
+        "expire_date": "2025-06-13T17:39:38.031"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "bj5ubq699b715zrmv5lvdf53z2pislo2",
+    "fields": {
+        "session_data": ".eJxVjDkOwjAQRa-CXCPHS8ZLSnrOYE2cMTYgW8pSIe4OkdKk_e-9_2GJYsZQaomlsYEp1wnolFBwkXYAwa4s4LbmsC00hzLtynkbMb6o7mB6Yn00Hltd5zLyXeEHXfi9TfS-He7pIOOS_zUZksYhAfbWSq2UddoAkI7C2BQjWJ-SsQ6c77X0gpxRqKJE7ROCIfb9AWgPP-I:1uKJ38:WXQVdG_t4rpRc23sORnhKmU9748b7n15JYgGvpApMVc",
+        "expire_date": "2025-06-11T17:50:38.258"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "ecdnwg2earqtxutmcj4zgknxdduigf6q",
+    "fields": {
+        "session_data": ".eJxVjTsOwyAQBa8SUUc2i8HYLtPnDGhZlkASgeRPFeXuiSU3bt-M5n1EZErocsmUq5hEB600rZLKXKCfpBZX4XBbk9sWnl0OfwXOm0d6cdlBeGJ51IZqWefsm11pDro09xr4fTvcUyDhkvZniroDJK8AujAiUwgGrUGyKKWy0Evlx8EYz4HiEJUZNDEDaZDWWy2-P5raQRw:1uLMxB:Lu-1gzLqzIU-EMuDcMs5lnyUB5RdvgLpD1kk9NE1fqI",
+        "expire_date": "2025-06-14T16:12:53.228"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "eeseytmefp1csmgji347y0lnv97whe53",
+    "fields": {
+        "session_data": ".eJxVjMsOwiAQRX_FsDaU4VFql-79BjIMIKiBpI-V8d9tky50e8-5580crkt26xwnVwIbGbDz7-aRnrHuIDyw3hunVpepeL4r_KAzv7UQX9fD_QtknPP2VpS0AiQvAVS4YKQQDFqDZFEIaaEX0l8GY3wMlIYkzaApRiANwnqrt2iKlNGVWqi0rShVJ3QnhTQn6Efo2ecLHJJBHw:1u7au8:9fJTPJ5BjFe4kHhuSZOxCQhsC1ZKRWmZIE0nl_GTjaY",
+        "expire_date": "2025-05-07T16:16:48.752"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "ely9wuvph0ykvnpobl34sbtzv01q978p",
+    "fields": {
+        "session_data": ".eJxVjEEOwiAQRe_C2hCGglCX7nsGMswMUjVtUtqV8e7apAvd_vfef6mE21rT1mRJI6uLAnX63TLSQ6Yd8B2n26xpntZlzHpX9EGbHmaW5_Vw_w4qtvqtOyquA6RsATruUYjZY_BIAY2xAc7G5j56n4WpxGJ9dCQC5MCEHJx6fwD6HjhI:1uBZp8:1LK9Fa2cz3P2LesC36mskKXq-wBwqIF3yX5EQ0TDx9A",
+        "expire_date": "2025-05-18T15:56:06.100"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "fd0orsoaxlvorrdqgbhlhpjr0zizs7nl",
+    "fields": {
+        "session_data": ".eJxVjEEOwiAQRe_C2hCGglCX7nsGMswMUjVtUtqV8e7apAvd_vfef6mE21rT1mRJI6uLAnX63TLSQ6Yd8B2n26xpntZlzHpX9EGbHmaW5_Vw_w4qtvqtOyquA6RsATruUYjZY_BIAY2xAc7G5j56n4WpxGJ9dCQC5MCEHJx6fwD6HjhI:1uNdmp:b8I1-D9-kOhb7aMGVEz6oJ413LuQGd3EOQU88ynbYqM",
+        "expire_date": "2025-06-20T22:35:35.694"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "fmhep7x2jbr0vt1jhrrul3dr4gzjg66u",
+    "fields": {
+        "session_data": ".eJxVjs0OwiAQhF_FcDYUtiBtj959BrIsi0UNJP05Gd_dNulBr_PNfJm38Lguo19nnnyOYhBanH-zgPTksoP4wHKvkmpZphzkXpEHneWtRn5dj-6fYMR53NYtJdNqpABat7FHphgtOovkUClw-qIg9J21gSOlLoHtDDFrMlq54MwmTUwj-lwy5bofhUbZBhTYk-4HMOLzBRyNQSA:1uEWtf:gvRC1eWz07dVDA7UK_RepURv5KzKiTziSpMotR8S4vY",
+        "expire_date": "2025-05-26T19:24:59.888"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "hkttqu7j3h1u5qkxuhofqydkod9sm3d7",
+    "fields": {
+        "session_data": ".eJxVjDkOwjAQRa-CXCPHS8ZLSnrOYE2cMTYgW8pSIe4OkdKk_e-9_2GJYsZQaomlsYEp2wnolFBwkW4AYFcWcFtz2BaaQ5l25byNGF9UdzA9sT4aj62ucxn5rvCDLvzeJnrfDvd0kHHJ_5oMSeOQAHtrpVbKOm0ASEdhbIoRrE_JWAfO91p6Qc4oVFGi9gnBEPv-AGtlP-c:1uJxik:JVt1khEco3dG5dx6oDCo0-FzerMKvMrkLRJTgc9wlTE",
+        "expire_date": "2025-06-10T19:04:10.705"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "iudu2f374wjgaqgr4obsnh0erapcf7em",
+    "fields": {
+        "session_data": ".eJxVjTsOwyAQBa8SUUd4vYDBLtPnDGj5BZIIJH-qKHdPLLlx-2Y078NS9JlsqcWXxiYGpoOhQ0B1wX6SyK7M0rZmuy1xtiX8FXXeHPlXrDsIT6qPxn2r61wc3xV-0IXfW4jv2-GeApmWvD9Hp7UUyVCKJDBJTdoEcCIKPWqMQCh6lAhmAOGTMmokqQboPXrVK8e-P31JP94:1uOLym:uyfJtbY3y_QovRUQgzl4X-i51D4ef3tQawxVP5l1Ork",
+        "expire_date": "2025-06-22T21:46:52.576"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "k1i4ju3dhpwnpjczi2mgk63h3hxzump6",
+    "fields": {
+        "session_data": ".eJxVjcsOwiAQRX_FsDaUoSC1S_d-AxmGQVADSR8r479rk266vefk3I9ITBl9qYVKE6PoVadsp5W2J3CjNeIsPK5L9uvMky_xr8BxC0gvrhuIT6yPJqnVZSpBborc6SzvLfL7truHQMY5b8-UTA9IQQP08YpMMVp0FsmhUtrBRelwHawNHCkNSdvBEDOQAeWCM-L7A541QSE:1uL243:IQwRR02JRn6S_veD3Kzx0az4yLTA90urYtg_Z7RLcpk",
+        "expire_date": "2025-06-13T17:54:35.159"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "kecysurhprj5ux32qj9b74mnpjupilns",
+    "fields": {
+        "session_data": ".eJxVjEEOwiAQRe_C2hCGglCX7nsGMswMUjVtUtqV8e7apAvd_vfef6mE21rT1mRJI6uLAnX63TLSQ6Yd8B2n26xpntZlzHpX9EGbHmaW5_Vw_w4qtvqtOyquA6RsATruUYjZY_BIAY2xAc7G5j56n4WpxGJ9dCQC5MCEHJx6fwD6HjhI:1uKJwx:go7d51ueheBknowblfSMRNXt_7vF8BrHNrbEV27b6lY",
+        "expire_date": "2025-06-11T18:48:19.318"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "le9ldy98zgrebbl5txmlf7w91rgr7cd3",
+    "fields": {
+        "session_data": "eyJmZWNoYV9pbmljaW8iOiIwMi8wNS8yMDI1IDE5OjMwIn0:1uAuDS:cUm3NaNWIWiLu_JRCitMOTtTC1GUkgJ1KFyPhZg9Gwo",
+        "expire_date": "2025-05-16T19:30:26.455"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "ltvtnp1kykde1xuui9f0dwhy4huk2867",
+    "fields": {
+        "session_data": ".eJxVjMsOwiAQRX_FsDaUoSBtl-79BjIMg6AGkj5Wxn_XJt24veec-xaJKaMvtVBpYhIwdsp2Wml7AjMZJ87C47Zmvy08-xJ35X8LSE-uO4gPrPcmqdV1LkHuijzoIm8t8ut6uH8HGZf8q3tKpgekoAH6OCJTjBadRXKolHZwUTqMg7WBI6UhaTsYYgYyoFxwRny-oplBJw:1uGztk:uGtix0NV18tfhRVKZcvfd1Jc336OdOp6T-82C-nPxf0",
+        "expire_date": "2025-06-02T14:47:16.899"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "lxkyckxbgszkknia1v979lsk6nctntak",
+    "fields": {
+        "session_data": ".eJxVjEEOwiAQRe_C2hCGglCX7nsGMswMUjVtUtqV8e7apAvd_vfef6mE21rT1mRJI6uLAnX63TLSQ6Yd8B2n26xpntZlzHpX9EGbHmaW5_Vw_w4qtvqtOyquA6RsATruUYjZY_BIAY2xAc7G5j56n4WpxGJ9dCQC5MCEHJx6fwD6HjhI:1uBZJE:gsQ032rJ5CqzEgeO5wbbHHgeslnaEVyRvfDeVGBr0bE",
+        "expire_date": "2025-05-18T15:23:08.341"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "nyhv73t8h9usy7ofxeh8vvmq1s5hgpew",
+    "fields": {
+        "session_data": ".eJxVjMsOwiAQRX_FsDaUoSC1S_d-AxmGQVADSR8r479rk266veec-xGJKaMvtVBpYhQAnbKdVtqeNIxgxVl4XJfs15knX-KmHLeA9OK6gfjE-miSWl2mEuSmyJ3O8t4iv2-7ezjIOOd_3VMyPSAFDdDHKzLFaNFZJIdKaQcXpcN1sDZwpDQkbQdDzEAGlAvOiO8Pl_5BGA:1uEC9C:CaaNtDQ67rDMn9wMNQyWMy4joSvM_ccQPf5edtPwf-c",
+        "expire_date": "2025-05-25T21:15:38.688"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "nz1homoeg4ttngu9e3a704wtj29tn66k",
+    "fields": {
+        "session_data": ".eJxVjEEOwiAQRe_C2hCGglCX7nsGMswMUjVtUtqV8e7apAvd_vfef6mE21rT1mRJI6uLAnX63TLSQ6Yd8B2n26xpntZlzHpX9EGbHmaW5_Vw_w4qtvqtOyquA6RsATruUYjZY_BIAY2xAc7G5j56n4WpxGJ9dCQC5MCEHJx6fwD6HjhI:1uG2IK:g_BLE8L3lOy9Rs_c38EzziGO0fhNrnN-Pkh5u4wzaRU",
+        "expire_date": "2025-05-30T23:08:40.876"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "o7pd3i2eegp1mg7luc0p76ej2ullz8v5",
+    "fields": {
+        "session_data": ".eJxVjDsOwyAQBa8SUUcYloDBZfqcAS2wDiQRSP5UUe4eW3Lj9s3M-7KRYkZfaomlsYEJ1QnTgQB9kWIAw67M47pkv840-ZI2RZ23gPFNdQfphfXZeGx1mUrgu8IPOvNHS_S5H-7pIOOct9pAspLcrVcJpbQGJATnhAoBiJyNxmnUvdHKSk1IOFKw0EsHwhoyTrLfH2JZP80:1uMMzC:vh-vneyi9_VpSVs0V02TiBsOLvZPYXTFps1q8KGh9v8",
+        "expire_date": "2025-06-17T10:27:06.649"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "r5pulox8nxzpy413ko9zvud3l1l59wbr",
+    "fields": {
+        "session_data": ".eJxVjEEOwiAQRe_C2hCGglCX7nsGMswMUjVtUtqV8e7apAvd_vfef6mE21rT1mRJI6uLAnX63TLSQ6Yd8B2n26xpntZlzHpX9EGbHmaW5_Vw_w4qtvqtOyquA6RsATruUYjZY_BIAY2xAc7G5j56n4WpxGJ9dCQC5MCEHJx6fwD6HjhI:1u7YVl:dApU4EIgQ6sUnvMYuUTQIlfI_AQEzVu7Vp2Lk4egHmI",
+        "expire_date": "2025-05-07T13:43:29.096"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "rcu44eqeyd8ooag9he6md2efj7c1eagu",
+    "fields": {
+        "session_data": ".eJxVjDsOwyAQBa8SUUcYFoPBZfqcAS2wDiQRSP5UUe4eR3Lj9s3M-7CJYkZfaomlsZGB6kTfgQB9kW7UwK7M47Zmvy00-5J2RZ23gPFF9Q_SE-uj8djqOpfA_wo_6MLvLdH7dring4xL3msDyUpy_aASSmkNSAjOCRUCEDkbjdOoB6OVlZqQcKJgYZAOhDVknGTfH2fnP9U:1u7eGx:db0XbjhJQhv6n8EQZ6O2YhM4hdU5GZSz-Aqr9TRAi9E",
+        "expire_date": "2025-05-07T19:52:35.499"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "rziwu2i3z5aem2rzevdejpyzl0myy0eu",
+    "fields": {
+        "session_data": ".eJxVjEEOwiAQRe_C2hCGglCX7nsGMswMUjVtUtqV8e7apAvd_vfef6mE21rT1mRJI6uLAnX63TLSQ6Yd8B2n26xpntZlzHpX9EGbHmaW5_Vw_w4qtvqtOyquA6RsATruUYjZY_BIAY2xAc7G5j56n4WpxGJ9dCQC5MCEHJx6fwD6HjhI:1uKJ3o:w3mWTECumqJC4itfcN1rYAKok-OlwHSASYWulsnXo64",
+        "expire_date": "2025-06-11T17:51:20.102"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "tjh0t7auyps90ffnz1xop3v7pvxklpbp",
+    "fields": {
+        "session_data": ".eJxVjDsOwyAQBa8SUUcYFvNzmT5nQGu8BJIIJH-qKHePI7lx-2bmfViimDGUWmJpbGACOmE6EKAvIAfdsysLuK05bAvNoUy7AudtxPii-gfTE-uj8djqOpeR_xV-0IXf20Tv2-GeDjIuea_JkDQOSWNvrVQA1imjNakojE0xautTMtZp53slvSBnACFKVD6hNsS-P2IyP9o:1uMBFL:f0j2harMRJDsqygj9Y_HiTqX4disFPDOObQU2XhIpB8",
+        "expire_date": "2025-06-16T21:54:59.041"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "ttg7g6u8lcum9uk96qns6zuab3zx08bj",
+    "fields": {
+        "session_data": ".eJxVjDsOwyAQBa8SUUcY1mCwy_Q5A1oWCCQRSP5UUe4eR3Lj9s3M-7AUKaMrtVBpbGICOjF0IEBfAKbesitzuK3ZbUucXQm7Is-bR3rF-gfhifXROLW6zsXzv8IPuvB7C_F9O9zTQcYl73VPSfUSyYOUfRgxUggajUYyKAQYOQjwo9Xax0DJJtBWUYySlBTGG8W-P5zIQR8:1uMBvi:GtLq6bppUxIW7ryYX_KoHuxzTYHvMtiP4n3xbFCvU2g",
+        "expire_date": "2025-06-16T22:38:46.430"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "v4z15sg73npivx3cqa7zwufksd4qz0uu",
+    "fields": {
+        "session_data": ".eJxVjDsOwyAQBa8SUUeYxWBsl-lzBrQsS0wSgeRPFeXucSQ3bt_MvI9ITBP6XDLlKkahu0bZRittLzCMoMRVeNzWyW8Lzz7HXYHzFpBeXP4gPrE8qqRa1jkH-VfkQRd5r5Hft8M9HUy4THvdUjItIAUN0MYBmWK06CySQ6W0g07pMPTWBo6U-qRtb4gZyIBywRnx_QGdz0Eg:1uJbLn:SlixrDFkXtbYQd0VGSSpznK2CxCN6_uHTNl01kl_ZD0",
+        "expire_date": "2025-06-09T19:10:59.585"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "w720kwxtssj2tlj6m33z0bk8p63yl4ve",
+    "fields": {
+        "session_data": ".eJxVjDsOwyAQBa8SUUcYFvNzmT5nQGu8BJIIJH-qKHdPLLlx-2bmfViimDGUWmJpbGCgOqE7EKAvIAcJ7MoCbmsO20JzKNOunLcR44vqDqYn1kfjsdV1LiPfFX7Qhd_bRO_b4Z4OMi75X5MhaRySxt5aqQCsU0ZrUlEYm2LU1qdkrNPO90p6Qc4AQpSofEJtiH1_X5s_1g:1uIXoq:TtqNTjpmg9P94qpo8Z2YBR6MdXohnTIUx9_RAF-MuYE",
+        "expire_date": "2025-06-06T21:12:36.124"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "wd0sjbq3kbal3x7e421fv6y3n197tfc5",
+    "fields": {
+        "session_data": ".eJxVjDsOwyAQBa8SUUeYBYPBZfqcAS2wDiQRSP5UUe6eWHLj9s3M-7CJYkZfaomlsZEp0Ym-k0LqC-gRFLsyj9ua_bbQ7EvalfMWML6o7iA9sT4aj62ucwl8V_hBF35vid63wz0dZFzyvzYyWSDXDyohgDUSZHBOqBAkkbPROI16MFpZ0ISEEwUrB3BSWEPGAfv-AGGnP8w:1uA7Fn:RXU3u7AB94l98xqZIHsWcSC3980qLJoOdogIAMITVQk",
+        "expire_date": "2025-05-14T15:13:35.141"
     }
 },
 {
     "model": "tienda.usuario",
-    "pk": 3,
+    "pk": 1,
     "fields": {
-        "password": "pbkdf2_sha256$870000$HZD8YnHYsXGug4Aqah9HfK$93hk1qHEs8mwT/LCeD7/19thxccfHczSZbSKDW10Nu0=",
-        "last_login": "2025-04-02T13:12:08.718",
+        "password": "pbkdf2_sha256$870000$JjCoHJX8T1MWvmnGZd2MxH$j+BpuO2AG2wdM6yIfJa1wH9XQlNWEW4JSVYJhSlgU8o=",
+        "last_login": "2025-06-08T21:40:57.007",
         "is_superuser": true,
         "username": "nelson",
         "first_name": "",
@@ -491,7 +2838,7 @@
         "email": "",
         "is_staff": true,
         "is_active": true,
-        "date_joined": "2025-04-02T12:18:43",
+        "date_joined": "2025-04-23T11:15:27",
         "rol": 1,
         "groups": [],
         "user_permissions": []
@@ -499,19 +2846,19 @@
 },
 {
     "model": "tienda.usuario",
-    "pk": 4,
+    "pk": 2,
     "fields": {
-        "password": "pbkdf2_sha256$870000$8EUpwGvdkdmj827o9Icutt$MKxOCoJTpgcpMWV+U44SlzQhXVk86qnjldYy5644DBQ=",
-        "last_login": "2025-04-02T12:35:41.079",
+        "password": "pbkdf2_sha256$870000$ItretZb7lQVbi4cG8g7c60$EGhdAcnW2O7YYNITDtuEJM63YE3dDnRic+n/uq6yQIM=",
+        "last_login": "2025-06-08T20:30:22.114",
         "is_superuser": false,
-        "username": "pedro",
-        "first_name": "Pedro",
-        "last_name": "Perez",
-        "email": "pedro@gmail.com",
+        "username": "maria",
+        "first_name": "maria",
+        "last_name": "sanchez",
+        "email": "maria@gmail.com",
         "is_staff": false,
         "is_active": true,
-        "date_joined": "2025-04-02T12:21:44.061",
-        "rol": 3,
+        "date_joined": "2025-04-23T11:24:23.426",
+        "rol": 2,
         "groups": [
             1
         ],
@@ -520,19 +2867,19 @@
 },
 {
     "model": "tienda.usuario",
-    "pk": 5,
+    "pk": 3,
     "fields": {
-        "password": "pbkdf2_sha256$870000$LI9Ihoe7wmfLXLcbOcVpHn$u7F5msPWC3lJCvgipK8xfm9GEphCRq2mMF2yzgs4zS8=",
-        "last_login": "2025-04-02T12:36:08.473",
+        "password": "pbkdf2_sha256$870000$nBiZWWyruLgnBllmyTq3uH$4Trf7luVQOqizPG+cARJF/HGEDIuSwcbMDtdzMeYY/E=",
+        "last_login": "2025-06-08T20:15:20.708",
         "is_superuser": false,
-        "username": "maria",
-        "first_name": "Maria",
-        "last_name": "Sanchez",
-        "email": "maria@gmail.com",
+        "username": "pedro",
+        "first_name": "pedro",
+        "last_name": "perez",
+        "email": "pedro@gmail.com",
         "is_staff": false,
         "is_active": true,
-        "date_joined": "2025-04-02T12:22:22.624",
-        "rol": 2,
+        "date_joined": "2025-04-23T11:25:24.340",
+        "rol": 3,
         "groups": [
             2
         ],
@@ -540,27 +2887,861 @@
     }
 },
 {
-    "model": "tienda.cliente",
-    "pk": 1,
+    "model": "tienda.usuario",
+    "pk": 4,
     "fields": {
-        "usuario": 5
+        "password": "pbkdf2_sha256$870000$l0j1WWZxzVUq7JhncfJjzj$CzXgeDXvKQdO1vngmQPb9V+tn6EKxIh5mZk8yhNsUr4=",
+        "last_login": "2025-06-08T17:59:05.412",
+        "is_superuser": false,
+        "username": "hector",
+        "first_name": "hector",
+        "last_name": "martinez",
+        "email": "senior@gmail.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2025-04-30T12:59:47.023",
+        "rol": 3,
+        "groups": [
+            2
+        ],
+        "user_permissions": []
+    }
+},
+{
+    "model": "tienda.usuario",
+    "pk": 5,
+    "fields": {
+        "password": "pbkdf2_sha256$870000$Ca9MhHFs16L3r4J3ExDdVO$PlsGp0jcnCoaBAmUxA6aA6eyxzTE58h1LaEvitEBR90=",
+        "last_login": "2025-06-08T22:52:34.417",
+        "is_superuser": false,
+        "username": "mario",
+        "first_name": "Mario",
+        "last_name": "Galindo",
+        "email": "mario@gmail.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2025-06-02T21:00:11.779",
+        "rol": 3,
+        "groups": [
+            2
+        ],
+        "user_permissions": []
+    }
+},
+{
+    "model": "tienda.usuario",
+    "pk": 6,
+    "fields": {
+        "password": "pbkdf2_sha256$870000$HN3Fvw83njcps0DIefbnyP$oRrSgcG/247ihdYyt49G+iNoBa90AwCzWuLnLzVkL1w=",
+        "last_login": "2025-06-05T19:01:26.102",
+        "is_superuser": false,
+        "username": "jean",
+        "first_name": "Jean Carlos",
+        "last_name": "De Leon",
+        "email": "jam@gmail.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2025-06-05T19:01:25.826",
+        "rol": 2,
+        "groups": [
+            1
+        ],
+        "user_permissions": []
+    }
+},
+{
+    "model": "tienda.usuario",
+    "pk": 7,
+    "fields": {
+        "password": "pbkdf2_sha256$870000$F3yGzwEMcZvJinsKhWTwVo$TLGsihs8LU5sDju5OKA4JDTovVTYyUfCdo8yxaBO+WI=",
+        "last_login": "2025-06-08T21:24:32.587",
+        "is_superuser": false,
+        "username": "carlos",
+        "first_name": "carlos",
+        "last_name": "de leon",
+        "email": "carlos@gmail.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2025-06-06T23:13:10.190",
+        "rol": 2,
+        "groups": [
+            1
+        ],
+        "user_permissions": []
+    }
+},
+{
+    "model": "tienda.usuario",
+    "pk": 13,
+    "fields": {
+        "password": "pbkdf2_sha256$870000$6xAh4VZ5lKLovUFsWjZjGh$+yHSJ8f/KrafSuI6v2u8ZOHtyN6lhTk55KECdIfwyUQ=",
+        "last_login": "2025-06-08T01:53:52.970",
+        "is_superuser": false,
+        "username": "sol",
+        "first_name": "sol",
+        "last_name": "ramirez",
+        "email": "solramirez@gmail.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2025-06-08T01:01:32.155",
+        "rol": 2,
+        "groups": [
+            1
+        ],
+        "user_permissions": []
     }
 },
 {
     "model": "tienda.vendedor",
     "pk": 1,
     "fields": {
+        "usuario": 3
+    }
+},
+{
+    "model": "tienda.vendedor",
+    "pk": 2,
+    "fields": {
         "usuario": 4
+    }
+},
+{
+    "model": "tienda.vendedor",
+    "pk": 4,
+    "fields": {
+        "usuario": 1
+    }
+},
+{
+    "model": "tienda.vendedor",
+    "pk": 5,
+    "fields": {
+        "usuario": 5
     }
 },
 {
     "model": "tienda.pieza",
     "pk": 1,
     "fields": {
-        "nombre": "Motor",
-        "descripcion": "Motor de gasolina.",
+        "nombre": "Caja de cambio",
+        "version": "1.5",
+        "referencia": "00055448w",
+        "estado": "R",
+        "descripcion": "Es una pieza que está en buenas condiciones.",
         "marca": "Toyota",
-        "precio": 1500.0
+        "precio": 10.0,
+        "anio": 2005
+    }
+},
+{
+    "model": "tienda.pieza",
+    "pk": 3,
+    "fields": {
+        "nombre": "Alternador",
+        "version": "1.6",
+        "referencia": "8741565scw",
+        "estado": "R",
+        "descripcion": "Es un alternador bueno para vender.",
+        "marca": "Ford",
+        "precio": 30.0,
+        "anio": 2000
+    }
+},
+{
+    "model": "tienda.pieza",
+    "pk": 6,
+    "fields": {
+        "nombre": "Filtro de aceite",
+        "version": "V1.2",
+        "referencia": "FO-3421",
+        "estado": "N",
+        "descripcion": "Este filtro es como un colador para el aceite del motor. Evita que la suciedad y las partículas entren al motor, lo que ayuda a que dure más tiempo.",
+        "marca": "Bosch",
+        "precio": 15.99,
+        "anio": 2023
+    }
+},
+{
+    "model": "tienda.pieza",
+    "pk": 7,
+    "fields": {
+        "nombre": "Bujía",
+        "version": "NGK-R3",
+        "referencia": "BG-7788",
+        "estado": "N",
+        "descripcion": "Es como una chispa mágica que enciende el motor. Si no hay chispa, el coche no arranca.",
+        "marca": "NGK",
+        "precio": 7.5,
+        "anio": 2024
+    }
+},
+{
+    "model": "tienda.pieza",
+    "pk": 8,
+    "fields": {
+        "nombre": "Turbo",
+        "version": "5.5",
+        "referencia": "8741565scwqq",
+        "estado": "REC",
+        "descripcion": "Es una pieza que fue reconstruida por una casa de reparación.",
+        "marca": "Opel",
+        "precio": 40.0,
+        "anio": 2000
+    }
+},
+{
+    "model": "tienda.cliente",
+    "pk": 1,
+    "fields": {
+        "usuario": 2,
+        "puntos": 200.0
+    }
+},
+{
+    "model": "tienda.cliente",
+    "pk": 2,
+    "fields": {
+        "usuario": 6,
+        "puntos": 0.0
+    }
+},
+{
+    "model": "tienda.cliente",
+    "pk": 3,
+    "fields": {
+        "usuario": 7,
+        "puntos": 0.0
+    }
+},
+{
+    "model": "tienda.cliente",
+    "pk": 8,
+    "fields": {
+        "usuario": 13,
+        "puntos": 0.0
+    }
+},
+{
+    "model": "tienda.tienda",
+    "pk": 1,
+    "fields": {
+        "direccion": "Tienda Las Palmas de Gran Canarias",
+        "telefono": "60258748",
+        "email": "feche@gmail.com",
+        "vendedor": 1
+    }
+},
+{
+    "model": "tienda.tienda",
+    "pk": 5,
+    "fields": {
+        "direccion": "Calle Sanchez Pijúan",
+        "telefono": "60202975",
+        "email": "pj@gmail.com",
+        "vendedor": 1
+    }
+},
+{
+    "model": "tienda.tienda",
+    "pk": 6,
+    "fields": {
+        "direccion": "Tienda El Sur",
+        "telefono": "04126020291",
+        "email": "mitienda@gmail.com",
+        "vendedor": 1
+    }
+},
+{
+    "model": "tienda.tienda",
+    "pk": 9,
+    "fields": {
+        "direccion": "Calle Madrid",
+        "telefono": "60202977",
+        "email": "tienda_madrid@gmail.com",
+        "vendedor": 5
+    }
+},
+{
+    "model": "tienda.tienda",
+    "pk": 12,
+    "fields": {
+        "direccion": "tienda poligono",
+        "telefono": "6666665",
+        "email": "a@gmail.com",
+        "vendedor": 1
+    }
+},
+{
+    "model": "tienda.cuentabancaria",
+    "pk": 12,
+    "fields": {
+        "iban": "ES1234567890123456789012",
+        "banco": "Santander",
+        "moneda": "EUR",
+        "cliente": 1
+    }
+},
+{
+    "model": "tienda.cuentabancaria",
+    "pk": 13,
+    "fields": {
+        "iban": "ES1234567890123456789017",
+        "banco": "Santander",
+        "moneda": "EUR",
+        "cliente": 2
+    }
+},
+{
+    "model": "tienda.cuentabancaria",
+    "pk": 14,
+    "fields": {
+        "iban": "ES1234567890123456789111",
+        "banco": "Santander",
+        "moneda": "DOL",
+        "cliente": 3
+    }
+},
+{
+    "model": "tienda.datosvendedor",
+    "pk": 6,
+    "fields": {
+        "direccion": "calle asuncion",
+        "facturacion": "de leon",
+        "vendedor": 1
+    }
+},
+{
+    "model": "tienda.producto_tienda",
+    "pk": 4,
+    "fields": {
+        "tienda": 9,
+        "pieza": 1,
+        "stock": 6,
+        "precio": 200.0
+    }
+},
+{
+    "model": "tienda.producto_tienda",
+    "pk": 5,
+    "fields": {
+        "tienda": 1,
+        "pieza": 3,
+        "stock": 0,
+        "precio": 1000.0
+    }
+},
+{
+    "model": "tienda.producto_tienda",
+    "pk": 8,
+    "fields": {
+        "tienda": 6,
+        "pieza": 8,
+        "stock": 8,
+        "precio": 140.0
+    }
+},
+{
+    "model": "tienda.producto_tienda",
+    "pk": 9,
+    "fields": {
+        "tienda": 1,
+        "pieza": 6,
+        "stock": 87,
+        "precio": 150.0
+    }
+},
+{
+    "model": "tienda.producto_tienda",
+    "pk": 10,
+    "fields": {
+        "tienda": 5,
+        "pieza": 7,
+        "stock": 97,
+        "precio": 250.0
+    }
+},
+{
+    "model": "tienda.producto_tienda",
+    "pk": 11,
+    "fields": {
+        "tienda": 5,
+        "pieza": 6,
+        "stock": 350,
+        "precio": 250.0
+    }
+},
+{
+    "model": "tienda.producto_tienda",
+    "pk": 12,
+    "fields": {
+        "tienda": 5,
+        "pieza": 8,
+        "stock": 50,
+        "precio": 150.0
+    }
+},
+{
+    "model": "tienda.producto_tienda",
+    "pk": 13,
+    "fields": {
+        "tienda": 12,
+        "pieza": 1,
+        "stock": 94,
+        "precio": 150.0
+    }
+},
+{
+    "model": "tienda.pedido",
+    "pk": 12,
+    "fields": {
+        "estado": "C",
+        "fecha": "2025-05-16T23:28:35.114",
+        "direccion": "calle canarias nueva",
+        "cliente": 1,
+        "tienda": 1
+    }
+},
+{
+    "model": "tienda.pedido",
+    "pk": 23,
+    "fields": {
+        "estado": "C",
+        "fecha": "2025-05-28T22:14:35.280",
+        "direccion": "edificio solera",
+        "cliente": 1,
+        "tienda": 1
+    }
+},
+{
+    "model": "tienda.pedido",
+    "pk": 24,
+    "fields": {
+        "estado": "C",
+        "fecha": "2025-05-29T10:54:15.085",
+        "direccion": "fijsuedsfniunfui",
+        "cliente": 1,
+        "tienda": 1
+    }
+},
+{
+    "model": "tienda.pedido",
+    "pk": 25,
+    "fields": {
+        "estado": "C",
+        "fecha": "2025-05-31T15:57:05.641",
+        "direccion": "Tienda El Sur",
+        "cliente": 1,
+        "tienda": 1
+    }
+},
+{
+    "model": "tienda.pedido",
+    "pk": 26,
+    "fields": {
+        "estado": "C",
+        "fecha": "2025-06-01T22:32:14.307",
+        "direccion": "Calle Manuel el Falla",
+        "cliente": 1,
+        "tienda": 1
+    }
+},
+{
+    "model": "tienda.pedido",
+    "pk": 27,
+    "fields": {
+        "estado": "C",
+        "fecha": "2025-06-02T22:30:41.206",
+        "direccion": "Calle Fuentes",
+        "cliente": 1,
+        "tienda": 1
+    }
+},
+{
+    "model": "tienda.pedido",
+    "pk": 28,
+    "fields": {
+        "estado": "C",
+        "fecha": "2025-06-02T22:41:22.141",
+        "direccion": "Fee",
+        "cliente": 1,
+        "tienda": 1
+    }
+},
+{
+    "model": "tienda.pedido",
+    "pk": 30,
+    "fields": {
+        "estado": "C",
+        "fecha": "2025-06-02T23:43:06.958",
+        "direccion": "Pangolino",
+        "cliente": 1,
+        "tienda": 1
+    }
+},
+{
+    "model": "tienda.pedido",
+    "pk": 31,
+    "fields": {
+        "estado": "C",
+        "fecha": "2025-06-02T23:51:11.007",
+        "direccion": "ceffwefewf",
+        "cliente": 1,
+        "tienda": 1
+    }
+},
+{
+    "model": "tienda.pedido",
+    "pk": 32,
+    "fields": {
+        "estado": "C",
+        "fecha": "2025-06-03T00:07:13.790",
+        "direccion": "Tienda El Sur",
+        "cliente": 1,
+        "tienda": 1
+    }
+},
+{
+    "model": "tienda.pedido",
+    "pk": 33,
+    "fields": {
+        "estado": "C",
+        "fecha": "2025-06-05T10:02:55.818",
+        "direccion": "calle saarra",
+        "cliente": 1,
+        "tienda": 1
+    }
+},
+{
+    "model": "tienda.pedido",
+    "pk": 34,
+    "fields": {
+        "estado": "C",
+        "fecha": "2025-06-06T23:23:03.127",
+        "direccion": "Calle Martínez",
+        "cliente": 3,
+        "tienda": 1
+    }
+},
+{
+    "model": "tienda.pedido",
+    "pk": 36,
+    "fields": {
+        "estado": "C",
+        "fecha": "2025-06-08T15:29:14.450",
+        "direccion": "Calle feria",
+        "cliente": 1,
+        "tienda": 1
+    }
+},
+{
+    "model": "tienda.pedido",
+    "pk": 37,
+    "fields": {
+        "estado": "P",
+        "fecha": "2025-06-08T15:37:37.185",
+        "direccion": "",
+        "cliente": 1,
+        "tienda": 1
+    }
+},
+{
+    "model": "tienda.pedido",
+    "pk": 38,
+    "fields": {
+        "estado": "C",
+        "fecha": "2025-06-08T18:05:26.936",
+        "direccion": "Calle Axenedu",
+        "cliente": 3,
+        "tienda": 9
+    }
+},
+{
+    "model": "tienda.lineapedido",
+    "pk": 17,
+    "fields": {
+        "pedido": 12,
+        "pieza": 1,
+        "tienda": 5,
+        "precio": 200.0,
+        "cantidad": 3
+    }
+},
+{
+    "model": "tienda.lineapedido",
+    "pk": 20,
+    "fields": {
+        "pedido": 23,
+        "pieza": 3,
+        "tienda": 1,
+        "precio": 1000.0,
+        "cantidad": 1
+    }
+},
+{
+    "model": "tienda.lineapedido",
+    "pk": 21,
+    "fields": {
+        "pedido": 24,
+        "pieza": 1,
+        "tienda": 5,
+        "precio": 200.0,
+        "cantidad": 3
+    }
+},
+{
+    "model": "tienda.lineapedido",
+    "pk": 23,
+    "fields": {
+        "pedido": 25,
+        "pieza": 1,
+        "tienda": 5,
+        "precio": 200.0,
+        "cantidad": 5
+    }
+},
+{
+    "model": "tienda.lineapedido",
+    "pk": 24,
+    "fields": {
+        "pedido": 26,
+        "pieza": 1,
+        "tienda": 5,
+        "precio": 200.0,
+        "cantidad": 2
+    }
+},
+{
+    "model": "tienda.lineapedido",
+    "pk": 25,
+    "fields": {
+        "pedido": 26,
+        "pieza": 3,
+        "tienda": 1,
+        "precio": 1000.0,
+        "cantidad": 1
+    }
+},
+{
+    "model": "tienda.lineapedido",
+    "pk": 26,
+    "fields": {
+        "pedido": 27,
+        "pieza": 8,
+        "tienda": 6,
+        "precio": 140.0,
+        "cantidad": 2
+    }
+},
+{
+    "model": "tienda.lineapedido",
+    "pk": 27,
+    "fields": {
+        "pedido": 28,
+        "pieza": 7,
+        "tienda": 5,
+        "precio": 250.0,
+        "cantidad": 1
+    }
+},
+{
+    "model": "tienda.lineapedido",
+    "pk": 29,
+    "fields": {
+        "pedido": 30,
+        "pieza": 1,
+        "tienda": 5,
+        "precio": 200.0,
+        "cantidad": 1
+    }
+},
+{
+    "model": "tienda.lineapedido",
+    "pk": 30,
+    "fields": {
+        "pedido": 31,
+        "pieza": 6,
+        "tienda": 1,
+        "precio": 150.0,
+        "cantidad": 1
+    }
+},
+{
+    "model": "tienda.lineapedido",
+    "pk": 31,
+    "fields": {
+        "pedido": 32,
+        "pieza": 6,
+        "tienda": 1,
+        "precio": 150.0,
+        "cantidad": 1
+    }
+},
+{
+    "model": "tienda.lineapedido",
+    "pk": 32,
+    "fields": {
+        "pedido": 33,
+        "pieza": 1,
+        "tienda": 5,
+        "precio": 200.0,
+        "cantidad": 1
+    }
+},
+{
+    "model": "tienda.lineapedido",
+    "pk": 33,
+    "fields": {
+        "pedido": 33,
+        "pieza": 6,
+        "tienda": 1,
+        "precio": 150.0,
+        "cantidad": 1
+    }
+},
+{
+    "model": "tienda.lineapedido",
+    "pk": 34,
+    "fields": {
+        "pedido": 34,
+        "pieza": 7,
+        "tienda": 5,
+        "precio": 250.0,
+        "cantidad": 3
+    }
+},
+{
+    "model": "tienda.lineapedido",
+    "pk": 39,
+    "fields": {
+        "pedido": 36,
+        "pieza": 6,
+        "tienda": 1,
+        "precio": 150.0,
+        "cantidad": 2
+    }
+},
+{
+    "model": "tienda.lineapedido",
+    "pk": 40,
+    "fields": {
+        "pedido": 36,
+        "pieza": 1,
+        "tienda": 12,
+        "precio": 150.0,
+        "cantidad": 5
+    }
+},
+{
+    "model": "tienda.lineapedido",
+    "pk": 41,
+    "fields": {
+        "pedido": 37,
+        "pieza": 3,
+        "tienda": 1,
+        "precio": 1000.0,
+        "cantidad": 3
+    }
+},
+{
+    "model": "tienda.lineapedido",
+    "pk": 42,
+    "fields": {
+        "pedido": 34,
+        "pieza": 1,
+        "tienda": 9,
+        "precio": 200.0,
+        "cantidad": 5
+    }
+},
+{
+    "model": "tienda.lineapedido",
+    "pk": 43,
+    "fields": {
+        "pedido": 38,
+        "pieza": 1,
+        "tienda": 9,
+        "precio": 200.0,
+        "cantidad": 2
+    }
+},
+{
+    "model": "tienda.pago",
+    "pk": 3,
+    "fields": {
+        "pedido": 32,
+        "cuenta_bancaria": 12,
+        "monto": 150.0,
+        "fecha_pago": "2025-06-03T16:17:31.671"
+    }
+},
+{
+    "model": "tienda.pago",
+    "pk": 4,
+    "fields": {
+        "pedido": 33,
+        "cuenta_bancaria": 12,
+        "monto": 200.0,
+        "fecha_pago": "2025-06-05T10:03:14.317"
+    }
+},
+{
+    "model": "tienda.pago",
+    "pk": 6,
+    "fields": {
+        "pedido": 36,
+        "cuenta_bancaria": 12,
+        "monto": 1050.0,
+        "fecha_pago": "2025-06-08T15:30:59.885"
+    }
+},
+{
+    "model": "tienda.pago",
+    "pk": 7,
+    "fields": {
+        "pedido": 34,
+        "cuenta_bancaria": 14,
+        "monto": 1750.0,
+        "fecha_pago": "2025-06-08T17:48:41.043"
+    }
+},
+{
+    "model": "tienda.pago",
+    "pk": 8,
+    "fields": {
+        "pedido": 38,
+        "cuenta_bancaria": 14,
+        "monto": 400.0,
+        "fecha_pago": "2025-06-08T18:06:22.944"
+    }
+},
+{
+    "model": "tienda.devolucion",
+    "pk": 1,
+    "fields": {
+        "lineaPedido": 32,
+        "cliente": 1,
+        "fecha_devolucion": "2025-06-07T16:56:57.090",
+        "estado": "D"
+    }
+},
+{
+    "model": "tienda.devolucion",
+    "pk": 2,
+    "fields": {
+        "lineaPedido": 17,
+        "cliente": 1,
+        "fecha_devolucion": "2025-06-08T20:18:29.945",
+        "estado": "P"
+    }
+},
+{
+    "model": "tienda.devolucion",
+    "pk": 3,
+    "fields": {
+        "lineaPedido": 30,
+        "cliente": 1,
+        "fecha_devolucion": "2025-06-08T20:42:01.377",
+        "estado": "P"
     }
 }
 ]

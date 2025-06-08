@@ -1,71 +1,221 @@
-{%extends "estructura/principal.html"%}
+{% extends "estructura/principal.html" %}
 
-{%block contenido %}
+{% block contenido %}
+{% load static %}
 
+<div class="position-relative overflow-hidden mb-5" 
+     style="height: 60vh; background-image: url('{% static "imagenes/MotorPartsExpress.jpg" %}'); 
+     background-size: cover; background-position: center center; background-repeat: no-repeat;">
+    
+    <!-- Capa oscura para mejorar el contraste del texto -->
+    <div class="position-absolute w-100 h-100 top-0 start-0 bg-dark opacity-50"></div>
 
-<!--====== tienda ======-->
-<section class="features-area features-one py-5" style="background-color: #f7f7f7;">
-    <div class="container">
-       <div class="row justify-content-center mb-4">
-          <div class="col-lg-6">
-             <div class="text-center">
-                <h3 class="display-4">Tienda</h3>
-                <p class="text-muted">
-                   Tienda que vende cosas.
-                </p>
-             </div>
-          </div>
-       </div>
-       
-       <!-- Features -->
-       <div class="row justify-content-center">
-          <div class="col-lg-4 col-md-6 col-sm-9 mb-4">
-             <div class="card text-center p-4 shadow-sm border-0" style="background-color: white;">
-                <div class="mb-3">
-                   <i class="lni lni-compass display-4" style="color: #007bff;"></i>
-                </div>
-                <div class="card-body">
-                   <h4 class="card-title">Ropa mas vendida</h4>
-                   <p class="card-text text-muted">
-                      Ropas y mas
-                   </p>
-                   <a href="javascript:void(0)" class="btn btn-outline-primary rounded-pill">Más</a>
-                </div>
-             </div>
-          </div>
-          
-          <div class="col-lg-4 col-md-6 col-sm-9 mb-4">
-             <div class="card text-center p-4 shadow-sm border-0" style="background-color: white;">
-                <div class="mb-3">
-                   <i class="lni lni-construction display-4" style="color: #007bff;"></i>
-                </div>
-                <div class="card-body">
-                   <h4 class="card-title">Bisutería</h4>
-                   <p class="card-text text-muted">
-                      Bisutería y mas
-                   </p>
-                   <a href="javascript:void(0)" class="btn btn-outline-primary rounded-pill">Más</a>
-                </div>
-             </div>
-          </div>
- 
-          <div class="col-lg-4 col-md-6 col-sm-9 mb-4">
-             <div class="card text-center p-4 shadow-sm border-0" style="background-color: white;">
-                <div class="mb-3">
-                   <i class="lni lni-cup display-4" style="color: #007bff;"></i>
-                </div>
-                <div class="card-body">
-                   <h4 class="card-title">Tecnologia</h4>
-                   <p class="card-text text-muted">
-                    Tecnologia y mas
-                   </p>
-                   <a href="javascript:void(0)" class="btn btn-outline-primary rounded-pill">Más</a>
-                </div>
-             </div>
-          </div>
-       </div>
+    <!-- Contenido del hero -->
+    <div class="position-relative d-flex flex-column justify-content-center align-items-center text-white text-center h-100 px-3">
+        <div class="container">
+            <h1 class="display-5 fw-bold mb-3">Bienvenido a <span class="text-warning">MotorPartExpress</span></h1>
+            <p class="lead">Encuentra las piezas que tu motor necesita, rápido y fácil.</p>
+            <a href="#services" class="btn btn-outline-light btn-lg px-4 py-2 mt-3 shadow">Ver Servicios</a>
+        </div>
     </div>
- </section>
- <!--====== FEATURE ONE PART ENDS ======-->
- 
-{%endblock %}
+</div>
+
+
+<!--====== CAROUSEL ======-->
+<div id="carouselExampleIndicators" class="carousel slide mb-5" data-bs-ride="carousel">
+   <!-- Indicadores -->
+   <div class="carousel-indicators">
+     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+   </div>
+
+   <!-- Slides -->
+   <div class="carousel-inner text-center">
+     <!-- Slide 1 -->
+     <div class="carousel-item active">
+       <img src="https://tecvolucion.com/wp-content/uploads/2019/08/Caja-de-cambios-e1566463929654.jpg"
+            class="img-fluid mx-auto d-block" style="max-height: 400px;" alt="Caja de cambio">
+       <!-- Texto móvil -->
+       <div class="d-md-none bg-dark bg-opacity-50 text-white py-2 px-3">
+         <h5 class="mb-1">Caja de cambios</h5>
+         <p class="mb-0">Transmite la potencia del motor a las ruedas de forma eficiente.</p>
+       </div>
+       <!-- Texto desktop -->
+       <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded p-2">
+         <h5>Caja de cambios</h5>
+         <p>Transmite la potencia del motor a las ruedas de forma eficiente.</p>
+       </div>
+     </div>
+
+     <!-- Slide 2 -->
+     <div class="carousel-item">
+       <img src="https://cdn.autobild.es/sites/navi.axelspringer.es/public/media/image/2019/09/partes-motor_1.jpg?tf=3840x"
+            class="img-fluid mx-auto d-block" style="max-height: 400px;" alt="Motor">
+       <div class="d-md-none bg-dark bg-opacity-50 text-white py-2 px-3">
+         <h5 class="mb-1">Motor de combustión</h5>
+         <p class="mb-0">Transforma la energía del combustible en movimiento.</p>
+       </div>
+       <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded p-2">
+         <h5>Motor de combustión</h5>
+         <p>Transforma la energía del combustible en movimiento.</p>
+       </div>
+     </div>
+
+     <!-- Slide 3 -->
+     <div class="carousel-item">
+       <img src="https://autorrautomocion.com/cdn/shop/products/kit-airbags-jaguar-f-type-autorr.jpg?v=1742267947"
+            class="img-fluid mx-auto d-block" style="max-height: 400px;" alt="Kit de airbag">
+       <div class="d-md-none bg-dark bg-opacity-50 text-white py-2 px-3">
+         <h5 class="mb-1">Kit de airbag</h5>
+         <p class="mb-0">Sistema diseñado para proteger en caso de colisión.</p>
+       </div>
+       <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded p-2">
+         <h5>Kit de airbag</h5>
+         <p>Sistema diseñado para proteger en caso de colisión.</p>
+       </div>
+     </div>
+   </div>
+
+   <!-- Controles -->
+   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+     <span class="visually-hidden">Anterior</span>
+   </button>
+   <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+     <span class="carousel-control-next-icon" aria-hidden="true"></span>
+     <span class="visually-hidden">Siguiente</span>
+   </button>
+</div>
+
+<!--====== SECCIÓN DE TESTIMONIOS ======-->
+<section class="py-5 bg-light text-center">
+  <div class="container">
+    <h6 class="text-primary fw-bold text-uppercase">Testimonios</h6>
+    <h2 class="fw-bold mb-3">Lo que dicen las personas</h2>
+    <p class="mb-5 text-muted">Existen muchas variaciones de pasajes de Lorem Ipsum disponibles, pero la mayoría han sufrido alteraciones.</p>
+
+    <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+
+        <!-- Primera diapositiva -->
+        <div class="carousel-item active">
+          <div class="row justify-content-center">
+            <div class="col-lg-4 col-md-6">
+              <div class="card mb-4">
+                <div class="position-relative mx-auto mb-3">
+                  <img src="{% static 'imagenes/persona1.jpg' %}" alt="Isabela" class="testimonial-img">
+                  <div class="quote-icon">❝</div>
+                </div>
+                <p>Deja de perder tiempo y dinero diseñando y gestionando una web que no funciona. ¡Felicidad garantizada!</p>
+                <h5 class="fw-bold">Isabela Moreira</h5>
+                <small class="text-muted">CEO, GrayGrids</small>
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+              <div class="card mb-4">
+                <div class="position-relative mx-auto mb-3">
+                  <img src="{% static 'imagenes/persona2.jpg' %}" alt="Fajar" class="testimonial-img">
+                  <div class="quote-icon">❝</div>
+                </div>
+                <p>Deja de perder tiempo y dinero diseñando y gestionando una web que no funciona. ¡Felicidad garantizada!</p>
+                <h5 class="fw-bold">Fajar Siddiq</h5>
+                <small class="text-muted">Fundador, MakerFlix</small>
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+              <div class="card mb-4">
+                <div class="position-relative mx-auto mb-3">
+                  <img src="{% static 'imagenes/persona3.jpg' %}" alt="Fiona" class="testimonial-img">
+                  <div class="quote-icon">❝</div>
+                </div>
+                <p>Deja de perder tiempo y dinero diseñando y gestionando una web que no funciona. ¡Felicidad garantizada!</p>
+                <h5 class="fw-bold">Fiona</h5>
+                <small class="text-muted">Diseñadora principal, Uldeck</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!--====== CONTACT FORM ======-->
+<div class="container py-5">
+  <div class="row">
+    <!-- Columna izquierda: formulario -->
+    <div class="col-lg-7 mb-5">
+      <h3 class="fw-bold mb-4">Get in touch</h3>
+      <form>
+        <div class="row g-3">
+          <div class="col-md-6 position-relative">
+            <i class="bi bi-person"></i>
+            <div class="form-floating">
+              <input type="text" class="form-control" id="nombre" placeholder="Full Name">
+              <label for="nombre">Full Name</label>
+            </div>
+          </div>
+          <div class="col-md-6 position-relative">
+            <i class="bi bi-envelope"></i>
+            <div class="form-floating">
+              <input type="email" class="form-control" id="email" placeholder="Email Address">
+              <label for="email">Email Address</label>
+            </div>
+          </div>
+          <div class="col-md-6 position-relative">
+            <i class="bi bi-telephone"></i>
+            <div class="form-floating">
+              <input type="tel" class="form-control" id="telefono" placeholder="Phone Number">
+              <label for="telefono">Phone Number</label>
+            </div>
+          </div>
+          <div class="col-md-6 position-relative">
+            <i class="bi bi-chat-left-text"></i>
+            <div class="form-floating">
+              <input type="text" class="form-control" id="asunto" placeholder="Subject">
+              <label for="asunto">Subject</label>
+            </div>
+          </div>
+          <div class="col-12 position-relative">
+            <i class="bi bi-pencil-square"></i>
+            <div class="form-floating">
+              <textarea class="form-control" placeholder="Your Message" id="mensaje" style="height: 150px;"></textarea>
+              <label for="mensaje">Your Message</label>
+            </div>
+          </div>
+        </div>
+        <hr class="my-4">
+        <button type="submit" class="btn btn-primary px-4 py-2 rounded-pill fw-bold">
+          SEND MESSAGE
+        </button>
+      </form>
+    </div>
+
+    <!-- Columna derecha: info de contacto -->
+    <div class="col-lg-5">
+      <h5 class="fw-bold mb-3">Contact Information</h5>
+      <ul class="list-unstyled">
+        <li class="mb-3"><i class="bi bi-geo-alt-fill me-2"></i>Level 13, 2 Elizabeth St, Melbourne, Australia</li>
+        <li class="mb-3"><i class="bi bi-telephone-fill me-2"></i>+61 (8) 8234 3555</li>
+        <li class="mb-3"><i class="bi bi-printer-fill me-2"></i>+61 (8) 8234 3555</li>
+        <li class="mb-3"><i class="bi bi-envelope-fill me-2"></i>admin@uideck.com</li>
+      </ul>
+      <div class="mt-4">
+        <a href="#" class="btn btn-outline-secondary btn-sm me-2"><i class="bi bi-facebook"></i></a>
+        <a href="#" class="btn btn-outline-secondary btn-sm me-2"><i class="bi bi-twitter"></i></a>
+        <a href="#" class="btn btn-outline-secondary btn-sm me-2"><i class="bi bi-instagram"></i></a>
+        <a href="#" class="btn btn-outline-secondary btn-sm"><i class="bi bi-linkedin"></i></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+{% endblock %}

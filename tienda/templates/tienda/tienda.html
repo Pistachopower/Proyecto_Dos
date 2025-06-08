@@ -1,0 +1,27 @@
+<tr>
+  <th scope="row">
+  </th>
+  <td>{{ tienda.direccion }}</td>
+  <td>{{ tienda.telefono }}</td>
+  <td>{{ tienda.email }}</td>
+
+  <td>
+      <!-- Enlace de Editar con URL dinámica -->
+      {% if perms.tienda.change_tienda %}
+      <a href="{% url 'tienda_editar' tienda.id %}" class="btn btn-primary btn-sm px-3">
+          <i class="fas fa-edit"></i> Editar
+      </a>
+      {% endif %}
+
+      <a href="{% url 'dame_tienda' tienda.id %}" class="btn btn-primary btn-sm px-3">
+        <i class="fas fa-edit"></i> Ver detalles
+      </a>
+
+      <!-- Enlace de Eliminar -->
+      <a href="{% url 'tienda_eliminar' tienda.id %}" class="btn btn-danger btn-sm px-3" onclick="return eliminar();">
+          <i class="fas fa-times"></i> Eliminar
+      </a>
+
+
+  </td>
+</tr>

@@ -22,6 +22,13 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("__debug__/", include("debug_toolbar.urls")),
     path('', include('tienda.urls')),
-    path('accounts/', include('django.contrib.auth.urls')),
-
+    
+    path('accounts/', include('django.contrib.auth.urls')), #usamos el login de django
+    
 ]
+
+from django.conf.urls import handler404
+from django.conf.urls import handler500
+
+handler404= "tienda.views.mi_error_404"
+handler500= "tienda.views.mi_error_500"

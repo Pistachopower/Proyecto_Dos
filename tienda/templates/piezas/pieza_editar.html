@@ -1,0 +1,21 @@
+{% extends "estructura/principal.html" %}
+
+
+{% block contenido %}
+<div class="container mt-5 mb-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <h1 class="text-center">Editar pieza</h1>
+  <form action = "{% url 'pieza_editar' pieza.id %}" method = "post"> 
+    
+     {% load django_bootstrap5 %}
+    {% csrf_token %} 
+    {% bootstrap_form formulario %}         
+
+    {% bootstrap_button "Enviar" button_type="submit" button_class="btn-primary" %}
+</form>
+
+</div>
+</div>
+</div>
+{% endblock %}

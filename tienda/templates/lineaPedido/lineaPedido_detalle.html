@@ -1,0 +1,72 @@
+{% extends "estructura/principal.html" %}
+{% block contenido %}
+<div class="container my-5">
+    <h1 class="mb-4">Detalles del pedido</h1>
+
+    <!-- Sección de cuenta bancaria -->
+    {% if cuenta_bancaria %}
+    <div class="card mb-5 shadow">
+        <div class="card-header bg-primary text-white">
+            <h4>Datos de la cuenta bancaria del cliente</h4>
+        </div>
+        <div class="card-body">
+            <p><strong>Banco:</strong> {{ cuenta_bancaria.banco }}</p>
+            <p><strong>IBAN:</strong> {{ cuenta_bancaria.iban }}</p>
+            <p><strong>Moneda:</strong> {{ cuenta_bancaria.get_moneda_display }}</p>
+        </div>
+    </div>
+    {% else %}
+    <div class="alert alert-warning">
+        Este cliente no tiene una cuenta bancaria registrada.
+    </div>
+    {% endif %}
+
+
+    <!-- Sección de líneas de pedido -->
+    <h2 class="mb-3">Líneas de pedido</h2>
+
+    {% for registro in pieza_devoluciones%}
+    <div class="card h-100 shadow-sm mb-4">
+        <div class="card-body">
+            <h5 class="card-title">{{ registro.linea_pedido.pieza.nombre }}</h5>
+            <p><strong>Descripción:</strong> {{ registro.linea_pedido.pieza.descripcion }}</p>
+            <p><strong>Versión:</strong> {{ registro.linea_pedido.pieza.version }}</p>
+            <p><strong>Referencia:</strong> {{ registro.linea_pedido.pieza.referencia }}</p>
+            <p><strong>Tienda:</strong> {{ registro.linea_pedido.tienda.direccion }}</p>
+            <p><strong>Precio unitario:</strong> {{ registro.linea_pedido.precio }} €</p>
+            <p><strong>Cantidad:</strong> {{ registro.linea_pedido.cantidad }}</p>
+        
+            <!-- Mostrar el estado de la devolución -->
+            {% if registro.devuelto %}
+            <p><strong>Devolución solicitada</strong></p>
+            {% else %}
+            <!-- Botón de devolución -->
+            <form method="post" action="{% url 'devolver_pieza' registro.linea_pedido.id %}">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger mt-2">
+                    <i class="fas fa-undo"></i> Devolver
+                </button>
+            </form>
+            
+            {% endif %}
+        
+        </div>
+    </div>
+    {% empty %}
+    <div class="alert alert-info" role="alert">
+        No hay líneas de pedido registradas.
+    </div>
+    {% endfor %}
+
+    <!-- Total general -->
+    {% if total %}
+    <div class="card mt-4 shadow">
+        <div class="card-body">
+            <h4 class="card-title text-end"><strong>Total del pedido:</strong> {{ total }} €</h4>
+        </div>
+    </div>
+    {% endif %}
+
+</div>
+
+{% endblock %}
