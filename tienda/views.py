@@ -426,7 +426,7 @@ def agregar_ProductoTienda(request):
         formulario = DatosVendedorModelForms(request.POST, request=request)
 
         if formulario.is_valid():
-            # aqui vemos si existe en inventario hay un producto existente
+            # Aquí vemos si existe en inventario hay un producto existente
             inventario = Producto_Tienda.objects.filter(
                 tienda=formulario.cleaned_data.get("tienda"),
                 pieza=formulario.cleaned_data.get("pieza"),
@@ -438,7 +438,7 @@ def agregar_ProductoTienda(request):
                 return redirect("lista_ProductosTienda")
 
             else:
-                inventario.cantidad += formulario.cleaned_data.get("cantidad")
+                inventario.stock += formulario.cleaned_data.get("stock")
 
                 inventario.save()
 
@@ -524,8 +524,31 @@ def pieza_Buscar(request):
 
 @permission_required("tienda.view_pedido")
 def lista_pedidos(request):
-    pedidos= Pedido.objects.select_related("cliente").all()
+    #obtenemos el vendedor
+    vendedor= Vendedor.objects.filter(usuario= request.user).first()
+    
+    #luego obtenemos las tiendas que le pertenecen al vendedor
+    tiendasVendedor= Tienda.objects.filter(vendedor=vendedor).all()
+    
+    pedidos= []
+    
+    #Comprobamos el rol del usuario accediendo al enumerado de Usuario
+    if request.user.rol == Usuario.VENDEDOR:
+        
+        #muestra los pedidos de la tienda del vendedor
+        pedidos = Pedido.objects.select_related("cliente", "tienda").filter(tienda__in=tiendasVendedor)
+
+        
+    if request.user.rol == Usuario.CLIENTE:
+        #obtenemos solo los pedidos del usuario activo
+        cliente= Cliente.objects.filter(usuario= request.user).first()
+        
+        pedidos= Pedido.objects.select_related("cliente").filter(cliente=cliente)
+        
+    
     return render(request, "pedido/lista_pedidos.html", {"pedidos_mostrar": pedidos})
+    
+    
     
 
 # @permission_required("tienda.add_pedido")
@@ -652,6 +675,7 @@ def anadir_producto_tienda_carrito(request, productoTienda_id):
                 # Si no existe lo creo
                 pedido = Pedido.objects.create(
                     cliente=cliente,
+                    tienda = producto_tienda.tienda, #agregamos el pedido con la tienda
                     direccion="",  # O pide la dirección en el formulario
                     estado='P',
                 )
@@ -736,12 +760,13 @@ def busqueda_avanzada_pieza(request):
         
         if formulario.is_valid():  # Si los datos son correctos según el formulario...
             
-            #obtenemos los filtros
+            #Obtenemos los filtros
             direccion = formulario.cleaned_data.get('direccion')
             precioMen = formulario.cleaned_data.get('precioMen')
             precioMay = formulario.cleaned_data.get('precioMay')
             stock = formulario.cleaned_data.get('stock')
             
+            #Usamos Q para combinar operadores lógicos 
             condiciones = Q()  # Crea un objeto Q vacío (inicialmente sin condiciones)
             if direccion:
                 condiciones &= Q(tienda__direccion__icontains=direccion)
@@ -754,12 +779,9 @@ def busqueda_avanzada_pieza(request):
             if stock is not None:
                 condiciones &= Q(stock=stock)
 
+            #filtramos si hay alguna tienda con dichos filtros
             QSProductoTienda = QSProductoTienda.filter(condiciones)
-            
-            print(Producto_Tienda.objects.filter(pieza__precio__gte=5, pieza__precio__lte=9).values('pieza__precio'))
 
-            
-            
             return render(request, 'piezas/pieza_BusquedaAvanzada.html', {
                 'formulario': formulario,
                 'QSProductoTienda': QSProductoTienda})
@@ -797,8 +819,8 @@ from django.db.models import Sum, F
 #         'total_precio': total_precio,
 #         'pedido': pedido 
 #     })
-    
-    
+
+@permission_required("tienda.view_lineapedido")
 def listarLineaPedidoCarrito(request, id_usuario):
     # Filtramos las líneas del pedido pendiente de ese cliente
     lineas = LineaPedido.objects.select_related('pedido', 'pieza', 'tienda').filter(
@@ -829,7 +851,7 @@ def listarLineaPedidoCarrito(request, id_usuario):
     })
 
    
-
+@permission_required("tienda.delete_lineapedido")
 def lineaPedido_delete(request, id_lineaPedido):
     #Hacemos la consulta la linea de pedido
     lineaPedido = LineaPedido.objects.filter(id=id_lineaPedido).first()
@@ -844,25 +866,42 @@ def lineaPedido_delete(request, id_lineaPedido):
 
 
 
-#editar_linea_pedido
+@permission_required("tienda.change_lineapedido")
 def editar_linea_pedido(request, id_lineaPedido):
+    # Buscamos la línea de pedido por su ID
     linea = LineaPedido.objects.filter(id=id_lineaPedido).first()
-    
-    if request.method == 'POST':
-        formulario = EditarLineaPedidoForm(request.POST, instance=linea)
-        if formulario.is_valid():
-            formulario.save()
-            messages.success(request, "Cantidad actualizada correctamente.")
-            return redirect("listarLineaPedidoCarrito", id_usuario=request.user.cliente.id)
-    else:
-        formulario = EditarLineaPedidoForm(instance=linea)
+    if not linea:
+        # Si no existe, mostramos error
+        return mi_error_500(request)
 
-    return render(request, 'carrito/editar_linea.html', {'formulario': formulario, 'linea': linea})
+    try:
+        # Comprobamos que el usuario autenticado es el dueño de la línea de pedido
+        if linea.pedido.cliente.usuario.id == request.user.id:
+            if request.method == 'POST':
+                # Si es POST, procesamos el formulario con los datos enviados
+                formulario = EditarLineaPedidoForm(request.POST, instance=linea)
+                if formulario.is_valid():
+                    # Si el formulario es válido, guardamos los cambios
+                    formulario.save()
+                    messages.success(request, "Cantidad actualizada correctamente.")
+                    # Redirigimos al carrito del usuario
+                    return redirect("listarLineaPedidoCarrito", id_usuario=request.user.cliente.id)
+            else:
+                # Si es GET, mostramos el formulario con los datos actuales
+                formulario = EditarLineaPedidoForm(instance=linea)
+
+            # Renderizamos la plantilla con el formulario y la línea de pedido
+            return render(request, 'carrito/editar_linea.html', {'formulario': formulario, 'linea': linea})
+        else:
+            # Si el usuario no es el dueño, mostramos error
+            return mi_error_500(request)
+    except AttributeError:
+        # Si el usuario no tiene cliente asociado, mostramos error
+        return mi_error_500(request)
 
 
-
+@permission_required("tienda.view_pedido")
 def finalizar_pedido(request, pedido_id):
-    #Cambiar 
     pedido = Pedido.objects.filter(id=pedido_id).first()
     
     if request.method == 'POST':
@@ -879,8 +918,7 @@ def finalizar_pedido(request, pedido_id):
                             'pedido': pedido
                         })
             
-            
-            
+
             #Actualizamos dirección y estado
             pedido.direccion = formulario.cleaned_data['direccion']
             pedido.estado = 'C'
@@ -900,7 +938,6 @@ def finalizar_pedido(request, pedido_id):
                 total += subtotal  # lo vamos sumando
 
 
-
             # Creamos el objeto Pago
             Pago.objects.create(
                 pedido=pedido,
@@ -911,8 +948,7 @@ def finalizar_pedido(request, pedido_id):
             
             messages.success(request, "Tu compra se ha realizado con éxito.")
             return redirect("lista_pedidos")
-            
-            
+              
     else:
         formulario = FinalizarPedidoForm(instance=pedido)
         

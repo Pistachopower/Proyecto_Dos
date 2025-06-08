@@ -105,6 +105,9 @@ class Pedido(models.Model):
     
     # Relación muchos a muchos utilizando la tabla Pedido como intermedia
     cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE, related_name='pedidos')
+    
+    #Relación many to one 
+    tienda= models.ForeignKey(Tienda, on_delete= models.CASCADE)
 
 
     

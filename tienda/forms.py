@@ -236,7 +236,12 @@ class DatosVendedorModelForms_Editar(ModelForm):
             'facturacion': ("Facturacion del vendedor"),
         }      
 
-        
+"""
+En la vista, paso el objeto request manualmente al formulario porque necesito saber qué usuario está logueado. 
+En el formulario, saco el request del diccionario kwargs usando .pop("request"), para que Django no se queje, 
+y lo guardo en self.request para luego usar self.request.user y filtrar las tiendas que puede ver ese usuario.
+
+"""     
         
 class DatosVendedorModelForms(ModelForm):
     class Meta:
@@ -262,6 +267,25 @@ class DatosVendedorModelForms(ModelForm):
             required= True,
             empty_label= "Ninguna"
         )
+        
+    def clean(self):
+        super().clean() 
+        
+        stock = self.cleaned_data.get('stock')
+        precio = self.cleaned_data.get('precio')
+        
+        if stock < 0:
+            self.add_error('stock','El stock no puede ser negativo')
+                
+        if precio < float(0):
+            self.add_error('precio', 'El precio no puede ser un valor negativo')
+                        
+        return self.cleaned_data 
+        
+        
+        
+        
+        
         
 class DatosInventarioEditarModelForms(ModelForm):
     class Meta:
@@ -361,6 +385,17 @@ class EditarLineaPedidoForm(forms.ModelForm):
         labels = {
                 'cantidad': ("Indica la cantidad de la pieza"),
             }
+        
+        
+    def clean(self):
+        super().clean()
+        
+        cantidad = self.cleaned_data.get('cantidad')
+        
+        if cantidad is not None and cantidad < 0:
+            self.add_error('cantidad', 'La cantidad no puede ser negativa.')
+        
+        
         
         
 class FinalizarPedidoForm(ModelForm):

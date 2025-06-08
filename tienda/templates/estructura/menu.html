@@ -59,9 +59,9 @@
                         Pedidos
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="piezasDropdown">
-                        {% comment %} {% if perms.tienda.view_pieza %} {% endcomment %}
+                        {% if perms.tienda.view_pedido %}
                         <li><a class="dropdown-item" href="{% url 'lista_pedidos' %}">Ver pedidos</a></li>
-                        {% comment %} {% endif %} {% endcomment %}
+                        {% endif %}
        
                     </ul>
                 </li>
