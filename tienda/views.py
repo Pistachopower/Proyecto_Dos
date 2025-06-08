@@ -1147,7 +1147,7 @@ def eliminar_producto(request, producto_id):
         return mi_error_500(request)
     return redirect("listar_productos_terceros_api")  
 
-
+@login_required  
 def devolver_pieza(request, lineaPedido_id):
     obtener_lineaPedido = LineaPedido.objects.filter(id=lineaPedido_id).first()
     
@@ -1161,13 +1161,13 @@ def devolver_pieza(request, lineaPedido_id):
     messages.success(request, "Se ha procesado tu devolución la pieza correctamente.")
     return redirect("dame_lineaPedido", id_pedido=obtener_lineaPedido.pedido.id)
     
-    
+@login_required     
 def lista_devoluciones(request):
     #usamos una relación inversa 
     devoluciones = Devolucion.objects.filter(lineaPedido__tienda__vendedor__usuario=request.user)
     return render(request, "devoluciones/lista_devoluciones.html", {"devoluciones": devoluciones})
 
-
+@login_required  
 def aceptar_devolucion(request, id_devolucion):
     
     devolucion= Devolucion.objects.filter(id=id_devolucion).first()
@@ -1190,7 +1190,8 @@ def aceptar_devolucion(request, id_devolucion):
     devolucion.save()
     
     return redirect("lista_devoluciones")
-    
+  
+@login_required    
 def denegar_devolucion(request, id_devolucion):
     devolucion= Devolucion.objects.filter(id=id_devolucion).first()
     
