@@ -709,7 +709,7 @@ def anadir_producto_tienda_carrito(request, productoTienda_id):
 
     return render(request, 'carrito/formulario_agregarPiezas.html', {'formulario': formulario, 'producto_tienda': producto_tienda})
 
-@permission_required("tienda.view_devolucion")
+@permission_required("tienda.view_lineapedido")
 def dame_lineaPedido(request, id_pedido):
     # 1. Obtenemos los registros que coincidan con el id_pedido
     linea_pedido = LineaPedido.objects.filter(pedido=id_pedido).all()
