@@ -709,7 +709,7 @@ def anadir_producto_tienda_carrito(request, productoTienda_id):
 
     return render(request, 'carrito/formulario_agregarPiezas.html', {'formulario': formulario, 'producto_tienda': producto_tienda})
 
-@permission_required("tienda.view_lineapedido")
+@permission_required("tienda.view_devolucion")
 def dame_lineaPedido(request, id_pedido):
     # 1. Obtenemos los registros que coincidan con el id_pedido
     linea_pedido = LineaPedido.objects.filter(pedido=id_pedido).all()
@@ -1122,6 +1122,8 @@ def eliminar_producto(request, producto_id):
                         'Authorization': 'Bearer y10KqCW7ajqPQQXpTYH39zzR3a0ff3',
                         'Content-Type': 'application/json'
                     }
+        
+        print("Usuario logueado:", request.user.username, "ID:", request.user.id)
         
         response = requests.delete(
             'http://0.0.0.0:8081/api/v1/eliminar-producto/'+str(producto_id) + '/',
