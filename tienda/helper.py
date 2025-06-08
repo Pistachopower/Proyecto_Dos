@@ -6,7 +6,7 @@ class helper:
     def obtener_producto(id):
         
         headers = {    
-                'Authorization': 'Bearer DuQVYacektprgh40kIjnG0e1TYHc9W',
+                'Authorization': 'Bearer y10KqCW7ajqPQQXpTYH39zzR3a0ff3',
                    } 
         
         response = requests.get('http://0.0.0.0:8081/api/v1/obtener-producto/'

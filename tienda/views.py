@@ -48,7 +48,7 @@ def registrar_usuario(request):
                 # se asocia el cliente con usuario
                 cliente = Cliente.objects.create(usuario=user)
                 cliente.save()
-
+    
             elif rol == Usuario.VENDEDOR:
                 grupo = Group.objects.get(name="vendedores")
                 grupo.user_set.add(user)
@@ -227,16 +227,25 @@ def perfil_cliente(request, id_usuario):
         cliente = Cliente.objects.get(id=id_usuario)
         return render(request, "cliente/perfil_cliente.html", {"cliente": cliente})
     else:
-        raise Http404()
+        mi_error_500(request)
 
 
 @permission_required("tienda.view_cuentabancaria")
 def ver_detalle_cuentaBancaria_Cliente(request, id_usuario):
-    # Obtenemos el cliente asociado al usuario
-    cliente = Cliente.objects.filter(usuario_id=id_usuario).first()
+    
+    # Verificamos que el usuario autenticado esté viendo solo su propia cuenta
+    if request.user.id != int(id_usuario):
+        #raise PermissionDenied("No tienes permiso para ver esta cuenta bancaria.")
+        mi_error_500(request)
+        
+    else:
+        # Obtenemos el cliente asociado al usuario
+        cliente = Cliente.objects.filter(usuario_id=id_usuario).first()
 
-    # Obtenemos la cuenta bancaria asociada al cliente
-    cuentaBancariaCliente = CuentaBancaria.objects.filter(cliente=cliente).first()
+        # Obtenemos la cuenta bancaria asociada al cliente
+        cuentaBancariaCliente = CuentaBancaria.objects.filter(cliente=cliente).first()
+    
+    
 
     return render(
         request,
@@ -320,24 +329,29 @@ def perfil_vendedor(request, id_usuario):
         vendedor = Vendedor.objects.get(id=id_usuario)
         return render(request, "vendedor/perfil_vendedor.html", {"vendedor": vendedor})
     else:
-        raise Http404()
+        mi_error_500(request)
+        return redirect("index")
 
 @permission_required("tienda.view_vendedor")
 def ver_detalle_datosVendedor(request, id_usuario):
-    # Obtenemos el cliente asociado al usuario
-    vendedor = Vendedor.objects.filter(usuario_id=id_usuario).first()
+        # Comparamos el usuario del vendedor con el id_usuario recibido
+    if request.user.vendedor.usuario.id == id_usuario:
+        # Obtenemos el cliente asociado al usuario
+        vendedor = Vendedor.objects.filter(usuario_id=id_usuario).first()
 
-    # Obtenemos la cuenta bancaria asociada al cliente
-    datosVendedorQuery = DatosVendedor.objects.filter(vendedor_id=vendedor).first()
+        # Obtenemos la cuenta bancaria asociada al cliente
+        datosVendedorQuery = DatosVendedor.objects.filter(vendedor_id=vendedor).first()
 
-    return render(
-        request,
-        "vendedor/detalleDatosVendedor.html",
-        {"datosVendedorQuery": datosVendedorQuery},
-    )
+        return render(
+            request,
+            "vendedor/detalleDatosVendedor.html",
+            {"datosVendedorQuery": datosVendedorQuery},)
+    else:
+        mi_error_500(request)
+        return redirect("index")
 
 
-@permission_required('tienda.create_datosvendedor')
+@permission_required('tienda.add_datosvendedor')
 def datosVendedor_create(request):
     if request.method == "POST":
         formulario = DatosVendedorModelForm(request.POST)
@@ -482,7 +496,7 @@ def productoTienda_delete(request, id_productoTienda):
     except Exception as error:
         print(error)
 
-
+@login_required
 def pieza_Buscar(request):
 
     if request.GET:
@@ -514,30 +528,30 @@ def lista_pedidos(request):
     return render(request, "pedido/lista_pedidos.html", {"pedidos_mostrar": pedidos})
     
 
-@permission_required("tienda.add_pedido")
-def pedido_create(request):
-    if request.method == "POST":
-        formulario = PedidoModelForm(request.POST)
+# @permission_required("tienda.add_pedido")
+# def pedido_create(request):
+#     if request.method == "POST":
+#         formulario = PedidoModelForm(request.POST)
 
-        if formulario.is_valid():
-            #Creamos el pedido
-            pedido = Pedido.objects.create(
-                    estado='P',
-                    fecha=formulario.cleaned_data.get("fecha"),
-                    direccion=formulario.cleaned_data.get("direccion"),
-                    cliente=request.user.cliente
-                )
+#         if formulario.is_valid():
+#             #Creamos el pedido
+#             pedido = Pedido.objects.create(
+#                     estado='P',
+#                     fecha=formulario.cleaned_data.get("fecha"),
+#                     direccion=formulario.cleaned_data.get("direccion"),
+#                     cliente=request.user.cliente
+#                 )
             
-            pedido.save()
+#             pedido.save()
 
-            messages.success(request, "Pedido realizado con éxito. Stock actualizado.")
-            return redirect("lista_pedidos") 
+#             messages.success(request, "Pedido realizado con éxito. Stock actualizado.")
+#             return redirect("lista_pedidos") 
 
 
-    else:
-        formulario = PedidoModelForm()
+#     else:
+#         formulario = PedidoModelForm()
 
-    return render(request, "pedido/crear_pedido.html", {"formulario": formulario})
+#     return render(request, "pedido/crear_pedido.html", {"formulario": formulario})
 
 
 
@@ -671,11 +685,28 @@ def anadir_producto_tienda_carrito(request, productoTienda_id):
 
     return render(request, 'carrito/formulario_agregarPiezas.html', {'formulario': formulario, 'producto_tienda': producto_tienda})
 
-#@permission_required("tienda.lineapedido")
+@login_required
 def dame_lineaPedido(request, id_pedido):
-    # 1. Obtenemos las líneas del pedido
+    # 1. Obtenemos los registros que coincidan con el id_pedido
     linea_pedido = LineaPedido.objects.filter(pedido=id_pedido).all()
     
+    #2- Creamos una lista donde guardaremos todas las devoluciones de las piezas más un nuevo campo
+    #booleano que me va a indicar si hay una devolución por cada linea pedido 
+    pieza_devoluciones= []
+    
+    
+    #Iteramos sobre cada línea de pedido p
+    for linea in linea_pedido:
+        # Verificamos si hay una devolución para esa línea de pedido
+        devuelto= Devolucion.objects.filter(lineaPedido=linea).exists()
+        
+        #Agregamos un diccionario con la clave y el valor ya sea sea True o False en devuelto
+        pieza_devoluciones.append({
+            "linea_pedido": linea,
+            "devuelto": devuelto #esta clave indica si hay una devolución para esa línea de pedido
+        })
+
+        
      # 2. Obtenemos la cuenta bancaria directamente usando relaciones
     cuenta_bancaria = CuentaBancaria.objects.filter(
         cliente__pedidos__id=id_pedido
@@ -686,10 +717,16 @@ def dame_lineaPedido(request, id_pedido):
         total_gastado=Sum(F('cantidad') * F('precio'))
     )['total_gastado'] or 0
     
-    #productoTiendaDetalle = Producto_Tienda.objects.filter(tienda_id=tienda).first()
-    return render(request, "lineaPedido/lineaPedido_detalle.html", {"linea_pedido": linea_pedido, "cuenta_bancaria": cuenta_bancaria, "total": total})
     
+    return render(request, "lineaPedido/lineaPedido_detalle.html", { 
+                "cuenta_bancaria": cuenta_bancaria, 
+                "total": total,
+                "pieza_devoluciones": pieza_devoluciones}
+                  )
+
+
 from django.db.models import Q
+@login_required
 def busqueda_avanzada_pieza(request):
     #Obtenemos todos los productos de la tienda
     QSProductoTienda = Producto_Tienda.objects.select_related("tienda", "pieza").all() 
@@ -893,7 +930,7 @@ def listar_productos_terceros_api(request):
         
     
     headers= {
-        'Authorization': 'Bearer DuQVYacektprgh40kIjnG0e1TYHc9W',
+        'Authorization': 'Bearer y10KqCW7ajqPQQXpTYH39zzR3a0ff3',
         'Content-Type': 'application/json'
     }
     
@@ -921,7 +958,7 @@ def crear_producto_tercero(request):
         if formulario.is_valid():
             # Enviamos los datos a la API
             headers = {
-                'Authorization': 'Bearer DuQVYacektprgh40kIjnG0e1TYHc9W',
+                'Authorization': 'Bearer y10KqCW7ajqPQQXpTYH39zzR3a0ff3',
                 'Content-Type': 'application/json'
             }
             
@@ -996,7 +1033,7 @@ def editar_nombre_producto_tercero(request, producto_id):
             formulario = NombreProductoForm(request.POST)
 
             headers= {
-                        'Authorization': 'Bearer DuQVYacektprgh40kIjnG0e1TYHc9W',
+                        'Authorization': 'Bearer y10KqCW7ajqPQQXpTYH39zzR3a0ff3',
                         'Content-Type': 'application/json'
                     }
 
@@ -1046,7 +1083,7 @@ def editar_nombre_producto_tercero(request, producto_id):
 def eliminar_producto(request, producto_id):
     try:
         headers= {
-                        'Authorization': 'Bearer DuQVYacektprgh40kIjnG0e1TYHc9W',
+                        'Authorization': 'Bearer y10KqCW7ajqPQQXpTYH39zzR3a0ff3',
                         'Content-Type': 'application/json'
                     }
         
@@ -1057,14 +1094,37 @@ def eliminar_producto(request, producto_id):
         if response.status_code == requests.codes.ok:
             messages.success(request, "Producto eliminado correctamente.")
             return redirect("listar_productos_terceros_api")
+        elif response.status_code == 403:
+            # Captura el mensaje de la API y lo muestra como error
+            error_api = response.json().get("error", "No puedes eliminar el producto.")
+            messages.error(request, error_api)
+            return redirect("listar_productos_terceros_api")
+        
         else:
             print(response.status_code)
             response.raise_for_status()
+            
     except Exception as err:
         print(f"Ocurrió un error: {err}")
         return mi_error_500(request)
     return redirect("listar_productos_terceros_api")  
 
+
+def devolver_pieza(request, lineaPedido_id):
+    obtener_lineaPedido = LineaPedido.objects.filter(id=lineaPedido_id).first()
+    
+    #creamos el objeto devolucion
+    devolucion= Devolucion.objects.create(
+                lineaPedido= obtener_lineaPedido,
+                cliente= obtener_lineaPedido.pedido.cliente,)
+    
+    
+    devolucion.save()
+    messages.success(request, "Se ha procesado tu devolución la pieza correctamente.")
+    return redirect("dame_lineaPedido", id_pedido=obtener_lineaPedido.pedido.id)
+    
+    
+    
 
 
 # Pagina de error

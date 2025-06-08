@@ -2,6 +2,8 @@ Cliente
 maria
 333sddeS@
 
+Carlos
+
 Vendedor
 Pedro 
 333sddeS@

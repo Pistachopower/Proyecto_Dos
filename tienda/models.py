@@ -43,6 +43,9 @@ class Pieza(models.Model):
 class Cliente(models.Model):
     usuario = models.OneToOneField(Usuario, on_delete=models.CASCADE)
     
+    #se pone en decimal para que se pueda relejar la devolución del precio de la pieza
+    puntos = models.FloatField(default=0.0)  # Puntos del cliente al momento de la devolución
+    
     
     def __str__(self):
         return self.usuario.username
@@ -129,6 +132,22 @@ class Pago(models.Model):
 
     def __str__(self):
         return f"Pago de {self.monto} € por {self.pedido}"
+    
+class Devolucion(models.Model):
+    #puedo tener muchas devuluciones que apuntan a una misma linea pedido (one to many)
+    lineaPedido = models.OneToOneField(LineaPedido, on_delete=models.CASCADE, related_name="devoluciones")
+    
+    #cliente puede tener muchas devoluciones (one to many)
+    cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE, related_name="devoluciones")
+    fecha_devolucion = models.DateTimeField(auto_now_add=True)
+    ESTADO = [
+        ("P", "Pendiente"),
+        ("R", "Resuelta")
+    ]
+    estado = models.CharField(max_length=1, choices=ESTADO, default="P")
+
+    def __str__(self):
+        return f"Devolución del pedido {self.pedido.id} - Motivo: {self.estado}"
 
     
 

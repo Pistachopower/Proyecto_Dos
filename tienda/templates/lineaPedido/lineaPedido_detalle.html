@@ -28,20 +28,31 @@
     <!-- Sección de líneas de pedido -->
     <h2 class="mb-3">Líneas de pedido</h2>
 
-    {% for registro in linea_pedido %}
+    {% for registro in pieza_devoluciones%}
     <div class="card h-100 shadow-sm mb-4">
-        {% if registro.pieza.imagen %}
-        <img src="{{ registro.pieza.imagen.url }}" class="card-img-top" alt="{{ registro.pieza.nombre }}">
-        {% endif %}
         <div class="card-body">
-            <h5 class="card-title">{{ registro.pieza.nombre }}</h5>
-            <p><strong>Descripción:</strong> {{ registro.pieza.descripcion }}</p>
-            <p><strong>Versión:</strong> {{ registro.pieza.version }}</p>
-            <p><strong>Referencia:</strong> {{ registro.pieza.referencia }}</p>
-            <p><strong>Tienda:</strong> {{ registro.tienda.direccion }}</p>
-            <p><strong>Precio unitario:</strong> {{ registro.precio }} €</p>
-            <p><strong>Cantidad:</strong> {{ registro.cantidad }}</p>
-            <p><strong>Subtotal:</strong> {{ registro.precio|floatformat:2|add:"0"|floatformat:2|floatformat:2|stringformat:"s"|add:registro.cantidad|floatformat:2 }} €</p>
+            <h5 class="card-title">{{ registro.linea_pedido.pieza.nombre }}</h5>
+            <p><strong>Descripción:</strong> {{ registro.linea_pedido.pieza.descripcion }}</p>
+            <p><strong>Versión:</strong> {{ registro.linea_pedido.pieza.version }}</p>
+            <p><strong>Referencia:</strong> {{ registro.linea_pedido.pieza.referencia }}</p>
+            <p><strong>Tienda:</strong> {{ registro.linea_pedido.tienda.direccion }}</p>
+            <p><strong>Precio unitario:</strong> {{ registro.linea_pedido.precio }} €</p>
+            <p><strong>Cantidad:</strong> {{ registro.linea_pedido.cantidad }}</p>
+        
+            <!-- Mostrar el estado de la devolución -->
+            {% if registro.devuelto %}
+            <p><strong>Devolución solicitada</strong></p>
+            {% else %}
+            <!-- Botón de devolución -->
+            <form method="post" action="{% url 'devolver_pieza' registro.linea_pedido.id %}">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger mt-2">
+                    <i class="fas fa-undo"></i> Devolver
+                </button>
+            </form>
+            
+            {% endif %}
+        
         </div>
     </div>
     {% empty %}

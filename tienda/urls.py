@@ -53,7 +53,7 @@ urlpatterns = [
     
     #tabla pedidos
     path('pedidos',views.lista_pedidos,name='lista_pedidos'),
-    path('crear-pedido',views.pedido_create,name='pedido_create'),
+    # path('crear-pedido',views.pedido_create,name='pedido_create'),
     
     #linea de pedido
     path('detalle-linea-pedido/<int:id_pedido>',views.dame_lineaPedido,name='dame_lineaPedido'),
@@ -63,6 +63,9 @@ urlpatterns = [
     
     # urls.py
     path('finalizar-pedido/<int:pedido_id>/', views.finalizar_pedido, name='finalizar_pedido'),
+    
+    #devolucion
+    path('devolucion/<int:lineaPedido_id>/', views.devolver_pieza, name='devolver_pieza'),
 
 
     #datos de la api

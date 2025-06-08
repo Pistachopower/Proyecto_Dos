@@ -3,7 +3,7 @@ from django import forms
 from .models import *
 from django.forms import ModelForm
 
-from .helper import helper
+from .helper import helper  
 
 
 class RegistroForm(UserCreationForm): 
@@ -11,14 +11,41 @@ class RegistroForm(UserCreationForm):
                 (Usuario.CLIENTE, 'cliente'),
                 (Usuario.VENDEDOR, 'vendedor'),
             )   
-    
-    
+       
     rol = forms.ChoiceField(choices=roles)
-    
-    
+       
     class Meta:
         model = Usuario
         fields = ('first_name', 'last_name', 'username', 'email', 'password1', 'password2','rol')
+        
+    def clean(self): 
+        cleaned_data = super().clean() 
+
+        first_name = cleaned_data.get("first_name")
+        last_name = cleaned_data.get("last_name")
+        username = cleaned_data.get("username")
+
+        # Longitudes mínimas y máximas
+        MIN_LENGTH = 3
+        MAX_LENGTH = 50
+
+        if len(first_name) < MIN_LENGTH or len(first_name) > MAX_LENGTH:
+            self.add_error('first_name', f'El nombre debe tener entre {MIN_LENGTH} y {MAX_LENGTH} caracteres.')
+
+        if len(last_name) < MIN_LENGTH or len(last_name) > MAX_LENGTH:
+            self.add_error('last_name', f'El apellido debe tener entre {MIN_LENGTH} y {MAX_LENGTH} caracteres.')
+
+        if len(username) < MIN_LENGTH or len(username) > MAX_LENGTH:
+            self.add_error('username', f'El nombre de usuario debe tener entre {MIN_LENGTH} y {MAX_LENGTH} caracteres.')
+
+        return cleaned_data
+
+
+            
+    
+        
+    
+    
         
         
         
@@ -102,8 +129,10 @@ class TiendaModelForm(ModelForm):
         telefono = self.cleaned_data.get('telefono')
         email = self.cleaned_data.get('email')
         
+        #buscamos si hay una tienda con el numero que coloca el usuario
         compruebaTienda = Tienda.objects.filter(telefono=telefono).first()
         
+        #si existe
         if compruebaTienda is not None:
             if self.instance is not None and compruebaTienda.id == self.instance.id:
                 pass
@@ -111,14 +140,31 @@ class TiendaModelForm(ModelForm):
                 self.add_error('telefono', 'Ya existe un número de teléfono con esa tienda')
         
   
-        if len(direccion) < 5: 
-            self.add_error('direccion','Al menos debes indicar 5 caracteres')
+        # Rango de longitud permitido
+        MIN_DIR = 5
+        MAX_DIR = 100
+        MIN_TEL = 7
+        MAX_TEL = 15
+
+        # Validación explícita con OR
+        if len(direccion) < MIN_DIR or len(direccion) > MAX_DIR:
+            self.add_error(
+                'direccion',
+                f'La dirección debe tener entre {MIN_DIR} y {MAX_DIR} caracteres.'
+            )
+
+        if len(telefono) < MIN_TEL or len(telefono) > MAX_TEL:
+            self.add_error(
+                'telefono',
+                f'El teléfono debe tener entre {MIN_TEL} y {MAX_TEL} dígitos.'
+            )
             
-        if len(telefono) < 7:
-            self.add_error('telefono','Al menos debes indicar 7 digitos')
+        # Validación de formato: solo dígitos
+        if not telefono.isdigit():
+            self.add_error('telefono', 'El teléfono solo debe contener números.')
         
-        # Verifica si el correo tiene mayúsculas
-        if email != email.lower():
+        # Verifica si el correo está vacío y tiene mayúsculas
+        if email and email != email.lower():
             self.add_error('email','No puede conteneder mayúsculas')
         
         return self.cleaned_data  

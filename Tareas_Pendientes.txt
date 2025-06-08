@@ -21,18 +21,39 @@ Cambiar el stock a propósito desde el admin:
 
 
 Por hacer 
+Clientes
 Controlar que el cliente pueda ver sus líneas de pedido con los permisos
 #@permission_required("tienda.lineapedido")
 def dame_lineaPedido(request, id_pedido):
+
+Controlar que un cliente solo pueda ver sus productos del carrito
+
+vendedores
+Controlar que un vendedor no vea la lista de vendedores
+
+10. Ver los productos pedidos por los clientes en el perfil de vendedor
+
+16. Ver cuánto pagó un cliente por un pedido y la cuenta que usó.
+
+
+Facil 
+Quitar las acciones a los vendedores, solo al administrador 
+Montar la vista de devolucion del vendedor 
+
+Terminar
+Falta detallar los permisos en el 3 de crear tienda
+
+
+
 
 Tienda 
 Crear modelo pago, para registrar con qué cuenta bancaria se hizo 
 el pago de un pedido y cuánto se pagó al finalizar_pedido (Listo)
 
 Ver detalles de un pedido completado con cuenta bancaria del pago y el 
-dinero total que se gastó 
+dinero total que se gastó (LISTO)
 
-Permitir que un cliente devuelva un producto que haya comprado
+Permitir que un cliente devuelva un producto que haya comprado (Listo)
 
 Los vendedores pueden ver las devoluciones y aceptarlas o denegarlas. Si
 las aceptan, das un saldo de puntos al cliente

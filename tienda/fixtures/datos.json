@@ -2133,22 +2133,6 @@
 },
 {
     "model": "contenttypes.contenttype",
-    "pk": 13,
-    "fields": {
-        "app_label": "tienda",
-        "model": "pedido"
-    }
-},
-{
-    "model": "contenttypes.contenttype",
-    "pk": 14,
-    "fields": {
-        "app_label": "tienda",
-        "model": "producto_tienda"
-    }
-},
-{
-    "model": "contenttypes.contenttype",
     "pk": 15,
     "fields": {
         "app_label": "tienda",

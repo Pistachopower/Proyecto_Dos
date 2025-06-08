@@ -22,7 +22,10 @@
                         <th scope="col">Usuario</th>
                         <th scope="col">Correo</th>
                         <th scope="col">Rol</th>
+
+                        {% if perms.tienda.view_vendedor %}
                         <th scope="col">Acciones</th>
+                        {% endif %}
                       </tr>
                     </thead>
                     <tbody>
