@@ -1,0 +1,62 @@
+{% extends "estructura/principal.html" %}
+
+{% block contenido %}
+<section class="intro my-5">
+  <div class="bg-image h-100">
+    <div class="mask d-flex align-items-center h-100">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-sm-10 mb-2">
+            <div class="card shadow-2-strong" style="background-color: #f5f7fa;">
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table class="table table-bordered table-hover">
+                    <thead class="table-dark">
+                      <tr>
+                        <th>Producto</th>
+                        <th>Precio</th>
+                        <th>Cliente</th>
+                        <th>Fecha de Devolución</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for detalleDev in devoluciones %}
+                      <tr>
+                        <td>{{ detalleDev.lineaPedido.pieza }}</td>
+                        <td>{{ detalleDev.lineaPedido.precio }}€</td>
+                        <td>{{ detalleDev.cliente }}</td>
+                        <td>{{ detalleDev.fecha_devolucion }}</td>
+                        <td>{{ detalleDev.get_estado_display }}</td>
+                        <th>
+                        {%if detalleDev.estado == 'P' %}
+                            <form method="post" action="{% url 'aceptar_devolucion' detalleDev.id %}">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-success">Aceptar</button>
+                            </form>
+                            <form method="post" action="{% url 'denegar_devolucion' detalleDev.id %}">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-danger">Denegar</button>
+                            </form>
+                        {% endif %}
+                        </th>
+                      </tr>
+                      
+                      {% empty %}
+                      <tr>
+                        <td colspan="4" class="text-center">Lo sentimos, pero no hay devoluciones.</td>
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+                </div><!-- /.table-responsive -->
+              </div><!-- /.card-body -->
+            </div><!-- /.card -->
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container -->
+    </div><!-- /.mask -->
+  </div><!-- /.bg-image -->
+</section>
+{% endblock %}

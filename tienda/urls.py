@@ -69,7 +69,9 @@ urlpatterns = [
     
     #devolucion
     path('devolucion/<int:lineaPedido_id>/', views.devolver_pieza, name='devolver_pieza'),
-
+    path('lista-devoluciones', views.lista_devoluciones, name='lista_devoluciones'),
+    path('devolucion/aceptar/<int:id_devolucion>/', views.aceptar_devolucion, name='aceptar_devolucion'),
+    path('devolucion/denegar/<int:id_devolucion>/', views.denegar_devolucion, name='denegar_devolucion'),
 
     #datos de la api
     path('lista-productos-terceros/', views.listar_productos_terceros_api, name='listar_productos_terceros_api'),

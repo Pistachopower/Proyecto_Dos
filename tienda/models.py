@@ -145,9 +145,12 @@ class Devolucion(models.Model):
     fecha_devolucion = models.DateTimeField(auto_now_add=True)
     ESTADO = [
         ("P", "Pendiente"),
-        ("R", "Resuelta")
+        ("R", "Resuelta"),
+        ("D", "Denegada"),
     ]
     estado = models.CharField(max_length=1, choices=ESTADO, default="P")
+    
+
 
     def __str__(self):
         return f"Devolución del pedido {self.pedido.id} - Motivo: {self.estado}"

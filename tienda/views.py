@@ -709,7 +709,7 @@ def anadir_producto_tienda_carrito(request, productoTienda_id):
 
     return render(request, 'carrito/formulario_agregarPiezas.html', {'formulario': formulario, 'producto_tienda': producto_tienda})
 
-@login_required
+@permission_required("tienda.view_lineapedido")
 def dame_lineaPedido(request, id_pedido):
     # 1. Obtenemos los registros que coincidan con el id_pedido
     linea_pedido = LineaPedido.objects.filter(pedido=id_pedido).all()
@@ -1160,7 +1160,43 @@ def devolver_pieza(request, lineaPedido_id):
     return redirect("dame_lineaPedido", id_pedido=obtener_lineaPedido.pedido.id)
     
     
+def lista_devoluciones(request):
+    #usamos una relación inversa 
+    devoluciones = Devolucion.objects.filter(lineaPedido__tienda__vendedor__usuario=request.user)
+    return render(request, "devoluciones/lista_devoluciones.html", {"devoluciones": devoluciones})
+
+
+def aceptar_devolucion(request, id_devolucion):
     
+    devolucion= Devolucion.objects.filter(id=id_devolucion).first()
+    
+    cliente= Cliente.objects.filter(usuario= devolucion.cliente.usuario).first()
+    
+    cliente.puntos= devolucion.lineaPedido.precio
+    
+    producto= Producto_Tienda.objects.filter(pieza= devolucion.lineaPedido.pieza).first()
+    
+    #devolvemos las piezas al stock 
+    producto.stock= producto.stock + devolucion.lineaPedido.cantidad
+    
+    producto.save()
+    
+    cliente.save()
+    
+    devolucion.estado= "R"
+    
+    devolucion.save()
+    
+    return redirect("lista_devoluciones")
+    
+def denegar_devolucion(request, id_devolucion):
+    devolucion= Devolucion.objects.filter(id=id_devolucion).first()
+    
+    devolucion.estado= "D"
+    
+    devolucion.save()
+    
+    return redirect("lista_devoluciones")
 
 
 # Pagina de error
